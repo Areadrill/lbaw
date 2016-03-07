@@ -1,3 +1,8 @@
+body{
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cd/Salem_Harbor_Fitz_Hugh_Lane.jpeg);
+  background-repeat:no-repeat;
+  background-size:100% auto;
+}
 .navbar-default {
   background-color: #11469c;
   border-color: #0235b0;
@@ -97,5 +102,6 @@
   display: flex;
   align-items: center;
 }
-
-
+.input-group .input-group-addon {
+    line-height: 1!important;
+}
