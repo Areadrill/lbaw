@@ -1,7 +1,6 @@
 body{
   background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cd/Salem_Harbor_Fitz_Hugh_Lane.jpeg);
-  background-repeat:no-repeat;
-  background-size:100% auto;
+  background-size: cover;
 }
 .navbar-default {
   background-color: #11469c;
