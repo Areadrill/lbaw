@@ -2,6 +2,10 @@
   display: block;
 }
 
+#customTest{
+  width: 16.5em;
+}
+
 body{
   padding-top: 60px;
 }
