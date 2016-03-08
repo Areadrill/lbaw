@@ -1,3 +1,11 @@
+#userPage{
+  display: block;
+}
+
+body{
+  padding-top: 60px;
+}
+
 .navbar-default {
   background-color: #11469c;
   border-color: #0235b0;
