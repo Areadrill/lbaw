@@ -6,6 +6,10 @@
   width: 16.5em;
 }
 
+#newProjButton{
+  margin-top: 1em;
+}
+
 body{
   padding-top: 60px;
 }
