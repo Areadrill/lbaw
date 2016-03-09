@@ -8,6 +8,7 @@
 
 #newProjButton{
   margin-top: 1em;
+  margin-left: 5em;
 }
 
 body{
@@ -15,7 +16,7 @@ body{
 }
 
 .navbar-default {
-  background-color: #11469c;
+  background-color: #337ab7;
   border-color: #0235b0;
 }
 .navbar-default .navbar-brand {
