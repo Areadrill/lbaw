@@ -5,10 +5,8 @@
 #customTest{
   width: 16.5em;
 }
-
-#newProjButton{
+.button-panel{
   margin-top: 1em;
-  margin-left: 5em;
 }
 
 body{
