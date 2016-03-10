@@ -5,6 +5,20 @@
 #customTest{
   width: 16.5em;
 }
+
+#todojosprojetos{
+  min-width: 16.5em;
+}
+
+#mid-of-navbar{
+  margin-top: 0.8em;
+}
+
+#mid-of-navbar a{
+  color: white;
+  text-decoration: none;
+}
+
 .button-panel{
   margin-top: 1em;
 }
@@ -14,7 +28,7 @@ body{
 }
 
 .navbar-default {
-  background-color: #337ab7;
+  background-color: #11469c;
   border-color: #0235b0;
 }
 .navbar-default .navbar-brand {
