@@ -19,3 +19,15 @@ div#projinfo{
 div#recent-tasks a span.label{
     margin-left:5px;
 }
+
+#main-content{
+    border:0px;
+    box-shadow:none;
+}
+
+div#main-content div#tasks{
+    border-top:0px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+
+}
