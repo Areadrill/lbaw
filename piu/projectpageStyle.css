@@ -1,0 +1,21 @@
+div#projinfo{
+    border:0px;
+    box-shadow:none;
+    border-right:1px solid black;
+    border-radius:0;
+}
+
+#projinfo li{
+    border-radius:0;
+    box-shadow:none;
+    border-left:0px;
+    border-right:0px;
+}
+
+#tasks{
+   padding:20px;   
+}
+
+div#recent-tasks a span.label{
+    margin-left:5px;
+}
