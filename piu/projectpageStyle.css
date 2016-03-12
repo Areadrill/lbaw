@@ -34,6 +34,18 @@ div#main-content div#tasks{
     border-top-right-radius:0;
 
 }
+div#main-content div#forum{
+    border-top:0px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+
+}
+div#main-content div#members{
+    border-top:0px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+
+}
 
 .text{
     margin-top: 1em;
