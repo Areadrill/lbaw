@@ -1,0 +1,23 @@
+$(document).ready(function(){
+    $("#tasksTab").click(function(){
+      $("#forum").hide();
+      $("#members").hide();
+      $("#tasks").show();
+      $("li.active").removeClass('active');
+      $(this).addClass('active');
+    });
+    $("#forumTab").click(function(){
+      $("#members").hide();
+      $("#tasks").hide();
+      $("#forum").show();
+      $("li.active").removeClass('active');
+      $(this).addClass('active');
+    });
+    $("#membersTab").click(function(){
+      $("#forum").hide();
+      $("#tasks").hide();
+      $("#members").show();
+      $("li.active").removeClass('active');
+      $(this).addClass('active');
+    });
+});

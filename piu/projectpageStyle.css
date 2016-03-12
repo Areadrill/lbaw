@@ -13,7 +13,10 @@ div#projinfo{
 }
 
 #tasks{
-   padding:20px;   
+   padding:20px;
+}
+#forum{
+   padding:20px;
 }
 
 div#recent-tasks a span.label{
