@@ -11,3 +11,7 @@ ul.label-list{
 	font-size:14px;
 	font-weight:bold;
 }
+
+.sidebar span.glyphicon-cog{
+	padding-top:10px;
+}
