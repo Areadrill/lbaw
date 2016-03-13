@@ -1,0 +1,13 @@
+.drab{
+    color:#aaa;
+}
+
+ul.label-list{
+	list-style-type:none;
+	padding-left:0;
+}
+
+.sidebar h4{
+	font-size:14px;
+	font-weight:bold;
+}
