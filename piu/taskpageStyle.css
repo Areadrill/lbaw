@@ -15,3 +15,8 @@ ul.label-list{
 .sidebar span.glyphicon-cog{
 	padding-top:10px;
 }
+
+h1>.label{
+  vertical-align: middle;
+  font-size: 0.33em;
+}

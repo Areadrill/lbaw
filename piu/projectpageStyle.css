@@ -18,6 +18,9 @@ div#projinfo{
 #forum{
    padding:20px;
 }
+#members{
+   padding:20px;
+}
 
 div#recent-tasks a span.label{
     margin-left:5px;
