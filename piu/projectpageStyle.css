@@ -21,6 +21,12 @@ div#projinfo{
 #members{
    padding:20px;
 }
+#description{
+   padding:20px;
+}
+#tasklists{
+   padding:20px;
+}
 
 div#recent-tasks a span.label{
     margin-left:5px;
@@ -44,6 +50,18 @@ div#main-content div#forum{
 
 }
 div#main-content div#members{
+    border-top:0px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+
+}
+div#main-content div#description{
+    border-top:0px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+
+}
+div#main-content div#tasklists{
     border-top:0px;
     border-top-left-radius:0;
     border-top-right-radius:0;
