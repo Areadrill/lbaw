@@ -1,5 +1,14 @@
 $(document).ready(function(){
+	$("#descriptionTab").click(function(){
+	  $("#description").show();
+      $("#forum").hide();
+      $("#members").hide();
+      $("#tasks").hide();
+      $("li.active").removeClass('active');
+      $(this).addClass('active');
+    });
     $("#tasksTab").click(function(){
+      $("#description").hide();
       $("#forum").hide();
       $("#members").hide();
       $("#tasks").show();
@@ -7,16 +16,18 @@ $(document).ready(function(){
       $(this).addClass('active');
     });
     $("#forumTab").click(function(){
+      $("#description").hide();
+      $("#forum").show();
       $("#members").hide();
       $("#tasks").hide();
-      $("#forum").show();
       $("li.active").removeClass('active');
       $(this).addClass('active');
     });
     $("#membersTab").click(function(){
+      $("#description").hide();
       $("#forum").hide();
-      $("#tasks").hide();
       $("#members").show();
+      $("#tasks").hide();
       $("li.active").removeClass('active');
       $(this).addClass('active');
     });
