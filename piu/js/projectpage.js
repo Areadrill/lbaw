@@ -4,6 +4,7 @@ $(document).ready(function(){
       $("#forum").hide();
       $("#members").hide();
       $("#tasks").hide();
+      $("#tasklists").hide();
       $("li.active").removeClass('active');
       $(this).addClass('active');
     });
@@ -12,6 +13,16 @@ $(document).ready(function(){
       $("#forum").hide();
       $("#members").hide();
       $("#tasks").show();
+      $("#tasklists").hide();
+      $("li.active").removeClass('active');
+      $(this).addClass('active');
+    });
+    $("#tasklistsTab").click(function(){
+	  $("#description").hide();
+      $("#forum").hide();
+      $("#members").hide();
+      $("#tasks").hide();
+      $("#tasklists").show();
       $("li.active").removeClass('active');
       $(this).addClass('active');
     });
@@ -20,6 +31,7 @@ $(document).ready(function(){
       $("#forum").show();
       $("#members").hide();
       $("#tasks").hide();
+      $("#tasklists").hide();
       $("li.active").removeClass('active');
       $(this).addClass('active');
     });
@@ -28,6 +40,7 @@ $(document).ready(function(){
       $("#forum").hide();
       $("#members").show();
       $("#tasks").hide();
+      $("#tasklists").hide();
       $("li.active").removeClass('active');
       $(this).addClass('active');
     });
