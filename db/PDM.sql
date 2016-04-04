@@ -107,5 +107,3 @@ CREATE TRIGGER ck_proj_date BEFORE
 INSERT ON Project
 FOR EACH ROW
 EXECUTE PROCEDURE ck_proj_date();
-
-
