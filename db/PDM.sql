@@ -1,4 +1,5 @@
-CREATE TYPE ROLE AS ENUM ('COORD', 'MEMBER');;
+DROP TYPE IF EXISTS ROLE;
+CREATE TYPE ROLE AS ENUM ('COORD', 'MEMBER');
 
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users(
@@ -16,15 +17,14 @@ DROP TABLE IF EXISTS Project;
 CREATE TABLE Project(
 	projectID SERIAL PRIMARY KEY NOT NULL,
 	name VARCHAR(25) UNIQUE NOT NULL,
-	creator INT REFERENCES Users(userID),
+	creator INT REFERENCES Users(userID) NOT NULL,
 	creationDate TIMESTAMP NOT NULL
 );
-DROP TABLE IF EXISTS Role;
-CREATE TABLE Role(
+DROP TABLE IF EXISTS Roles;
+CREATE TABLE Roles(
 	userID INT REFERENCES Users(userID) NOT NULL,
 	projectID INT REFERENCES Project(projectID) NOT NULL,
 	roleAssigned ROLE NOT NULL,
-	CONSTRAINT chk_role CHECK (role IN ('COORD', 'MEMBER')),
 	PRIMARY KEY(userID, projectID)
 );
 DROP TABLE IF EXISTS TaskList;
@@ -93,18 +93,19 @@ CREATE TABLE ThreadToLabel(
 );
 
 CREATE FUNCTION ck_proj_date() RETURNS TRIGGER AS
-$BODY$
+$ck_proj_date$
 BEGIN
-IF creationDate >= (SELECT TG_ARGV[0].joinDate FROM Users WHERE TG_ARGV[0].creator = userID) THEN
-INSERT INTO Project 
-VALUES(TG_ARGV[0].projectID, TG_ARGV[0].name, TG_ARGV[0].creator, TG_ARGV[0].creationDate);
+IF NEW.creationDate <= (SELECT joinDate FROM Users WHERE NEW.creator = userID) THEN
+RAISE EXCEPTION 'creationDate can not be smaller than the user join date';
 END IF;
+RETURN NEW;
 END
-$BODY$
+$ck_proj_date$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER ck_proj_date BEFORE 
 INSERT ON Project
-EXECUTE PROCEDURE ck_proj_date(NEW);
+FOR EACH ROW
+EXECUTE PROCEDURE ck_proj_date();
 
 
