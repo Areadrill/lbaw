@@ -1,93 +1,106 @@
-CREATE TABLE User(
-	userID INT SERIAL PRIMARY KEY NOT NULL,
+DROP TABLE IF EXISTS Users;
+CREATE TABLE Users(
+	userID SERIAL PRIMARY KEY NOT NULL,
 	username VARCHAR(25) NOT NULL UNIQUE,
 	password VARCHAR(512) NOT NULL,
 	email VARCHAR(100) NOT NULL UNIQUE,
-	joinDate TIMASTAMP NOT NULL,
+	joinDate TIMESTAMP NOT NULL,
 	lastLogout TIMESTAMP NOT NULL,
 	birthday DATE,
 	education VARCHAR(25),
 	CONSTRAINT joinBeforeLogout CHECK (lastLogout > joinDate)
 );
-
+DROP TABLE IF EXISTS Project;
 CREATE TABLE Project(
-	projectID INT SERIAL PRIMARY KEY NOT NULL,
+	projectID SERIAL PRIMARY KEY NOT NULL,
 	name VARCHAR(25) UNIQUE NOT NULL,
-	creator INT REFERENCES User(userID),
-	creationDate TIMESTAMP NOT NULL,
-	CONSTRAINT joinBeforeCreating CHECK (creationDate > creator.joinDate)
+	creator INT REFERENCES Users(userID),
+	creationDate TIMESTAMP NOT NULL
 );
-
+DROP TABLE IF EXISTS Role;
 CREATE TABLE Role(
-	userID INT REFERENCES User(userID) NOT NULL,
+	userID INT REFERENCES Users(userID) NOT NULL,
 	projectID INT REFERENCES Project(projectID) NOT NULL,
 	role VARCHAR(12) NOT NULL,
 	CONSTRAINT chk_role CHECK (role IN ('COORD', 'MEMBER')),
 	PRIMARY KEY(userID, projectID)
 );
-
+DROP TABLE IF EXISTS TaskList;
 CREATE TABLE TaskList(
-	taskLiID INT SERIAL PRIMARY KEY NOT NULL,
-	name VARCAHR(25) NOT NULL
+	taskLiID SERIAL PRIMARY KEY NOT NULL,
+	name VARCHAR(25) NOT NULL
 );
 
-
+DROP TABLE IF EXISTS Task;
 CREATE TABLE Task(
-	taskID INT SERIAL PRIMARY KEY NOT NULL,
+	taskID SERIAL PRIMARY KEY NOT NULL,
 	projectID INT REFERENCES Project(projectID) NOT NULL,
-	creator INT REFERENCES User(userID) NOT NULL,
-	assignee INT REFERENCES User(userID),
+	creator INT REFERENCES Users(userID) NOT NULL,
+	assignee INT REFERENCES Users(userID),
 	name VARCHAR(25) NOT NULL,
 	taskLiID INT REFERENCES TaskList(taskLiID),
-	creationInfo TIMESTAMP,
-	CONSTRAINT createBeforeTask CHECK (creationInfo > projectID.creationDate)
+	creationInfo TIMESTAMP
 );
-
+DROP TABLE IF EXISTS TaskLabel;
 CREATE TABLE TaskLabel(
-	taskLID INT SERIAL PRIMARY KEY NOT NULL,
+	taskLID SERIAL PRIMARY KEY NOT NULL,
 	name VARCHAR(15)
 );
-
+DROP TABLE IF EXISTS TaskToLabel;
 CREATE TABLE TaskToLabel(
 	taskID INT REFERENCES Task(taskID) NOT NULL,
 	taskLID INT REFERENCES TaskLabel(taskLID) NOT NULL,
 	PRIMARY KEY(taskID, taskLID)
 );
-
+DROP TABLE IF EXISTS TaskComment;
 CREATE TABLE TaskComment(
-	taskCID INT SERIAL PRIMARY KEY NOT NULL,
+	taskCID SERIAL PRIMARY KEY NOT NULL,
 	taskID INT REFERENCES Task(taskID) NOT NULL,
-	commentor INT REFERENCES User(userID) NOT NULL,
+	commentor INT REFERENCES Users(userID) NOT NULL,
 	creationInfo TIMESTAMP NOT NULL,
-	text VARCHAR(512) NOT NULL,
-	CONSTRAINT createBeforeComment CHECK (creationInfo > taskID.creationInfo)
+	text VARCHAR(512) NOT NULL
 );
-
+DROP TABLE IF EXISTS Thread;
 CREATE TABLE Thread(
-	threadID INT SERIAL PRIMARY KEY NOT NULL,
+	threadID SERIAL PRIMARY KEY NOT NULL,
 	projectID INT REFERENCES Project(projectID) NOT NULL,
-	creator INT REFERENCES User(userID) NOT NULL,
+	creator INT REFERENCES Users(userID) NOT NULL,
 	name VARCHAR(25) NOT NULL,
-	creationInfo TIEMSTAMP NOT NULL,
-	CONSTRAINT createBeforeThread CHECK (creationInfo > projectID.creationDate)
+	creationInfo TIMESTAMP NOT NULL
 );
-
+DROP TABLE IF EXISTS Comment;
 CREATE TABLE Comment(
-	commentID INT SERIAL PRIMARY KEY NOT NULL,
+	commentID SERIAL PRIMARY KEY NOT NULL,
 	threadID INT REFERENCES Thread(threadID) NOT NULL,
-	commentor INT REFERENCES User(userID) NOT NULL,
+	commentor INT REFERENCES Users(userID) NOT NULL,
 	creationInfo TIMESTAMP NOT NULL,
-	text VARCHAR(512) NOT NULL,
-	CONSTRAINT createBeforeComment CHECK (creationInfo > threadID.creationInfo)
+	text VARCHAR(512) NOT NULL
 );
-
+DROP TABLE IF EXISTS ThreadLabel;
 CREATE TABLE ThreadLabel(
-	threadLID INT SERIAL PRIMARY KEY NOT NULL,
+	threadLID SERIAL PRIMARY KEY NOT NULL,
 	name VARCHAR(15) NOT NULL
 );
-
+DROP TABLE IF EXISTS ThreadToLabel;
 CREATE TABLE ThreadToLabel(
 	threadID INT REFERENCES Thread(threadID),
 	threadLID INT REFERENCES ThreadLabel(threadLID),
 	PRIMARY KEY(threadID, threadLID)
 );
+
+CREATE FUNCTION ck_proj_date() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF creationDate >= (SELECT TG_ARGV[0].joinDate FROM Users WHERE TG_ARGV[0].creator = userID) THEN
+INSERT INTO Project 
+VALUES(TG_ARGV[0].projectID, TG_ARGV[0].name, TG_ARGV[0].creator, TG_ARGV[0].creationDate);
+END IF;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER ck_proj_date BEFORE 
+INSERT ON Project
+EXECUTE PROCEDURE ck_proj_date(NEW);
+
+
