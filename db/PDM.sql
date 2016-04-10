@@ -93,19 +93,3 @@ CREATE TABLE ThreadToLabel(
 	threadLID INT REFERENCES ThreadLabel(threadLID),
 	PRIMARY KEY(threadID, threadLID)
 );
-
-CREATE FUNCTION ck_proj_date() RETURNS TRIGGER AS
-$ck_proj_date$
-BEGIN
-IF NEW.creationDate <= (SELECT joinDate FROM Users WHERE NEW.creator = userID) THEN
-RAISE EXCEPTION 'creationDate can not be smaller than the user join date';
-END IF;
-RETURN NEW;
-END
-$ck_proj_date$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER ck_proj_date BEFORE 
-INSERT ON Project
-FOR EACH ROW
-EXECUTE PROCEDURE ck_proj_date();
