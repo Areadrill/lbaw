@@ -98,3 +98,511 @@ INSERT INTO Users VALUES (default ,'Clayton','XrjApHc57mp4IlWi4mP6Y78gXW67tshJbk
 INSERT INTO Users VALUES (default ,'Snider','GmbJsqh83OxXuNDPw2ExNL2I0f1JwcE8uSy04liJzCgY65mdT7zxX3MnWJWUOzferiSMoNwciWXfrGUIDgKsvpV8hXjhtFXwTm7Sy7DNtGhajsDewtBg97buvDOWuhktGXWOeWXl4RNJGdDfNT20jumF4er0K0F9bN5Sju7crdUJfrQbRni2IDg6qkXULmODOTNCzq1mdGVgscdDiDZ2rsVrVHo2RFRcmk3NitHhfHHShxwPrBxap6SFyFPCuJGe','Callum@pulvinar.org','30-Mar-16 17:38:20','08-Apr-16 17:47:35','30-Mar-16','FEUP');
 INSERT INTO Users VALUES (default ,'Booker','Bd8yaIO56Q7ID3jjOahv0Va7s81X5HqHwZu2cqlg9uwYMk9GsBc6PJJ2ZDiZn2QiL46ToTnqg4Ukgz26T72LtNRQfu3vVFKmOWv2YWJPOUtVa9ncGjPuncBAGKCmHvlwjTZxel0EYIlFVGnnaEgaqY89z8h1TSx2poOWuJ5PJXxM7dCc4IdevvIfdWvCj2MRYFxFKSLvCjWKm4UTAMTkj9OCd6XFFtVZY7WyXwUqVQevs1udnsSRk2Op4gQYChCg','Levi@senectus.gov','30-Mar-16 17:02:42','08-Apr-16 17:47:35','30-Mar-16','CalTech');
 INSERT INTO Users VALUES (default ,'Kane','itJwowm0bJ0gkfsKe1SKdlwtO8VvYovZ3ppGgiUjuLH9fZBYUN1rHCaM6663eZ0UeAUjZnaX5AcbYBzMvVlfz5MmMNDOLcn6h1toiCTeQU9fD0WKvWo7Ofxx8jP2Bt94dssn16CCnNfZrogPFSrh1XuT0sBWhnyoVfL8FF757iHeXgsEnkY4XiIotByzzXC9t5qHkINGw47rMq41FgucV5hZ3CvJFgBiUSDQiHCydNkgyRYhZQvh4yRZCWADa3nA','Laura@pharetra.com','30-Mar-16 16:49:15','08-Apr-16 17:47:35','30-Mar-16','Harvard');
+
+
+
+
+
+INSERT INTO Project VALUES (default,'SerialPingu',06,'03-Apr-16 16:07:10');
+INSERT INTO Project VALUES (default,'DBColonizer',67,'09-Apr-16 13:56:03');
+INSERT INTO Project VALUES (default,'Eventager',21,'08-Apr-16 14:05:55');
+INSERT INTO Project VALUES (default,'Atom',29,'05-Apr-16 11:07:13');
+INSERT INTO Project VALUES (default,'RustLang',71,'09-Apr-16 17:43:30');
+INSERT INTO Project VALUES (default,'DistServBackup',78,'08-Apr-16 16:28:37');
+INSERT INTO Project VALUES (default,'BreakThru@CGF',38,'07-Apr-16 16:10:37');
+INSERT INTO Project VALUES (default,'Gnu',76,'03-Apr-16 14:30:10');
+INSERT INTO Project VALUES (default,'LeZip',85,'01-Apr-16 17:43:20');
+INSERT INTO Project VALUES (default,'FTPClientLite',93,'05-Apr-16 15:59:54');
+
+
+
+
+INSERT INTO tasklist VALUES (default, 1, 'Frontend');
+INSERT INTO tasklist VALUES (default, 5, 'Documentation');
+INSERT INTO tasklist VALUES (default, 4, 'GUI');
+INSERT INTO tasklist VALUES (default, 6, 'Design');
+INSERT INTO tasklist VALUES (default, 2, 'Documentation');
+INSERT INTO tasklist VALUES (default, 5, 'Design');
+INSERT INTO tasklist VALUES (default, 7, 'GUI');
+INSERT INTO tasklist VALUES (default, 5, 'Backend');
+INSERT INTO tasklist VALUES (default, 8, 'Architecture');
+INSERT INTO tasklist VALUES (default, 5, 'Frontend');
+
+
+
+
+INSERT INTO Task VALUES (default,1,55,39,'Conduct interviews',7,'02-Apr-16 15:52:23');
+INSERT INTO Task VALUES (default,3,60,20,'Review GUI',6,'05-Apr-16 14:36:39');
+INSERT INTO Task VALUES (default,8,99,27,'Complete Documentation',7,'07-Apr-16 16:20:35');
+INSERT INTO Task VALUES (default,3,64,82,'Spellcheck Documentation',2,'08-Apr-16 14:13:51');
+INSERT INTO Task VALUES (default,2,49,88,'Write presentation',1,'09-Apr-16 11:46:16');
+INSERT INTO Task VALUES (default,3,88,94,'New color pattern',6,'09-Apr-16 7:01:31');
+INSERT INTO Task VALUES (default,8,14,15,'Debug GUI',3,'08-Apr-16 9:16:33');
+INSERT INTO Task VALUES (default,1,39,83,'Review GUI',3,'08-Apr-16 7:11:27');
+INSERT INTO Task VALUES (default,8,41,09,'Write presentation',6,'08-Apr-16 11:35:08');
+INSERT INTO Task VALUES (default,9,74,37,'Finish GUI',6,'09-Apr-16 10:31:55');
+INSERT INTO Task VALUES (default,4,39,72,'Review GUI',7,'09-Apr-16 13:37:52');
+INSERT INTO Task VALUES (default,3,93,48,'New Logo',6,'09-Apr-16 10:17:40');
+INSERT INTO Task VALUES (default,6,40,78,'Check GUI',4,'09-Apr-16 5:54:43');
+INSERT INTO Task VALUES (default,9,36,04,'Conduct interviews',6,'08-Apr-16 8:18:54');
+INSERT INTO Task VALUES (default,10,08,75,'Review Frontend',1,'08-Apr-16 10:07:00');
+INSERT INTO Task VALUES (default,6,24,38,'New color pattern',4,'09-Apr-16 13:15:59');
+INSERT INTO Task VALUES (default,5,71,76,'Debug GUI',3,'08-Apr-16 5:06:18');
+INSERT INTO Task VALUES (default,9,11,26,'Review GUI',6,'09-Apr-16 15:42:08');
+INSERT INTO Task VALUES (default,4,81,89,'Review Documentation',2,'08-Apr-16 6:54:40');
+INSERT INTO Task VALUES (default,3,13,76,'Edit Documentation',5,'09-Apr-16 18:28:48');
+INSERT INTO Task VALUES (default,9,51,70,'Complete Documentation',2,'08-Apr-16 15:19:34');
+INSERT INTO Task VALUES (default,3,02,42,'Write queries',7,'08-Apr-16 8:29:03');
+INSERT INTO Task VALUES (default,4,14,29,'Rewrite Documentation',2,'08-Apr-16 8:30:40');
+INSERT INTO Task VALUES (default,5,13,09,'Conduct interviews',6,'08-Apr-16 6:51:50');
+INSERT INTO Task VALUES (default,10,55,23,'Start Documentation',2,'09-Apr-16 13:27:22');
+INSERT INTO Task VALUES (default,8,74,95,'New Logo',4,'09-Apr-16 10:39:14');
+INSERT INTO Task VALUES (default,2,82,93,'Complete GUI',3,'09-Apr-16 4:02:58');
+INSERT INTO Task VALUES (default,3,78,57,'Update Documentation',6,'08-Apr-16 10:42:34');
+INSERT INTO Task VALUES (default,8,83,36,'Support GUI',3,'08-Apr-16 4:01:06');
+INSERT INTO Task VALUES (default,2,08,25,'Review Frontend',1,'08-Apr-16 12:25:44');
+INSERT INTO Task VALUES (default,6,02,95,'Promote social media',7,'09-Apr-16 9:05:13');
+INSERT INTO Task VALUES (default,8,11,78,'Support Frontend',1,'08-Apr-16 0:04:58');
+INSERT INTO Task VALUES (default,8,40,46,'Erase comments',5,'09-Apr-16 8:46:27');
+INSERT INTO Task VALUES (default,8,27,82,'Finish GUI',4,'08-Apr-16 17:31:32');
+INSERT INTO Task VALUES (default,10,19,79,'Erase prints',7,'09-Apr-16 9:15:41');
+
+
+
+
+INSERT INTO TaskLabel VALUES (default,'0.3');
+INSERT INTO TaskLabel VALUES (default,'1.0');
+INSERT INTO TaskLabel VALUES (default,'core');
+INSERT INTO TaskLabel VALUES (default,'high pri');
+INSERT INTO TaskLabel VALUES (default,'1.5');
+INSERT INTO TaskLabel VALUES (default,'main');
+INSERT INTO TaskLabel VALUES (default,'urgent');
+INSERT INTO TaskLabel VALUES (default,'low pri');
+INSERT INTO TaskLabel VALUES (default,'essential');
+INSERT INTO TaskLabel VALUES (default,'extra');
+INSERT INTO TaskLabel VALUES (default,'mid pri');
+
+
+INSERT INTO taskcomment VALUES (default,22,84,'08-Apr-16 12:32:49','I have a question about this');
+INSERT INTO taskcomment VALUES (default,32,89,'08-Apr-16 13:29:04','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,10,94,'08-Apr-16 7:01:57','Almost done with this');
+INSERT INTO taskcomment VALUES (default,03,43,'09-Apr-16 8:34:59','I dont want  this');
+INSERT INTO taskcomment VALUES (default,02,80,'09-Apr-16 8:29:42','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,10,33,'08-Apr-16 11:49:30','I dont think this is necessary.');
+INSERT INTO taskcomment VALUES (default,24,59,'09-Apr-16 7:36:59','I dont think the assignee can handle this, give it to me instead.');
+INSERT INTO taskcomment VALUES (default,18,92,'08-Apr-16 3:06:35','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,32,18,'08-Apr-16 12:13:23','I have a question about this');
+INSERT INTO taskcomment VALUES (default,29,16,'09-Apr-16 8:36:51','I dont think this is necessary.');
+INSERT INTO taskcomment VALUES (default,28,71,'09-Apr-16 11:10:36','I want a promotion for getting this done...');
+INSERT INTO taskcomment VALUES (default,12,27,'09-Apr-16 14:32:18','I dont get paid enough for this!');
+INSERT INTO taskcomment VALUES (default,09,73,'08-Apr-16 7:23:49','I dont get paid enough for this!');
+INSERT INTO taskcomment VALUES (default,05,93,'09-Apr-16 10:41:37','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,02,37,'08-Apr-16 3:53:45','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,26,59,'08-Apr-16 16:42:47','Please assign');
+INSERT INTO taskcomment VALUES (default,26,04,'08-Apr-16 13:49:36','Almost done with this');
+INSERT INTO taskcomment VALUES (default,27,33,'09-Apr-16 12:41:36','I have a question about this');
+INSERT INTO taskcomment VALUES (default,31,65,'08-Apr-16 12:04:22','If no one wants it I guess I can take it...');
+INSERT INTO taskcomment VALUES (default,18,43,'09-Apr-16 3:00:09','I want a promotion for getting this done...');
+INSERT INTO taskcomment VALUES (default,06,16,'08-Apr-16 18:08:29','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,01,72,'09-Apr-16 15:01:14','I dont think the assignee can handle this, give it to me instead.');
+INSERT INTO taskcomment VALUES (default,10,46,'08-Apr-16 12:55:52','I have a question about this');
+INSERT INTO taskcomment VALUES (default,26,09,'08-Apr-16 18:11:51','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,30,67,'08-Apr-16 5:42:45','If no one wants it I guess I can take it...');
+INSERT INTO taskcomment VALUES (default,25,19,'08-Apr-16 2:04:42','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,18,28,'08-Apr-16 12:53:52','Can I get this?');
+INSERT INTO taskcomment VALUES (default,27,24,'09-Apr-16 7:23:27','Please explain this further');
+INSERT INTO taskcomment VALUES (default,35,48,'09-Apr-16 2:21:18','I dont want  this');
+INSERT INTO taskcomment VALUES (default,19,53,'08-Apr-16 4:08:37','I want a promotion for getting this done...');
+INSERT INTO taskcomment VALUES (default,03,93,'08-Apr-16 11:26:17','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,29,36,'09-Apr-16 8:18:43','Please assign');
+INSERT INTO taskcomment VALUES (default,19,06,'09-Apr-16 11:02:21','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,20,46,'09-Apr-16 5:48:34','I have a question about this');
+INSERT INTO taskcomment VALUES (default,19,13,'09-Apr-16 11:14:01','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,12,22,'09-Apr-16 15:10:36','Please assign');
+INSERT INTO taskcomment VALUES (default,10,76,'09-Apr-16 15:01:51','Please assign');
+INSERT INTO taskcomment VALUES (default,06,53,'08-Apr-16 5:49:20','Please assign');
+INSERT INTO taskcomment VALUES (default,08,13,'08-Apr-16 4:08:31','I dont understand what you mean by this');
+INSERT INTO taskcomment VALUES (default,10,18,'09-Apr-16 5:05:37','I dont think this is necessary.');
+
+
+
+
+INSERT INTO thread VALUES (default,1,98,'Im quitting this, goodbye','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,26,'Need a C guru in my office ASAP','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,95,'C++ vs java for the engine','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,50,'Does anyone REALLy know js?','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,17,'Need a C guru in my office ASAP','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,65,'Im quitting this, goodbye','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,4,89,'C++ vs java for the engine','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,99,'Julies surprise party','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,72,'Need a C guru in my office ASAP','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,56,'Anyone working late today?','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,09,'Does anyone REALLY know js?','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,6,95,'C++ vs java for the engine','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,54,'Im new, need some directions','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,41,'The code is spaghettifying at an alarming rate','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,6,44,'Anyone working late today?','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,10,'Need a C guru in my office ASAP','30-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,03,'The code needs serious refactoring','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,25,'Office party','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,17,'Im new, need some directions','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,56,'This project is dead :(','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,25,'Does anyone REALLY know js','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,25,'Rust vs java for the engine','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,4,50,'Go vs java for the engine','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,19,'This project is dead :(','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,31,'Need a C++ guru in my office ASAP','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,93,'Im new, need some directions','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,72,'We are moving too slow','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,28,'Julies surprise party','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,3,78,'Need a C guru in my office ASAP','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,96,'C++ vs java for the engine','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,03,'This project is dead :(','09-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,28,'Anyone working late today?','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,34,'Office surprise party','08-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,82,'We are moving too slow','09-Apr-16 20:05:39');
+
+
+
+
+INSERT INTO comment VALUES (default,19,86,'09-Mar-16 20:34:56','There are several threads about this already!');
+INSERT INTO comment VALUES (default,16,42,'09-Mar-16 0:39:15','This was addressed in another thread');
+INSERT INTO comment VALUES (default,34,54,'08-Mar-16 1:31:51','Ill be right there!');
+INSERT INTO comment VALUES (default,24,59,'08-Mar-16 7:09:17','I dont really know about that...');
+INSERT INTO comment VALUES (default,1,8,'08-Mar-16 12:06:19','I have no idea about that');
+INSERT INTO comment VALUES (default,7,55,'08-Mar-16 14:06:56','There are several threads about this already!');
+INSERT INTO comment VALUES (default,27,79,'08-Mar-16 13:22:18','I dont really know about that...');
+INSERT INTO comment VALUES (default,15,62,'08-Mar-16 17:45:09','I have no idea about that');
+INSERT INTO comment VALUES (default,5,74,'09-Mar-16 1:40:03','There are several threads about this already!');
+INSERT INTO comment VALUES (default,23,86,'08-Mar-16 14:10:41','I have no idea about that');
+INSERT INTO comment VALUES (default,22,16,'08-Mar-16 20:26:01','I think this is possible');
+INSERT INTO comment VALUES (default,35,80,'09-Mar-16 2:57:31','I have no idea about that');
+INSERT INTO comment VALUES (default,22,55,'09-Mar-16 8:55:21','Ill be right there!');
+INSERT INTO comment VALUES (default,12,90,'09-Mar-16 19:52:13','This was addressed in another thread');
+INSERT INTO comment VALUES (default,11,98,'08-Mar-16 19:14:28','There are several threads about this already!');
+INSERT INTO comment VALUES (default,35,89,'08-Mar-16 20:16:40','I have no idea about that');
+INSERT INTO comment VALUES (default,21,17,'09-Mar-16 19:05:10','I have no idea about that');
+INSERT INTO comment VALUES (default,27,84,'09-Mar-16 6:27:50','There are several threads about this already!');
+INSERT INTO comment VALUES (default,7,1,'09-Mar-16 8:23:29','This thread is useless');
+INSERT INTO comment VALUES (default,35,67,'08-Mar-16 4:54:54','This thread is useless');
+INSERT INTO comment VALUES (default,13,94,'08-Mar-16 13:36:52','This thread is useless');
+INSERT INTO comment VALUES (default,11,11,'09-Mar-16 8:26:35','I have no idea about that');
+INSERT INTO comment VALUES (default,10,85,'08-Mar-16 15:35:49','I have no idea about that');
+INSERT INTO comment VALUES (default,11,49,'08-Mar-16 0:52:58','There are several threads about this already!');
+INSERT INTO comment VALUES (default,17,4,'08-Mar-16 6:09:09','This was addressed in another thread');
+INSERT INTO comment VALUES (default,30,59,'09-Mar-16 18:36:28','There are several threads about this already!');
+INSERT INTO comment VALUES (default,21,89,'08-Mar-16 10:35:46','I dont really know about that...');
+INSERT INTO comment VALUES (default,3,16,'09-Mar-16 19:49:45','I dont really know about that...');
+INSERT INTO comment VALUES (default,29,65,'09-Mar-16 6:45:54','I dont really know about that...');
+INSERT INTO comment VALUES (default,4,58,'09-Mar-16 2:52:21','There are several threads about this already!');
+INSERT INTO comment VALUES (default,23,72,'09-Mar-16 1:25:30','This thread is useless');
+INSERT INTO comment VALUES (default,27,22,'09-Mar-16 4:12:05','I think this is possible');
+INSERT INTO comment VALUES (default,3,2,'09-Mar-16 6:21:34','I have no idea about that');
+INSERT INTO comment VALUES (default,20,30,'08-Mar-16 20:15:59','This was addressed in another thread');
+INSERT INTO comment VALUES (default,14,42,'08-Mar-16 6:48:37','I have no idea about that');
+INSERT INTO comment VALUES (default,4,46,'09-Mar-16 15:02:35','I have no idea about that');
+INSERT INTO comment VALUES (default,4,4,'09-Mar-16 11:27:14','I think this is possible');
+INSERT INTO comment VALUES (default,14,93,'09-Mar-16 21:04:07','I dont really know about that...');
+INSERT INTO comment VALUES (default,30,7,'09-Mar-16 1:41:43','There are several threads about this already!');
+INSERT INTO comment VALUES (default,29,100,'09-Mar-16 12:02:53','There are several threads about this already!');
+INSERT INTO comment VALUES (default,17,4,'08-Mar-16 18:20:06','This thread is useless');
+INSERT INTO comment VALUES (default,30,74,'08-Mar-16 20:42:23','I dont really know about that...');
+INSERT INTO comment VALUES (default,5,49,'08-Mar-16 9:42:30','I think this is possible');
+INSERT INTO comment VALUES (default,4,22,'08-Mar-16 10:47:46','I think this is possible');
+INSERT INTO comment VALUES (default,12,1,'09-Mar-16 5:06:15','I have no idea about that');
+INSERT INTO comment VALUES (default,34,2,'09-Mar-16 16:15:28','Ill be right there!');
+INSERT INTO comment VALUES (default,27,10,'09-Mar-16 16:40:08','I dont really know about that...');
+INSERT INTO comment VALUES (default,17,68,'09-Mar-16 1:36:11','This thread is useless');
+INSERT INTO comment VALUES (default,16,55,'08-Mar-16 12:32:17','This was addressed in another thread');
+INSERT INTO comment VALUES (default,28,100,'09-Mar-16 4:18:34','There are several threads about this already!');
+
+
+
+
+INSERT INTO roles VALUES (6, 1, 'COORD');
+INSERT INTO roles VALUES (55, 1, 'COORD'); 
+INSERT INTO roles VALUES (39, 1, 'COORD');
+INSERT INTO roles VALUES (83, 1, 'MEMBER');
+INSERT INTO roles VALUES (98, 1, 'MEMBER');
+INSERT INTO roles VALUES (54, 1, 'MEMBER');
+INSERT INTO roles VALUES (56, 1, 'MEMBER');
+INSERT INTO roles VALUES (96, 1, 'MEMBER');
+INSERT INTO roles VALUES (28, 1, 'MEMBER');
+INSERT INTO roles VALUES (72, 1, 'MEMBER');
+INSERT INTO roles VALUES (13, 1, 'MEMBER');
+INSERT INTO roles VALUES (62, 1, 'MEMBER');
+INSERT INTO roles VALUES (94, 1, 'MEMBER');
+INSERT INTO roles VALUES (30, 1, 'MEMBER');
+
+INSERT INTO roles VALUES (67, 2, 'COORD');
+INSERT INTO roles VALUES (49, 2, 'COORD');
+INSERT INTO roles VALUES (82, 2, 'COORD');
+INSERT INTO roles VALUES (8, 2, 'COORD');
+INSERT INTO roles VALUES (88, 2, 'MEMBER');
+INSERT INTO roles VALUES (93, 2, 'MEMBER');
+INSERT INTO roles VALUES (25, 2, 'MEMBER');
+INSERT INTO roles VALUES (10, 2, 'MEMBER');
+INSERT INTO roles VALUES (31, 2, 'MEMBER');
+INSERT INTO roles VALUES (72, 2, 'MEMBER');
+INSERT INTO roles VALUES (33, 2, 'MEMBER');
+INSERT INTO roles VALUES (24, 2, 'MEMBER');
+INSERT INTO roles VALUES (42, 2, 'MEMBER');
+INSERT INTO roles VALUES (17, 2, 'MEMBER');
+INSERT INTO roles VALUES (89, 2, 'MEMBER');
+INSERT INTO roles VALUES (55, 2, 'MEMBER');
+
+INSERT INTO roles VALUES (21, 3, 'COORD');
+INSERT INTO roles VALUES (60, 3, 'COORD');
+INSERT INTO roles VALUES (64, 3, 'COORD');
+INSERT INTO roles VALUES (88, 3, 'COORD');
+INSERT INTO roles VALUES (93, 3, 'COORD');
+INSERT INTO roles VALUES (13, 3, 'COORD');
+INSERT INTO roles VALUES (2, 3, 'COORD');
+INSERT INTO roles VALUES (78, 3, 'COORD');
+INSERT INTO roles VALUES (20, 3, 'MEMBER');
+INSERT INTO roles VALUES (82, 3, 'MEMBER');
+INSERT INTO roles VALUES (94, 3, 'MEMBER');
+INSERT INTO roles VALUES (48, 3, 'MEMBER');
+INSERT INTO roles VALUES (76, 3, 'MEMBER');
+INSERT INTO roles VALUES (42, 3, 'MEMBER');
+INSERT INTO roles VALUES (57, 3, 'MEMBER');
+INSERT INTO roles VALUES (84, 3, 'MEMBER');
+INSERT INTO roles VALUES (80, 3, 'MEMBER');
+INSERT INTO roles VALUES (71, 3, 'MEMBER');
+INSERT INTO roles VALUES (27, 3, 'MEMBER');
+INSERT INTO roles VALUES (37, 3, 'MEMBER');
+INSERT INTO roles VALUES (16, 3, 'MEMBER');
+INSERT INTO roles VALUES (46, 3, 'MEMBER');
+INSERT INTO roles VALUES (22, 3, 'MEMBER');
+INSERT INTO roles VALUES (53, 3, 'MEMBER');
+INSERT INTO roles VALUES (86, 3, 'MEMBER');
+INSERT INTO roles VALUES (59, 3, 'MEMBER');
+INSERT INTO roles VALUES (72, 3, 'MEMBER');
+INSERT INTO roles VALUES (7, 3, 'MEMBER');
+INSERT INTO roles VALUES (74, 3, 'MEMBER');
+
+INSERT INTO roles VALUES (29, 4, 'COORD');
+INSERT INTO roles VALUES (39, 4, 'COORD');
+INSERT INTO roles VALUES (81, 4, 'COORD');
+INSERT INTO roles VALUES (14, 4, 'COORD');
+INSERT INTO roles VALUES (72, 4, 'MEMBER');
+INSERT INTO roles VALUES (89, 4, 'MEMBER');
+INSERT INTO roles VALUES (50, 4, 'MEMBER');
+INSERT INTO roles VALUES (53, 4, 'MEMBER');
+INSERT INTO roles VALUES (6, 4, 'MEMBER');
+INSERT INTO roles VALUES (13, 4, 'MEMBER');
+INSERT INTO roles VALUES (59, 4, 'MEMBER');
+INSERT INTO roles VALUES (55, 4, 'MEMBER');
+INSERT INTO roles VALUES (1, 4, 'MEMBER');
+
+INSERT INTO roles VALUES (71, 5, 'COORD');
+INSERT INTO roles VALUES (13, 5, 'COORD');
+INSERT INTO roles VALUES (76, 5, 'MEMBER');
+INSERT INTO roles VALUES (9, 5, 'MEMBER');
+INSERT INTO roles VALUES (95, 5, 'MEMBER');
+INSERT INTO roles VALUES (72, 5, 'MEMBER');
+INSERT INTO roles VALUES (25, 5, 'MEMBER');
+INSERT INTO roles VALUES (93, 5, 'MEMBER');
+INSERT INTO roles VALUES (59, 5, 'MEMBER');
+INSERT INTO roles VALUES (79, 5, 'MEMBER');
+INSERT INTO roles VALUES (55, 5, 'MEMBER');
+INSERT INTO roles VALUES (84, 5, 'MEMBER');
+INSERT INTO roles VALUES (16, 5, 'MEMBER');
+INSERT INTO roles VALUES (22, 5, 'MEMBER');
+INSERT INTO roles VALUES (2, 5, 'MEMBER');
+INSERT INTO roles VALUES (10, 5, 'MEMBER');
+
+INSERT INTO roles VALUES (78, 6, 'COORD');
+INSERT INTO roles VALUES (40, 6, 'COORD');
+INSERT INTO roles VALUES (24, 6, 'COORD');
+INSERT INTO roles VALUES (2, 6, 'COORD');
+INSERT INTO roles VALUES (38, 6, 'MEMBER');
+INSERT INTO roles VALUES (95, 6, 'MEMBER');
+INSERT INTO roles VALUES (44, 6, 'MEMBER');
+INSERT INTO roles VALUES (65, 6, 'MEMBER');
+INSERT INTO roles VALUES (62, 6, 'MEMBER');
+INSERT INTO roles VALUES (90, 6, 'MEMBER');
+INSERT INTO roles VALUES (1, 6, 'MEMBER');
+
+INSERT INTO roles VALUES (38, 7, 'COORD');
+INSERT INTO roles VALUES (26, 7, 'MEMBER');
+INSERT INTO roles VALUES (41, 7, 'MEMBER');
+INSERT INTO roles VALUES (3, 7, 'MEMBER');
+INSERT INTO roles VALUES (17, 7, 'MEMBER');
+INSERT INTO roles VALUES (28, 7, 'MEMBER');
+INSERT INTO roles VALUES (86, 7, 'MEMBER');
+INSERT INTO roles VALUES (4, 7, 'MEMBER');
+INSERT INTO roles VALUES (65, 7, 'MEMBER');
+INSERT INTO roles VALUES (42, 7, 'MEMBER');
+INSERT INTO roles VALUES (93, 7, 'MEMBER');
+INSERT INTO roles VALUES (100, 7, 'MEMBER');
+INSERT INTO roles VALUES (68, 7, 'MEMBER');
+
+INSERT INTO roles VALUES (76, 8, 'COORD');
+INSERT INTO roles VALUES (99, 8, 'COORD');
+INSERT INTO roles VALUES (14, 8, 'COORD');
+INSERT INTO roles VALUES (41, 8, 'COORD');
+INSERT INTO roles VALUES (74, 8, 'COORD');
+INSERT INTO roles VALUES (83, 8, 'COORD');
+INSERT INTO roles VALUES (11, 8, 'COORD');
+INSERT INTO roles VALUES (40, 8, 'COORD');
+INSERT INTO roles VALUES (27, 8, 'COORD');
+INSERT INTO roles VALUES (15, 8, 'MEMBER');
+INSERT INTO roles VALUES (9, 8, 'MEMBER');
+INSERT INTO roles VALUES (95, 8, 'MEMBER');
+INSERT INTO roles VALUES (36, 8, 'MEMBER');
+INSERT INTO roles VALUES (78, 8, 'MEMBER');
+INSERT INTO roles VALUES (46, 8, 'MEMBER');
+INSERT INTO roles VALUES (82, 8, 'MEMBER');
+INSERT INTO roles VALUES (89, 8, 'MEMBER');
+INSERT INTO roles VALUES (43, 8, 'MEMBER');
+INSERT INTO roles VALUES (18, 8, 'MEMBER');
+INSERT INTO roles VALUES (16, 8, 'MEMBER');
+INSERT INTO roles VALUES (73, 8, 'MEMBER');
+INSERT INTO roles VALUES (59, 8, 'MEMBER');
+INSERT INTO roles VALUES (4, 8, 'MEMBER');
+INSERT INTO roles VALUES (93, 8, 'MEMBER');
+
+INSERT INTO roles VALUES (85, 9, 'COORD');
+INSERT INTO roles VALUES (74, 9, 'COORD');
+INSERT INTO roles VALUES (36, 9, 'COORD');
+INSERT INTO roles VALUES (11, 9, 'COORD');
+INSERT INTO roles VALUES (51, 9, 'COORD');
+INSERT INTO roles VALUES (37, 9, 'MEMBER');
+INSERT INTO roles VALUES (4, 9, 'MEMBER');
+INSERT INTO roles VALUES (26, 9, 'MEMBER');
+INSERT INTO roles VALUES (70, 9, 'MEMBER');
+INSERT INTO roles VALUES (99, 9, 'MEMBER');
+INSERT INTO roles VALUES (56, 9, 'MEMBER');
+INSERT INTO roles VALUES (9, 9, 'MEMBER');
+INSERT INTO roles VALUES (19, 9, 'MEMBER');
+INSERT INTO roles VALUES (34, 9, 'MEMBER');
+INSERT INTO roles VALUES (94, 9, 'MEMBER');
+INSERT INTO roles VALUES (33, 9, 'MEMBER');
+INSERT INTO roles VALUES (92, 9, 'MEMBER');
+INSERT INTO roles VALUES (43, 9, 'MEMBER');
+INSERT INTO roles VALUES (46, 9, 'MEMBER');
+INSERT INTO roles VALUES (28, 9, 'MEMBER');
+INSERT INTO roles VALUES (76, 9, 'MEMBER');
+INSERT INTO roles VALUES (18, 9, 'MEMBER');
+INSERT INTO roles VALUES (54, 9, 'MEMBER');
+INSERT INTO roles VALUES (98, 9, 'MEMBER');
+INSERT INTO roles VALUES (49, 9, 'MEMBER');
+INSERT INTO roles VALUES (2, 9, 'MEMBER');
+
+INSERT INTO roles VALUES (93, 10, 'COORD');
+INSERT INTO roles VALUES (8, 10, 'COORD');
+INSERT INTO roles VALUES (55, 10, 'COORD');
+INSERT INTO roles VALUES (19, 10, 'COORD');
+INSERT INTO roles VALUES (75, 10, 'MEMBER');
+INSERT INTO roles VALUES (23, 10, 'MEMBER');
+INSERT INTO roles VALUES (79, 10, 'MEMBER');
+INSERT INTO roles VALUES (17, 10, 'MEMBER');
+INSERT INTO roles VALUES (65, 10, 'MEMBER');
+INSERT INTO roles VALUES (82, 10, 'MEMBER');
+INSERT INTO roles VALUES (48, 10, 'MEMBER');
+INSERT INTO roles VALUES (74, 10, 'MEMBER');
+INSERT INTO roles VALUES (80, 10, 'MEMBER');
+INSERT INTO roles VALUES (89, 10, 'MEMBER');
+INSERT INTO roles VALUES (67, 10, 'MEMBER');
+INSERT INTO roles VALUES (58, 10, 'MEMBER');
+INSERT INTO roles VALUES (46, 10, 'MEMBER');
+INSERT INTO roles VALUES (4, 10, 'MEMBER');
+INSERT INTO roles VALUES (49, 10, 'MEMBER');
+INSERT INTO roles VALUES (22, 10, 'MEMBER');
+
+
+
+
+INSERT INTO ThreadLabel VALUES (default, 'non-work');
+INSERT INTO ThreadLabel VALUES (default, 'work');
+INSERT INTO ThreadLabel VALUES (default, 'office');
+INSERT INTO ThreadLabel VALUES (default, 'design');
+INSERT INTO ThreadLabel VALUES (default, 'frontend');
+INSERT INTO ThreadLabel VALUES (default, 'backend');
+INSERT INTO ThreadLabel VALUES (default, 'DB');
+INSERT INTO ThreadLabel VALUES (default, 'Java');
+INSERT INTO ThreadLabel VALUES (default, 'C');
+INSERT INTO ThreadLabel VALUES (default, 'C++');
+INSERT INTO ThreadLabel VALUES (default, 'Scala');
+INSERT INTO ThreadLabel VALUES (default, 'javascript');
+INSERT INTO ThreadLabel VALUES (default, 'html');
+INSERT INTO ThreadLabel VALUES (default, 'networking');
+
+
+
+INSERT INTO ThreadToLabel VALUES (30,4);
+INSERT INTO ThreadToLabel VALUES (28,13);
+INSERT INTO ThreadToLabel VALUES (33,13);
+INSERT INTO ThreadToLabel VALUES (6,14);
+INSERT INTO ThreadToLabel VALUES (8,12);
+INSERT INTO ThreadToLabel VALUES (23,14);
+INSERT INTO ThreadToLabel VALUES (19,1);
+INSERT INTO ThreadToLabel VALUES (18,11);
+INSERT INTO ThreadToLabel VALUES (32,10);
+INSERT INTO ThreadToLabel VALUES (7,9);
+INSERT INTO ThreadToLabel VALUES (24,12);
+INSERT INTO ThreadToLabel VALUES (30,12);
+INSERT INTO ThreadToLabel VALUES (21,5);
+INSERT INTO ThreadToLabel VALUES (16,10);
+INSERT INTO ThreadToLabel VALUES (9,4);
+INSERT INTO ThreadToLabel VALUES (2,8);
+INSERT INTO ThreadToLabel VALUES (17,13);
+INSERT INTO ThreadToLabel VALUES (34,4);
+INSERT INTO ThreadToLabel VALUES (13,7);
+INSERT INTO ThreadToLabel VALUES (8,7);
+INSERT INTO ThreadToLabel VALUES (32,12);
+INSERT INTO ThreadToLabel VALUES (2,10);
+INSERT INTO ThreadToLabel VALUES (25,4);
+INSERT INTO ThreadToLabel VALUES (1,10);
+INSERT INTO ThreadToLabel VALUES (10,3);
+INSERT INTO ThreadToLabel VALUES (31,14);
+INSERT INTO ThreadToLabel VALUES (2,7);
+INSERT INTO ThreadToLabel VALUES (4,9);
+INSERT INTO ThreadToLabel VALUES (19,14);
+INSERT INTO ThreadToLabel VALUES (7,13);
+INSERT INTO ThreadToLabel VALUES (28,6);
+INSERT INTO ThreadToLabel VALUES (27,13);
+INSERT INTO ThreadToLabel VALUES (25,3);
+INSERT INTO ThreadToLabel VALUES (23,12);
+INSERT INTO ThreadToLabel VALUES (6,4);
+
+
+
+
+INSERT INTO TaskToLabel VALUES (18,2);
+INSERT INTO TaskToLabel VALUES (19,2);
+INSERT INTO TaskToLabel VALUES (15,9);
+INSERT INTO TaskToLabel VALUES (27,10);
+INSERT INTO TaskToLabel VALUES (26,2);
+INSERT INTO TaskToLabel VALUES (6,9);
+INSERT INTO TaskToLabel VALUES (23,4);
+INSERT INTO TaskToLabel VALUES (30,11);
+INSERT INTO TaskToLabel VALUES (16,2);
+INSERT INTO TaskToLabel VALUES (21,1);
+INSERT INTO TaskToLabel VALUES (20,1);
+INSERT INTO TaskToLabel VALUES (14,2);
+INSERT INTO TaskToLabel VALUES (6,4);
+INSERT INTO TaskToLabel VALUES (11,1);
+INSERT INTO TaskToLabel VALUES (30,3);
+INSERT INTO TaskToLabel VALUES (18,3);
+INSERT INTO TaskToLabel VALUES (35,7);
+INSERT INTO TaskToLabel VALUES (4,6);
+INSERT INTO TaskToLabel VALUES (35,6);
+INSERT INTO TaskToLabel VALUES (6,7);
+INSERT INTO TaskToLabel VALUES (1,8);
+INSERT INTO TaskToLabel VALUES (4,2);
+INSERT INTO TaskToLabel VALUES (30,2);
+INSERT INTO TaskToLabel VALUES (33,7);
+INSERT INTO TaskToLabel VALUES (30,10);
+INSERT INTO TaskToLabel VALUES (16,3);
+INSERT INTO TaskToLabel VALUES (25,6);
+INSERT INTO TaskToLabel VALUES (21,4);
+INSERT INTO TaskToLabel VALUES (35,4);
+INSERT INTO TaskToLabel VALUES (31,4);
+INSERT INTO TaskToLabel VALUES (20,11);
+INSERT INTO TaskToLabel VALUES (20,4);
+INSERT INTO TaskToLabel VALUES (24,8);
+INSERT INTO TaskToLabel VALUES (22,2);
+INSERT INTO TaskToLabel VALUES (27,7);

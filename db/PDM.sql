@@ -30,7 +30,9 @@ CREATE TABLE Roles(
 DROP TABLE IF EXISTS TaskList;
 CREATE TABLE TaskList(
 	taskLiID SERIAL PRIMARY KEY NOT NULL,
-	name VARCHAR(25) NOT NULL
+	projectID INT REFERENCES Project(projectID) NOT NULL,
+	name VARCHAR(25) NOT NULL,
+	UNIQUE(projectID, name)
 );
 
 DROP TABLE IF EXISTS Task;
@@ -39,7 +41,7 @@ CREATE TABLE Task(
 	projectID INT REFERENCES Project(projectID) NOT NULL,
 	creator INT REFERENCES Users(userID) NOT NULL,
 	assignee INT REFERENCES Users(userID),
-	name VARCHAR(25) NOT NULL,
+	name VARCHAR(50) NOT NULL,
 	taskLiID INT REFERENCES TaskList(taskLiID),
 	creationInfo TIMESTAMP,
 	UNIQUE(projectID, name)
@@ -68,7 +70,7 @@ CREATE TABLE Thread(
 	threadID SERIAL PRIMARY KEY NOT NULL,
 	projectID INT REFERENCES Project(projectID) NOT NULL,
 	creator INT REFERENCES Users(userID) NOT NULL,
-	name VARCHAR(25) NOT NULL,
+	name VARCHAR(50) NOT NULL,
 	creationInfo TIMESTAMP NOT NULL,
 	UNIQUE(projectID, name)
 );
