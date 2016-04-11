@@ -1,10 +1,23 @@
+CREATE FUNCTION creator_insert() RETURNS TRIGGER AS
+$creator_insert$
+BEGIN
+  INSERT INTO ROLES VALUES(NEW.userID, NEW.projectID, 'COORD');
+  RETURN NEW;
+END
+$creator_insert$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER creator_insert AFTER
+INSERT ON Project
+FOR EACH ROW
+EXECUTE PROCEDURE creator_insert();
+
 CREATE FUNCTION ck_proj_date() RETURNS TRIGGER AS
 $ck_proj_date$
 BEGIN
 IF NEW.creationDate <= (SELECT joinDate FROM Users WHERE NEW.creator = userID) THEN
 RAISE EXCEPTION 'creationDate can not be smaller than the user join date';
 END IF;
-INSERT INTO ROLES VALUES(NEW.userID, NEW.projectID, 'COORD');
 RETURN NEW;
 END
 $ck_proj_date$
