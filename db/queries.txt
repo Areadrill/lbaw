@@ -1,0 +1,31 @@
+SQL101: Login
+
+SELECT password, salt FROM Users WHERE username= :uname;
+
+SQL102: Logout
+
+UPDATE Users WHERE userid = :id SET lastLogout = clock_timestamp();
+
+SQL103: Register
+
+INSERT INTO Users VALUES(default, :username, :password_hashed: :salt, :eamil, null, :currentTime, null);
+
+SQL104: Userpage
+
+SELECT * FROM Users WHERE userID = :userid;
+
+SELECT name, projectID FROM Project WHERE projectID = (SELECT projectID FROM Roles WHERE userID = :userid);
+OU
+SELECT name, projectID FROM Project, Roles WHERE Project.projectID = Roles.projectID AND userID = :userid;
+
+(For each projectID obtained above)
+SELECT count(taskID) as NewTaskCount FROM Task WHERE projectID = :projectid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = :userid)
+SELECT count(threadID) as NewThreadCount FROM Task WHERE projectID = :projectid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = :userid)
+
+SELECT count(taskID) as TasksAssignedToUser FROM Task WHERE projectID = :projectid AND assignee = :userid;
+
+SQL105: Recover
+
+SQL106: Create Project
+
+INSERT INTO Project VALUES(default, :name, :userid, clock_timestamp());
