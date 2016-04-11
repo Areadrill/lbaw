@@ -1,31 +1,91 @@
 SQL101: Login
 
-SELECT password, salt FROM Users WHERE username= :uname;
+	SELECT password, salt FROM Users WHERE username= :uname;
 
 SQL102: Logout
 
-UPDATE Users WHERE userid = :id SET lastLogout = clock_timestamp();
+	UPDATE Users SET lastLogout = clock_timestamp() WHERE userid = :id;
 
 SQL103: Register
 
-INSERT INTO Users VALUES(default, :username, :password_hashed: :salt, :eamil, null, :currentTime, null);
+	INSERT INTO Users VALUES(default, :username, :password_hashed: :salt, :email, null, clock_timestamp(), null);
 
-SQL104: Userpage
+SQL104: User Page
 
-SELECT * FROM Users WHERE userID = :userid;
+	SELECT * FROM Users WHERE userID = :userid;
 
-SELECT name, projectID FROM Project WHERE projectID = (SELECT projectID FROM Roles WHERE userID = :userid);
-OU
-SELECT name, projectID FROM Project, Roles WHERE Project.projectID = Roles.projectID AND userID = :userid;
+	SELECT name, projectID FROM Project WHERE projectID IN (SELECT projectID FROM Roles WHERE userID = :userid); (este demora menos 2ms)
+	OU
+	SELECT name, projectID FROM Project, Roles WHERE Project.projectID = Roles.projectID AND userID = :userid;
 
-(For each projectID obtained above)
-SELECT count(taskID) as NewTaskCount FROM Task WHERE projectID = :projectid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = :userid)
-SELECT count(threadID) as NewThreadCount FROM Task WHERE projectID = :projectid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = :userid)
+	(For each projectID obtained above)
+	SELECT count(taskID) as NewTaskCount FROM Task WHERE projectID = :projectid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = :userid);
+	SELECT count(threadID) as NewThreadCount FROM Task WHERE projectID = :projectid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = :userid);
 
-SELECT count(taskID) as TasksAssignedToUser FROM Task WHERE projectID = :projectid AND assignee = :userid;
+	SELECT count(taskID) as TasksAssignedToUser FROM Task WHERE projectID = :projectid AND assignee = :userid;
+
+SQL 113 Edit User Page: 
+	(SELECT * FROM Users WHERE userID = :userid)
+
+	UPDATE Users SET email = :newEmail, password = :newHashedAndSaltedPass, birthday = :newBirthday, education = :newEdu WHERE userID = :userid;
+
 
 SQL105: Recover
 
+	UPDATE Users SET password = :hashed_pass WHERE userID = :userid;
+
 SQL106: Create Project
 
-INSERT INTO Project VALUES(default, :name, :userid, clock_timestamp());
+	INSERT INTO Project VALUES(default, :name, :userid, clock_timestamp());
+
+SQL107 Project Page:  
+	
+	SELECT role FROM Roles WHERE projectID = :projID AND userID = :userid; <-- Pra ver se ta no projeto, n interessa o role neste caso a n ser q se queira por na descriçao um botao pra editar
+
+	SELECT * FROM Project WHERE projectID = :projID;
+																<--- Estes dois serao precisos pra todas as pags do projeto em principio
+	SELECT count(userID) FROM Roles WHERE projectID = :projID;
+
+
+SQL108 Project Edit:
+
+	(SELECT name, description FROM Project where projectID = :projID;) <-- Seria preciso pra mostrar na pagina mas aqui n e bem isso q se ta a considerar aqui
+
+	UPDATE Project SET name = :newName, description = :newDesc WHERE projectID =  :projID;
+
+
+
+(TODOS ESTES AQUI EM BAIXO PODIAM SER FEITOS COM AJAX)
+
+
+SQL109 Project Members List:
+	
+	SELECT name, image, role FROM Users, Roles WHERE Users.userID = Roles.userID AND Roles.projectID = :projID;
+
+SQL110 Project Member Promotion:
+
+	UPDATE Roles SET role = 'COORD' WHERE userID = :userToPromote AND projectID = :projID;
+
+SQL111 Project Member Demotion:
+
+	UPDATE Roles SET role = 'MEMBER' WHERE userID = :userToDemote AND projectID = :projID;
+
+SQL 112 Project Member Removal:
+
+	DELETE FROM Roles WHERE userID = :userToRemove AND projectID = :projID;
+
+(ESTES ACIMA COM AJAX MUNTO BOM)
+
+SQL 114 Project Task Page:
+	
+	SELECT taskID, name FROM Task WHERE projectID = :projID;
+
+	(for each taskID obtained above)
+
+	SELECT taskLID, name FROM TaskLabel WHERE taskLID IN (SELECT taskLID FROM TaskToLabel WHERE taskID = :taskid);
+
+	(for each taskLID obtianed above)
+
+	SELECT count(taskID) FROM TaskToLabel WHERE taskLID = :tasklid;
+
+(OQ TA ACIMA E PRATICMENTE IGUAL PRA THREADS)
