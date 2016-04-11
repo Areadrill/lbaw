@@ -1,7 +1,7 @@
 CREATE FUNCTION creator_insert() RETURNS TRIGGER AS
 $creator_insert$
 BEGIN
-  INSERT INTO ROLES VALUES(NEW.userID, NEW.projectID, 'COORD');
+  INSERT INTO ROLES VALUES(NEW.creator, NEW.projectID, 'COORD');
   RETURN NEW;
 END
 $creator_insert$
