@@ -45,6 +45,7 @@ CREATE TABLE Task(
 	creator INT REFERENCES Users(userID) NOT NULL,
 	assignee INT REFERENCES Users(userID) ON DELETE SET NULL,
 	name VARCHAR(50) NOT NULL,
+	complete BOOLEAN NOT NULL,		
 	taskLiID INT REFERENCES TaskList(taskLiID),
 	creationInfo TIMESTAMP,
 	UNIQUE(projectID, name)

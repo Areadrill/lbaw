@@ -24,7 +24,7 @@ SQL104: User Page
 
 	SELECT count(taskID) as TasksAssignedToUser FROM Task WHERE projectID = :projectid AND assignee = :userid;
 
-SQL 113 Edit User Page: 
+SQL 113 Edit User Page:
 	(SELECT * FROM Users WHERE userID = :userid)
 
 	UPDATE Users SET email = :newEmail, password = :newHashedAndSaltedPass, birthday = :newBirthday, education = :newEdu WHERE userID = :userid;
@@ -38,8 +38,8 @@ SQL106: Create Project
 
 	INSERT INTO Project VALUES(default, :name, :userid, clock_timestamp());
 
-SQL107 Project Page:  
-	
+SQL107 Project Page:
+
 	SELECT role FROM Roles WHERE projectID = :projID AND userID = :userid; <-- Pra ver se ta no projeto, n interessa o role neste caso a n ser q se queira por na descriçao um botao pra editar
 
 	SELECT * FROM Project WHERE projectID = :projID;
@@ -59,7 +59,7 @@ SQL108 Project Edit:
 
 
 SQL109 Project Members List:
-	
+
 	SELECT name, image, role FROM Users, Roles WHERE Users.userID = Roles.userID AND Roles.projectID = :projID;
 
 SQL110 Project Member Promotion:
@@ -77,7 +77,7 @@ SQL 112 Project Member Removal:
 (ESTES ACIMA COM AJAX MUNTO BOM)
 
 SQL 114 Project Task Page:
-	
+
 	SELECT taskID, name FROM Task WHERE projectID = :projID;
 
 	(for each taskID obtained above)
@@ -88,4 +88,35 @@ SQL 114 Project Task Page:
 
 	SELECT count(taskID) FROM TaskToLabel WHERE taskLID = :tasklid;
 
+	SQL120 Assign Label:
+
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		INSERT INTO TaskToLabel VALUES(:taskid, :	tasklid);
+
+	SQL121 REMOVE LABEL:
+
+	SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+	DELETE FROM TaskToLabel WHERE taskID = :taskID AND taskLID = :tasklid;
+
+
 (OQ TA ACIMA E PRATICMENTE IGUAL PRA THREADS)
+
+SQL116 Task Page:
+
+	SELECT * FROM Task WHERE taskID = :taskid;
+
+	SELECT commentor, creationinfo, text FROM Comment WHERE taskID = :taskid;
+
+	SQL117 (AJAX) Post Comment:
+
+		INSERT INTO Comment VALUES(default, :taskid, :userid, clock_timestamp(), :commentText);
+
+	SQL118 Delete Comment:
+
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		DELETE FROM Comment WHERE commentID = :commentid;
+
+	SQL119 Edit Comment:
+
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		UPDATE Comment SET text = :newText, creationinfo = clock_timestamp() <-- num sei se devia de fazer isto;
