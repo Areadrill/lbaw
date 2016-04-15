@@ -120,3 +120,50 @@ SQL304 Task Page:
 
 		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
 		UPDATE Comment SET text = :newText, creationinfo = clock_timestamp() <-- num sei se devia de fazer isto;
+
+	SQL308 Create Task:
+	
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		INSERT INTO Task VALUES(default, :projid, :userid, NULL, :taskName, FALSE, NULL, clock_timestamp());
+
+	SQL309 Delete Thread:
+
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		DELETE FROM Task WHERE taskID = :taskid;
+
+
+	SQL310 Change Task Completion:
+
+		SELECT assignee FROM Task where taskID = :taskid; <-- Pra ver se quem ta a mexer e o assignee
+		UPDATE Task SET complete = :newValue WHERE taskID = :taskid;
+
+	SQL311 Assign Task Label:
+
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		SELECT taskLID, name FROM TaskLabel WHERE projectID = :projid; <-- Para ver todas as labels disponiveis num projeto
+		SELECT taskLID as AlreadyInTask FROM TaskToLabel WHERE taskID = :taskid; <-- Para saber que labels ja tao na task
+
+		(for every new activated checkbox)
+		INSERT INTO TaskToLabel VALUES(:taskid, :taskLID);
+
+	SQL312 Unassign Task Label:
+
+		SELECT role FROM Roles WHERE userID = :userid AND projectID = (SELECT projectID FROM Task WHERE taskID = :taskid); <--- Para ver se e coord ou se anda a fazer malabarices
+		SELECT taskLID, name FROM TaskLabel WHERE projectID = :projid; <-- Para ver todas as labels disponiveis num projeto
+		SELECT taskLID as AlreadyInTask FROM TaskToLabel WHERE taskID = :taskid; <-- Para saber que labels ja tao na task
+
+		(for every new deactivated checkbox)
+		DELETE FROM TaskToLabel WHERE taskID = :taskid AND taskLID = :tasklid;
+
+SQL313 Create TaskLabel:
+	
+	SELECT name FROM TaskLabel WHERE projectID = :projid <--- Para ver se ja existe uma label com esse nome
+	SELECT role FROM Roles WHERE userID = :userid AND projectID = :projid; <--- Para ver se e coord ou se anda a fazer malabarices
+
+	INSERT INTO TaskLabel VALUES(default, :projid, :name);
+
+SQL314 Create TaskLabel:
+	
+	SELECT role FROM Roles WHERE userID = :userid AND projectID = :projid; <--- Para ver se e coord ou se anda a fazer malabarices
+
+	DELETE FROM TaskLabel WHERE taskLID = :tasklid;
