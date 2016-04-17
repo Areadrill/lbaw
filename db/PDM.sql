@@ -4,13 +4,12 @@ CREATE TYPE ROLE AS ENUM ('COORD', 'MEMBER');
 DROP TABLE IF EXISTS Users CASCADE;
 CREATE TABLE Users(
 	userID SERIAL PRIMARY KEY NOT NULL,
-	username VARCHAR(25) NOT NULL UNIQUE,
+	username VARCHAR(25) NOT NULL CONSTRAINT unique_username UNIQUE,
 	password VARCHAR(256) NOT NULL,
 	salt VARCHAR(256) NOT NULL,
-	email VARCHAR(100) NOT NULL UNIQUE,
+	email VARCHAR(100) NOT NULL CONSTRAINT unique_email UNIQUE,
 	joinDate TIMESTAMP NOT NULL,
 	lastLogout TIMESTAMP NOT NULL,
-	image TEXT,
 	birthday DATE,
 	education VARCHAR(25),
 	CONSTRAINT joinBeforeLogout CHECK (lastLogout > joinDate)
@@ -18,10 +17,11 @@ CREATE TABLE Users(
 DROP TABLE IF EXISTS Project CASCADE;
 CREATE TABLE Project(
 	projectID SERIAL PRIMARY KEY NOT NULL,
-	name VARCHAR(25) UNIQUE NOT NULL,
+	name VARCHAR(25) NOT NULL,
 	description TEXT NOT NULL,
 	creator INT REFERENCES Users(userID) ON DELETE CASCADE NOT NULL,
-	creationDate TIMESTAMP NOT NULL
+	creationDate TIMESTAMP NOT NULL,
+	CONSTRAINT unique_projNameForCreator UNIQUE(projectID, name)
 );
 DROP TABLE IF EXISTS Roles CASCADE;
 CREATE TABLE Roles(
@@ -35,7 +35,7 @@ CREATE TABLE TaskList(
 	taskLiID SERIAL PRIMARY KEY NOT NULL,
 	projectID INT REFERENCES Project(projectID) ON DELETE CASCADE NOT NULL,
 	name VARCHAR(25) NOT NULL,
-	UNIQUE(projectID, name)
+	CONSTRAINT unique_taskListNameInProj UNIQUE(projectID, name)
 );
 
 DROP TABLE IF EXISTS Task CASCADE;
@@ -45,17 +45,17 @@ CREATE TABLE Task(
 	creator INT REFERENCES Users(userID) NOT NULL,
 	assignee INT REFERENCES Users(userID) ON DELETE SET NULL,
 	name VARCHAR(50) NOT NULL,
-	complete BOOLEAN NOT NULL,		
+	complete BOOLEAN NOT NULL,
 	taskLiID INT REFERENCES TaskList(taskLiID),
 	creationInfo TIMESTAMP,
-	UNIQUE(projectID, name)
+	CONSTRAINT unique_taskNameInProj UNIQUE(projectID, name)
 );
 DROP TABLE IF EXISTS TaskLabel CASCADE;
 CREATE TABLE TaskLabel(
 	taskLID SERIAL PRIMARY KEY NOT NULL,
 	projectID INT REFERENCES Project(projectID) ON DELETE CASCADE NOT NULL,
 	name VARCHAR(15),
-	UNIQUE(taskLID, projectID)
+	CONSTRAINT unique_labelIsProjScope UNIQUE(taskLID, projectID)
 );
 DROP TABLE IF EXISTS TaskToLabel CASCADE;
 CREATE TABLE TaskToLabel(
@@ -78,7 +78,7 @@ CREATE TABLE Thread(
 	creator INT REFERENCES Users(userID) NOT NULL,
 	name VARCHAR(50) NOT NULL,
 	creationInfo TIMESTAMP NOT NULL,
-	UNIQUE(projectID, name)
+	CONSTRAINT unique_threadNameInProj UNIQUE(projectID, name)
 );
 DROP TABLE IF EXISTS Comment;
 CREATE TABLE Comment(
@@ -91,9 +91,9 @@ CREATE TABLE Comment(
 DROP TABLE IF EXISTS ThreadLabel;
 CREATE TABLE ThreadLabel(
 	threadLID SERIAL PRIMARY KEY NOT NULL,
-	projectID int REFERENCES Project(projectID) ON DELETE CASCADE NOT NULL;
+	projectID int REFERENCES Project(projectID) ON DELETE CASCADE NOT NULL,
 	name VARCHAR(15) NOT NULL,
-	UNIQUE(threadLID, projectID)
+	CONSTRAINT unique_threadLabelIsProjScope UNIQUE(threadLID, projectID)
 );
 DROP TABLE IF EXISTS ThreadToLabel;
 CREATE TABLE ThreadToLabel(
