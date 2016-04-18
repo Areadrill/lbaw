@@ -1,5 +1,5 @@
 {include file='common/header.tpl'}
-    <link rel="stylesheet" href="css/custom/homepageStyle.css">
+    <link rel="stylesheet" href="../css/custom/homepageStyle.css">
   </head>
   <body>
 		 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -20,10 +20,10 @@
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
-				<form action="userpage.html" class="navbar-form navbar-right" role="login">
+				<form method="post" action="../actions/users/login.php" class="navbar-form navbar-right" role="login">
 						<div class="form-group">
-						<input type="text" class="form-control" placeholder="Username">
-						<input type="text" class="form-control" placeholder="Password">
+						<input name="username" type="text" class="form-control" placeholder="Username">
+						<input name="password" type="text" class="form-control" placeholder="Password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
 					</form>
