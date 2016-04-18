@@ -23,7 +23,7 @@
 				<form method="post" action="../actions/users/login.php" class="navbar-form navbar-right" role="login">
 						<div class="form-group">
 						<input name="username" type="text" class="form-control" placeholder="Username">
-						<input name="password" type="text" class="form-control" placeholder="Password">
+						<input name="password" type="password" class="form-control" placeholder="Password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
 					</form>

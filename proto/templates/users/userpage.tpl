@@ -1,5 +1,5 @@
 {include file='../common/header.tpl'}
-	<link rel="stylesheet" href="../../css/custom/userpageStyle.css">
+	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -21,7 +21,7 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form class="navbar-form navbar-right" role="logout">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 				</form>
 				<div class="navbar-right">

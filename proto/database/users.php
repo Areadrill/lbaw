@@ -14,18 +14,25 @@
                             FROM users
                             WHERE username = ?");
     $stmt->execute(array($username));
-    $salt = $stmt->fetch();
+    $res = $stmt->fetch();
 
     if($res){
       $saltedPw = $_POST['password'].$res['salt'];
       if(hash('sha256', $saltedPw) === $res['password']){
         $_SESSION['username'] = $username;
-        $_SESSION['id'] = $res['uid'];
+        $_SESSION['userid'] = $res['userid'];
         //$_SESSION['tok'] = bin2hex(openssl_random_pseudo_bytes(50));
         return true;
       }
     }
 
     return false;
+  }
+
+  function logoutUser($userid) {
+    global $conn;
+    $stmt = $conn->prepare("UPDATE Users SET lastLogout = clock_timestamp() WHERE userid = ?");
+    $stmt->execute(array($userid));
+    return $stmt->fetch() == true;
   }
 ?>
