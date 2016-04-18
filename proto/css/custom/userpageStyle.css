@@ -18,6 +18,10 @@
   color: white;
   text-decoration: none;
 }
+.maxHeight{
+  max-height: 200px;
+
+}
 
 .white-link{
    color: white;

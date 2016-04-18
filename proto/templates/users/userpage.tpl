@@ -26,7 +26,7 @@
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
-					<a class="white-link" href="userpage.html"> jLopes </a>
+					<a class="white-link" href="userpage.html"> {$username} </a>
 					<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=230756" alt="user image" width="30px" height="30px" />
 					</div>
 				</div>
@@ -42,17 +42,17 @@
 			<div id="userPage">
 				<ol class="breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li><a class="active" href="#">jlopes</a></li>
+					<li><a class="active" href="#">{$username}</a></li>
 				</ol>
 				<div class="col-md-3">
 					<div id="customTest">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<img class="img-responsive" src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=230756" alt="user image" width="200px" height="200px" />
+								<img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" />
 							</div>
 						</div>
 
-						<h2> jLopes </h2>
+						<h2> {$username} </h2>
 						<br>
 						<div class="panel panel-default">
 							<div class="panel-heading">

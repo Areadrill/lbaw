@@ -10,7 +10,7 @@
 
   function isLoginCorrect($username, $password) {
     global $conn;
-    $stmt = $conn->prepare("SELECT salt, password
+    $stmt = $conn->prepare("SELECT salt, password, userid
                             FROM users
                             WHERE username = ?");
     $stmt->execute(array($username));
