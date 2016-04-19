@@ -1,3 +1,4 @@
+SET search_path TO proto;
 CREATE FUNCTION creator_insert() RETURNS TRIGGER AS
 $creator_insert$
 BEGIN

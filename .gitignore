@@ -1,0 +1,3 @@
+*.swp
+proto/templates_c/
+proto/config/init.php

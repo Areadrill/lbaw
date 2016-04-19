@@ -1,3 +1,4 @@
+SET SCHEMA 'proto';
 DROP INDEX IF EXISTS roles_projectid_index;
 CREATE INDEX roles_projectid_index ON Roles USING hash(projectid);
 
