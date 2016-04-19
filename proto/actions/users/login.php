@@ -15,7 +15,8 @@
   if (isLoginCorrect($username, $password)) {
     $_SESSION['username'] = $username;
     $_SESSION['success_messages'][] = 'Login successful';
-//    header('Location: ' . $BASE_URL .'pages/userpage.php');
+    var_dump('good login');
+    header('Location: ' . $BASE_URL .'pages/userpage.php');
   } else {
     $_SESSION['error_messages'][] = 'Login failed';
     var_dump('bad login');

@@ -40,10 +40,11 @@
 						<div class="panel-body">
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
-						<form method="post" action="../actions/users/register.php" id="register-form" hidden="hidden" >
+						<form method="post" action="../actions/users/register.php" id="register-form" >
 							<input type="text" name="username">
 							<input type="password" name="password">
 							<input type="email" name="email">
+							<input type="submit" val="submit" name="submit">
 						</form>
 						<div class="panel-body">
 							<div class="input-group">
