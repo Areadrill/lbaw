@@ -27,7 +27,7 @@
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
 					<a class="white-link" href="userpage.html"> {$username} </a>
-					<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=230756" alt="user image" width="30px" height="30px" />
+					<img src={$img} alt="user image" width="30px" height="30px" />
 					</div>
 				</div>
 			</div>
@@ -85,17 +85,18 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="pull-left">Your Projects</h3>
-							<button type="button" class="btn btn-primary pull-right button-panel"> <span class="glyphicon glyphicon-plus"></span> New Project </button>
+							<button data-toggle="modal" data-target="#newProject" type="button" class="btn btn-primary pull-right button-panel"> <span class="glyphicon glyphicon-plus"></span> New Project </button>
 							<div class="input-group pull-right">
   								<span class="input-group-addon" id="basic-addon1">Search</span>
   								<input type="text" class="form-control" placeholder="Search your projects" aria-describedby="basic-addon1">
 							</div>
 							<div class="clearfix"></div>
 						</div>
+						{foreach from=$projects item=proj}
 						<div class="panel-body">
 							<div class="panel panel-primary">
 								<div class="panel-heading">
-									<a class="white-link" href="projectpage.html" >Web Application for PM</a>
+									<a class="white-link" href="projectpage.html" data-projid={$proj.id}>{$proj.name}</a>
 								</div>
 								<div class="panel-body">
 									<div class="row">
@@ -109,31 +110,53 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel-body">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<a class="white-link" href="projectpage.html" >LBAW Automatic Grading</a>
-								</div>
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-3">
-											<span class="glyphicon glyphicon-inbox"></span> 3 new tasks
-										</div>
-										<div class="col-md-3">
-											<span class="glyphicon glyphicon-comment"></span> no new threads
-										</div>
-										<div class="col-md-3">
-											<span class="glyphicon glyphicon-bell"></span> 1 task assigned to you
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						{/foreach}
 					</div>
 				</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+<!-- Modal -->
+<div id="newProject" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add a Project</h4>
+      </div>
+			<br>
+			<form action="../actions/projects/create_project.php" method="post">
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="name" type="text" placeholder="Project Name" class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="description" type="text" placeholder="Description" class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger">Close</button>
+					<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+	      </div>
+			</form>
+    </div>
+
+  </div>
 </div>
 {include file='../common/footer.tpl'}
