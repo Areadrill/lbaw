@@ -5,10 +5,10 @@
 - [ ] US04         As an Authenticated User, I want to edit my personal information so others can have accurate information about me.                                                                    
 - [ ] US05         As an Authenticated User, I want to upload a picture, so that I'm easier to recognize.                                                                                                
 - [x] US06         As an Authenticated User, I want to see the projects I'm associated with, so that I can keep track of all my work.                                                                    
-- [x] US07         As an Authenticted User, I want to log out of the system, so that I can leave my computer without exposing my account.                                                                
+- [x] US07         As an Authenticated User, I want to log out of the system, so that I can leave my computer without exposing my account.                                                                
 - [ ] US08         As an Authenticated User, I want to change my password, so that I can be more secure and remember it better.                                                                          
 - [ ] US09         As an Authenticated User, I want to receive a form to reset my password via e-mail, so that I can regain access to the system when I lose my password.                                
-- [ ] US10	       As an Authenticated User, I want to be able to search for specific projets, so that I can more easily reach the project I need to view at the moment.				   
+- [ ] US10	       As an Authenticated User, I want to be able to search for specific projets, so that I can more easily reach the project I need to view at the moment. *DIGAS*
 - [ ] US11         As a Team Member, I want to see a list of tasks associated with a project, so that I can analyze what needs to be done.                                                               
 - [ ] US12         As a Team Member, I want to create a thread in the project's forum, so that Team Members can discuss the topics.                                                                      
 - [ ] US13         As a Team Member, I want to leave a comment on a thread of the project's forum, so that I can be a part of the discussion.                                                            
