@@ -1,5 +1,6 @@
 {include file='../common/header.tpl'}
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
+	<script src="../javascript/userpage.js" ></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,35 +83,37 @@
 				<div class="col-md-1"></div>
 				<div class="col-md-8">
 					<div id="todojosprojetos">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="pull-left">Your Projects</h3>
-							<button data-toggle="modal" data-target="#newProject" type="button" class="btn btn-primary pull-right button-panel"> <span class="glyphicon glyphicon-plus"></span> New Project </button>
-							<div class="input-group pull-right">
-  								<span class="input-group-addon" id="basic-addon1">Search</span>
-  								<input type="text" class="form-control" placeholder="Search your projects" aria-describedby="basic-addon1">
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						{foreach from=$projects item=proj}
-						<div class="panel-body">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<a class="white-link" href="projectpage.html" data-projid={$proj.id}>{$proj.name}</a>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="pull-left">Your Projects</h3>
+								<button data-toggle="modal" data-target="#newProject" type="button" class="btn btn-primary pull-right button-panel"> <span class="glyphicon glyphicon-plus"></span> New Project </button>
+								<div class="input-group pull-right">
+	  								<span class="input-group-addon" id="basic-addon1">Search</span>
+	  								<input id="searcher" type="text" class="form-control" placeholder="Search your projects" aria-describedby="basic-addon1">
 								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div id="listofprojs">
+								{foreach from=$projects item=proj}
 								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-3">
-											<span class="glyphicon glyphicon-inbox"></span> 2 new tasks
+									<div class="panel panel-primary">
+										<div class="panel-heading">
+											<a class="white-link" href="projectpage.html" data-projid={$proj.id}>{$proj.name}</a>
 										</div>
-										<div class="col-md-3">
-											<span class="glyphicon glyphicon-comment"></span> 1 new thread
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-3">
+													<span class="glyphicon glyphicon-inbox"></span> 2 new tasks
+												</div>
+												<div class="col-md-3">
+													<span class="glyphicon glyphicon-comment"></span> 1 new thread
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+								{/foreach}
 						</div>
-						{/foreach}
 					</div>
 				</div>
 				</div>
