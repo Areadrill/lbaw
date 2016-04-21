@@ -11,8 +11,8 @@ function createUser($username, $password, $email) {
 function isLoginCorrect($username, $password) {
 	global $conn;
 	$stmt = $conn->prepare("SELECT salt, password, userid
-		FROM users
-		WHERE username = ?");
+			FROM users
+			WHERE username = ?");
 	$stmt->execute(array($username));
 	$res = $stmt->fetch();
 
@@ -40,26 +40,26 @@ function getUserByEmail($email){
 	global $conn;
 	$stmt = $conn->prepare("SELECT userid FROM Users WHERE email = :email");
 	$stmt->bindParam(':email', $email);
-	$stmt->execute(array($email))
-	$results = $stmt->fetchAll();
+	$stmt->execute(array($email));
+	$results = $stmt->fetch();
 	if ($results == false)
 		return false;
 	return $results['userid'];
 
 }
-function getUserEmail($userId){
+function getUserEmail($userid){
 	global $conn;
 	$stmt = $conn->prepare("SELECT email FROM Users WHERE userid = ?");
 	$stmt->execute(array($userid));
-	$result = $stmt->fetchAll();
+	$result = $stmt->fetch();
 	if($result == false)
 		return false;
 	return $result['email'];
 }
-function recoverUserPassword($userId){
+function recoverUserPassword($userId, $base_url){
 	global $conn;
-	$stmt = $conn->prepare("INSERT INTO passwordrecovery VALUES (default, ?, clock_timestamp(), ?)");
-	$uuid = com_create_guid();
+	$stmt = $conn->prepare("INSERT INTO passwordrecover VALUES (default, ?, clock_timestamp(), ?)");
+	$uuid = getGUID();
 	$stmt->execute(array($userId, $uuid));
 	$subject = "ProjectHarbor Password Recovery";
 	$headers = array();
@@ -72,8 +72,28 @@ function recoverUserPassword($userId){
 	if ($email == false)
 		return false;
 	$messageBody = "You, or someone who knows your email, attempted to recover a password for the website ProjectHarbor.\r\n
-			If this wasn't you or it was performed by mistake no action is required on your part.\r\n
-			If you wish to reset the password please follow the link below \r\n" . $BASE_UR . "pages/users/passwordreset.php";
-	mail($email, $subject, $messageBody, implode("\r\n", $headers));
+		If this wasn't you or this recovery was initiated by mistake no action is required on your part.\r\n
+		If you wish to reset the password please follow the link below \r\n" . $base_url . "pages/users/passwordreset.php";
+	var_dump($email);
+	var_dump(mail($email, $subject, $messageBody, implode("\r\n", $headers)));
+}
+//taken from http://stackoverflow.com/a/18206984
+function getGUID(){
+	if (function_exists('com_create_guid')){
+		return com_create_guid();
+	}
+	else {
+		mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+		$charid = strtoupper(md5(uniqid(rand(), true)));
+		$hyphen = chr(45);// "-"
+		$uuid = chr(123)// "{"
+			.substr($charid, 0, 8).$hyphen
+			.substr($charid, 8, 4).$hyphen
+			.substr($charid,12, 4).$hyphen
+			.substr($charid,16, 4).$hyphen
+			.substr($charid,20,12)
+			.chr(125);// "}"
+		return $uuid;
+	}
 }
 ?>

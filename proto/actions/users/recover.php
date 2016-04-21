@@ -1,6 +1,7 @@
 <?php
 include_once("../../config/init.php");
-include_once($BASE_DIR."database/users.php");
+var_dump("ola");
+include_once("../../database/users.php");
 if(!$_POST['email']){
   $_SESSION['error_messages'][] = 'Invalid recovery';
   $_SESSION['form_values'] = $_POST;
@@ -8,8 +9,10 @@ if(!$_POST['email']){
   exit;
 }
 
+var_dump("ola2");
 $email = $_POST['email'];
 $userid = getUserByEmail($email);
+var_dump("ola3");
 var_dump($userid);
 if ($userid == false){
 	$_SESSION['error_messages'][] = 'Email does not exist';
@@ -18,6 +21,6 @@ if ($userid == false){
 	exit;
 }
 
-var_dump("success");
-recoverUserPassowrd($userid);
+recoverUserPassword($userid, $BASE_URL);
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
