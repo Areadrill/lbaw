@@ -40,7 +40,8 @@ function getUserByEmail($email){
 	global $conn;
 	$stmt = $conn->prepare("SELECT userid FROM Users WHERE email = :email");
 	$stmt->bindParam(':email', $email);
-	$results = $stmt->execute(array($email));
+	$stmt->execute(array($email))
+	$results = $stmt->fetchAll();
 	if ($results == false)
 		return false;
 	return $results['userid'];
@@ -49,7 +50,8 @@ function getUserByEmail($email){
 function getUserEmail($userId){
 	global $conn;
 	$stmt = $conn->prepare("SELECT email FROM Users WHERE userid = ?");
-	$result = $stmt->execute(array($userid));
+	$stmt->execute(array($userid));
+	$result = $stmt->fetchAll();
 	if($result == false)
 		return false;
 	return $result['email'];
@@ -66,12 +68,12 @@ function recoverUserPassword($userId){
 	$headers[] = "From: projectharbor@lbaw.com";
 	$headers[] = "Subject: {$subject}";
 	$headers[] = "X-Mailer: PHP/".phpversion();
-	$email = getUserEmail($userId);	
+	$email = getUserEmail($userId);
 	if ($email == false)
 		return false;
 	$messageBody = "You, or someone who knows your email, attempted to recover a password for the website ProjectHarbor.\r\n
 			If this wasn't you or it was performed by mistake no action is required on your part.\r\n
 			If you wish to reset the password please follow the link below \r\n" . $BASE_UR . "pages/users/passwordreset.php";
-	mail($email, $subject, $messageBody, implode("\r\n", $headers)); 	
+	mail($email, $subject, $messageBody, implode("\r\n", $headers));
 }
 ?>
