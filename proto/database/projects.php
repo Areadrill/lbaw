@@ -16,8 +16,9 @@ function getProjects($userid){
 
 function searchProjects($field, $userid){
   global $conn;
-  $stmt = $conn->prepare("SELECT name, projectid, creationDate FROM project WHERE (name ILIKE(?) OR description ILIKE(?)) AND projectID IN (SELECT projectID FROM Roles WHERE userID = ?)");
-  $stmt->execute(array("%".$field."%","%".$field."%",$userid));
+  $stmt = $conn->prepare("SELECT projectID, name FROM Project WHERE to_tsvector(name) @@ to_tsquery('english',?) OR to_tsvector(description) @@ to_tsquery('english',?) AND projectID IN (SELECT projectID FROM Roles WHERE userID = ?);
+");
+  $stmt->execute(array($field,$field,$userid));
   $res = $stmt->fetchAll();
   return $res;
 }
