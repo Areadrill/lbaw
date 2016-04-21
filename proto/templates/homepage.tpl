@@ -36,24 +36,24 @@
 
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
+		<div class="modal-dialog">
 
-	      <!-- Modal content-->
-	          <div class="modal-content">
-		        <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">Modal Header</h4>
-					      </div>
-					            <div class="modal-body">
-						            <p>Some text in the modal.</p>
-							          </div>
-								        <div class="modal-footer">
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										      </div>
-										          </div>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
 
-											    </div>
-											    </div>
+		</div>
+	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4"></div>
@@ -91,10 +91,41 @@
 							</div>
 							<br>
 							<button  id="register-submit" class="btn btn-default">Sign Up</button>
+							<a data-toggle="modal" data-target="#recover" href="#">Lost your password?</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	{include file='common/footer.tpl'}
+			<div id="recover" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Recover password</h4>
+						</div>
+						<br>
+						<form action="../actions/users/recover.php" method="post">
+							<div class="row">
+								<div class="form-group">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-8">
+										<input name="email" type="email" placeholder="Email" class="form-control" required>
+									</div>
+									<div class="col-sm-2"></div>
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger">Close</button>
+								<input name="submit" type="submit" class="btn btn-primary" value="Submit"/>
+							</div>
+						</form>
+					</div>
+
+
+				</div>
+			</div>
+			{include file='common/footer.tpl'}
