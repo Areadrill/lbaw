@@ -2,6 +2,11 @@
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 </head>
 <body>
+	<form action="../actions/projects/create_project.php" method="POST">
+		<input type="text" name="name" placeholder="Project Name">
+		<input type="text" name="description" placeholder="Project Description">
+		<input type="submit" value="Create project">
+	</form>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
