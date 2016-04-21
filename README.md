@@ -1,7 +1,7 @@
 # lbaw
 - [x] US01         As a Visitor, I want to log in on the system, so that I'm able to access restricted information.                                                                                      
 - [x] US02         As a Visitor, I want to register on the system, so that I can log in on the system.                                                                                                   
-- [ ] US03         As an Authenticated User, I want to create a project, so that I can work on it with a team of my choosing.                                                                            
+- [ ] US03         As an Authenticated User, I want to create a project, so that I can work on it with a team of my choosing - *DIGAS*.                                                                            
 - [ ] US04         As an Authenticated User, I want to edit my personal information so others can have accurate information about me.                                                                    
 - [ ] US05         As an Authenticated User, I want to upload a picture, so that I'm easier to recognize.                                                                                                
 - [ ] US06         As an Authenticated User, I want to see the projects I'm associated with, so that I can keep track of all my work.                                                                    
