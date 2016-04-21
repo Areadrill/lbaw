@@ -1,8 +1,8 @@
 <?php
-function createProject($name, $description){
+function createProject($name, $description,$userid){
   global $conn;
   $stmt = $conn->prepare("INSERT INTO Project VALUES (default,?, ?, ?, clock_timestamp())");
-  $stmt->execute(array($name, $description,$_SESSION['userid']));
+  $stmt->execute(array($name, $description,$userid));
   return $stmt->fetch() == true;
 }
 

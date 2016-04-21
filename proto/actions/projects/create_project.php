@@ -12,9 +12,15 @@ if (!$_POST['name'] || !$_POST['description']) {
 $name = $_POST['name'];
 $description = $_POST['description'];
 
-if (createProject($name, $description)) {
+if (!isset($_SESSION['userid'])){
+	error_log('user was not logged in on actions/projects/create_project.php');
+//	header("Location: $BASE_URL".'pages/homepage.php');
+	exit;
+}
+
+if (createProject($name, $description, $_SESSION['userid'])) {
   $_SESSION['success_messages'][] = 'Project created successfuly';
-  header('Location: ' . $BASE_URL .'pages/project.php');
+  //header('Location: ' . $BASE_URL .'pages/project.php');
 } else {
   $_SESSION['error_messages'][] = 'Project creation failed';
   header('Location: ' . $_SERVER['HTTP_REFERER']);
