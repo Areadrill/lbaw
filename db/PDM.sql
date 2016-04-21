@@ -103,3 +103,12 @@ CREATE TABLE ThreadToLabel(
 	threadLID INT REFERENCES ThreadLabel(threadLID) ON DELETE CASCADE,
 	PRIMARY KEY(threadID, threadLID)
 );
+
+DROP TABLE IF EXISTS PasswordRecovery;
+CREATE TABLE PasswordRecover(
+	passwordRecoveryId SERIAL PRIMARY KEY NOT NULL,
+	userid int REFERENCES Users(userID) ON DELETE CASCADE NOT NULL,
+	creationInfo TIMESTAMP NOT NULL,
+	uniqueIdentifier UUID NOT NULL,
+	CONSTRAINT unique_uuid UNIQUE(uniqueIdentifier)
+);

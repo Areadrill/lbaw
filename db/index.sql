@@ -20,3 +20,6 @@ CLUSTER Comment USING comment_threadid_index;
 
 DROP INDEX IF EXISTS projectname_fts;
 CREATE INDEX projectname_fts ON Project USING gin(to_tsvector('english', name));
+
+DROP INDEX IF EXISTS passwordrecovery_index;
+CREATE INDEX passwordrecovery_index ON PasswordRecovery USING hash(uniqueidentifier);
