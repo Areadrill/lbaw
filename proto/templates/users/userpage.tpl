@@ -62,7 +62,7 @@
 										<h4>Your info </h4>
 									</div>
 									<div class="col-md-2">
-										<button  type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-edit"></span> Edit </button>
+										<button data-toggle="modal" data-target="#infoEdit" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-edit"></span> Edit </button>
 									</div>
 								</div>
 							</div>
@@ -70,9 +70,9 @@
 
 								<span class="glyphicon glyphicon-globe"></span> Porto, Portugal
 								<br>
-								<span class="glyphicon glyphicon-gift"></span> 17-04-1961
+								<span class="glyphicon glyphicon-gift"></span> {$birthday}
 								<br>
-								<span class="glyphicon glyphicon-education"></span> FEUP
+								<span class="glyphicon glyphicon-education"></span> {$education}
 								<br>
 								<span class="glyphicon glyphicon-calendar"> </span> Joined on 09-03-2016
 								<p>...</p>
@@ -161,5 +161,43 @@
     </div>
 
   </div>
+</div>
+
+<div id="infoEdit" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+      		<div class="modal-header">
+      			<button type="button" class="close" data-dismiss="modal">&times;</button>
+      			<h4 class="modal-title">Edit your info</h4>
+      		</div>
+      		<br>
+      		<form action="../actions/projects/edit_info.php" method="post">
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="bday" type="date" placeholder={$birthday} class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="education" type="text" placeholder={$education} class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger">Close</button>
+					<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
+	      </div>
+			</form>
+      	</div>
+	</div>
 </div>
 {include file='../common/footer.tpl'}

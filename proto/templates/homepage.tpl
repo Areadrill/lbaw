@@ -41,7 +41,7 @@
 						<div class="panel-body">
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
-						<form method="post" action="../actions/users/register.php" id="register-form" >
+						<form method="post" action="../actions/users/register.php" id="register-form" hidden>
 							<input type="text" name="username">
 							<input type="password" name="password">
 							<input type="email" name="email">

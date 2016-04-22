@@ -52,10 +52,22 @@ function getUserEmail($userid){
 	$stmt = $conn->prepare("SELECT email FROM Users WHERE userid = ?");
 	$stmt->execute(array($userid));
 	$result = $stmt->fetch();
-	if($result == false)
+	if($result === false)
 		return false;
 	return $result['email'];
 }
+
+function getUserInfo($userid){
+	global $conn;
+	$stmt = $conn->prepare("SELECT birthday, education FROM Users WHERE userid = ?");
+	$stmt->execute(array($userid));
+	$result = $stmt->fetch();
+	if($result === false){
+		return false;
+	}
+	return $result;
+}
+
 function recoverUserPassword($userId, $base_url){
 	global $conn;
 	$stmt = $conn->prepare("INSERT INTO passwordrecover VALUES (default, ?, clock_timestamp(), ?)");
@@ -77,6 +89,15 @@ function recoverUserPassword($userId, $base_url){
 	var_dump($email);
 	var_dump(mail($email, $subject, $messageBody, implode("\r\n", $headers)));
 }
+
+function updateInfo($userid, $bday, $education){
+	global $conn;
+
+	$stmt = conn->prepare("UPATE Users SET birthday = ?, education = ? WHERE userID = ?)");
+	$stmt->execute(array($bday, $education, $userid));
+	return $stmt->fetch == true;
+}
+
 //taken from http://stackoverflow.com/a/18206984
 function getGUID(){
 	if (function_exists('com_create_guid')){
