@@ -7,6 +7,9 @@
 
   $smarty->assign('username',$_SESSION['username']);
   $imgPath = "../images/".$_SESSION['userid'].".jpg";
+  if(!file_exists($imgPath)){
+    $imgPath = "../images/default.jpg";
+  }
   $smarty->assign('img',$imgPath);
   $smarty->assign('projects', getProjects($_SESSION['userid']));
   $smarty->assign('birthday', $info['birthday']);
