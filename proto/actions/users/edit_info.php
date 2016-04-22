@@ -13,12 +13,18 @@ if (!$_POST['bday'] || !$_POST['education']) {
 $education = utf8_encode(strip_tags($_POST['education']));
 
 try{
-	updateInfo($_SESSION['userid'], $_POST['bday'], $_POST['education']);
+	updateInfo($_POST['bday'], $education, $_SESSION['userid']);
 }
 catch(PDOException $e){
-	echo "NUM DEU PAH";
+	echo "NUM DEU PAH\n";
+	var_dump($e);
+	echo "\n\n\n";
+	var_dump($education);
+	echo "\n\n\n";
+	var_dump($_POST['bday']);
 	$_SESSION['error_messages'][] = 'Something went wrong'; 
 	exit;
 }
 $_SESSION['success_messages'][] = 'User registered successfully'; 
+header("Location: $BASE_URL".'/pages/userpage.php');
 ?>

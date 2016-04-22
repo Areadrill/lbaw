@@ -90,10 +90,10 @@ function recoverUserPassword($userId, $base_url){
 	var_dump(mail($email, $subject, $messageBody, implode("\r\n", $headers)));
 }
 
-function updateInfo($userid, $bday, $education){
+function updateInfo($bday, $education, $userid){
 	global $conn;
 
-	$stmt = conn->prepare("UPATE Users SET birthday = ?, education = ? WHERE userID = ?)");
+	$stmt = $conn->prepare("UPDATE Users SET birthday=?, education=? WHERE userid=?");
 	$stmt->execute(array($bday, $education, $userid));
 	return $stmt->fetch == true;
 }
