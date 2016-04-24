@@ -74,7 +74,7 @@
 								<br>
 								<span class="glyphicon glyphicon-education"></span> {$education}
 								<br>
-								<span class="glyphicon glyphicon-calendar"> </span> Joined on 09-03-2016
+								<span class="glyphicon glyphicon-calendar"> </span> Joined on {joinDate}
 								<p>...</p>
 							</div>
 						</div>
@@ -172,6 +172,16 @@
       		</div>
       		<br>
       		<form action="../actions/users/edit_info.php" method="post">
+      			<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="email" type="text" placeholder={$email} class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
 				<div class="row">
 					<div class="form-group">
 						<div class="col-sm-2"></div>

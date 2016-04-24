@@ -59,7 +59,7 @@ function getUserEmail($userid){
 
 function getUserInfo($userid){
 	global $conn;
-	$stmt = $conn->prepare("SELECT birthday, education FROM Users WHERE userid = ?");
+	$stmt = $conn->prepare("SELECT joindate, birthday, education FROM Users WHERE userid = ?");
 	$stmt->execute(array($userid));
 	$result = $stmt->fetch();
 	if($result === false){
@@ -90,11 +90,11 @@ function recoverUserPassword($userId, $base_url){
 	var_dump(mail($email, $subject, $messageBody, implode("\r\n", $headers)));
 }
 
-function updateInfo($bday, $education, $userid){
+function updateInfo($email, $bday, $education, $userid){
 	global $conn;
 
-	$stmt = $conn->prepare("UPDATE Users SET birthday=?, education=? WHERE userid=?");
-	$stmt->execute(array($bday, $education, $userid));
+	$stmt = $conn->prepare("UPDATE Users SET email = ?, birthday=?, education=? WHERE userid=?");
+	$stmt->execute(array($email, $bday, $education, $userid));
 	return $stmt->fetch == true;
 }
 

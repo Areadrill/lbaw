@@ -12,7 +12,9 @@
   }
   $smarty->assign('img',$imgPath);
   $smarty->assign('projects', getProjects($_SESSION['userid']));
+  $smarty->assign('email', getUserEmail($_SESSION['userid']));
   $smarty->assign('birthday', $info['birthday']);
   $smarty->assign('education', $info['education']);
+  $smarty->assign('joinDate', $info['joindate']);
   $smarty->display('users/userpage.tpl');
 ?>
