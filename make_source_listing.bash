@@ -1,0 +1,1 @@
+find proto/ -type f \( -name "*.php" -o -name "*.tpl" \)  ! -path "proto/templates_c/*" ! -path "proto/lib/*" -print | xargs tail -n +1 | sed -e '2,$s/==>\(.*\)<==/<\/code>\n====\1====\n<code php>/' -e '1 s/==>\(.*\)<==/====\1====\n<code php>/' -e '$a\<\/code>' > code_listing.final.txt
