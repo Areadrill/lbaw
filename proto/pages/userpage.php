@@ -15,6 +15,6 @@
   $smarty->assign('email', getUserEmail($_SESSION['userid']));
   $smarty->assign('birthday', $info['birthday']);
   $smarty->assign('education', $info['education']);
-  $smarty->assign('joinDate', $info['joindate']);
+  $smarty->assign('joinDate', date('Y-m-d', strtotime($info['joindate'])));
   $smarty->display('users/userpage.tpl');
 ?>

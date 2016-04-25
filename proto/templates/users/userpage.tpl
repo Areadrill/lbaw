@@ -74,7 +74,7 @@
 								<br>
 								<span class="glyphicon glyphicon-education"></span> {$education}
 								<br>
-								<span class="glyphicon glyphicon-calendar"> </span> Joined on {joinDate}
+								<span class="glyphicon glyphicon-calendar"> </span> Joined on {$joinDate}
 								<p>...</p>
 							</div>
 						</div>
@@ -176,7 +176,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="email" type="text" placeholder={$email} class="form-control" required>
+							<input name="email" type="text" value={$email} class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -186,7 +186,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="bday" type="date" placeholder={$birthday} class="form-control" required>
+							<input name="bday" type="date" value={$birthday} class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -196,14 +196,13 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="education" type="text" placeholder={$education} class="form-control" required>
+							<input name="education" type="text" value={$education} class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
 				</div>
 				<br>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-danger">Close</button>
 					<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
 	      </div>
 			</form>
