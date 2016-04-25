@@ -11,11 +11,11 @@ if (!$_POST['email'] || !$_POST['bday'] || !$_POST['education']) {
 
 
 try{
-	updateInfo($_SESSION['userid'], $_POST['email'], $_POST['bday'], $_POST['education']);
+	updateInfo($_POST['email'], $_POST['bday'], $_POST['education'], $_SESSION['userid']);
 }
 catch(PDOException $e){
 	$_SESSION['error_messages'][] = 'Something went wrong';
 	exit;
 }
-$_SESSION['success_messages'][] = 'User registered successfully';
+$_SESSION['success_messages'][] = 'User updated successfully';
 ?>
