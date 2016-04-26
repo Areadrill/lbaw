@@ -1,6 +1,6 @@
 <?php
+  ini_set('display_errors', '1');
   $settings = parse_ini_file('config.ini'); 
-	print_r($settings);
   session_set_cookie_params(3600, $settings['cookie']);
   session_start();
   error_reporting(E_ERROR | E_WARNING); // E_NOTICE by default
@@ -8,7 +8,7 @@
   $BASE_DIR = $settings['base_dir'];
   $BASE_URL = $settings['base_url'];
 
-  $conn = new PDO('pgsql:host='.$settings['pgsql_hostname'].';dbname='.$settings['pgsql_password'], $settings['pgsql_username'], $settings['pgsql_password']);
+  $conn = new PDO('pgsql:host='.$settings['pgsql_hostname'].';dbname='.$settings['pgsql_dbname'], $settings['pgsql_username'], $settings['pgsql_password']);
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
