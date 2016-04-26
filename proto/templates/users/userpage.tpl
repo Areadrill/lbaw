@@ -1,6 +1,6 @@
 {include file='../common/header.tpl'}
-	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
-	<script src="../javascript/userpage.js" ></script>
+<link rel="stylesheet" href="../css/custom/userpageStyle.css">
+<script src="../javascript/userpage.js" ></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -27,8 +27,8 @@
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
-					<a class="white-link" href="userpage.html"> {$username} </a>
-					<img src={$img} alt="user image" width="30px" height="30px" />
+						<a class="white-link" href="userpage.html"> {$username} </a>
+						<img src={$img} alt="user image" width="30px" height="30px" />
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 					<div id="customTest">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" />
+								<a data-target="#imageEdit" href="#"> <img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" /> </a>
 							</div>
 						</div>
 
@@ -88,8 +88,8 @@
 								<h3 class="pull-left">Your Projects</h3>
 								<button data-toggle="modal" data-target="#newProject" type="button" class="btn btn-primary pull-right button-panel"> <span class="glyphicon glyphicon-plus"></span> New Project </button>
 								<div class="input-group pull-right">
-	  								<span class="input-group-addon" id="basic-addon1">Search</span>
-	  								<input id="searcher" type="text" class="form-control" placeholder="Search your projects" aria-describedby="basic-addon1">
+									<span class="input-group-addon" id="basic-addon1">Search</span>
+									<input id="searcher" type="text" class="form-control" placeholder="Search your projects" aria-describedby="basic-addon1">
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -113,9 +113,9 @@
 									</div>
 								</div>
 								{/foreach}
+							</div>
 						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 		</div>
@@ -123,14 +123,14 @@
 </div>
 <!-- Modal -->
 <div id="newProject" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+	<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add a Project</h4>
-      </div>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Add a Project</h4>
+			</div>
 			<br>
 			<form action="../actions/projects/create_project.php" method="post">
 				<div class="row">
@@ -153,26 +153,46 @@
 					</div>
 				</div>
 				<br>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-danger">Close</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger">Close</button>
 					<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
-	      </div>
+				</div>
 			</form>
-    </div>
+		</div>
 
-  </div>
+	</div>
 </div>
 
 <div id="infoEdit" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
-      		<div class="modal-header">
-      			<button type="button" class="close" data-dismiss="modal">&times;</button>
-      			<h4 class="modal-title">Edit your info</h4>
-      		</div>
-      		<br>
-      		<form action="../actions/users/edit_info.php" method="post">
-      			<div class="row">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Edit your info</h4>
+			</div>
+			<br>
+			<form action="../actions/users/edit_info.php" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="password" type="password" placeholder="New Password" class="form-control">
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="repass" type="password" placeholder="Retype New Password" class="form-control">
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
@@ -202,11 +222,25 @@
 					</div>
 				</div>
 				<br>
-	      <div class="modal-footer">
+				<div class="modal-footer">
 					<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
-	      </div>
+				</div>
 			</form>
-      	</div>
+		</div>
 	</div>
 </div>
-{include file='../common/footer.tpl'}
+
+<div id="imageEdit" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Change your profile picture</h4>
+			</div>
+
+			<div class="modal-footer">
+				<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
+			</div>
+		</div>
+
+		{include file='../common/footer.tpl'}
