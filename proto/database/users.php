@@ -98,6 +98,19 @@ function updateInfo($email, $bday, $education, $userid){
 	return $stmt->fetch == true;
 }
 
+function updatePassword($pass){
+	global $conn;
+	$stmt = $conn->prepare("SELECT salt FROM users WHERE userid = ?");
+	$stmt->execute(array($_SESSION['userid']));
+	$salt = $stmt->fetch();
+
+	$stmt = $conn->prepare("UPDATE Users SET password = ? WHERE userid = ?");
+	$stmt->execute(array(hash('sha256', $pass.$salt['salt']), $_SESSION['userid']));
+
+	return $stmt->fetch == true;
+	
+}
+
 //taken from http://stackoverflow.com/a/18206984
 function getGUID(){
 	if (function_exists('com_create_guid')){

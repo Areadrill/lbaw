@@ -176,7 +176,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="password" type="password" placeholder="New Password" class="form-control">
+							<input name="pass" type="password" placeholder="New Password" class="form-control">
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
