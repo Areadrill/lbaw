@@ -4,8 +4,6 @@ include_once($BASE_DIR .'database/users.php');
 if (!$_POST['pass'] || !$_POST['repass'] || !$_POST['email'] || !$_POST['bday'] || !$_POST['education']) {
 	$_SESSION['error_messages'][] = 'All fields are mandatory';
 	$_SESSION['form_values'] = $_POST;
-	print_r($_POST);
-	var_dump('not all variables set');
 	exit;
 }
 
