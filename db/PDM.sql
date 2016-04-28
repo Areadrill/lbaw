@@ -12,6 +12,7 @@ CREATE TABLE Users(
 	email VARCHAR(100) NOT NULL CONSTRAINT unique_email UNIQUE,
 	joinDate TIMESTAMP NOT NULL,
 	lastLogout TIMESTAMP NOT NULL,
+	location VARCHAR(25),
 	birthday DATE,
 	education VARCHAR(25),
 	CONSTRAINT joinBeforeLogout CHECK (lastLogout > joinDate)
