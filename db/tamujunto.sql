@@ -114,210 +114,6 @@ INSERT INTO Project VALUES (default,'LeZip','File Compression Program',85,'11-Ap
 INSERT INTO Project VALUES (default,'FTPClientLite','A simple FTP (File Transfer Protocol) client',93,'15-Apr-16 15:59:54');
 
 
-
-
-INSERT INTO tasklist VALUES (default, 4, 'Frontend');
-INSERT INTO tasklist VALUES (default, 1, 'Documentation');
-INSERT INTO tasklist VALUES (default, 2, 'GUI');
-INSERT INTO tasklist VALUES (default, 8, 'Design');
-INSERT INTO tasklist VALUES (default, 8, 'Documentation');
-INSERT INTO tasklist VALUES (default, 7, 'Design');
-INSERT INTO tasklist VALUES (default, 7, 'GUI');
-INSERT INTO tasklist VALUES (default, 4, 'Backend');
-INSERT INTO tasklist VALUES (default, 5, 'Architecture');
-INSERT INTO tasklist VALUES (default, 6, 'Frontend');
-
-
-INSERT INTO Task VALUES (default,1,55,39,'Conduct interviews',TRUE,7,'02-Apr-16 15:52:23');
-INSERT INTO Task VALUES (default,3,60,20,'Review GUI',FALSE,6,'05-Apr-16 14:36:39');
-INSERT INTO Task VALUES (default,8,99,27,'Complete Documentation',FALSE,7,'07-Apr-16 16:20:35');
-INSERT INTO Task VALUES (default,3,64,82,'Spellcheck Documentation',FALSE,2,'08-Apr-16 14:13:51');
-INSERT INTO Task VALUES (default,2,49,88,'Write presentation',FALSE,1,'09-Apr-16 11:46:16');
-INSERT INTO Task VALUES (default,3,88,94,'New color pattern',FALSE,6,'09-Apr-16 7:01:31');
-INSERT INTO Task VALUES (default,8,14,15,'Debug GUI',FALSE,3,'08-Apr-16 9:16:33');
-INSERT INTO Task VALUES (default,1,39,83,'Review GUI',FALSE,3,'08-Apr-16 7:11:27');
-INSERT INTO Task VALUES (default,8,41,09,'Write presentation',FALSE,6,'08-Apr-16 11:35:08');
-INSERT INTO Task VALUES (default,9,74,37,'Finish GUI',FALSE,6,'09-Apr-16 10:31:55');
-INSERT INTO Task VALUES (default,4,39,72,'Review GUI',FALSE,7,'09-Apr-16 13:37:52');
-INSERT INTO Task VALUES (default,3,93,48,'New Logo',TRUE,6,'09-Apr-16 10:17:40');
-INSERT INTO Task VALUES (default,6,40,78,'Check GUI',FALSE,4,'09-Apr-16 5:54:43');
-INSERT INTO Task VALUES (default,9,36,04,'Conduct interviews',FALSE,6,'08-Apr-16 8:18:54');
-INSERT INTO Task VALUES (default,10,08,75,'Review Frontend',TRUE,1,'08-Apr-16 10:07:00');
-INSERT INTO Task VALUES (default,6,24,38,'New color pattern',FALSE,4,'09-Apr-16 13:15:59');
-INSERT INTO Task VALUES (default,5,71,76,'Debug GUI',FALSE,3,'08-Apr-16 5:06:18');
-INSERT INTO Task VALUES (default,9,11,26,'Review GUI',TRUE,6,'09-Apr-16 15:42:08');
-INSERT INTO Task VALUES (default,4,81,89,'Review Documentation',FALSE,2,'08-Apr-16 6:54:40');
-INSERT INTO Task VALUES (default,3,13,76,'Edit Documentation',FALSE,5,'09-Apr-16 18:28:48');
-INSERT INTO Task VALUES (default,9,51,70,'Complete Documentation',TRUE,2,'08-Apr-16 15:19:34');
-INSERT INTO Task VALUES (default,3,02,42,'Write queries',FALSE,7,'08-Apr-16 8:29:03');
-INSERT INTO Task VALUES (default,4,14,29,'Rewrite Documentation',FALSE,2,'08-Apr-16 8:30:40');
-INSERT INTO Task VALUES (default,5,13,09,'Conduct interviews',FALSE,6,'08-Apr-16 6:51:50');
-INSERT INTO Task VALUES (default,10,55,23,'Start Documentation',FALSE,2,'09-Apr-16 13:27:22');
-INSERT INTO Task VALUES (default,8,74,95,'New Logo',TRUE,4,'09-Apr-16 10:39:14');
-INSERT INTO Task VALUES (default,2,82,93,'Complete GUI',FALSE,3,'09-Apr-16 4:02:58');
-INSERT INTO Task VALUES (default,3,78,57,'Update Documentation',FALSE,6,'08-Apr-16 10:42:34');
-INSERT INTO Task VALUES (default,8,83,36,'Support GUI',FALSE,3,'08-Apr-16 4:01:06');
-INSERT INTO Task VALUES (default,2,08,25,'Review Frontend',FALSE,1,'08-Apr-16 12:25:44');
-INSERT INTO Task VALUES (default,6,02,95,'Promote social media',FALSE,7,'09-Apr-16 9:05:13');
-INSERT INTO Task VALUES (default,8,11,78,'Support Frontend',TRUE,1,'08-Apr-16 0:04:58');
-INSERT INTO Task VALUES (default,8,40,46,'Erase comments',FALSE,5,'09-Apr-16 8:46:27');
-INSERT INTO Task VALUES (default,8,27,82,'Finish GUI',TRUE,4,'08-Apr-16 17:31:32');
-INSERT INTO Task VALUES (default,10,19,79,'Erase prints',FALSE,7,'09-Apr-16 9:15:41');
-
-
-
-INSERT INTO TaskLabel VALUES (default,1,'1.0');
-INSERT INTO TaskLabel VALUES (default,2,'core');
-INSERT INTO TaskLabel VALUES (default,3,'high pri');
-INSERT INTO TaskLabel VALUES (default,4,'1.5');
-INSERT INTO TaskLabel VALUES (default,5,'main');
-INSERT INTO TaskLabel VALUES (default,6,'urgent');
-INSERT INTO TaskLabel VALUES (default,7,'low pri');
-INSERT INTO TaskLabel VALUES (default,8,'essential');
-INSERT INTO TaskLabel VALUES (default,9,'extra');
-INSERT INTO TaskLabel VALUES (default,10,'mid pri');
-
-
-INSERT INTO taskcomment VALUES (default,22,84,'08-Apr-16 12:32:49','I have a question about this');
-INSERT INTO taskcomment VALUES (default,32,89,'08-Apr-16 13:29:04','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,10,94,'08-Apr-16 7:01:57','Almost done with this');
-INSERT INTO taskcomment VALUES (default,03,43,'09-Apr-16 8:34:59','I dont want  this');
-INSERT INTO taskcomment VALUES (default,02,80,'09-Apr-16 8:29:42','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,10,33,'08-Apr-16 11:49:30','I dont think this is necessary.');
-INSERT INTO taskcomment VALUES (default,24,59,'09-Apr-16 7:36:59','I dont think the assignee can handle this, give it to me instead.');
-INSERT INTO taskcomment VALUES (default,18,92,'08-Apr-16 3:06:35','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,32,18,'08-Apr-16 12:13:23','I have a question about this');
-INSERT INTO taskcomment VALUES (default,29,16,'09-Apr-16 8:36:51','I dont think this is necessary.');
-INSERT INTO taskcomment VALUES (default,28,71,'09-Apr-16 11:10:36','I want a promotion for getting this done...');
-INSERT INTO taskcomment VALUES (default,12,27,'09-Apr-16 14:32:18','I dont get paid enough for this!');
-INSERT INTO taskcomment VALUES (default,09,73,'08-Apr-16 7:23:49','I dont get paid enough for this!');
-INSERT INTO taskcomment VALUES (default,05,93,'09-Apr-16 10:41:37','This needs to be prioritized!');
-INSERT INTO taskcomment VALUES (default,02,37,'08-Apr-16 3:53:45','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,26,59,'08-Apr-16 16:42:47','Please assign');
-INSERT INTO taskcomment VALUES (default,26,04,'08-Apr-16 13:49:36','Almost done with this');
-INSERT INTO taskcomment VALUES (default,27,33,'09-Apr-16 12:41:36','I have a question about this');
-INSERT INTO taskcomment VALUES (default,31,65,'08-Apr-16 12:04:22','If no one wants it I guess I can take it...');
-INSERT INTO taskcomment VALUES (default,18,43,'09-Apr-16 3:00:09','I want a promotion for getting this done...');
-INSERT INTO taskcomment VALUES (default,06,16,'08-Apr-16 18:08:29','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,01,72,'09-Apr-16 15:01:14','I dont think the assignee can handle this, give it to me instead.');
-INSERT INTO taskcomment VALUES (default,10,46,'08-Apr-16 12:55:52','I have a question about this');
-INSERT INTO taskcomment VALUES (default,26,09,'08-Apr-16 18:11:51','This needs to be prioritized!');
-INSERT INTO taskcomment VALUES (default,30,67,'08-Apr-16 5:42:45','If no one wants it I guess I can take it...');
-INSERT INTO taskcomment VALUES (default,25,19,'08-Apr-16 2:04:42','This needs to be prioritized!');
-INSERT INTO taskcomment VALUES (default,18,28,'08-Apr-16 12:53:52','Can I get this?');
-INSERT INTO taskcomment VALUES (default,27,24,'09-Apr-16 7:23:27','Please explain this further');
-INSERT INTO taskcomment VALUES (default,35,48,'09-Apr-16 2:21:18','I dont want  this');
-INSERT INTO taskcomment VALUES (default,19,53,'08-Apr-16 4:08:37','I want a promotion for getting this done...');
-INSERT INTO taskcomment VALUES (default,03,93,'08-Apr-16 11:26:17','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,29,36,'09-Apr-16 8:18:43','Please assign');
-INSERT INTO taskcomment VALUES (default,19,06,'09-Apr-16 11:02:21','I would like to be assigned to this');
-INSERT INTO taskcomment VALUES (default,20,46,'09-Apr-16 5:48:34','I have a question about this');
-INSERT INTO taskcomment VALUES (default,19,13,'09-Apr-16 11:14:01','This needs to be prioritized!');
-INSERT INTO taskcomment VALUES (default,12,22,'09-Apr-16 15:10:36','Please assign');
-INSERT INTO taskcomment VALUES (default,10,76,'09-Apr-16 15:01:51','Please assign');
-INSERT INTO taskcomment VALUES (default,06,53,'08-Apr-16 5:49:20','Please assign');
-INSERT INTO taskcomment VALUES (default,08,13,'08-Apr-16 4:08:31','I dont understand what you mean by this');
-INSERT INTO taskcomment VALUES (default,10,18,'09-Apr-16 5:05:37','I dont think this is necessary.');
-
-
-
-
-
-
-INSERT INTO thread VALUES (default,1,98,'Im quitting this, goodbye','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,26,'Need a C guru in my office ASAP','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,95,'C++ vs java for the engine','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,50,'Does anyone REALLy know js?','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,17,'Need a C guru in my office ASAP','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,65,'Im quitting this, goodbye','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,4,89,'C++ vs java for the engine','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,99,'Julies surprise party','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,72,'Need a C guru in my office ASAP','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,56,'Anyone working late today?','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,09,'Does anyone REALLY know js?','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,6,95,'C++ vs java for the engine','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,54,'Im new, need some directions','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,41,'The code is spaghettifying at an alarming rate','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,6,44,'Anyone working late today?','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,10,'Need a C guru in my office ASAP','30-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,03,'The code needs serious refactoring','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,25,'Office party','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,17,'Im new, need some directions','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,56,'This project is dead :(','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,25,'Does anyone REALLY know js','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,25,'Rust vs java for the engine','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,4,50,'Go vs java for the engine','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,19,'This project is dead :(','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,31,'Need a C++ guru in my office ASAP','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,93,'Im new, need some directions','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,72,'We are moving too slow','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,28,'Julies surprise party','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,3,78,'Need a C guru in my office ASAP','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,96,'C++ vs java for the engine','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,03,'This project is dead :(','09-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,28,'Anyone working late today?','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,34,'Office surprise party','08-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,82,'We are moving too slow','09-Apr-16 20:05:39');
-
-
-
-
-INSERT INTO comment VALUES (default,19,86,'09-Mar-16 20:34:56','There are several threads about this already!');
-INSERT INTO comment VALUES (default,16,42,'09-Mar-16 0:39:15','This was addressed in another thread');
-INSERT INTO comment VALUES (default,34,54,'08-Mar-16 1:31:51','Ill be right there!');
-INSERT INTO comment VALUES (default,24,59,'08-Mar-16 7:09:17','I dont really know about that...');
-INSERT INTO comment VALUES (default,1,8,'08-Mar-16 12:06:19','I have no idea about that');
-INSERT INTO comment VALUES (default,7,55,'08-Mar-16 14:06:56','There are several threads about this already!');
-INSERT INTO comment VALUES (default,27,79,'08-Mar-16 13:22:18','I dont really know about that...');
-INSERT INTO comment VALUES (default,15,62,'08-Mar-16 17:45:09','I have no idea about that');
-INSERT INTO comment VALUES (default,5,74,'09-Mar-16 1:40:03','There are several threads about this already!');
-INSERT INTO comment VALUES (default,23,86,'08-Mar-16 14:10:41','I have no idea about that');
-INSERT INTO comment VALUES (default,22,16,'08-Mar-16 20:26:01','I think this is possible');
-INSERT INTO comment VALUES (default,35,80,'09-Mar-16 2:57:31','I have no idea about that');
-INSERT INTO comment VALUES (default,22,55,'09-Mar-16 8:55:21','Ill be right there!');
-INSERT INTO comment VALUES (default,12,90,'09-Mar-16 19:52:13','This was addressed in another thread');
-INSERT INTO comment VALUES (default,11,98,'08-Mar-16 19:14:28','There are several threads about this already!');
-INSERT INTO comment VALUES (default,35,89,'08-Mar-16 20:16:40','I have no idea about that');
-INSERT INTO comment VALUES (default,21,17,'09-Mar-16 19:05:10','I have no idea about that');
-INSERT INTO comment VALUES (default,27,84,'09-Mar-16 6:27:50','There are several threads about this already!');
-INSERT INTO comment VALUES (default,7,1,'09-Mar-16 8:23:29','This thread is useless');
-INSERT INTO comment VALUES (default,35,67,'08-Mar-16 4:54:54','This thread is useless');
-INSERT INTO comment VALUES (default,13,94,'08-Mar-16 13:36:52','This thread is useless');
-INSERT INTO comment VALUES (default,11,11,'09-Mar-16 8:26:35','I have no idea about that');
-INSERT INTO comment VALUES (default,10,85,'08-Mar-16 15:35:49','I have no idea about that');
-INSERT INTO comment VALUES (default,11,49,'08-Mar-16 0:52:58','There are several threads about this already!');
-INSERT INTO comment VALUES (default,17,4,'08-Mar-16 6:09:09','This was addressed in another thread');
-INSERT INTO comment VALUES (default,30,59,'09-Mar-16 18:36:28','There are several threads about this already!');
-INSERT INTO comment VALUES (default,21,89,'08-Mar-16 10:35:46','I dont really know about that...');
-INSERT INTO comment VALUES (default,3,16,'09-Mar-16 19:49:45','I dont really know about that...');
-INSERT INTO comment VALUES (default,29,65,'09-Mar-16 6:45:54','I dont really know about that...');
-INSERT INTO comment VALUES (default,4,58,'09-Mar-16 2:52:21','There are several threads about this already!');
-INSERT INTO comment VALUES (default,23,72,'09-Mar-16 1:25:30','This thread is useless');
-INSERT INTO comment VALUES (default,27,22,'09-Mar-16 4:12:05','I think this is possible');
-INSERT INTO comment VALUES (default,3,2,'09-Mar-16 6:21:34','I have no idea about that');
-INSERT INTO comment VALUES (default,20,30,'08-Mar-16 20:15:59','This was addressed in another thread');
-INSERT INTO comment VALUES (default,14,42,'08-Mar-16 6:48:37','I have no idea about that');
-INSERT INTO comment VALUES (default,4,46,'09-Mar-16 15:02:35','I have no idea about that');
-INSERT INTO comment VALUES (default,4,4,'09-Mar-16 11:27:14','I think this is possible');
-INSERT INTO comment VALUES (default,14,93,'09-Mar-16 21:04:07','I dont really know about that...');
-INSERT INTO comment VALUES (default,30,7,'09-Mar-16 1:41:43','There are several threads about this already!');
-INSERT INTO comment VALUES (default,29,100,'09-Mar-16 12:02:53','There are several threads about this already!');
-INSERT INTO comment VALUES (default,17,4,'08-Mar-16 18:20:06','This thread is useless');
-INSERT INTO comment VALUES (default,30,74,'08-Mar-16 20:42:23','I dont really know about that...');
-INSERT INTO comment VALUES (default,5,49,'08-Mar-16 9:42:30','I think this is possible');
-INSERT INTO comment VALUES (default,4,22,'08-Mar-16 10:47:46','I think this is possible');
-INSERT INTO comment VALUES (default,12,1,'09-Mar-16 5:06:15','I have no idea about that');
-INSERT INTO comment VALUES (default,34,2,'09-Mar-16 16:15:28','Ill be right there!');
-INSERT INTO comment VALUES (default,27,10,'09-Mar-16 16:40:08','I dont really know about that...');
-INSERT INTO comment VALUES (default,17,68,'09-Mar-16 1:36:11','This thread is useless');
-INSERT INTO comment VALUES (default,16,55,'08-Mar-16 12:32:17','This was addressed in another thread');
-INSERT INTO comment VALUES (default,28,100,'09-Mar-16 4:18:34','There are several threads about this already!');
-
-
-
-
-
 INSERT INTO roles VALUES (55, 1, 'COORD'); 
 INSERT INTO roles VALUES (39, 1, 'COORD');
 INSERT INTO roles VALUES (83, 1, 'MEMBER');
@@ -509,6 +305,204 @@ INSERT INTO roles VALUES (22, 10, 'MEMBER');
 
 
 
+INSERT INTO tasklist VALUES (default, 1, 'Frontend');
+INSERT INTO tasklist VALUES (default, 2, 'Documentation');
+INSERT INTO tasklist VALUES (default, 3, 'GUI');
+INSERT INTO tasklist VALUES (default, 4, 'Design');
+INSERT INTO tasklist VALUES (default, 5, 'Documentation');
+INSERT INTO tasklist VALUES (default, 6, 'Design');
+INSERT INTO tasklist VALUES (default, 7, 'GUI');
+INSERT INTO tasklist VALUES (default, 8, 'Backend');
+INSERT INTO tasklist VALUES (default, 9, 'Architecture');
+INSERT INTO tasklist VALUES (default, 10, 'Frontend');
+
+
+INSERT INTO Task VALUES (default,1,55,39,'Conduct interviews',TRUE,1,'26-Apr-16 15:52:23');
+INSERT INTO Task VALUES (default,4,60,20,'Review GUI',FALSE,4,'26-Apr-16 14:36:39');
+INSERT INTO Task VALUES (default,8,99,27,'Complete Documentation',FALSE,5,'26-Apr-16 16:20:35');
+INSERT INTO Task VALUES (default,2,64,82,'Spellcheck Documentation',FALSE,2,'26-Apr-16 14:13:51');
+INSERT INTO Task VALUES (default,2,49,88,'Write presentation',FALSE,2,'26-Apr-16 11:46:16');
+INSERT INTO Task VALUES (default,4,88,94,'New color pattern',FALSE,4,'26-Apr-16 7:01:31');
+INSERT INTO Task VALUES (default,8,14,15,'Debug GUI',FALSE,8,'26-Apr-16 9:16:33');
+INSERT INTO Task VALUES (default,1,39,83,'Review GUI',FALSE,1,'26-Apr-16 7:11:27');
+INSERT INTO Task VALUES (default,8,41,09,'Write presentation',FALSE,8,'26-Apr-16 11:35:08');
+INSERT INTO Task VALUES (default,9,74,37,'Finish GUI',FALSE,9,'26-Apr-16 10:31:55');
+INSERT INTO Task VALUES (default,5,39,72,'Review GUI',FALSE,4,'26-Apr-16 13:37:52');
+INSERT INTO Task VALUES (default,3,93,48,'New Logo',TRUE,3,'26-Apr-16 10:17:40');
+INSERT INTO Task VALUES (default,6,40,78,'Check GUI',FALSE,6,'26-Apr-16 5:54:43');
+INSERT INTO Task VALUES (default,9,36,04,'Conduct interviews',FALSE,9,'26-Apr-16 8:18:54');
+INSERT INTO Task VALUES (default,10,08,75,'Review Frontend',TRUE,10,'26-Apr-16 10:07:00');
+INSERT INTO Task VALUES (default,6,24,38,'New color pattern',FALSE,6,'26-Apr-16 13:15:59');
+INSERT INTO Task VALUES (default,5,71,76,'Debug GUI',FALSE,5,'26-Apr-16 5:06:18');
+INSERT INTO Task VALUES (default,9,11,26,'Review GUI',TRUE,9,'26-Apr-16 15:42:08');
+INSERT INTO Task VALUES (default,4,81,89,'Review Documentation',FALSE,4,'26-Apr-16 6:54:40');
+INSERT INTO Task VALUES (default,3,13,76,'Edit Documentation',FALSE,3,'26-Apr-16 18:28:48');
+INSERT INTO Task VALUES (default,9,51,70,'Complete Documentation',TRUE,9,'26-Apr-16 15:19:34');
+INSERT INTO Task VALUES (default,3,02,42,'Write queries',FALSE,3,'26-Apr-16 8:29:03');
+INSERT INTO Task VALUES (default,4,14,29,'Rewrite Documentation',FALSE,4,'26-Apr-16 8:30:40');
+INSERT INTO Task VALUES (default,5,13,09,'Conduct interviews',FALSE,5,'26-Apr-16 6:51:50');
+INSERT INTO Task VALUES (default,10,55,23,'Start Documentation',FALSE,10,'26-Apr-16 13:27:22');
+INSERT INTO Task VALUES (default,8,74,95,'New Logo',TRUE,8,'26-Apr-16 10:39:14');
+INSERT INTO Task VALUES (default,2,82,93,'Complete GUI',FALSE,2,'26-Apr-16 4:02:58');
+INSERT INTO Task VALUES (default,3,78,57,'Update Documentation',FALSE,3,'26-Apr-16 10:42:34');
+INSERT INTO Task VALUES (default,8,83,36,'Support GUI',FALSE,8,'26-Apr-16 4:01:06');
+INSERT INTO Task VALUES (default,2,08,25,'Review Frontend',FALSE,2,'26-Apr-16 12:25:44');
+INSERT INTO Task VALUES (default,6,02,95,'Promote social media',FALSE,6,'26-Apr-16 9:05:13');
+INSERT INTO Task VALUES (default,8,11,78,'Support Frontend',TRUE,8,'26-Apr-16 0:04:58');
+INSERT INTO Task VALUES (default,8,40,46,'Erase comments',FALSE,8,'26-Apr-16 8:46:27');
+INSERT INTO Task VALUES (default,8,27,82,'Finish GUI',TRUE,8,'26-Apr-16 17:31:32');
+INSERT INTO Task VALUES (default,10,19,79,'Erase prints',FALSE,10,'26-Apr-16 9:15:41');
+
+
+
+INSERT INTO TaskLabel VALUES (default,1,'1.0');
+INSERT INTO TaskLabel VALUES (default,2,'core');
+INSERT INTO TaskLabel VALUES (default,3,'high pri');
+INSERT INTO TaskLabel VALUES (default,4,'1.5');
+INSERT INTO TaskLabel VALUES (default,5,'main');
+INSERT INTO TaskLabel VALUES (default,6,'urgent');
+INSERT INTO TaskLabel VALUES (default,7,'low pri');
+INSERT INTO TaskLabel VALUES (default,8,'essential');
+INSERT INTO TaskLabel VALUES (default,9,'extra');
+INSERT INTO TaskLabel VALUES (default,10,'mid pri');
+
+
+INSERT INTO taskcomment VALUES (default,22,84,'28-Apr-16 22:32:49','I have a question about this');
+INSERT INTO taskcomment VALUES (default,32,89,'28-Apr-16 23:29:04','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,10,94,'28-Apr-16 17:01:57','Almost done with this');
+INSERT INTO taskcomment VALUES (default,03,43,'29-Apr-16 18:34:59','I dont want  this');
+INSERT INTO taskcomment VALUES (default,02,80,'29-Apr-16 18:29:42','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,10,33,'28-Apr-16 21:49:30','I dont think this is necessary.');
+INSERT INTO taskcomment VALUES (default,24,59,'29-Apr-16 17:36:59','I dont think the assignee can handle this, give it to me instead.');
+INSERT INTO taskcomment VALUES (default,18,92,'28-Apr-16 13:06:35','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,32,18,'28-Apr-16 22:13:23','I have a question about this');
+INSERT INTO taskcomment VALUES (default,29,16,'29-Apr-16 18:36:51','I dont think this is necessary.');
+INSERT INTO taskcomment VALUES (default,28,71,'29-Apr-16 21:10:36','I want a promotion for getting this done...');
+INSERT INTO taskcomment VALUES (default,12,27,'29-Apr-16 14:32:18','I dont get paid enough for this!');
+INSERT INTO taskcomment VALUES (default,09,73,'28-Apr-16 17:23:49','I dont get paid enough for this!');
+INSERT INTO taskcomment VALUES (default,05,93,'29-Apr-16 20:41:37','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,02,37,'28-Apr-16 23:53:45','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,26,59,'28-Apr-16 16:42:47','Please assign');
+INSERT INTO taskcomment VALUES (default,26,04,'28-Apr-16 23:49:36','Almost done with this');
+INSERT INTO taskcomment VALUES (default,27,33,'29-Apr-16 22:41:36','I have a question about this');
+INSERT INTO taskcomment VALUES (default,31,65,'28-Apr-16 22:04:22','If no one wants it I guess I can take it...');
+INSERT INTO taskcomment VALUES (default,18,43,'29-Apr-16 23:00:09','I want a promotion for getting this done...');
+INSERT INTO taskcomment VALUES (default,06,16,'28-Apr-16 18:08:29','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,01,72,'29-Apr-16 15:01:14','I dont think the assignee can handle this, give it to me instead.');
+INSERT INTO taskcomment VALUES (default,10,46,'28-Apr-16 22:55:52','I have a question about this');
+INSERT INTO taskcomment VALUES (default,26,09,'28-Apr-16 18:11:51','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,30,67,'28-Apr-16 15:42:45','If no one wants it I guess I can take it...');
+INSERT INTO taskcomment VALUES (default,25,19,'28-Apr-16 22:04:42','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,18,28,'28-Apr-16 22:53:52','Can I get this?');
+INSERT INTO taskcomment VALUES (default,27,24,'29-Apr-16 17:23:27','Please explain this further');
+INSERT INTO taskcomment VALUES (default,35,48,'29-Apr-16 22:21:18','I dont want  this');
+INSERT INTO taskcomment VALUES (default,19,53,'28-Apr-16 14:08:37','I want a promotion for getting this done...');
+INSERT INTO taskcomment VALUES (default,03,93,'28-Apr-16 21:26:17','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,29,36,'29-Apr-16 18:18:43','Please assign');
+INSERT INTO taskcomment VALUES (default,19,06,'29-Apr-16 21:02:21','I would like to be assigned to this');
+INSERT INTO taskcomment VALUES (default,20,46,'29-Apr-16 15:48:34','I have a question about this');
+INSERT INTO taskcomment VALUES (default,19,13,'29-Apr-16 21:14:01','This needs to be prioritized!');
+INSERT INTO taskcomment VALUES (default,12,22,'29-Apr-16 15:10:36','Please assign');
+INSERT INTO taskcomment VALUES (default,10,76,'29-Apr-16 15:01:51','Please assign');
+INSERT INTO taskcomment VALUES (default,06,53,'28-Apr-16 15:49:20','Please assign');
+INSERT INTO taskcomment VALUES (default,08,13,'28-Apr-16 14:08:31','I dont understand what you mean by this');
+INSERT INTO taskcomment VALUES (default,10,18,'29-Apr-16 15:05:37','I dont think this is necessary.');
+
+
+
+
+
+
+INSERT INTO thread VALUES (default,1,98,'Im quitting this, goodbye','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,26,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,95,'C++ vs java for the engine','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,50,'Does anyone REALLy know js?','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,17,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,65,'Im quitting this, goodbye','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,4,89,'C++ vs java for the engine','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,99,'Julies surprise party','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,72,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,56,'Anyone working late today?','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,09,'Does anyone REALLY know js?','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,6,95,'C++ vs java for the engine','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,54,'Im new, need some directions','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,41,'The code is spaghettifying at an alarming rate','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,6,44,'Anyone working late today?','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,10,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,03,'The code needs serious refactoring','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,25,'Office party','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,17,'Im new, need some directions','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,56,'This project is dead :(','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,25,'Does anyone REALLY know js','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,25,'Rust vs java for the engine','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,4,50,'Go vs java for the engine','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,19,'This project is dead :(','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,31,'Need a C++ guru in my office ASAP','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,5,93,'Im new, need some directions','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,2,72,'We are moving too slow','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,28,'Julies surprise party','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,3,78,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,96,'C++ vs java for the engine','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,7,03,'This project is dead :(','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,28,'Anyone working late today?','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,9,34,'Office surprise party','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,10,82,'We are moving too slow','26-Apr-16 20:05:39');
+
+
+
+
+INSERT INTO comment VALUES (default,19,86,'28-Apr-16 20:34:56','There are several threads about this already!');
+INSERT INTO comment VALUES (default,16,42,'28-Apr-16 0:39:15','This was addressed in another thread');
+INSERT INTO comment VALUES (default,34,54,'28-Apr-16 1:31:51','Ill be right there!');
+INSERT INTO comment VALUES (default,24,59,'28-Apr-16 7:09:17','I dont really know about that...');
+INSERT INTO comment VALUES (default,1,8,'28-Apr-16 12:06:19','I have no idea about that');
+INSERT INTO comment VALUES (default,7,55,'28-Apr-16 14:06:56','There are several threads about this already!');
+INSERT INTO comment VALUES (default,27,79,'28-Apr-16 13:22:18','I dont really know about that...');
+INSERT INTO comment VALUES (default,15,62,'28-Apr-16 17:45:09','I have no idea about that');
+INSERT INTO comment VALUES (default,5,74,'28-Apr-16 1:40:03','There are several threads about this already!');
+INSERT INTO comment VALUES (default,23,86,'28-Apr-16 14:10:41','I have no idea about that');
+INSERT INTO comment VALUES (default,22,16,'28-Apr-16 20:26:01','I think this is possible');
+INSERT INTO comment VALUES (default,35,80,'28-Apr-16 2:57:31','I have no idea about that');
+INSERT INTO comment VALUES (default,22,55,'28-Apr-16 8:55:21','Ill be right there!');
+INSERT INTO comment VALUES (default,12,90,'28-Apr-16 19:52:13','This was addressed in another thread');
+INSERT INTO comment VALUES (default,11,98,'28-Apr-16 19:14:28','There are several threads about this already!');
+INSERT INTO comment VALUES (default,35,89,'28-Apr-16 20:16:40','I have no idea about that');
+INSERT INTO comment VALUES (default,21,17,'28-Apr-16 19:05:10','I have no idea about that');
+INSERT INTO comment VALUES (default,27,84,'28-Apr-16 6:27:50','There are several threads about this already!');
+INSERT INTO comment VALUES (default,7,1,'28-Apr-16 8:23:29','This thread is useless');
+INSERT INTO comment VALUES (default,35,67,'28-Apr-16 4:54:54','This thread is useless');
+INSERT INTO comment VALUES (default,13,94,'28-Apr-16 13:36:52','This thread is useless');
+INSERT INTO comment VALUES (default,11,11,'28-Apr-16 8:26:35','I have no idea about that');
+INSERT INTO comment VALUES (default,10,85,'28-Apr-16 15:35:49','I have no idea about that');
+INSERT INTO comment VALUES (default,11,49,'28-Apr-16 0:52:58','There are several threads about this already!');
+INSERT INTO comment VALUES (default,17,4,'28-Apr-16 6:09:09','This was addressed in another thread');
+INSERT INTO comment VALUES (default,30,59,'28-Apr-16 18:36:28','There are several threads about this already!');
+INSERT INTO comment VALUES (default,21,89,'28-Apr-16 10:35:46','I dont really know about that...');
+INSERT INTO comment VALUES (default,3,16,'28-Apr-16 19:49:45','I dont really know about that...');
+INSERT INTO comment VALUES (default,29,65,'28-Apr-16 6:45:54','I dont really know about that...');
+INSERT INTO comment VALUES (default,4,58,'28-Apr-16 2:52:21','There are several threads about this already!');
+INSERT INTO comment VALUES (default,23,72,'28-Apr-16 1:25:30','This thread is useless');
+INSERT INTO comment VALUES (default,27,22,'28-Apr-16 4:12:05','I think this is possible');
+INSERT INTO comment VALUES (default,3,2,'28-Apr-16 6:21:34','I have no idea about that');
+INSERT INTO comment VALUES (default,20,30,'28-Apr-16 20:15:59','This was addressed in another thread');
+INSERT INTO comment VALUES (default,14,42,'28-Apr-16 6:48:37','I have no idea about that');
+INSERT INTO comment VALUES (default,4,46,'28-Apr-16 15:02:35','I have no idea about that');
+INSERT INTO comment VALUES (default,4,4,'28-Apr-16 11:27:14','I think this is possible');
+INSERT INTO comment VALUES (default,14,93,'28-Apr-16 21:04:07','I dont really know about that...');
+INSERT INTO comment VALUES (default,30,7,'28-Apr-16 1:41:43','There are several threads about this already!');
+INSERT INTO comment VALUES (default,29,100,'28-Apr-16 12:02:53','There are several threads about this already!');
+INSERT INTO comment VALUES (default,17,4,'28-Apr-16 18:20:06','This thread is useless');
+INSERT INTO comment VALUES (default,30,74,'28-Apr-16 20:42:23','I dont really know about that...');
+INSERT INTO comment VALUES (default,5,49,'28-Apr-16 9:42:30','I think this is possible');
+INSERT INTO comment VALUES (default,4,22,'28-Apr-16 10:47:46','I think this is possible');
+INSERT INTO comment VALUES (default,12,1,'28-Apr-16 5:06:15','I have no idea about that');
+INSERT INTO comment VALUES (default,34,2,'28-Apr-16 16:15:28','Ill be right there!');
+INSERT INTO comment VALUES (default,27,10,'28-Apr-16 16:40:08','I dont really know about that...');
+INSERT INTO comment VALUES (default,17,68,'28-Apr-16 1:36:11','This thread is useless');
+INSERT INTO comment VALUES (default,16,55,'28-Apr-16 12:32:17','This was addressed in another thread');
+INSERT INTO comment VALUES (default,28,100,'28-Apr-16 4:18:34','There are several threads about this already!');
+
 
 
 
@@ -530,7 +524,6 @@ INSERT INTO ThreadLabel VALUES (default, 6, 'html');
 INSERT INTO ThreadLabel VALUES (default, 1, 'networking');
 
 
-
 INSERT INTO ThreadToLabel VALUES (30,8);
 INSERT INTO ThreadToLabel VALUES (28,1);
 INSERT INTO ThreadToLabel VALUES (33,14);
@@ -542,22 +535,14 @@ INSERT INTO ThreadToLabel VALUES (7,6);
 INSERT INTO ThreadToLabel VALUES (24,6);
 INSERT INTO ThreadToLabel VALUES (21,1);
 INSERT INTO ThreadToLabel VALUES (16,1);
-INSERT INTO ThreadToLabel VALUES (17,12);
 INSERT INTO ThreadToLabel VALUES (34,9);
 INSERT INTO ThreadToLabel VALUES (13,3);
-INSERT INTO ThreadToLabel VALUES (8,9);
-INSERT INTO ThreadToLabel VALUES (25,4);
+INSERT INTO ThreadToLabel VALUES (25,9);
 INSERT INTO ThreadToLabel VALUES (1,14);
 INSERT INTO ThreadToLabel VALUES (10,9);
-INSERT INTO ThreadToLabel VALUES (31,14);
+INSERT INTO ThreadToLabel VALUES (31,7);
 INSERT INTO ThreadToLabel VALUES (4,10);
-INSERT INTO ThreadToLabel VALUES (7,6);
-INSERT INTO ThreadToLabel VALUES (28,1);
 INSERT INTO ThreadToLabel VALUES (27,12);
-INSERT INTO ThreadToLabel VALUES (25,9);
-INSERT INTO ThreadToLabel VALUES (23,8);
-INSERT INTO ThreadToLabel VALUES (6,10);
-
 
 
 
@@ -566,26 +551,19 @@ INSERT INTO TaskToLabel VALUES (19,4);
 INSERT INTO TaskToLabel VALUES (15,10);
 INSERT INTO TaskToLabel VALUES (27,2);
 INSERT INTO TaskToLabel VALUES (26,8);
-INSERT INTO TaskToLabel VALUES (6,3);
+INSERT INTO TaskToLabel VALUES (6,4);
 INSERT INTO TaskToLabel VALUES (23,4);
 INSERT INTO TaskToLabel VALUES (30,2);
 INSERT INTO TaskToLabel VALUES (16,6);
 INSERT INTO TaskToLabel VALUES (21,9);
 INSERT INTO TaskToLabel VALUES (20,3);
 INSERT INTO TaskToLabel VALUES (14,9);
-INSERT INTO TaskToLabel VALUES (6,3);
-INSERT INTO TaskToLabel VALUES (11,4);
-INSERT INTO TaskToLabel VALUES (30,3);
-INSERT INTO TaskToLabel VALUES (18,9);
+INSERT INTO TaskToLabel VALUES (11,5);
 INSERT INTO TaskToLabel VALUES (35,10);
-INSERT INTO TaskToLabel VALUES (4,3);
-INSERT INTO TaskToLabel VALUES (6,3);
+INSERT INTO TaskToLabel VALUES (4,2);
 INSERT INTO TaskToLabel VALUES (1,1);
-INSERT INTO TaskToLabel VALUES (4,3);
-INSERT INTO TaskToLabel VALUES (33,8);;
-INSERT INTO TaskToLabel VALUES (16,6);
+INSERT INTO TaskToLabel VALUES (33,8);
 INSERT INTO TaskToLabel VALUES (25,10);
 INSERT INTO TaskToLabel VALUES (31,6);
 INSERT INTO TaskToLabel VALUES (24,5);
 INSERT INTO TaskToLabel VALUES (22,3);
-INSERT INTO TaskToLabel VALUES (27,3);

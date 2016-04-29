@@ -1,4 +1,4 @@
-SET search_path TO proto;
+
 CREATE FUNCTION creator_insert() RETURNS TRIGGER AS
 $creator_insert$
 BEGIN
@@ -96,8 +96,8 @@ EXECUTE PROCEDURE ck_task_comment_date();
 CREATE FUNCTION ck_same_projectid_task() RETURNS TRIGGER AS
 $ck_same_projectid_task$
 BEGIN
-IF NEW.projectID != (SELECT projectID FROM Task WHERE taskID = NEW.taskID) THEN
-RAISE EXCEPTION 'Label is not in this project';
+IF (SELECT projectID FROM TaskLabel WHERE taskLID = NEW.taskLID) != (SELECT projectID FROM Task WHERE taskID = NEW.taskID) THEN
+RAISE EXCEPTION 'TaskLabel is not in this project';
 END IF;
 RETURN NEW;
 END
@@ -111,8 +111,8 @@ EXECUTE PROCEDURE ck_same_projectid_task();
 CREATE FUNCTION ck_same_projectid_thread() RETURNS TRIGGER AS
 $ck_same_projectid_thread$
 BEGIN
-IF NEW.projectID != (SELECT projectID FROM Thread WHERE threadID = NEW.threadID) THEN
-RAISE EXCEPTION 'Label is not in this project';
+IF (SELECT projectID FROM ThreadLabel WHERE threadLID = NEW.threadLID) != (SELECT projectID FROM Thread WHERE threadID = NEW.threadID) THEN
+RAISE EXCEPTION 'ThreadLabel is not in this project';
 END IF;
 RETURN NEW;
 END

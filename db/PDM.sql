@@ -1,4 +1,4 @@
-SET search_path TO proto;
+
 
 DROP TYPE IF EXISTS ROLE;
 CREATE TYPE ROLE AS ENUM ('COORD', 'MEMBER');
