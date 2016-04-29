@@ -102,16 +102,16 @@
 
 
 
-INSERT INTO Project VALUES (default,'SerialPingu','Project about Pingu',06,'03-Apr-16 16:07:10');
-INSERT INTO Project VALUES (default,'DBColonizer','Database auto polulation tool',67,'09-Apr-16 13:56:03');
-INSERT INTO Project VALUES (default,'Eventager','Eventager is an event management platform designed as a cloud web application',21,'08-Apr-16 14:05:55');
-INSERT INTO Project VALUES (default,'Atom','A hackable text editor',29,'05-Apr-16 11:07:13');
-INSERT INTO Project VALUES (default,'RustLang','Rust Programming Language. A safe, concurrent, practical language.',71,'09-Apr-16 17:43:30');
-INSERT INTO Project VALUES (default,'DistServBackup','A distributed file backup service in Java',78,'08-Apr-16 16:28:37');
-INSERT INTO Project VALUES (default,'BreakThru@CGF','WebGL game using CFF lib',38,'07-Apr-16 16:10:37');
-INSERT INTO Project VALUES (default,'Gnu','Unix like OS (Operative System)',76,'03-Apr-16 14:30:10');
-INSERT INTO Project VALUES (default,'LeZip','File Compression Program',85,'01-Apr-16 17:43:20');
-INSERT INTO Project VALUES (default,'FTPClientLite','A simple FTP (File Transfer Protocol) client',93,'05-Apr-16 15:59:54');
+INSERT INTO Project VALUES (default,'SerialPingu','Project about Pingu',06,'13-Apr-16 16:07:10');
+INSERT INTO Project VALUES (default,'DBColonizer','Database auto polulation tool',67,'19-Apr-16 13:56:03');
+INSERT INTO Project VALUES (default,'Eventager','Eventager is an event management platform designed as a cloud web application',21,'18-Apr-16 14:05:55');
+INSERT INTO Project VALUES (default,'Atom','A hackable text editor',29,'15-Apr-16 11:07:13');
+INSERT INTO Project VALUES (default,'RustLang','Rust Programming Language. A safe, concurrent, practical language.',71,'19-Apr-16 17:43:30');
+INSERT INTO Project VALUES (default,'DistServBackup','A distributed file backup service in Java',78,'18-Apr-16 16:28:37');
+INSERT INTO Project VALUES (default,'BreakThru@CGF','WebGL game using CFF lib',38,'17-Apr-16 16:10:37');
+INSERT INTO Project VALUES (default,'Gnu','Unix like OS (Operative System)',76,'13-Apr-16 14:30:10');
+INSERT INTO Project VALUES (default,'LeZip','File Compression Program',85,'11-Apr-16 17:43:20');
+INSERT INTO Project VALUES (default,'FTPClientLite','A simple FTP (File Transfer Protocol) client',93,'15-Apr-16 15:59:54');
 
 
 
@@ -126,8 +126,6 @@ INSERT INTO tasklist VALUES (default, 'GUI');
 INSERT INTO tasklist VALUES (default, 'Backend');
 INSERT INTO tasklist VALUES (default, 'Architecture');
 INSERT INTO tasklist VALUES (default, 'Frontend');
-
-
 
 
 INSERT INTO Task VALUES (default,1,55,39,'Conduct interviews',TRUE,7,'02-Apr-16 15:52:23');
@@ -169,7 +167,7 @@ INSERT INTO Task VALUES (default,10,19,79,'Erase prints',FALSE,7,'09-Apr-16 9:15
 
 
 
-INSERT INTO TaskLabel VALUES (default,1,'0.3');
+
 INSERT INTO TaskLabel VALUES (default,1,'1.0');
 INSERT INTO TaskLabel VALUES (default,2,'core');
 INSERT INTO TaskLabel VALUES (default,3,'high pri');
@@ -222,6 +220,8 @@ INSERT INTO taskcomment VALUES (default,10,76,'09-Apr-16 15:01:51','Please assig
 INSERT INTO taskcomment VALUES (default,06,53,'08-Apr-16 5:49:20','Please assign');
 INSERT INTO taskcomment VALUES (default,08,13,'08-Apr-16 4:08:31','I dont understand what you mean by this');
 INSERT INTO taskcomment VALUES (default,10,18,'09-Apr-16 5:05:37','I dont think this is necessary.');
+
+
 
 
 

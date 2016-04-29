@@ -106,7 +106,7 @@ CREATE TABLE ThreadToLabel(
 );
 
 DROP TABLE IF EXISTS PasswordRecovery;
-CREATE TABLE PasswordRecover(
+CREATE TABLE PasswordRecovery(
 	passwordRecoveryId SERIAL PRIMARY KEY NOT NULL,
 	userid int REFERENCES Users(userID) ON DELETE CASCADE NOT NULL,
 	creationInfo TIMESTAMP NOT NULL,

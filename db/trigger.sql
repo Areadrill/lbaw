@@ -92,3 +92,48 @@ CREATE TRIGGER ck_task_comment_date BEFORE
 INSERT ON TaskComment
 FOR EACH ROW
 EXECUTE PROCEDURE ck_task_comment_date();
+
+CREATE FUNCTION ck_same_projectid_task() RETURNS TRIGGER AS
+$ck_same_projectid_task$
+BEGIN
+IF NEW.projectID != (SELECT projectID FROM Task WHERE taskID = NEW.taskID) THEN
+RAISE EXCEPTION 'Label is not in this project';
+END IF;
+RETURN NEW;
+END
+$ck_same_projectid_task$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER ck_same_projectid_task BEFORE INSERT ON TaskToLabel
+FOR EACH ROW
+EXECUTE PROCEDURE ck_same_projectid_task();
+
+CREATE FUNCTION ck_same_projectid_thread() RETURNS TRIGGER AS
+$ck_same_projectid_thread$
+BEGIN
+IF NEW.projectID != (SELECT projectID FROM Thread WHERE threadID = NEW.threadID) THEN
+RAISE EXCEPTION 'Label is not in this project';
+END IF;
+RETURN NEW;
+END
+$ck_same_projectid_thread$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER ck_same_projectid_thread BEFORE INSERT ON ThreadToLabel
+FOR EACH ROW
+EXECUTE PROCEDURE ck_same_projectid_thread();
+
+CREATE FUNCTION ck_same_projectid_tasklist() RETURNS TRIGGER AS
+$ck_same_projectid_tasklist$
+BEGIN
+IF NEW.taskLiID != NULL AND NEW.projectID != (SELECT projectID FROM TaskList WHERE taskLiID = NEW.taskLiID) THEN
+RAISE EXCEPTION 'TaskList is not in this project';
+END IF;
+RETURN NEW;
+END
+$ck_same_projectid_tasklist$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER ck_same_projectid_tasklist BEFORE UPDATE ON TaskToLabel
+FOR EACH ROW
+EXECUTE PROCEDURE ck_same_projectid_tasklist();
