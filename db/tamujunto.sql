@@ -116,16 +116,16 @@ INSERT INTO Project VALUES (default,'FTPClientLite','A simple FTP (File Transfer
 
 
 
-INSERT INTO tasklist VALUES (default, 'Frontend');
-INSERT INTO tasklist VALUES (default, 'Documentation');
-INSERT INTO tasklist VALUES (default, 'GUI');
-INSERT INTO tasklist VALUES (default, 'Design');
-INSERT INTO tasklist VALUES (default, 'Documentation');
-INSERT INTO tasklist VALUES (default, 'Design');
-INSERT INTO tasklist VALUES (default, 'GUI');
-INSERT INTO tasklist VALUES (default, 'Backend');
-INSERT INTO tasklist VALUES (default, 'Architecture');
-INSERT INTO tasklist VALUES (default, 'Frontend');
+INSERT INTO tasklist VALUES (default, 4, 'Frontend');
+INSERT INTO tasklist VALUES (default, 1, 'Documentation');
+INSERT INTO tasklist VALUES (default, 2, 'GUI');
+INSERT INTO tasklist VALUES (default, 8, 'Design');
+INSERT INTO tasklist VALUES (default, 8, 'Documentation');
+INSERT INTO tasklist VALUES (default, 7, 'Design');
+INSERT INTO tasklist VALUES (default, 7, 'GUI');
+INSERT INTO tasklist VALUES (default, 4, 'Backend');
+INSERT INTO tasklist VALUES (default, 5, 'Architecture');
+INSERT INTO tasklist VALUES (default, 6, 'Frontend');
 
 
 INSERT INTO Task VALUES (default,1,55,39,'Conduct interviews',TRUE,7,'02-Apr-16 15:52:23');
@@ -163,8 +163,6 @@ INSERT INTO Task VALUES (default,8,11,78,'Support Frontend',TRUE,1,'08-Apr-16 0:
 INSERT INTO Task VALUES (default,8,40,46,'Erase comments',FALSE,5,'09-Apr-16 8:46:27');
 INSERT INTO Task VALUES (default,8,27,82,'Finish GUI',TRUE,4,'08-Apr-16 17:31:32');
 INSERT INTO Task VALUES (default,10,19,79,'Erase prints',FALSE,7,'09-Apr-16 9:15:41');
-
-
 
 
 
@@ -319,7 +317,7 @@ INSERT INTO comment VALUES (default,28,100,'09-Mar-16 4:18:34','There are severa
 
 
 
-INSERT INTO roles VALUES (6, 1, 'COORD');
+
 INSERT INTO roles VALUES (55, 1, 'COORD'); 
 INSERT INTO roles VALUES (39, 1, 'COORD');
 INSERT INTO roles VALUES (83, 1, 'MEMBER');
@@ -334,7 +332,6 @@ INSERT INTO roles VALUES (62, 1, 'MEMBER');
 INSERT INTO roles VALUES (94, 1, 'MEMBER');
 INSERT INTO roles VALUES (30, 1, 'MEMBER');
 
-INSERT INTO roles VALUES (67, 2, 'COORD');
 INSERT INTO roles VALUES (49, 2, 'COORD');
 INSERT INTO roles VALUES (82, 2, 'COORD');
 INSERT INTO roles VALUES (8, 2, 'COORD');
@@ -351,7 +348,6 @@ INSERT INTO roles VALUES (17, 2, 'MEMBER');
 INSERT INTO roles VALUES (89, 2, 'MEMBER');
 INSERT INTO roles VALUES (55, 2, 'MEMBER');
 
-INSERT INTO roles VALUES (21, 3, 'COORD');
 INSERT INTO roles VALUES (60, 3, 'COORD');
 INSERT INTO roles VALUES (64, 3, 'COORD');
 INSERT INTO roles VALUES (88, 3, 'COORD');
@@ -381,7 +377,7 @@ INSERT INTO roles VALUES (72, 3, 'MEMBER');
 INSERT INTO roles VALUES (7, 3, 'MEMBER');
 INSERT INTO roles VALUES (74, 3, 'MEMBER');
 
-INSERT INTO roles VALUES (29, 4, 'COORD');
+
 INSERT INTO roles VALUES (39, 4, 'COORD');
 INSERT INTO roles VALUES (81, 4, 'COORD');
 INSERT INTO roles VALUES (14, 4, 'COORD');
@@ -395,7 +391,7 @@ INSERT INTO roles VALUES (59, 4, 'MEMBER');
 INSERT INTO roles VALUES (55, 4, 'MEMBER');
 INSERT INTO roles VALUES (1, 4, 'MEMBER');
 
-INSERT INTO roles VALUES (71, 5, 'COORD');
+
 INSERT INTO roles VALUES (13, 5, 'COORD');
 INSERT INTO roles VALUES (76, 5, 'MEMBER');
 INSERT INTO roles VALUES (9, 5, 'MEMBER');
@@ -412,7 +408,7 @@ INSERT INTO roles VALUES (22, 5, 'MEMBER');
 INSERT INTO roles VALUES (2, 5, 'MEMBER');
 INSERT INTO roles VALUES (10, 5, 'MEMBER');
 
-INSERT INTO roles VALUES (78, 6, 'COORD');
+
 INSERT INTO roles VALUES (40, 6, 'COORD');
 INSERT INTO roles VALUES (24, 6, 'COORD');
 INSERT INTO roles VALUES (2, 6, 'COORD');
@@ -424,7 +420,7 @@ INSERT INTO roles VALUES (62, 6, 'MEMBER');
 INSERT INTO roles VALUES (90, 6, 'MEMBER');
 INSERT INTO roles VALUES (1, 6, 'MEMBER');
 
-INSERT INTO roles VALUES (38, 7, 'COORD');
+
 INSERT INTO roles VALUES (26, 7, 'MEMBER');
 INSERT INTO roles VALUES (41, 7, 'MEMBER');
 INSERT INTO roles VALUES (3, 7, 'MEMBER');
@@ -438,7 +434,7 @@ INSERT INTO roles VALUES (93, 7, 'MEMBER');
 INSERT INTO roles VALUES (100, 7, 'MEMBER');
 INSERT INTO roles VALUES (68, 7, 'MEMBER');
 
-INSERT INTO roles VALUES (76, 8, 'COORD');
+
 INSERT INTO roles VALUES (99, 8, 'COORD');
 INSERT INTO roles VALUES (14, 8, 'COORD');
 INSERT INTO roles VALUES (41, 8, 'COORD');
@@ -463,7 +459,7 @@ INSERT INTO roles VALUES (59, 8, 'MEMBER');
 INSERT INTO roles VALUES (4, 8, 'MEMBER');
 INSERT INTO roles VALUES (93, 8, 'MEMBER');
 
-INSERT INTO roles VALUES (85, 9, 'COORD');
+
 INSERT INTO roles VALUES (74, 9, 'COORD');
 INSERT INTO roles VALUES (36, 9, 'COORD');
 INSERT INTO roles VALUES (11, 9, 'COORD');
@@ -490,7 +486,7 @@ INSERT INTO roles VALUES (98, 9, 'MEMBER');
 INSERT INTO roles VALUES (49, 9, 'MEMBER');
 INSERT INTO roles VALUES (2, 9, 'MEMBER');
 
-INSERT INTO roles VALUES (93, 10, 'COORD');
+
 INSERT INTO roles VALUES (8, 10, 'COORD');
 INSERT INTO roles VALUES (55, 10, 'COORD');
 INSERT INTO roles VALUES (19, 10, 'COORD');
@@ -514,94 +510,82 @@ INSERT INTO roles VALUES (22, 10, 'MEMBER');
 
 
 
-INSERT INTO ThreadLabel VALUES (default, 'non-work');
-INSERT INTO ThreadLabel VALUES (default, 'work');
-INSERT INTO ThreadLabel VALUES (default, 'office');
-INSERT INTO ThreadLabel VALUES (default, 'design');
-INSERT INTO ThreadLabel VALUES (default, 'frontend');
-INSERT INTO ThreadLabel VALUES (default, 'backend');
-INSERT INTO ThreadLabel VALUES (default, 'DB');
-INSERT INTO ThreadLabel VALUES (default, 'Java');
-INSERT INTO ThreadLabel VALUES (default, 'C');
-INSERT INTO ThreadLabel VALUES (default, 'C++');
-INSERT INTO ThreadLabel VALUES (default, 'Scala');
-INSERT INTO ThreadLabel VALUES (default, 'javascript');
-INSERT INTO ThreadLabel VALUES (default, 'html');
-INSERT INTO ThreadLabel VALUES (default, 'networking');
 
 
 
-INSERT INTO ThreadToLabel VALUES (30,4);
-INSERT INTO ThreadToLabel VALUES (28,13);
-INSERT INTO ThreadToLabel VALUES (33,13);
-INSERT INTO ThreadToLabel VALUES (6,14);
-INSERT INTO ThreadToLabel VALUES (8,12);
-INSERT INTO ThreadToLabel VALUES (23,14);
-INSERT INTO ThreadToLabel VALUES (19,1);
-INSERT INTO ThreadToLabel VALUES (18,11);
-INSERT INTO ThreadToLabel VALUES (32,10);
-INSERT INTO ThreadToLabel VALUES (7,9);
-INSERT INTO ThreadToLabel VALUES (24,12);
-INSERT INTO ThreadToLabel VALUES (30,12);
-INSERT INTO ThreadToLabel VALUES (21,5);
-INSERT INTO ThreadToLabel VALUES (16,10);
-INSERT INTO ThreadToLabel VALUES (9,4);
-INSERT INTO ThreadToLabel VALUES (2,8);
-INSERT INTO ThreadToLabel VALUES (17,13);
-INSERT INTO ThreadToLabel VALUES (34,4);
-INSERT INTO ThreadToLabel VALUES (13,7);
-INSERT INTO ThreadToLabel VALUES (8,7);
-INSERT INTO ThreadToLabel VALUES (32,12);
-INSERT INTO ThreadToLabel VALUES (2,10);
+
+INSERT INTO ThreadLabel VALUES (default, 2, 'non-work');
+INSERT INTO ThreadLabel VALUES (default, 5, 'work');
+INSERT INTO ThreadLabel VALUES (default, 1, 'office');
+INSERT INTO ThreadLabel VALUES (default, 6, 'design');
+INSERT INTO ThreadLabel VALUES (default, 8, 'frontend');
+INSERT INTO ThreadLabel VALUES (default, 4, 'backend');
+INSERT INTO ThreadLabel VALUES (default, 1, 'DB');
+INSERT INTO ThreadLabel VALUES (default, 3, 'Java');
+INSERT INTO ThreadLabel VALUES (default, 9, 'C');
+INSERT INTO ThreadLabel VALUES (default, 10, 'C++');
+INSERT INTO ThreadLabel VALUES (default, 2, 'Scala');
+INSERT INTO ThreadLabel VALUES (default, 5, 'javascript');
+INSERT INTO ThreadLabel VALUES (default, 6, 'html');
+INSERT INTO ThreadLabel VALUES (default, 1, 'networking');
+
+
+
+INSERT INTO ThreadToLabel VALUES (30,8);
+INSERT INTO ThreadToLabel VALUES (28,1);
+INSERT INTO ThreadToLabel VALUES (33,14);
+INSERT INTO ThreadToLabel VALUES (6,10);
+INSERT INTO ThreadToLabel VALUES (8,9);
+INSERT INTO ThreadToLabel VALUES (23,8);
+INSERT INTO ThreadToLabel VALUES (18,1);
+INSERT INTO ThreadToLabel VALUES (7,6);
+INSERT INTO ThreadToLabel VALUES (24,6);
+INSERT INTO ThreadToLabel VALUES (21,1);
+INSERT INTO ThreadToLabel VALUES (16,1);
+INSERT INTO ThreadToLabel VALUES (17,12);
+INSERT INTO ThreadToLabel VALUES (34,9);
+INSERT INTO ThreadToLabel VALUES (13,3);
+INSERT INTO ThreadToLabel VALUES (8,9);
 INSERT INTO ThreadToLabel VALUES (25,4);
-INSERT INTO ThreadToLabel VALUES (1,10);
-INSERT INTO ThreadToLabel VALUES (10,3);
+INSERT INTO ThreadToLabel VALUES (1,14);
+INSERT INTO ThreadToLabel VALUES (10,9);
 INSERT INTO ThreadToLabel VALUES (31,14);
-INSERT INTO ThreadToLabel VALUES (2,7);
-INSERT INTO ThreadToLabel VALUES (4,9);
-INSERT INTO ThreadToLabel VALUES (19,14);
-INSERT INTO ThreadToLabel VALUES (7,13);
-INSERT INTO ThreadToLabel VALUES (28,6);
-INSERT INTO ThreadToLabel VALUES (27,13);
-INSERT INTO ThreadToLabel VALUES (25,3);
-INSERT INTO ThreadToLabel VALUES (23,12);
-INSERT INTO ThreadToLabel VALUES (6,4);
+INSERT INTO ThreadToLabel VALUES (4,10);
+INSERT INTO ThreadToLabel VALUES (7,6);
+INSERT INTO ThreadToLabel VALUES (28,1);
+INSERT INTO ThreadToLabel VALUES (27,12);
+INSERT INTO ThreadToLabel VALUES (25,9);
+INSERT INTO ThreadToLabel VALUES (23,8);
+INSERT INTO ThreadToLabel VALUES (6,10);
 
 
 
 
-INSERT INTO TaskToLabel VALUES (18,2);
-INSERT INTO TaskToLabel VALUES (19,2);
-INSERT INTO TaskToLabel VALUES (15,9);
-INSERT INTO TaskToLabel VALUES (27,10);
-INSERT INTO TaskToLabel VALUES (26,2);
-INSERT INTO TaskToLabel VALUES (6,9);
+INSERT INTO TaskToLabel VALUES (18,9);
+INSERT INTO TaskToLabel VALUES (19,4);
+INSERT INTO TaskToLabel VALUES (15,10);
+INSERT INTO TaskToLabel VALUES (27,2);
+INSERT INTO TaskToLabel VALUES (26,8);
+INSERT INTO TaskToLabel VALUES (6,3);
 INSERT INTO TaskToLabel VALUES (23,4);
-INSERT INTO TaskToLabel VALUES (30,11);
-INSERT INTO TaskToLabel VALUES (16,2);
-INSERT INTO TaskToLabel VALUES (21,1);
-INSERT INTO TaskToLabel VALUES (20,1);
-INSERT INTO TaskToLabel VALUES (14,2);
-INSERT INTO TaskToLabel VALUES (6,4);
-INSERT INTO TaskToLabel VALUES (11,1);
-INSERT INTO TaskToLabel VALUES (30,3);
-INSERT INTO TaskToLabel VALUES (18,3);
-INSERT INTO TaskToLabel VALUES (35,7);
-INSERT INTO TaskToLabel VALUES (4,6);
-INSERT INTO TaskToLabel VALUES (35,6);
-INSERT INTO TaskToLabel VALUES (6,7);
-INSERT INTO TaskToLabel VALUES (1,8);
-INSERT INTO TaskToLabel VALUES (4,2);
 INSERT INTO TaskToLabel VALUES (30,2);
-INSERT INTO TaskToLabel VALUES (33,7);
-INSERT INTO TaskToLabel VALUES (30,10);
-INSERT INTO TaskToLabel VALUES (16,3);
-INSERT INTO TaskToLabel VALUES (25,6);
-INSERT INTO TaskToLabel VALUES (21,4);
-INSERT INTO TaskToLabel VALUES (35,4);
-INSERT INTO TaskToLabel VALUES (31,4);
-INSERT INTO TaskToLabel VALUES (20,11);
-INSERT INTO TaskToLabel VALUES (20,4);
-INSERT INTO TaskToLabel VALUES (24,8);
-INSERT INTO TaskToLabel VALUES (22,2);
-INSERT INTO TaskToLabel VALUES (27,7);
+INSERT INTO TaskToLabel VALUES (16,6);
+INSERT INTO TaskToLabel VALUES (21,9);
+INSERT INTO TaskToLabel VALUES (20,3);
+INSERT INTO TaskToLabel VALUES (14,9);
+INSERT INTO TaskToLabel VALUES (6,3);
+INSERT INTO TaskToLabel VALUES (11,4);
+INSERT INTO TaskToLabel VALUES (30,3);
+INSERT INTO TaskToLabel VALUES (18,9);
+INSERT INTO TaskToLabel VALUES (35,10);
+INSERT INTO TaskToLabel VALUES (4,3);
+INSERT INTO TaskToLabel VALUES (6,3);
+INSERT INTO TaskToLabel VALUES (1,1);
+INSERT INTO TaskToLabel VALUES (4,3);
+INSERT INTO TaskToLabel VALUES (33,8);;
+INSERT INTO TaskToLabel VALUES (16,6);
+INSERT INTO TaskToLabel VALUES (25,10);
+INSERT INTO TaskToLabel VALUES (31,6);
+INSERT INTO TaskToLabel VALUES (24,5);
+INSERT INTO TaskToLabel VALUES (22,3);
+INSERT INTO TaskToLabel VALUES (27,3);
