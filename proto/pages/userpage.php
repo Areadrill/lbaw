@@ -5,6 +5,7 @@
 
   if(!isset($_SESSION['userid'])){
     header('Location: '. $BASE_URL);
+    exit;
   }
 
 

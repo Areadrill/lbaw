@@ -24,7 +24,7 @@ CREATE TABLE Project(
 	description TEXT NOT NULL,
 	creator INT REFERENCES Users(userID) ON DELETE CASCADE NOT NULL,
 	creationDate TIMESTAMP NOT NULL,
-	CONSTRAINT unique_projNameForCreator UNIQUE(projectID, name)
+	CONSTRAINT unique_projNameForCreator UNIQUE(name, creator);
 );
 DROP TABLE IF EXISTS Roles CASCADE;
 CREATE TABLE Roles(

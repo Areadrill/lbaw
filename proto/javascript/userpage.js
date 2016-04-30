@@ -23,5 +23,10 @@ $(document).ready(function(){
         "</div>");
       }
     });
+  });
+
+  $("#userImage").click(function(){
+    $("#imageEdit").modal('show');
   })
+
 });

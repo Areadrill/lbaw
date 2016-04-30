@@ -3,7 +3,7 @@
 - [x] US02         As a Visitor, I want to register on the system, so that I can log in on the system.                                                                                                   
 - [x] US03         As an Authenticated User, I want to create a project, so that I can work on it with a team of my choosing.                                                                            
 - [x] US04         As an Authenticated User, I want to edit my personal information so others can have accurate information about me.
-- [ ] US05         As an Authenticated User, I want to upload a picture, so that I'm easier to recognize.                                                                                                
+- [X] US05         As an Authenticated User, I want to upload a picture, so that I'm easier to recognize.                                                                                                
 - [x] US06         As an Authenticated User, I want to see the projects I'm associated with, so that I can keep track of all my work.                                                                    
 - [x] US07         As an Authenticated User, I want to log out of the system, so that I can leave my computer without exposing my account.                                                                
 - [X] US08         As an Authenticated User, I want to change my password, so that I can be more secure and remember it better.                                                                        

@@ -4,7 +4,7 @@ include_once($BASE_DIR .'database/users.php');
 if (!$_POST['email'] || !$_POST['location'] || !$_POST['bday'] || !$_POST['education']) {
 	$_SESSION['error_messages'][] = 'All fields are mandatory';
 	$_SESSION['form_values'] = $_POST;
-	header("Location: ". $BASE_URL ."pages/userpage.php");
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
 
@@ -15,7 +15,7 @@ try{
 	}
 	else if($_POST['pass'] !== $_POST['repass'] && strlen($_POST['pass']) !== 0){
 		$_SESSION['error_messages'] = "Password fields did not match";
-		header("Location: " .$BASE_URL ."pages/userpage.php");
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
 		exit;
 
 	}
@@ -24,9 +24,10 @@ try{
 }
 catch(PDOException $e){
 	$_SESSION['error_messages'][] = 'Something went wrong';
-	header("Location: " .$BASE_URL."pages/userpage.php");
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
+//$_SESSION['success_messages'][] = 'User updated successfully';
 $_SESSION['success_messages'][] = 'User updated successfully';
 header("Location: " .$BASE_URL."pages/userpage.php");
 ?>

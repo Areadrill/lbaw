@@ -49,7 +49,7 @@
 					<div id="customTest">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<a data-target="#imageEdit" href="#"> <img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" /> </a>
+								<a id="userImage" href="#"> <img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" /> </a>
 							</div>
 						</div>
 
@@ -247,10 +247,34 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Change your profile picture</h4>
 			</div>
-
-			<div class="modal-footer">
-				<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
-			</div>
+			<form action="../actions/users/change_picture.php" method="post" enctype="multipart/form-data">
+				<br>
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="picture" type="file" class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+			
+				<div class="modal-footer">
+					<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
@@ -280,5 +304,4 @@
 	</script>
 
 	{/if}
-
-		{include file='../common/footer.tpl'}
+	{include file='../common/footer.tpl'}
