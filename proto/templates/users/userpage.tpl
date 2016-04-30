@@ -68,11 +68,11 @@
 							</div>
 							<div class="panel-body">
 
-								<span class="glyphicon glyphicon-globe"></span> Porto, Portugal
+								<span class="glyphicon glyphicon-globe"></span> {if empty($location)} N/A {else} {$location} {/if}
 								<br>
-								<span class="glyphicon glyphicon-gift"></span> {$birthday}
+								<span class="glyphicon glyphicon-gift"></span> {if empty($birthday)} N/A {else} {$birthday} {/if}
 								<br>
-								<span class="glyphicon glyphicon-education"></span> {$education}
+								<span class="glyphicon glyphicon-education"></span> {if empty($education)} N/A {else} {$education} {/if}
 								<br>
 								<span class="glyphicon glyphicon-calendar"> </span> Joined on {$joinDate}
 								<p>...</p>
@@ -206,7 +206,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="bday" type="date" value={$birthday} class="form-control" required>
+							<input name="location" type="text" {if !empty($location)} value={$location} {else} placeholder="Your Location" {/if} class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -216,7 +216,17 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="education" type="text" value={$education} class="form-control" required>
+							<input name="bday" type="date" {if !empty($birthday)} value={$birthday} {else} placeholder="Your Birthday" {/if} class="form-control" required>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<input name="education" type="text" {if !empty($education)} value={$education} {else} placeholder="Your Education" {/if} class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -242,5 +252,33 @@
 				<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div id="bootstrap-alert-box-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="min-height:40px;">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"><strong>ERROR!</strong></h4>
+				</div>
+				<div class="modal-body">
+					{foreach $ERROR_MESSAGES as $error}
+					<div class="error">
+						{$error}
+					</div>
+					{/foreach}
+				</div>
+			</div>
+		</div>
+	</div>
+	{if !empty($ERROR_MESSAGES)}
+	<script>
+	$(document).ready(function(){
+		$("#bootstrap-alert-box-modal").modal('show');
+	});
+	</script>
+
+	{/if}
 
 		{include file='../common/footer.tpl'}

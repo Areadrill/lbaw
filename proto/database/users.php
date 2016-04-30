@@ -61,7 +61,7 @@ function getUserEmail($userid){
 
 function getUserInfo($userid){
 	global $conn;
-	$stmt = $conn->prepare("SELECT joindate, birthday, education FROM Users WHERE userid = ?");
+	$stmt = $conn->prepare("SELECT joindate, location, birthday, education FROM Users WHERE userid = ?");
 	$stmt->execute(array($userid));
 	$result = $stmt->fetch();
 	if($result === false){
@@ -72,7 +72,7 @@ function getUserInfo($userid){
 
 function recoverUserPassword($userId, $base_url){
 	global $conn;
-	$stmt = $conn->prepare("INSERT INTO passwordrecover VALUES (default, ?, clock_timestamp(), ?)");
+	$stmt = $conn->prepare("INSERT INTO passwordrecovery VALUES (default, ?, clock_timestamp(), ?)");
 	$uuid = getGUID();
 	$stmt->execute(array($userId, $uuid));
 	$subject = "ProjectHarbor Password Recovery";
@@ -92,11 +92,11 @@ function recoverUserPassword($userId, $base_url){
 	var_dump(mail($email, $subject, $messageBody, implode("\r\n", $headers)));
 }
 
-function updateInfo($email, $bday, $education, $userid){
+function updateInfo($email, $location, $bday, $education, $userid){
 	global $conn;
 
-	$stmt = $conn->prepare("UPDATE Users SET email = ?, birthday=?, education=? WHERE userid=?");
-	$stmt->execute(array($email, $bday, $education, $userid));
+	$stmt = $conn->prepare("UPDATE Users SET email = ?, location = ?, birthday=?, education=? WHERE userid=?");
+	$stmt->execute(array($email, $location, $bday, $education, $userid));
 	return $stmt->fetch == true;
 }
 
