@@ -2,7 +2,9 @@
 
 function createUser($username, $password, $email) {
 	global $conn;
-	$salt = utf8_encode(mcrypt_create_iv(256,MCRYPT_DEV_URANDOM));
+	$salt = hash("sha512", utf8_encode(mcrypt_create_iv(256,MCRYPT_DEV_URANDOM)));
+	//var_dump($salt);
+	//return true;
 	$stmt = $conn->prepare("INSERT INTO users VALUES (default,?, ?, ?, ?, clock_timestamp(),clock_timestamp())");
 	$stmt->execute(array($username, hash("sha256",$password.$salt),$salt, $email));
 	return $stmt->fetch() == true;
