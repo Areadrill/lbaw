@@ -3,11 +3,15 @@
 function createUser($username, $password, $email) {
 	global $conn;
 	$salt = hash("sha512", utf8_encode(mcrypt_create_iv(256,MCRYPT_DEV_URANDOM)));
-	//var_dump($salt);
-	//return true;
-	$stmt = $conn->prepare("INSERT INTO users VALUES (default,?, ?, ?, ?, clock_timestamp(),clock_timestamp())");
+	$stmt = $conn->prepare("INSERT INTO users VALUES (default,?, ?, ?, ?, clock_timestamp(),clock_timestamp()) RETURNING userid");
 	$stmt->execute(array($username, hash("sha256",$password.$salt),$salt, $email));
-	return $stmt->fetch() == true;
+	$result = $stmt->fetch();
+	if($result == true){
+		$_SESSION['username'] = $username;
+		$_SESSION['userid'] = $result['userid'];
+		return true;
+	}
+	return false;
 }
 
 function isLoginCorrect($username, $password) {
@@ -110,7 +114,7 @@ function updatePassword($pass){
 	$stmt->execute(array(hash('sha256', $pass.$salt['salt']), $_SESSION['userid']));
 
 	return $stmt->fetch == true;
-	
+
 }
 
 //taken from http://stackoverflow.com/a/18206984
