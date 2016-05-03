@@ -11,6 +11,11 @@ function getProjects($userid){
   $stmt = $conn->prepare("SELECT name, projectID FROM Project WHERE projectID IN (SELECT projectID FROM Roles WHERE userID = ?)");
   $stmt->execute(array($userid));
   $res = $stmt->fetchAll();
+
+  for($i = 0; $i < count($res); $i++){
+    $res[$i]['userInfo'] = getNewInfo($userid, $res[$i]['projectID']);
+  }
+
   return $res;
 }
 
@@ -21,11 +26,11 @@ function getNewInfo($userid, $projid){
   $stmt->execute(array($userid, $projid));
   $res['tasks'] = $stmt->fetch();
 
-  $stmt = $conn->prepare("SELECT COUNT(threadID) AS NewThreadCount FROM Thread WHERE projectID = $projid AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = $userid");
+  $stmt = $conn->prepare("SELECT COUNT(threadID) AS NewThreadCount FROM Thread WHERE projectID = ? AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = ?)");
   $stmt->execute(array($userid, $projid));
   $res['threads'] = $stmt->fetch();
 
-  $stmt = $conn->prepare("SELECT COUNT(taskID) AS TasksAssignedToUser FROM Task WHERE projectID = $projid AND assignee = $userid");
+  $stmt = $conn->prepare("SELECT COUNT(taskID) AS TasksAssignedToUser FROM Task WHERE projectID = ? AND assignee = ?");
   $stmt->execute(array($userid, $projid));
   $res['assigned'] = $stmt->fetch();
 

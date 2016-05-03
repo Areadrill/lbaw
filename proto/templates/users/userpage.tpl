@@ -98,15 +98,18 @@
 								<div class="panel-body">
 									<div class="panel panel-primary">
 										<div class="panel-heading">
-											<a class="white-link" href="projectpage.html" data-projid={$proj.id}>{$proj.name}</a>
+											<a class="white-link" href="projectpage.html" data-projid={$proj.projectid}>{$proj.name}</a>
 										</div>
 										<div class="panel-body">
 											<div class="row">
 												<div class="col-md-3">
-													<span class="glyphicon glyphicon-inbox"></span> 2 new tasks
+													<span class="glyphicon glyphicon-inbox"></span> {if $proj.userInfo.tasks.newtaskcount == 0} no {else} {$proj.userInfo.tasks.newtaskcount} {/if} new tasks
 												</div>
 												<div class="col-md-3">
-													<span class="glyphicon glyphicon-comment"></span> 1 new thread
+													<span class="glyphicon glyphicon-comment"></span> {if $proj.userInfo.threads.newthreadcount == 0} no {else} {$proj.userInfo.threads.newthreadcount} {/if} new threads
+												</div>
+												<div class="col-md-4">
+													<span class="glyphicon glyphicon-bell"></span> {if $proj.userInfo.assigned.tasksassignedtouser == 0} no {else} {$proj.userInfo.assigned.tasksassignedtouser} {/if} tasks assigned to you
 												</div>
 											</div>
 										</div>
