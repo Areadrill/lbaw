@@ -41,35 +41,31 @@
 						<div class="panel-body">
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
-						<form method="post" action="../actions/users/register.php" id="register-form" hidden>
-							<input type="text" name="username">
-							<input type="password" name="password">
-							<input type="email" name="email">
-							<input type="submit" val="submit" name="submit">
-						</form>
 						<div class="panel-body">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Username">
-								<span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
-							</div>
-							<br>
-							<div class="input-group">
-								<input type="email" class="form-control" placeholder="E-mail">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-							</div>
-							<br>
-							<div class="input-group">
-								<input type="password" class="form-control" placeholder="Password">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							</div>
-							<br>
-							<div class="input-group">
-								<input type="password" class="form-control" placeholder="Re-enter password">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							</div>
-							<br>
-							<button  id="register-submit" class="btn btn-default">Sign Up</button>
-							<a data-toggle="modal" data-target="#recover" href="#">Lost your password?</a>
+							<form method="post" action="../actions/users/register.php">
+								<div class="input-group">
+									<input name="username" type="text" class="form-control" placeholder="Username">
+									<span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+								</div>
+								<br>
+								<div class="input-group">
+									<input name="email" type="email" class="form-control" placeholder="E-mail">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+								</div>
+								<br>
+								<div class="input-group">
+									<input name="password" type="password" class="form-control" placeholder="Password">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								</div>
+								<br>
+								<div class="input-group">
+									<input name="rpassword" type="password" class="form-control" placeholder="Re-enter password">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								</div>
+								<br>
+								<button type="submit" val="submit" name="submit" class="btn btn-default">Sign Up</button>
+								<a data-toggle="modal" data-target="#recover" href="#">Lost your password?</a>
+							</form>
 						</div>
 					</div>
 				</div>
