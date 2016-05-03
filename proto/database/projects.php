@@ -8,14 +8,15 @@ function createProject($name, $description,$userid){
 
 function getProjects($userid){
   global $conn;
-  $stmt = $conn->prepare("SELECT name, projectID FROM Project WHERE projectID IN (SELECT projectID FROM Roles WHERE userID = ?)");
+  $stmt = $conn->prepare("SELECT name, projectID, creator FROM Project WHERE projectID IN (SELECT projectID FROM Roles WHERE userID = ?)");
   $stmt->execute(array($userid));
   $res = $stmt->fetchAll();
 
   for($i = 0; $i < count($res); $i++){
-    $res[$i]['userInfo'] = getNewInfo($userid, $res[$i]['projectID']);
+    $res[$i]['userInfo'] = getNewInfo($userid, $res[$i]['projectid']);
+    $res[$i]['creatorName'] = getCreatorName($res[$i]['projectid']);
   }
-
+  //var_dump($res);
   return $res;
 }
 
@@ -36,6 +37,17 @@ function getNewInfo($userid, $projid){
 
   return $res;
 
+}
+
+function getCreatorName($projectID){
+  global $conn;
+  $stmt = $conn->prepare("SELECT username FROM Users WHERE userid = (SELECT creator FROM Project WHERE projectid = ?)");
+  
+  $stmt->execute(array($projectID));
+
+  $res = $stmt->fetch();
+
+  return $res;
 }
 
 function searchProjects($field, $userid){

@@ -98,7 +98,7 @@
 								<div class="panel-body">
 									<div class="panel panel-primary">
 										<div class="panel-heading">
-											<a class="white-link" href="projectpage.html" data-projid={$proj.projectid}>{$proj.name}</a>
+											<a class="white-link" href="projectpage.html" data-projid={$proj.projectid}>{$proj.name} by {$proj.creatorName.username}</a>
 										</div>
 										<div class="panel-body">
 											<div class="row">
