@@ -17,12 +17,25 @@ if (!isset($_SESSION['userid'])){
 	exit;
 }
 
-if (createProject($name, $description, $_SESSION['userid'])) {
-  $_SESSION['success_messages'][] = 'Project created successfuly';
+try {
+	createProject($name, $description, $_SESSION['userid']);
+} catch (PDOException $e) {
+
   header('Location: ' . $_SERVER['HTTP_REFERER']);
-  // PROVISORIO O REDIRECT É: header('Location: ' . $BASE_URL .'pages/project.php');
-} else {
-  $_SESSION['error_messages'][] = 'Project creation failed';
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+	if (strpos($e->getMessage(), 'unique_projnameforcreator') !== false) {
+		$_SESSION['error_messages'][] = 'Duplicated project name';
+		$_SESSION['field_errors']['name'] = 'Project name already exists';
+	}
+	else
+  $_SESSION['error_messages'][] = 'Error creating project';
+
+	$_SESSION['form_values'] = $_POST;
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit;
 }
+
+$_SESSION['success_messages'][] = 'Project created successfuly';
+header('Location: ' . $_SERVER['HTTP_REFERER']); // PROVISORIO O REDIRECT É: header('Location: ' . $BASE_URL .'pages/project.php');
+
 ?>
