@@ -27,7 +27,6 @@ catch(PDOException $e){
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
-//$_SESSION['success_messages'][] = 'User updated successfully';
 $_SESSION['success_messages'][] = 'User updated successfully';
 header("Location: " .$BASE_URL."pages/userpage.php");
 ?>

@@ -11,8 +11,6 @@ if(!isset($_FILES['picture'])){
 $fileName = explode(".", $_FILES['picture']['name']);
 $extension = array_pop($fileName);
 
-//echo $BASE_URL.'/images/'.$_SESSION['userid'].'.'.$extension;
-//exit;
 
 $imgPath =  $BASE_DIR.'images/'.$_SESSION['userid'].'.'.$extension;
 if(move_uploaded_file($_FILES["picture"]["tmp_name"], $imgPath)){

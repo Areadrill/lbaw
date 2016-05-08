@@ -1,6 +1,5 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
-<script rel="text/javascript" src="../javascript/homepage.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">

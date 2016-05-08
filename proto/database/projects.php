@@ -16,7 +16,6 @@ function getProjects($userid){
     $res[$i]['userInfo'] = getNewInfo($userid, $res[$i]['projectid']);
     $res[$i]['creatorName'] = getCreatorName($res[$i]['projectid']);
   }
-  //var_dump($res);
   return $res;
 }
 
@@ -42,7 +41,7 @@ function getNewInfo($userid, $projid){
 function getCreatorName($projectID){
   global $conn;
   $stmt = $conn->prepare("SELECT username FROM Users WHERE userid = (SELECT creator FROM Project WHERE projectid = ?)");
-  
+
   $stmt->execute(array($projectID));
 
   $res = $stmt->fetch();
