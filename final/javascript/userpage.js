@@ -29,5 +29,23 @@ $(document).ready(function(){
     $("#imageEdit").modal('show');
   });
 
+  $("#userImage").hover(toggleImageCover);
+
 
 });
+
+var imageCover = false;
+
+function toggleImageCover(){
+  console.log("tou aqui");
+  if(imageCover){
+    //$("#userImage").show();
+    $("#imageCover").hide();
+    imageCover = false;
+  }
+  else{
+    //$("#userImage").hide();
+    $("#imageCover").show();
+    imageCover = true;
+  }
+}

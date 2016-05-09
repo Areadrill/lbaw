@@ -2,7 +2,16 @@
   display: block;
 }
 
+#imageCover{
+  background-color: rgba(0, 0, 0, 0.7);
+  color:white;
+  font-size: 16px;
+  text-align: center;
+  z-index: 1000;
+}
+
 #customTest{
+  position:relative;
   width: 16.5em;
 }
 
