@@ -33,8 +33,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-md-2"></div>
@@ -42,8 +41,8 @@
 		<div class="col-md-8">
 			<div id="userPage">
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="active" href="#">{$username}</a></li>
+					<li><a href="homepage.php">Home</a></li>
+					<li><a class="active" href=".">{$username}</a></li>
 				</ol>
 				<div class="col-md-3">
 					<div id="customTest">
