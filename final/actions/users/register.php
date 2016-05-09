@@ -15,8 +15,8 @@ if ($_POST['rpassword'] != $_POST['password']) {
 	exit;
 }
 
-$email = utf8_encode(strip_tags($_POST['email']));
-$username = utf8_encode(strip_tags($_POST['username']));
+$email = strip_tags(utf8_encode(strip_tags($_POST['email'])));
+$username = strip_tags(utf8_encode(strip_tags($_POST['username'])));
 $password = utf8_encode($_POST['password']);
 
 
