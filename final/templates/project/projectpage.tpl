@@ -13,7 +13,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">ProjectHarbor</a>
+				<a class="navbar-brand" href="../../index.html">ProjectHarbor</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,13 +23,13 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form class="navbar-form navbar-right" role="logout">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
-						<a href="userpage.html"> jLopes </a>
-						<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=230756" alt="user image" width="30px" height="30px" />
+						<a class="white-link" href="userpage.html"> {$username} </a>
+						<img src={$img} alt="user image" width="30px" height="30px" />
 					</div>
 				</div>
 			</div>
@@ -39,9 +39,9 @@
 		<div class="row">
 			<div class ="col-md-12">
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="userpage.html">jlopes</a></li>
-					<li><a class="active" href="projectpage.html">Project</a></li>
+					<li><a href="homepage.php">Home</a></li>
+					<li><a href="userpage.php">{$username}</a></li>
+					<li><a class="active" href=".">{$info.name}</a></li>
 				</ol>
 			</div>
 		</div>
@@ -51,9 +51,9 @@
 					<div class="panel-body">
 						<h3>{$info.name}</h3>
 						<ul class="list-group" style="border-left:0px;border-right:0px">
-							<li class="list-group-item">Created on {$info.creation}</li>
+							<li class="list-group-item">Created on {$info.creationdate}</li>
 							<li class="list-group-item">{$info.membersNum} team members</li>
-							<li class="list-group-item">Created by {$info.creator}</li>
+							<li class="list-group-item">Created by {$info.creatorName}</li>
 						</ul>
 					</div>
 				</div>

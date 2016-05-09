@@ -8,7 +8,7 @@ function createProject($name, $description,$userid){
 
 function getProjects($userid){
   global $conn;
-  $stmt = $conn->prepare("SELECT name, projectID, creator, description FROM Project WHERE projectID IN (SELECT projectID FROM Roles WHERE userID = ?)");
+  $stmt = $conn->prepare("SELECT name, projectID, creator FROM Project WHERE projectID IN (SELECT projectID FROM Roles WHERE userID = ?)");
   $stmt->execute(array($userid));
   $res = $stmt->fetchAll();
 
@@ -21,18 +21,19 @@ function getProjects($userid){
 
 function getProjectInfo($projectid){
   global $conn;
-  $stmt = $conn->prepare("SELECT name, projectID, creator, creationdate FROM Project WHERE projectID = ?");
-  $stmt->execute(array($userid));
-  $res = $stmt->fetchAll();
-  $res['creatorName'] = getCreatorName($projectid);
-  $res['membersNum'] = getMembersNumber($projectid);
+  $stmt = $conn->prepare("SELECT name, projectID, creator, creationdate, description FROM Project WHERE projectID = ?");
+  $stmt->execute(array($projectid));
+  $res = $stmt->fetch();
+  $res['creatorName'] = getCreatorName($projectid)['username'];
+  $res['membersNum'] = getMembersNumber($projectid)['count'];
+  $res['creationdate'] = date("Y-m-d", strtotime($res['creationdate']));
   return $res;
 }
 
 function getMembersNumber($projectid){
   global $conn;
   $stmt = $conn->prepare("SELECT COUNT(*) FROM Roles WHERE projectID = ?");
-  $stmt->execute(array($userid));
+  $stmt->execute(array($projectid));
   return $stmt->fetch();
 }
 
