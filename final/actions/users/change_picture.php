@@ -10,25 +10,24 @@ if(!isset($_FILES['picture'])){
 
 $allowedExtensions = array('jpg', 'jpeg', 'png', 'tiff', 'bmp', 'svg', 'gif');
 
-//$fileName = explode(".", $_FILES['picture']['name']);
-//$extension = array_pop($fileName);
+$fileName = explode(".", $_FILES['picture']['name']);
+$extension = array_pop($fileName);
 
 
 $fileType = explode("/", mime_content_type($_FILES["picture"]["tmp_name"]));
 if($fileType[0] !== 'image'){
 	$_SESSION['error_messages'][] = 'The file you chose doesn\'t appear to be an image.';
-}
-
-
-$extension = array_pop($fileType);
-if(!in_array($extension, $allowedExtensions)){
-	$_SESSION['error_messages'][] = 'The file you chose did not a have extension characteristic of an image.';
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
 
 
 
+if(!in_array($extension, $allowedExtensions)){
+	$_SESSION['error_messages'][] = 'The file you chose did not a have extension characteristic of an image.';
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit;
+}
 
 $imgPath =  $BASE_DIR.'images/'.$_SESSION['userid'].'.'.$extension;
 if(move_uploaded_file($_FILES["picture"]["tmp_name"], $imgPath)){
