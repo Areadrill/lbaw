@@ -1,5 +1,5 @@
 {include file='common/header.tpl'}
-	<script src="../javascript/projectpage.js"></script>
+	<script src="../javascrip/tprojectpage.js"></script>
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
 </head>
@@ -28,7 +28,7 @@
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
-						<a class="white-link" href="userpage.html"> {$username} </a>
+						<a class="white-link" href="userpage.php"> {$username} </a>
 						<img src={$img} alt="user image" width="30px" height="30px" />
 					</div>
 				</div>
