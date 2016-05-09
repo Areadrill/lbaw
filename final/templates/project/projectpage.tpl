@@ -1,5 +1,5 @@
 {include file='common/header.tpl'}
-	<script src="../javascrip/tprojectpage.js"></script>
+	<script src="../javascript/projectpage.js"></script>
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
 </head>
@@ -104,8 +104,14 @@
 										<h2>Threads <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button></h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
-										<a href="thread.html" class="list-group-item"><span class="glyphicon glyphicon-comment"></span> Fix log in button <span class="label label-info">Front-end</span><span class="label label-danger">Bug fixes</span></a>
-										<a href="thread.html" class="list-group-item"><span class="glyphicon glyphicon-comment"></span> Docs section 4.5 <span class="label label-success">Documents</span><span class="badge"></a>
+									{foreach from=$threads item=thread}
+										<a href="thread.html" class="list-group-item">
+											<span class="glyphicon glyphicon-comment"></span> {$thread.name}
+											{foreach from=$thread.threadLabels item=label}
+												<span class="label label-info">$label.name</span>
+											{/foreach}
+										</a>
+									{/foreach}
 									</div>
 								</div>
 							</div>
