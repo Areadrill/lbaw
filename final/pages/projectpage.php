@@ -1,6 +1,6 @@
 <?php
   include_once('../config/init.php');
-  include_once('../database/projects.php');
+  include_once('../database/thread.php');
 
   if(!isset($_SESSION['userid'])){
     header('Location: '. $BASE_URL);
@@ -20,6 +20,8 @@
   
   $smarty->assign('username',$_SESSION['username']);
   $smarty->assign('img',$imgPath);
-  $smarty->assign('info', getProjectInfo($projectID));  
+  $smarty->assign('info', getProjectInfo($projectID));
+  $smarty->assign('threads', getThreads($projectID));
+  $smarty->assign('projectLabels', getProjectLabels($projectID));
   $smarty->display('project/projectpage.tpl');
 ?>
