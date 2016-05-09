@@ -1,7 +1,7 @@
 {include file='common/header.tpl'}
 	<script src="js/projectpage.js"></script>
-	<link rel="stylesheet" href="userpageStyle.css">
-	<link rel="stylesheet" href="projectpageStyle.css">
+	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
+	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -49,11 +49,11 @@
 			<div class="col-md-2 hidden-md-down" style="border-color:black">
 				<div class="panel" id="projinfo" style="">
 					<div class="panel-body">
-						<h3>Web Application for PM</h3>
+						<h3>{$info.name}</h3>
 						<ul class="list-group" style="border-left:0px;border-right:0px">
-							<li class="list-group-item">Created on 29-02-2016</li>
-							<li class="list-group-item">3 team members</li>
-							<li class="list-group-item">Created by jLopes</li>
+							<li class="list-group-item">Created on {$info.creation}</li>
+							<li class="list-group-item">{$info.membersNum} team members</li>
+							<li class="list-group-item">Created by {$info.creator}</li>
 						</ul>
 					</div>
 				</div>
@@ -195,8 +195,8 @@
 					</div>
 					<div id="description"  class="panel panel-default">
 						<div class="container-fluid">
-							<h1> Web Application for PM </h1>
-							<p> This project aims to develop an Web Application for Project Management</p>
+							<h1> {$info.name} </h1>
+							<p> {$info.description}</p>
 						</div>
 					</div>
 					<div id="tasklists" class="panel panel-default" hidden>

@@ -13,5 +13,6 @@
     exit;
   }
 
+  $smarty->assign('info', getProjectInfo($projectID));  
   $smarty->display('project/projectpage.tpl');
 ?>
