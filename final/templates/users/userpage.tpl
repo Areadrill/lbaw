@@ -12,7 +12,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../../index.html">ProjectHarbor</a>
+				<a class="navbar-brand" href="homepage.php">ProjectHarbor</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +42,7 @@
 			<div id="userPage">
 				<ol class="breadcrumb">
 					<li><a href="homepage.php">Home</a></li>
-					<li><a class="active" href=".">{$username}</a></li>
+					<li><a class="active" href="javascript:window.location.href=window.location.href">{$username}</a></li>
 				</ol>
 				<div class="col-md-3">
 					<div id="customTest">
