@@ -20,8 +20,8 @@ if($fileType[0] !== 'image'){
 }
 
 
-
-if(!in_array(array_pop($fileType), $allowedExtensions)){
+$extension = array_pop($fileType);
+if(!in_array($extension, $allowedExtensions)){
 	$_SESSION['error_messages'][] = 'The file you chose did not a have extension characteristic of an image.';
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
