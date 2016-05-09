@@ -8,8 +8,18 @@ if(!isset($_FILES['picture'])){
 	exit;
 }
 
+$allowedExtensions = array('jpg', 'jpeg', 'png', 'tiff', 'bmp', 'svg', 'gif');
+
 $fileName = explode(".", $_FILES['picture']['name']);
 $extension = array_pop($fileName);
+
+if(!in_array($extension, $allowedExtensions)){
+	$_SESSION['error_messages'][] = 'The file you chose did not a have an extension characteristic of an image.';
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit;
+}
+
+
 
 
 $imgPath =  $BASE_DIR.'images/'.$_SESSION['userid'].'.'.$extension;
