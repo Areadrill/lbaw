@@ -1,5 +1,5 @@
 {include file='common/header.tpl'}
-	<script src="js/projectpage.js"></script>
+	<script src="../javascript/projectpage.js"></script>
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
 </head>
@@ -13,7 +13,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../../index.html">ProjectHarbor</a>
+				<a class="navbar-brand" href="homepage.php">ProjectHarbor</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,7 +41,7 @@
 				<ol class="breadcrumb">
 					<li><a href="homepage.php">Home</a></li>
 					<li><a href="userpage.php">{$username}</a></li>
-					<li><a class="active" href=".">{$info.name}</a></li>
+					<li><a class="active" href="javascript:window.location.href=window.location.href">{$info.name}</a></li>
 				</ol>
 			</div>
 		</div>
