@@ -20,7 +20,7 @@ try{
 
 	}
 
-	updateInfo($_POST['email'], $_POST['location'], $_POST['bday'], $_POST['education'], $_SESSION['userid']);
+	updateInfo(strip_tags($_POST['email']), strip_tags($_POST['location']), strip_tags($_POST['bday']), strip_tags($_POST['education']), $_SESSION['userid']);
 }
 catch(PDOException $e){
 	$_SESSION['error_messages'][] = 'Something went wrong';
