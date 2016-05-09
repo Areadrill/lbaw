@@ -27,7 +27,7 @@
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
-						<a class="white-link" href="userpage.html"> {$username} </a>
+						<a class="white-link" href="userpage.php"> {$username} </a>
 						<img src={$img} alt="user image" width="30px" height="30px" />
 					</div>
 				</div>
