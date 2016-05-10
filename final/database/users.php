@@ -91,7 +91,7 @@ function recoverUserPassword($userId, $base_url){
 		return false;
 	$messageBody = "You, or someone who knows your email, attempted to recover a password for the website ProjectHarbor.\r\n
 		If this wasn't you or this recovery was initiated by mistake no action is required on your part.\r\n
-		If you wish to reset the password please follow the link below \r\n" . $base_url . "pages/users/passwordreset.php".'?uuid='.$uuid.'&userid='.$userid;
+		If you wish to reset the password please follow the link below \r\n" . "gnomo.fe.up.pt".$base_url . "pages/passwordreset.php".'?uuid='.$uuid.'&userid='.$userId;
 	mail($email, $subject, $messageBody, implode("\r\n", $headers));
 }
 
@@ -119,7 +119,7 @@ function updatePassword($pass){
 function validateRecovery($user, $uuid){
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(passwordrecoveryid) FROM passwordrecovery WHERE
-					userid = ? AND uuid = ?");
+					userid = ? AND uniqueidentifier = ?");
 	$stmt->execute(array($user, $uuid));
 	$exists = $stmt->fetch();
 	if($exists != 0){

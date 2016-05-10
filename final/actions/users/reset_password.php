@@ -11,7 +11,7 @@ $uuid = $_POST['uuid'];
 $password = $_POST['password'];
 $user = $_POST['uid'];
 
-if (validate_recovery($user, $uuid)){
+if (validateRecovery($user, $uuid)){
 	updatePassword($password);
 	header('Location: ' . $BASE_URL . 'pages/userpage.php'); 
 }
