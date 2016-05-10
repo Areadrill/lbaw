@@ -49,6 +49,7 @@
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<a id="userImage" href="#"> <img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" /> </a>
+								<div id="imageCover" hidden>Edit pic</div>
 							</div>
 						</div>
 
