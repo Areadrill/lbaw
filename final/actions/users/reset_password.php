@@ -3,7 +3,6 @@ include_once("../../config/init.php");
 include_once("../../database/users.php");
 if (!$_POST['uuid'] | !$_POST['password'] | !$_POST['uid']){
 	$_SESSION['error_messages'] = "Invalid reset";
-	$_SESSION['form_values'] = $_POST;
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
@@ -12,11 +11,16 @@ $password = $_POST['password'];
 $user = $_POST['uid'];
 
 if (validateRecovery($user, $uuid)){
-	updatePassword($password);
-	header('Location: ' . $BASE_URL . 'pages/userpage.php'); 
+	if(resetPassword($password, $user)){
+		deleteRecovery($uuid);
+		header('Location: ' . $BASE_URL . 'pages/homepage.php'); 
+	}
+	else{
+		$_SESSION['error_messages'] = 'Could not change password';
+		header('Location: ' . $BASE_URL . 'pages/passwordreset.php?uuid='.$_POST['uuid'].'&userid='.$_POST['uid']);
+	}
 }
 else{
 	$_SESSION['error_messages'] = 'Reset not initiated';
-	$_SESSION['form_values'] = $_POST;
-	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	header('Location: ' . $BASE_URL.'pages/homepage.php');
 }

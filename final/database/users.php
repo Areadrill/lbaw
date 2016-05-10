@@ -90,8 +90,8 @@ function recoverUserPassword($userId, $base_url){
 	if ($email == false)
 		return false;
 	$messageBody = "You, or someone who knows your email, attempted to recover a password for the website ProjectHarbor.\r\n
-		If this wasn't you or this recovery was initiated by mistake no action is required on your part.\r\n
-		If you wish to reset the password please follow the link below \r\n" . "gnomo.fe.up.pt".$base_url . "pages/passwordreset.php".'?uuid='.$uuid.'&userid='.$userId;
+If this wasn't you or this recovery was initiated by mistake no action is required on your part.\r\n
+If you wish to reset the password please follow the link below \r\n" . "gnomo.fe.up.pt".$base_url . "pages/passwordreset.php".'?uuid='.$uuid.'&userid='.$userId;
 	mail($email, $subject, $messageBody, implode("\r\n", $headers));
 }
 
@@ -112,8 +112,26 @@ function updatePassword($pass){
 	$stmt = $conn->prepare("UPDATE Users SET password = ? WHERE userid = ?");
 	$stmt->execute(array(hash('sha256', $pass.$salt['salt']), $_SESSION['userid']));
 
-	return $stmt->fetch == true;
+	return $stmt->fetch() == true;
 
+}
+function resetPassword($pass, $userid){
+	global $conn;
+	$stmt = $conn->prepare("SELECT salt FROM users WHERE userid = ?");
+	$stmt->execute(array($userid));
+	$salt = $stmt->fetch();
+
+	$stmt = $conn->prepare("UPDATE Users SET password = ? WHERE userid = ?");
+	$stmt->execute(array(hash('sha256', $pass.$salt['salt']), $userid));
+	var_dump($stmt->rowCount());
+	return $stmt->rowCount() == 1;
+
+}
+function deleteRecovery($uuid){
+	global $conn;
+	$stmt = $conn->prepare("DELETE FROM passwordrecovery WHERE uniqueidentifier = ?");
+	$stmt->execute(array($uuid));
+	return $stmt->rowCount() == 1;
 }
 
 function validateRecovery($user, $uuid){

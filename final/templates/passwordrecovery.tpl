@@ -35,7 +35,7 @@
 						</div>
 						<div class="panel-body">
 							<form method="post" action="../actions/users/reset_password.php">
-								<div class="input-group" hidden="hidden">
+								<div class="input-group" style="display:none">
 									<input name="uid" type="text" class="form-control" value="{$userid}" hidden="hidden">
 									<input name="uuid" type="text" value="{$uuid}">
 								</div>
