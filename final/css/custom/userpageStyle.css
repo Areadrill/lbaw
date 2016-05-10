@@ -2,17 +2,24 @@
   display: block;
 }
 
+#image-panel{
+  position: relative;
+}
+
 #imageCover{
   background-color: rgba(0, 0, 0, 0.7);
   color:white;
   font-size: 16px;
   text-align: center;
-  z-index: 1000;
+  position: absolute;
+  width: 87%;
+  top: 6em;
+  margin: 0;
 }
 
 #customTest{
-  position:relative;
   width: 16.5em;
+  min-width: 16.5em;
 }
 
 #todojosprojetos{
@@ -27,6 +34,7 @@
   color: white;
   text-decoration: none;
 }
+
 .maxHeight{
   max-height: 200px;
 
