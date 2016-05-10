@@ -2,6 +2,7 @@
   include_once('../config/init.php');
   include_once('../database/thread.php');
   include_once('../database/projects.php');
+  include_once('../database/members.php');
 
   if(!isset($_SESSION['userid'])){
     header('Location: '. $BASE_URL);
@@ -19,6 +20,8 @@
     $imgPath = "../images/default.jpg";
   }
 
+
+  $smarty->assign('members', getProjectMembers($projectID));
   $smarty->assign('username',$_SESSION['username']);
   $smarty->assign('img',$imgPath);
   $smarty->assign('info', getProjectInfo($projectID));

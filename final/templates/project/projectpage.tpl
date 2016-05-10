@@ -129,6 +129,49 @@
 					</div>
 					<div id="members" class="panel panel-default" hidden>
 						<ul class="list-group">
+							{foreach from=$members item=member}
+								<li class="list-group-item clearfix">
+									<div class="row">
+										<div class="col-md-1">
+											<div class="pull-left">
+												<a href="#" style="margin-bottom: 0;"class="thumbnail">
+													<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=231081" alt="ademar aguiar" height="25px" width="25px"/>
+												</a>
+
+											</div>
+										</div>
+
+										<div class="col-md-2 text">
+											{$member.username}
+										</div>
+
+										<div class="col-md-3 text">
+											<span class="glyphicon glyphicon-inbox"></span> 1 task assigned
+										</div>
+
+										<div class="col-md-3 text">
+											{if $member.roleassigned == "MEMBER"}
+											<span class="glyphicon glyphicon-pawn"></span> Team Member
+											{else if $member.roleassigned == "COORD"}
+											<span class="glyphicon glyphicon-king"></span> Team Coordinator
+											{/if}
+										</div>
+
+
+										<div class="pull-right">
+											<div class="btn-group" role="group" aria-label="...">
+												{if $member.roleassigned == "MEMBER"}
+												<button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
+												<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+												{else if $member.roleassigned == "COORD"}
+												<button type="button" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
+												{/if}
+
+											</div>
+										</div>
+									</div>
+								</li>
+							{/foreach}
 							<li class="list-group-item clearfix">
 								<div class="row">
 									<div class="col-md-1">
