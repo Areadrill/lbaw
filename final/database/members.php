@@ -16,12 +16,15 @@ function getProjectMembers($projectID){
 
 function alterMemberRole($userID, $projectID, $newRole){
 	global $conn;
+
+	if(checkPrivilege($userID, $projectID) !== 'COORD')
+		return false;
+
 	$stmt = $conn->prepare("UPDATE Roles SET roleassigned = ? WHERE userid = ? AND projectid = ?");
 	$stmt->execute(array($newRole, $userID, $projectID));
 
-	var_dump($stmt->fetch());
 
-	return true;
+	return $stmt->fetch() == true;
 }
 
 function removeMember($userID, $projectID){
@@ -56,7 +59,7 @@ function checkPrivilege($userID, $projectID){
 	global $conn;
 
 	$stmt = $conn->prepare("SELECT roleassigned FROM Roles WHERE userid = ? AND projectid = ?");
-	$stmt->execute(aray($_SESSION['userid'], $projectID));
+	$stmt->execute(array($_SESSION['userid'], $projectID));
 
 	return $stmt->fetch()['roleassigned'];
 }
