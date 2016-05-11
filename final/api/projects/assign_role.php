@@ -27,13 +27,40 @@
 
 	switch($_POST['action']){
 		case "promote":
-			alterMemberRole($_POST['userID'], $_POST['projectID'], 'COORD');
+			if(!alterMemberRole($_POST['userID'], $_POST['projectID'], 'COORD')){
+				if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					error_log("not all information was sent");
+				}
+				else{
+					$_SESSION['error_messages'][] = 'insufficient permissions';
+					header('Location: '. $_SERVER['HTTP_REFERER']);	
+				}
+				exit;
+			}
 			break;
 		case "demote":
-			alterMemberRole($_POST['userID'], $_POST['projectID'], 'MEMBER');
+			if(!alterMemberRole($_POST['userID'], $_POST['projectID'], 'MEMBER')){
+				if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					error_log("not all information was sent");
+				}
+				else{
+					$_SESSION['error_messages'][] = 'insufficient permissions';
+					header('Location: '. $_SERVER['HTTP_REFERER']);	
+				}
+				exit;
+			}
 			break;
 		case "remove":
-			removeMember($_POST['userID'], $_POST['projectID']);
+			if(!removeMember($_POST['userID'], $_POST['projectID'])){
+				if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					error_log("not all information was sent");
+				}
+				else{
+					$_SESSION['error_messages'][] = 'insufficient permissions';
+					header('Location: '. $_SERVER['HTTP_REFERER']);	
+				}
+				exit;
+			}
 			break;
 	}
 

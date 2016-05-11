@@ -254,8 +254,11 @@
 							<div class="input-group-btn">
 								<button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
 							</div><!-- /btn-group -->
-							<input type="text" class="form-control" placeholder="Search for users to add" aria-label="...">
+							<input id="userSearcher" type="text" class="form-control" placeholder="Search for users to add" aria-label="...">
 						</div><!-- /input-group -->
+						<div id="listofusers">
+						</div>
+
 					</div>
 					<div id="description"  class="panel panel-default">
 						<div class="container-fluid">
