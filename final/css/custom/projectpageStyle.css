@@ -5,6 +5,18 @@ div#projinfo{
     border-radius:0;
 }
 
+.alignForm{
+    display: inline;
+}
+
+.buttonRight{
+    border-radius:0 5px 5px 0;
+}
+
+.buttonLeft{
+    border-radius: 5px 0 0 5px;
+}
+
 #projinfo li{
     border-radius:0;
     box-shadow:none;

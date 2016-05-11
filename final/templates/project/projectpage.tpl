@@ -161,24 +161,24 @@
 										<div class="pull-right">
 											<div class="btn-group" role="group" aria-label="...">
 												{if $member.roleassigned == "MEMBER"}
-												<form action="../api/projects/assign_role.php" method="POST" >
+												<form class="alignForm" action="../api/projects/assign_role.php" method="POST" >
 													<input type="hidden" name="projectID" value={$projID}>
 													<input type="hidden" name="userID" value={$member.userid}>
 													<input type="hidden" name="action" value="promote">
-													<input type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
+													<button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
 												</form>
-												<form  action="../api/projects/assign_role.php" method="POST" >
+												<form  class="alignForm" action="../api/projects/assign_role.php" method="POST" >
 													<input type="hidden" name="projectID" value={$projID}>
 													<input type="hidden" name="userID" value={$member.userid}>
 													<input type="hidden" name="action" value="remove">
-													<input type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+													<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
 												</form>
 												{else if $member.roleassigned == "COORD"}
 												<form  action="../api/projects/assign_role.php" method="POST" >
 													<input type="hidden" name="projectID" value={$projID}>
 													<input type="hidden" name="userID" value={$member.userid}>
 													<input type="hidden" name="action" value="demote">
-													<input type="submit" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
+													<button type="submit" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
 												</form>
 												{/if}
 
