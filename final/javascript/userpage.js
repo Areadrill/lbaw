@@ -37,7 +37,6 @@ $(document).ready(function(){
 var imageCover = false;
 
 function toggleImageCover(){
-  console.log("tou aqui");
   if(imageCover){
     //$("#userImage").show();
     $("#imageCover").hide();
