@@ -6,6 +6,11 @@ function getProjectMembers($projectID){
 	$stmt->execute(array($projectID));
 
 	$members = $stmt->fetchAll();
+
+	for($i = 0; $i < count($members); $i++){
+    	$members[$i]['picPath'] = glob("../images/".$members[$i]['userid'].".*")[0];
+  	}
+
 	return $members;
 }
 

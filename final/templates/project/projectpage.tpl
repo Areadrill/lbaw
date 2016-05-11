@@ -135,7 +135,7 @@
 										<div class="col-md-1">
 											<div class="pull-left">
 												<a href="#" style="margin-bottom: 0;"class="thumbnail">
-													<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=231081" alt="ademar aguiar" height="25px" width="25px"/>
+													<img src={$member.picPath} alt={$member.username} height="25px" width="25px"/>
 												</a>
 
 											</div>
@@ -161,10 +161,25 @@
 										<div class="pull-right">
 											<div class="btn-group" role="group" aria-label="...">
 												{if $member.roleassigned == "MEMBER"}
-												<button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
-												<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+												<form action="../api/projects/assign_role.php" method="POST" >
+													<input type="hidden" name="projectID" value={$projID}>
+													<input type="hidden" name="userID" value={$member.userid}>
+													<input type="hidden" name="action" value="promote">
+													<input type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
+												</form>
+												<form  action="../api/projects/assign_role.php" method="POST" >
+													<input type="hidden" name="projectID" value={$projID}>
+													<input type="hidden" name="userID" value={$member.userid}>
+													<input type="hidden" name="action" value="remove">
+													<input type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+												</form>
 												{else if $member.roleassigned == "COORD"}
-												<button type="button" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
+												<form  action="../api/projects/assign_role.php" method="POST" >
+													<input type="hidden" name="projectID" value={$projID}>
+													<input type="hidden" name="userID" value={$member.userid}>
+													<input type="hidden" name="action" value="demote">
+													<input type="submit" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
+												</form>
 												{/if}
 
 											</div>

@@ -20,7 +20,7 @@
     $imgPath = "../images/default.jpg";
   }
 
-
+  $smarty->assign('projID', $projectID);
   $smarty->assign('members', getProjectMembers($projectID));
   $smarty->assign('username',$_SESSION['username']);
   $smarty->assign('img',$imgPath);
