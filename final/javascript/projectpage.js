@@ -61,7 +61,7 @@ $(document).ready(function(){
                           "<div class=\"col-md-1\">"+
                             "<div class=\"pull-left\">"+
                               "<a href=\"#\" style=\"margin-bottom: 0;\" class=\"thumbnail\">"+
-                                "<img src=\""+ json[i].picPath +"\" alt=\""+ json[i].username +"\" height=\"25px\" width=\"25px\"/>"+
+                                "<img src=\""+ json[i].picPath.substring(3, json[i].picPath.length) +"\" alt=\""+ json[i].username +"\" height=\"25px\" width=\"25px\"/>"+
                               "</a>"+
                           "</div>"+
                           "</div>"+

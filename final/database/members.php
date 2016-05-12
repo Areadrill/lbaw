@@ -68,8 +68,14 @@ function searchUsers($field, $projectID){
   $res = $stmt->fetchAll();
 
   for($i = 0; $i < count($res); $i++){
-    	$res[$i]['picPath'] = glob($BASE_DIR."images/".$res[$i]['userid'].".*")[0];
+  		if(!file_exists(glob("../../images/".$res[$i]['userid'].'.*')[0])){
+  			$res[$i]['picPath'] = glob("../../images/default.jpg")[0];
+  		}
+    	else{
+    		$res[$i]['picPath'] = glob("../../images/".$res[$i]['userid'].'.*')[0];
+    	}
     	$res[$i]['projid'] = $projectID;
+
   	}
 
   return $res;

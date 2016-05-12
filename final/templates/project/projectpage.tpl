@@ -188,68 +188,6 @@
 									</div>
 								</li>
 							{/foreach}
-							<li class="list-group-item clearfix">
-								<div class="row">
-									<div class="col-md-1">
-										<div class="pull-left">
-											<a href="#" style="margin-bottom: 0;"class="thumbnail">
-												<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=231081" alt="ademar aguiar" height="25px" width="25px"/>
-											</a>
-
-										</div>
-									</div>
-
-									<div class="col-md-2 text">
-										AAguiar
-									</div>
-
-									<div class="col-md-3 text">
-										<span class="glyphicon glyphicon-inbox"></span> 1 task assigned
-									</div>
-
-									<div class="col-md-3 text">
-										<span class="glyphicon glyphicon-pawn"></span> Team Member
-									</div>
-
-
-									<div class="pull-right">
-										<div class="btn-group" role="group" aria-label="...">
-											<button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
-											<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item clearfix">
-								<div class="row">
-									<div class="col-md-1">
-										<div class="pull-left">
-											<a href="#" style="margin-bottom: 0;"class="thumbnail">
-												<img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=209810" alt="magalhaes cruz" height="25px" width="25px"/>
-											</a>
-
-										</div>
-									</div>
-
-									<div class="col-md-2 text">
-										MCruz
-									</div>
-
-									<div class="col-md-3 text">
-										<span class="glyphicon glyphicon-inbox"></span> 3 task assigned
-									</div>
-
-									<div class="col-md-3 text">
-										<span class="glyphicon glyphicon-king"></span> Team Coordinator
-									</div>
-
-									<div class="pull-right">
-										<div class="btn-group" role="group" aria-label="...">
-											<button type="button" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
-										</div>
-									</div>
-								</div>
-							</li>
 						</ul>
 						<div class="input-group">
 							<div class="input-group-btn">
