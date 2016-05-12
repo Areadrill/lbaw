@@ -128,6 +128,7 @@
 						</div>
 					</div>
 					<div id="members" class="panel panel-default" hidden>
+						<input id="projectID" type="hidden" name="projectID" value={$projID}>
 						<ul class="list-group">
 							{foreach from=$members item=member}
 								<li class="list-group-item clearfix">

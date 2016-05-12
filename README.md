@@ -25,10 +25,10 @@
 - [ ] US24         As a Team Coordinator, I want to delete the project, so that useless or dead projects don't clutter my list of projects.                                                              
 - [ ] US25         As a Team Coordinator, I want to assign a task to a Team Member, so that they know what they need to do.                                                                              
 - [ ] US26         As a Team Coordinator, I want to retract a task from a Team Member, so that others can step in and finish the task.                                                                   
-- [ ] US27         As a Team Coordinator, I want to add Team Members to the project, so that the project can evolve faster.                                                                              
-- [ ] US28         As a Team Coordinator, I want to remove a Team Member from the project, so that unneeded staff or people that were added by accident don't have access to the project.                
-- [ ] US29         As a Team Coordinator, I want to promote a Team Member to Team Coordinator, so that the managerial concerns of a project can be shared.                                               
-- [ ] US30         As a Team Coordinator, I want to demote other Team Coordinators to Team Members, so that I can reshuffle responsibilities in the team.                                                
+- [X] US27         As a Team Coordinator, I want to add Team Members to the project, so that the project can evolve faster.                                                                              
+- [X] US28         As a Team Coordinator, I want to remove a Team Member from the project, so that unneeded staff or people that were added by accident don't have access to the project.                
+- [X] US29         As a Team Coordinator, I want to promote a Team Member to Team Coordinator, so that the managerial concerns of a project can be shared.                                               
+- [X] US30         As a Team Coordinator, I want to demote other Team Coordinators to Team Members, so that I can reshuffle responsibilities in the team.                                                
 - [ ] US31         As a Team Coordinator, I want to be notified when a Team Member marks a task as complete, so that I can review and confirm the task's completion                                      
 - [ ] US32         As a Team Coordinator, I want to mark a completed task as incomplete, so that Team Members know that something needs to be fixed                                                      
 - [ ] US33         As a Team Coordinator, I want to label a task, so that Team Members can filter tasks through those labels                                                                             

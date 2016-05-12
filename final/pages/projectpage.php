@@ -15,7 +15,7 @@
     exit;
   }
 
-  $imgPath = "../images/".$_SESSION['userid'].".jpg";
+ $imgPath = glob("../images/".$_SESSION['userid'].".*")[0];
   if(!file_exists($imgPath)){
     $imgPath = "../images/default.jpg";
   }

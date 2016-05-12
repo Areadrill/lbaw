@@ -36,9 +36,7 @@ function removeMember($userID, $projectID){
 	$stmt = $conn->prepare("DELETE FROM Roles WHERE userid = ? AND projectid = ?");
 	$stmt->execute(array($userID, $projectID));
 
-	var_dump($stmt->fetch());
-
-	return true;
+	return $stmt->fetch() !== false;
 }
 
 function addMember($userID, $projectID){
@@ -48,11 +46,9 @@ function addMember($userID, $projectID){
 		return false;
 
 	$stmt = $conn->prepare("INSERT INTO Roles VALUES(?, ?, 'MEMBER')");
-	$stmt->execute($userID, $projectID);
+	$stmt->execute(array($userID, $projectID));
 
-	var_dump($stmt->fetch());
-
-	return true;
+	return $stmt->fetch() !== false;
 }
 
 function checkPrivilege($userID, $projectID){
@@ -64,12 +60,17 @@ function checkPrivilege($userID, $projectID){
 	return $stmt->fetch()['roleassigned'];
 }
 
-function searchUsers($field){
+function searchUsers($field, $projectID){
   global $conn;
   $stmt = $conn->prepare("SELECT userid, username FROM Users WHERE to_tsvector(username) @@ to_tsquery('english',?)");
 
   $stmt->execute(array($field.':*'));
   $res = $stmt->fetchAll();
+
+  for($i = 0; $i < count($res); $i++){
+    	$res[$i]['picPath'] = glob($BASE_DIR."images/".$res[$i]['userid'].".*")[0];
+    	$res[$i]['projid'] = $projectID;
+  	}
 
   return $res;
 }
