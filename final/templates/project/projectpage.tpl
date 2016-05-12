@@ -101,14 +101,14 @@
 							<div class="col-md-8">
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<h2>Threads <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button></h2>
+										<h2>Threads {if $role == 'COORD'}<button id="newThread" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button>{/if}</h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
 									{foreach from=$threads item=thread}
 										<a href="thread.html" class="list-group-item">
 											<span class="glyphicon glyphicon-comment"></span> {$thread.name}
 											{foreach from=$thread.threadLabels item=label}
-												<span class="label label-info">$label.name</span>
+												<span class="label label-info">{$label.name}</span>
 											{/foreach}
 										</a>
 									{/foreach}
@@ -127,6 +127,40 @@
 
 						</div>
 					</div>
+
+					<div id="createThread" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Create a new Thread</h4>
+								</div>
+								<form action="../actions/projects/create_thread.php" method="post">
+									<br>
+									<div class="row">
+										<div class="form-group">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8">
+												<input name="projid" type="hidden" value={$projID}>
+												<input name="title" type="text" class="form-control" placeholder="Thread title" required>
+												<br>
+												<textarea style="resize: none" class="form-control" name="initialComment" placeholder="Initial comment (not necessary)" rows="4" cols="52"></textarea>
+												<!--eventualmente um dropdown com as tags-->
+											</div>
+											<div class="col-sm-2"></div>
+										</div>
+									</div>
+									<br>
+
+									<div class="modal-footer">
+										<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+
 					<div id="members" class="panel panel-default" hidden>
 						<input id="projectID" type="hidden" name="projectID" value={$projID}>
 						<ul class="list-group">

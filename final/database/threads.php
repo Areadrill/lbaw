@@ -1,5 +1,5 @@
 <?php
-include_onde('members.php');
+include_once('members.php');
 
 function getThreads($projID) {
 	global $conn;
@@ -9,14 +9,23 @@ function getThreads($projID) {
 
 	for($i = 0; $i < count($res); $i++){
 	    $res[$i]['threadLabels'] = getThreadLabels($res[$i]['threadid']);
-	 }
+	}
+
+	var_dump($res);
+
+	return $res;
 }
 
 function getThreadLabels($threadid) {
 	global $conn;
-	$stmt = $conn->prepare("SELECT name FROM ThreadLabel WHERE threadLID IN (SELECT threadLID FROM ThreadToLabel WHERE threadID = ?)");
+	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE threadLID IN (SELECT threadLID FROM ThreadToLabel WHERE threadID = ?)");
 	$stmt->execute(array($threadid));
 	$res = $stmt->fetchAll();
+
+	for($i = 0; $i < count($res); $i++){
+	    $res[$i]['count'] = getThreadLabelsCount($res[$i]['threadlid']);
+	}
+
 	return $res;
 }
 
@@ -27,7 +36,7 @@ function getProjectThreadLabels($projID) {
 	$res = $stmt->fetchAll();
 
 	for($i = 0; $i < count($res); $i++){
-	    $res[$i]['count'] = getLabelsCount($res[$i]['threadLID']);
+	    $res[$i]['count'] = getThreadLabelsCount($res[$i]['threadLID']);
 	}
 	return $res;
 }
@@ -42,15 +51,16 @@ function getThreadLabelsCount($threadlid){
 
 function checkIsInProject($userID, $threadID){
 	global $conn;
-	$stmt->prepare('SELECT projectid FROM Thread WHERE threadid = ?');
+	$stmt = $conn->prepare('SELECT projectid FROM Thread WHERE threadid = ?');
 	$stmt->execute(array($threadID));
 
 	$projID = $stmt->fetch();
-
-	$stmt = $conn->prepare('SELECT roleassigned FROM Roles WHERE userid = ? AND projectID = ?');
-	$stmt->execute(array($userID, $projID));
+	
+	$stmt = $conn->prepare('SELECT roleassigned FROM Roles WHERE userid = ? AND projectid = ?');
+	$stmt->execute(array($userID, $projID['projectid']));
 
 	$res = $stmt->fetch();
+	
 	if($res == null){
 		return false;
 	}
@@ -60,9 +70,9 @@ function checkIsInProject($userID, $threadID){
 }
 
 function comment($userID, $threadID, $text){
-	if(!checkIsInProject($userID, $projID)){
+	if(checkIsInProject($userID, $threadID) === false){
 		$_SESSION['error_messages'][] = 'User is not in the project';
-		return false;
+		echo 'crl';
 	}
 
 	global $conn;
@@ -190,6 +200,15 @@ function getProjIDCommentID($commentID){
 
 	$stmt = $conn->prepare("SELECT projectid FROM Thread WHERE threadid = (SELECT threadid FROM Comment WHERE commentid = ?)");
 	$stmt->execute(array($commentID));
+
+	return $stmt->fetch();	
+}
+
+function getThreadIDProjIDName($projectID, $name){
+	global $conn;
+
+	$stmt = $conn->prepare("SELECT threadid FROM Thread WHERE projectid = ? AND name = ?");
+	$stmt->execute(array($projectID, $name));
 
 	return $stmt->fetch();	
 }

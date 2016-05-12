@@ -88,4 +88,9 @@ $(document).ready(function(){
     });
   });
 
+  $("#newThread").click(function(){
+    $("#createThread").modal('show');
+  });
+
+
 });

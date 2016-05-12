@@ -21,7 +21,7 @@ try {
 	createProject($name, $description, $_SESSION['userid']);
 } catch (PDOException $e) {
 
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  
 
 	if (strpos($e->getMessage(), 'unique_projnameforcreator') !== false) {
 		$_SESSION['error_messages'][] = 'Duplicated project name';
