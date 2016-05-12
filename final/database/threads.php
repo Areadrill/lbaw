@@ -22,9 +22,9 @@ function getThreadLabels($threadid) {
 	$stmt->execute(array($threadid));
 	$res = $stmt->fetchAll();
 
-	for($i = 0; $i < count($res); $i++){
+	/*for($i = 0; $i < count($res); $i++){
 	    $res[$i]['count'] = getThreadLabelsCount($res[$i]['threadlid']);
-	}
+	}*/
 
 	return $res;
 }
@@ -46,8 +46,18 @@ function getThreadLabelsCount($threadlid){
 	$stmt = $conn->prepare("SELECT COUNT(threadID) FROM ThreadToLabel WHERE threadLID = ?");
 	$stmt->execute(array($threadlid));
 	$res = $stmt->fetchAll();
+	var_dump($res);
 	return $res;
 }
+
+function getThreadLabelCountForProject($projectID){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(threadlid) FROM ThreadLabel WHERE projectid = ?");
+	$stmt->execute(array($projectID));
+	$res = $stmt->fetchAll();
+	return $res['count'];
+}
+
 
 function checkIsInProject($userID, $threadID){
 	global $conn;
@@ -60,7 +70,7 @@ function checkIsInProject($userID, $threadID){
 	$stmt->execute(array($userID, $projID['projectid']));
 
 	$res = $stmt->fetch();
-	
+
 	if($res == null){
 		return false;
 	}
@@ -127,16 +137,15 @@ function deleteThread($userID, $threadID){
 }
 
 
-function createThreadLabel($userID, $threadID, $name){
-	if(checkPrivilege($userID, getProjIDThreadID($threadID)) !== 'COORD'){
+function createThreadLabel($userID, $projectID, $name){
+	if(checkPrivilege($userID, $projectID) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return false;
 	}
-
 	global $conn;
 
 	$stmt = $conn->prepare("INSERT INTO ThreadLabel VALUES(default, ?, ?)");
-	$stmt->execute(array(getProjIDThreadID($threadID), $name));
+	$stmt->execute(array($projectID, $name));
 
 	return $stmt->fetch() !== false;
 }

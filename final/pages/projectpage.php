@@ -27,6 +27,7 @@
   $smarty->assign('role', checkPrivilege($_SESSION['userid'], $projectID));
   $smarty->assign('info', getProjectInfo($projectID));
   $smarty->assign('threads', getThreads($projectID));
-  $smarty->assign('projectLabels', getProjectThreadLabels($projectID));
+  $smarty->assign('projectThreadLabels', getProjectThreadLabels($projectID));
+  $smarty->assign('projectThreadLabelCount', getThreadLabelCountForProject($projectID));
   $smarty->display('project/projectpage.tpl');
 ?>

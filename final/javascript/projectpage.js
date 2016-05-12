@@ -92,5 +92,15 @@ $(document).ready(function(){
     $("#createThread").modal('show');
   });
 
+   $("#labelManage").click(function(){
+    $("#manageLabels").modal('show');
+  });
+
+    $("#newTLSubmmit").click(function(){
+    $("#newLabel").submit();
+  });
+
+  
+
 
 });

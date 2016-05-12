@@ -27,8 +27,8 @@ try {
 } catch (PDOException $e) {
 
 	if (strpos($e->getMessage(), 'unique_threadNameInProj') !== false) {
-		$_SESSION['error_messages'][] = 'Duplicated project name';
-		$_SESSION['field_errors']['title'] = 'Project name already exists';
+		$_SESSION['error_messages'][] = 'Duplicated thread name';
+		$_SESSION['field_errors']['title'] = 'Thread name already exists';
 	}
 	else
   $_SESSION['error_messages'][] = 'Error creating Thread';

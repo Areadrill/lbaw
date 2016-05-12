@@ -94,7 +94,7 @@
 						</div>
 					</div>
 					<div id="forum" class="panel panel-default" hidden>
-						<button class="btn btn-link pull-right"><span class="glyphicon glyphicon-cog"></span> Manage labels</button>
+						{if $role == 'COORD'}<button id="labelManage" class="btn btn-link pull-right"><span class="glyphicon glyphicon-cog"></span> Manage labels</button>{/if}
 						<br>
 						<br>
 						<div class="row">
@@ -117,7 +117,10 @@
 							</div>
 							<div class="col-md-4">
 								<div class="list-group">
-									<a href="#" class="list-group-item disabled">Tags<span class="badge">2</span></a>
+									<a href="#" class="list-group-item diabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
+									{foreach from=$projectThreadLabels item=threadLabel}
+										<a href="#" class="list-group-item"><span class="label label-danger">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
+									{/foreach}
 									<a href="#" class="list-group-item"><span class="label label-danger">Bug fixes</span><span class="badge">1</span></a>
 									<a href="#" class="list-group-item"><span class="label label-primary">Back-end</span><span class="badge">0</span></a>
 									<a href="#" class="list-group-item"><span class="label label-info">Front-end</span><span class="badge">1</span></a>
@@ -159,6 +162,38 @@
 							</div>
 						</div>
 					</div>
+
+
+					<div id="manageLabels" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Manage Thread Labels</h4>
+								</div>
+								<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post">
+									<br>
+									<div class="row">
+										<div class="form-group">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8">
+												<input name="projid" type="hidden" value={$projID}>
+												<div class="input-group">
+													<div class="input-group-btn">
+														<button id="newTLSubmmit" type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
+													</div><!-- /btn-group -->
+													<input name="name" type="text" class="form-control" placeholder="New Label name" aria-label="...">
+												</div><!-- /input-group -->
+											</div>
+											<div class="col-sm-2"></div>
+										</div>
+									</div>
+									<br>
+								</form>
+							</div>
+						</div>
+					</div>
+
 
 
 					<div id="members" class="panel panel-default" hidden>
