@@ -147,7 +147,7 @@
 										</div>
 
 										<div class="col-md-3 text">
-											<span class="glyphicon glyphicon-inbox"></span> 1 task assigned
+											<span class="glyphicon glyphicon-inbox"></span> {if $member.tasksassigned == 0} no {else} {$member.tasksassigned} {/if} task{if $member.tasksassigned != 1}s{/if} assigned
 										</div>
 
 										<div class="col-md-3 text">

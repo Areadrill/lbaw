@@ -9,9 +9,18 @@ function getProjectMembers($projectID){
 
 	for($i = 0; $i < count($members); $i++){
     	$members[$i]['picPath'] = glob("../images/".$members[$i]['userid'].".*")[0];
+    	$members[$i]['tasksassigned'] = memberTasks($res[$i]['userid'], $projectID);
   	}
 
 	return $members;
+}
+
+function memberTasks($userID, $projectID){
+	global $conn;
+	$stmt = $conn->prepare('SELECT COUNT(taskid) AS tasksassigned FROM Task WHERE assignee = ? AND projectid = ?');
+	$stmt->execute(array($userID, $projectID));
+
+	return $stmt->fetch()['tasksassigned'];
 }
 
 function alterMemberRole($userID, $projectID, $newRole){
