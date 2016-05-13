@@ -92,11 +92,6 @@ function comment($userID, $threadID, $text){
 }
 
 function createThread($userID, $projectID, $name){
-	if(checkPrivilege($userID, $projectID) !== 'COORD'){
-		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
-	}
-
 	global $conn;
 
 	$stmt = $conn->prepare("INSERT INTO Thread VALUES(default, ?, ?, ?, clock_timestamp())");

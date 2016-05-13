@@ -101,7 +101,7 @@
 							<div class="col-md-8">
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<h2>Threads {if $role == 'COORD'}<button id="newThread" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button>{/if}</h2>
+										<h2>Threads <button id="newThread" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button></h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
 									{foreach from=$threads item=thread}
@@ -282,6 +282,7 @@
 								</li>
 							{/foreach}
 						</ul>
+						{if $role == 'COORD'}
 						<div class="input-group">
 							<div class="input-group-btn">
 								<button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
@@ -290,6 +291,7 @@
 						</div><!-- /input-group -->
 						<div id="listofusers">
 						</div>
+						{/if}
 
 					</div>
 					<div id="description"  class="panel panel-default">
