@@ -9,8 +9,9 @@
   }
   $threadID = $_GET['id'];
   $projectID = getProjIDThreadID($threadID)['projectid'];
+  $role = checkPrivilege($_SESSION['userid'], $projectID);
 
-  if(checkPrivilege($_SESSION['userid'], $projectID) == null){
+  if($role == null){
     header('Location: '.  $_SERVER['HTTP_REFERER']);
     exit;
   }
@@ -26,6 +27,7 @@
     $imgPath = "../images/default.jpg";
   }
 
+  $smarty->assign('role', $role);
   $smarty->assign('labels', getThreadLabels($threadID));
   $smarty->assign('comments', getThreadComments($threadID));
   $smarty->assign('threadInfo', getThreadInfo($threadID));

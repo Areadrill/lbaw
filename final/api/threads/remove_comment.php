@@ -3,29 +3,23 @@ include_once('../../config/init.php');
 include_once($BASE_DIR .'database/threads.php');
 
 
-if(!$_POST['threadid']){
+if(!$_POST['commentid']){
 	error('Something went wrong.');
 	exit;
 }
 
-$comment = strip_tags($_POST['commentArea']);
-
-if(!$comment || ctype_space($comment)) {
-  echo json_encode(getThreadComments($_POST['threadid']));
-  exit;
-}
-
 
 if (!isset($_SESSION['userid'])){
-	error_log('user was not logged in on api/projects/search_project.php');
+	error('user was not logged in');
 	exit;
 }
 
+$threadID = getThreadIDCommentID($_POST['commentid']);
 
-comment($_SESSION['userid'], $_POST['threadid'], $comment);
+deleteComment($_SESSION['userid'], $_POST['commentid']);
 
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-		echo json_encode(getThreadComments($_POST['threadid']));
+		echo json_encode(getThreadComments($threadID));
 }
 else{
 	$_SESSION['success_messages'][] = 'Comment created successfully';

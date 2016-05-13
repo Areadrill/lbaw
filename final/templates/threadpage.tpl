@@ -1,6 +1,8 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/userpageStyle.css">
 <link rel="stylesheet" href="../css/custom/threadStyle.css">
+<script src="../javascript/threadpage.js" ></script>
+
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -59,6 +61,7 @@
     </div>
     <div class="row">
       <div class="col-md-10">
+      <div id="allComments">
       {foreach from=$comments item=comment}
          <div class="row">
           <div class="col-md-12">
@@ -66,7 +69,7 @@
               <div class="panel-heading">
                 <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorName}</strong></a> <span class="drab">commented 3 days ago </span>
                   <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                  <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                  {if $role === 'COORD'}<a href="#" class="pull-right submitRemoveComment"><input type="hidden" name="commentid" value={$comment.commentid}><span class="glyphicon glyphicon-remove"></span></a>{/if}
                 </h5>
               </div>
               <div class="panel-body">
@@ -78,6 +81,7 @@
           </div>
         </div>
       {/foreach}
+      </div>
         <div class="row">
           <div class="col-md-12">
             <div class="widget-area no-padding blank">

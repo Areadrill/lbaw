@@ -121,7 +121,7 @@ function createThread($userID, $projectID, $name){
 
 function deleteComment($userID, $commentID){
 
-	if(checkPrivilege($userID, getProjIDCommentID($commentID)) !== 'COORD'){
+	if(checkPrivilege($userID, getProjIDCommentID($commentID)['projectid']) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return false;
 	}
@@ -136,7 +136,7 @@ function deleteComment($userID, $commentID){
 }
 
 function deleteThread($userID, $threadID){
-	if(checkPrivilege($userID, getProjIDThreadID($threadID)) !== 'COORD'){
+	if(checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return false;
 	}
@@ -242,6 +242,15 @@ function getThreadIDProjIDName($projectID, $name){
 	$stmt->execute(array($projectID, $name));
 
 	return $stmt->fetch();	
+}
+
+function getThreadIDCommentID($commentID){
+	global $conn;
+
+	$stmt = $conn->prepare("SELECT threadid FROM Comment WHERE commentid = ?");
+	$stmt->execute(array($commentID));
+
+	return $stmt->fetch()['threadid'];
 }
 
 ?>
