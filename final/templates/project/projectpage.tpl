@@ -117,14 +117,10 @@
 							</div>
 							<div class="col-md-4">
 								<div class="list-group">
-									<a href="#" class="list-group-item diabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
+									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
 									{foreach from=$projectThreadLabels item=threadLabel}
-										<a href="#" class="list-group-item"><span class="label label-danger">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
+										<a href="#" class="list-group-item"><span class="label label-primary">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
 									{/foreach}
-									<a href="#" class="list-group-item"><span class="label label-danger">Bug fixes</span><span class="badge">1</span></a>
-									<a href="#" class="list-group-item"><span class="label label-primary">Back-end</span><span class="badge">0</span></a>
-									<a href="#" class="list-group-item"><span class="label label-info">Front-end</span><span class="badge">1</span></a>
-									<a href="#" class="list-group-item"><span class="label label-success">Documents</span><span class="badge">1</span></a>
 								</div>
 							</div>
 
@@ -190,6 +186,34 @@
 									</div>
 									<br>
 								</form>
+								<h4> Current Thread Labels</h4>
+								<ul class="list-group">
+									{foreach from=$projectThreadLabels item=threadLabel}
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<li class="list-group-item clearfix">
+												<div class="row">
+													<div class="col-md-3">
+													<span class="label label-primary">{$threadLabel.name}</span>
+													</div>
+													<div class="col-md-4">
+													    <span class="badge">{$threadLabel.count}</span>
+													</div>
+													<div class="col-md-5">
+												<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post">
+													<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
+													<button type="submit" class="btn btn-primary pull-right"> Delete </button>
+												</form>
+												</div>
+												</div>
+											</li>
+										</div>
+										<div class="col-md-1"></div>
+									</div>	
+									{/foreach}
+								</ul>
+								<br>
 							</div>
 						</div>
 					</div>
