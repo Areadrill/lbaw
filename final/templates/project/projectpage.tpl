@@ -105,7 +105,7 @@
 									</div>
 									<div class="list-group" id="recent-tasks">
 									{foreach from=$threads item=thread}
-										<a href="thread.html" class="list-group-item">
+										<a href=../pages/threadpage.php?id={$thread.threadid} class="list-group-item">
 											<span class="glyphicon glyphicon-comment"></span> {$thread.name}
 											{foreach from=$thread.threadLabels item=label}
 												<span class="label label-info">{$label.name}</span>

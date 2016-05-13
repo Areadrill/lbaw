@@ -8,7 +8,12 @@ function getProjectMembers($projectID){
 	$members = $stmt->fetchAll();
 
 	for($i = 0; $i < count($members); $i++){
-    	$members[$i]['picPath'] = glob("../images/".$members[$i]['userid'].".*")[0];
+		$picPath = glob("../images/".$members[$i]['userid'].".*")[0];
+		if(!$picPath || !file_exists($picPath)){
+			$picPath = glob("../images/default.jpg")[0];
+		}
+
+    	$members[$i]['picPath'] = $picPath;
     	$members[$i]['tasksassigned'] = memberTasks($res[$i]['userid'], $projectID);
   	}
 

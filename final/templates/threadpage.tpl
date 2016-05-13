@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <!-- Latest compiled and minified CSS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/bootstrap.min.css"  crossorigin="anonymous">
-  <!-- Optional theme -->
-  <!--<link rel="stylesheet" href="css/bootstrap-theme.min.css">-->
-  <link rel="stylesheet" href="userpageStyle.css">
-  <link rel="stylesheet" href="threadStyle.css">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="js/bootstrap.min.js" ></script>
-  <title> Thread Page </title>
+{include file='common/header.tpl'}
+<link rel="stylesheet" href="../css/custom/userpageStyle.css">
+<link rel="stylesheet" href="../css/custom/threadStyle.css">
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -39,8 +25,8 @@
         </form>
         <div class="navbar-right">
           <div id="mid-of-navbar">
-            <a href="userpage.html"> jLopes </a>
-            <img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=230756" alt="user image" width="30px" height="30px" />
+            <a href="userpage.html"> {$username} </a>
+            <img src={$imgPath} alt="user image" width="30px" height="30px" />
           </div>
         </div>
       </div>
@@ -51,22 +37,21 @@
       <div class ="col-md-12">
         <ol class="breadcrumb">
           <li><a href="index.html">Home</a></li>
-          <li><a href="userpage.html">jlopes</a></li>
-          <li><a href="projectpage.html">Project</a></li>
-          <li><a href="projectpage.html">Forum</a></li>
-          <li><a class="active" href="#">Fix log in button</a></li>
+          <li><a href="userpage.html">{$username}</a></li>
+          <li><a href="projectpage.html">{$projectInfo.name}</a></li>
+          <li><a class="active" href="#">{$threadInfo.name}</a></li>
         </ol>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <h1 style="display:inline;">Fix log in button <span class="label label-info">Front-end</span> <span class="label label-danger">Bug fixing</span></h1>
+        <h1 style="display:inline;">{$threadInfo.name} {foreach from=$labels item=label}<span class="label label-info">{$label.name}</span>{/foreach}<span class="label label-info">Front-end</span> <span class="label label-danger">Bug fixing</span></h1>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-12 pull-to-bottom">
-        <p> Thread created by <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> MCruz </strong><span class="drab"> 4 months ago</span></p>
+        <p> Thread created by <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> {$threadInfo.creatorName} </strong><span class="drab"> 4 months ago</span></p>
       </div>
       <div class="col-md-2 pull-to-bottom">
 
@@ -74,45 +59,32 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-        <div class="row">
+      {foreach from=$comments item=comment}
+         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> MCruz</strong></a> <span class="drab">commented 3 days ago </span>
+                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorName}</strong></a> <span class="drab">commented 3 days ago </span>
                   <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
                   <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                 </h5>
               </div>
               <div class="panel-body">
                 <p>
-                  Log in button in index.html is not working properly...
+                  {$comment.text}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h5><a href="#"><strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> AAguiar</strong></a>
-                  <span class="drab">commented 2 hours ago </span>
-                  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                  <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                </h5>
-              </div>
-              <div class="panel-body">
-                <p>I'll will add a taks and assign it to you!</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/foreach}
         <div class="row">
           <div class="col-md-12">
             <div class="widget-area no-padding blank">
               <div class="status-upload">
-                <form>
-                  <textarea placeholder="Comment area" ></textarea>
+                <form action="../api/threads/create_comment.php" method="post">
+                  <input type="hidden" name="threadid" value={$threadID}>
+                  <textarea name="commentArea" placeholder="Comment area" ></textarea>
                   <ul>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
@@ -143,7 +115,7 @@
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
         <ul class="label-list">
-          <li><a href="#"><span class="label label-danger">Bug fixing</span></a> <a href="#"><span class="label label-info">Front-end</span></a></li>
+        {foreach from=$labels item=label}<li><span class="label label-info">{$label.name}</span></li>{/foreach}<li><a href="#"><span class="label label-danger">Bug fixing</span></a> <a href="#"><span class="label label-info">Front-end</span></a></li>
         </ul>
         <hr/>
       </div>

@@ -42,6 +42,13 @@ function logoutUser($userid) {
 	return $stmt->fetch() == true;
 }
 
+function getUsername($userID){
+	global $conn;
+	$stmt = $conn->prepare("SELECT username FROM Users WHERE userid = ?");
+	$stmt->execute(array($userID));
+	return $stmt->fetch()['username'];
+}
+
 function getUserByEmail($email){
 	global $conn;
 	$stmt = $conn->prepare("SELECT userid FROM Users WHERE email = :email");

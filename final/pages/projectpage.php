@@ -10,6 +10,11 @@
   }
   $projectID = $_GET['id'];
 
+  if(checkPrivilege($_SESSION['userid'], $projectID) == null){
+    header('Location: '. $BASE_URL . 'pages/userpage.php');
+    exit;
+  }
+
   if($projectID == null){
     header('Location: '. $BASE_URL . 'pages/user/userpage.php');
     exit;

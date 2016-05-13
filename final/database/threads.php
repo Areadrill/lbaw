@@ -1,9 +1,10 @@
 <?php
 include_once('members.php');
+include_once('users.php');
 
 function getThreads($projID) {
 	global $conn;
-	$stmt = $conn->prepare("SELECT threadID, name FROM Thread WHERE projectID = ?");
+	$stmt = $conn->prepare("SELECT threadid, name FROM Thread WHERE projectID = ?");
 	$stmt->execute(array($projID));
 	$res = $stmt->fetchAll();
 
@@ -16,15 +17,11 @@ function getThreads($projID) {
 	return $res;
 }
 
-function getThreadLabels($threadid) {
+function getThreadLabels($threadID) {
 	global $conn;
 	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE threadLID IN (SELECT threadLID FROM ThreadToLabel WHERE threadID = ?)");
 	$stmt->execute(array($threadid));
 	$res = $stmt->fetchAll();
-
-	/*for($i = 0; $i < count($res); $i++){
-	    $res[$i]['count'] = getThreadLabelsCount($res[$i]['threadlid']);
-	}*/
 
 	return $res;
 }
@@ -55,6 +52,28 @@ function getThreadLabelCountForProject($projectID){
 	$stmt->execute(array($projectID));
 	$res = $stmt->fetch();
 	return $res['count'];
+}
+
+function getThreadInfo($threadID){
+	global $conn;
+	$stmt = $conn->prepare("SELECT name, creator, creationinfo FROM Thread WHERE threadid = ?");
+	$stmt->execute(array($threadID));
+	$res = $stmt->fetch();
+	$res['creatorName'] = getUsername($res['creator']);
+	return $res;
+}
+
+function getThreadComments($threadID){
+	global $conn;
+	$stmt = $conn->prepare("SELECT commentid, commentor, creationinfo, text FROM Comment WHERE threadid = ?");
+	$stmt->execute(array($threadID));
+	$res = $stmt->fetchAll();
+
+	for($i = 0; $i < count($res); $i++){
+	    $res[$i]['commentorName'] = getUsername($res[$i]['commentor']);
+	}
+
+	return $res;
 }
 
 
