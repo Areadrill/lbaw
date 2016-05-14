@@ -12,17 +12,24 @@ function getThreads($projID) {
 	    $res[$i]['threadLabels'] = getThreadLabels($res[$i]['threadid']);
 	}
 
-	var_dump($res);
-
 	return $res;
 }
 
 function getThreadLabels($threadID) {
 	global $conn;
-	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE threadLID IN (SELECT threadLID FROM ThreadToLabel WHERE threadID = ?)");
-	$stmt->execute(array($threadid));
+	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE threadLID IN (SELECT threadlid FROM ThreadToLabel WHERE threadID = ?)");
+	$stmt->execute(array($threadID));
 	$res = $stmt->fetchAll();
+	
+	return $res;
+}
 
+function getLabelsNotInThread($threadID){
+	global $conn;
+	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE projectid = ? AND threadlid NOT IN (SELECT threadlid FROM ThreadToLabel WHERE threadid = ?)");
+	$stmt->execute(array(getProjIDThreadID($threadID)['projectid'], $threadID));
+	$res = $stmt->fetchAll();
+	
 	return $res;
 }
 
@@ -179,7 +186,7 @@ function deleteThreadLabel($userID, $threadLID){
 
 
 function assignLabelToThread($userID, $threadID, $threadLID){ //preciso ver se a thread e a label pertencem ao mesmo projeto?
-	if(checkPrivilege($userID, getProjIDThreadID($threadID)) !== 'COORD'){
+	if((checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD') && ($_SESSION['userid'] !== getThreadInfo($threadID)['creator'])){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return false;
 	}
@@ -193,7 +200,7 @@ function assignLabelToThread($userID, $threadID, $threadLID){ //preciso ver se a
 }
 
 function unassignLabelFromThread($userID, $threadID, $threadLID){
-	if(checkPrivilege($userID, getProjIDThreadID($threadID)) !== 'COORD'){
+	if((checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD') && ($_SESSION['userid'] !== getThreadInfo($threadID)['creator'])){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return false;
 	}
@@ -201,7 +208,7 @@ function unassignLabelFromThread($userID, $threadID, $threadLID){
 	global $conn;
 
 	$stmt = $conn->prepare("DELETE FROM ThreadToLabel WHERE threadid = ? AND threadlid = ?");
-	$stmt->execute(array($threadid, $threadLID));
+	$stmt->execute(array($threadID, $threadLID));
 
 	return $stmt->fetch() !== false;
 }

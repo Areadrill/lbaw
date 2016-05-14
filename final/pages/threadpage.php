@@ -29,6 +29,7 @@
 
   $smarty->assign('role', $role);
   $smarty->assign('labels', getThreadLabels($threadID));
+  $smarty->assign('missingLabels', getLabelsNotInThread($threadID));
   $smarty->assign('comments', getThreadComments($threadID));
   $smarty->assign('threadInfo', getThreadInfo($threadID));
   $smarty->assign('projectInfo', getProjectInfo($projectID));
