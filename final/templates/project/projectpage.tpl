@@ -75,10 +75,13 @@
 										<h2>Recent Tasks</h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
-										<a href="taskpage.html" class="list-group-item">Finish documentation<span class="label label-warning">Master</span></a>
-										<a href="taskpage.html" class="list-group-item">Add lists of taks<span class="label label-success">Features</span></a>
-										<a href="taskpage.html" class="list-group-item">Add project progress bar<span class="label label-success text-left">Features</span></a>
-										<a href="taskpage.html" class="list-group-item">Fix log in button<span class="label label-danger">Bug fixes</span></a>
+									{foreach from=$tasks item=task}
+										<a href="../pages/tasks/task.php?taskid={$task.taskid}" class="list-group-item">{$task.name}
+										{foreach from=$task.taskLabels item=label}
+										<span class="label label-warning">{$label.name}</span>
+										{/foreach}
+									</a>
+									{/foreach}
 									</div>
 								</div>
 							</div>

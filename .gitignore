@@ -1,3 +1,6 @@
 *.swp
 proto/templates_c/
 proto/config/*
+db/setup.sql
+db/setup.fish
+final/templates_c/
