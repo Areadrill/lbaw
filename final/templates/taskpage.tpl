@@ -74,18 +74,17 @@
           <div class="col-md-12">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentor}</strong></a>
-                  <span class="drab">commented 3 days ago </span><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorname}</strong></a>
+                  <span class="drab">commented 3 days ago </span>
+		  {if $creatorid eq $commentor}
+		  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+		  {/if}
                   <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                 </h5>
               </div>
               <div class="panel-body">
-                <p>The documention is almost finished.</p>
-                <p>Sections missing:</p>
-                <p>- 4.5</p>
-                <p>- 4.6</p>
-                <p>- 5</p>
-              </div>
+             {$comment.text}   
+	      </div>
             </div>
           </div>
         </div>
