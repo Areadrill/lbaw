@@ -40,5 +40,5 @@
 - [ ] US39         As Team Coordinator, I want to delete a list of tasks, so that it is no longer publicly viewable.                                                                                     
 - [ ] US40         As Team Coordinator, I want to add a task to a list of tasks, so that it can now be viewed as part of that list.                                                                      
 - [ ] US41         As Team Coordinator, I want to remove a task from a list of tasks, so that that task is no longer considered a part of that milestone.                                                
-- [ ] US42         As Team Coordinator, I want to add a project description, so that it can be viewed on the project page.                                                                               
+- [x] US42         As Team Coordinator, I want to add a project description, so that it can be viewed on the project page.                                                                               
 - [ ] US43         As Team Coordinator, I want to edit the project description, so that it reflects the ever-changing realities of the project.                                                          
