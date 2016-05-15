@@ -132,7 +132,7 @@
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
 	{if !empty($assignee)}
-        <a href="#"><strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> MCruz</strong></a>
+        <a href="#"><strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> {$assigneeName}</strong></a>
 	{else}
 	<p> Task not assigned</p>
 	{/if}
