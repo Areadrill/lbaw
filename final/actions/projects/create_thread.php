@@ -13,7 +13,7 @@ $title = strip_tags($_POST['title']);
 $initComment = strip_tags($_POST['initialComment']);
 
 if (!isset($_SESSION['userid'])){
-	error_log('User was not logged in on actions/projects/create_project.php');
+	error_log('User was not logged in on actions/projects/create_thread.php');
 	exit;
 }
 

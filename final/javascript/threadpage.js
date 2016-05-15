@@ -33,9 +33,12 @@ $(document).ready(function (){
 		$("#manageThreadLabels").modal('show');
 	});
 
+	$("#threadDelete").click(function (){
+		$("#deleteThreadConfirm").modal('show');
+	});
 
 	$(document).on("submit",".labelOp",function(e){
- 		console.log("ola");
+ 		
 		e.preventDefault();
 		$.post('../api/threads/assign_label.php', {threadid: $("input[name='threadid']", this).val(), threadlid: $("input[name='threadlid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
 			var json = JSON.parse(data);
@@ -44,7 +47,7 @@ $(document).ready(function (){
 			$("#lblList1").empty();
 			$("#lblList2").empty();
 
-			console.log(json);
+			
 
 			for(var i = 0; i < json[0].length; i++){
 				$("#currThreadLabels").append("<div class=\"row\">"+

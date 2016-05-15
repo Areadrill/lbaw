@@ -46,9 +46,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <h1 style="display:inline;">{$threadInfo.name} <span id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</span>
+      <div class="col-md-10">
+        <h1 style="display:inline;">{$threadInfo.name} <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
       </div> 
+      <div class="col-md-2">
+        <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
+      </div>
     </div>
     <br>
     <div class="row">
@@ -190,7 +193,7 @@
         </div>
       </div>
 
-       <div id="deleteThreadconfirm" class="modal fade" role="dialog">
+       <div id="deleteThreadConfirm" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -199,17 +202,17 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-3"></div>
-              <div class="col-md-6">
-                <p> Are you sure you want to delete this thread? </p>
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <h4> Are you sure you want to delete this thread? </h4>
               </div>
-              <div class="col-md-3"></div>
+              <div class="col-md-2"></div>
               <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-4">
-                <form class="alignForm" action="../actions/delete_thread.php" method="post">
+              <div class="col-md-5"></div>
+              <div class="col-md-3">
+                <form class="alignForm" action="../actions/threads/remove_thread.php" method="post">
                   <input type="hidden" name="threadid" value={$threadID}>
-                  <button id="deleteConfirm" type="submit" class="btn btn-primary">Delete</button>
+                  <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
                 </form>
               </div>
               <div class="col-md-4"></div>

@@ -32,7 +32,7 @@
 - [ ] US31         As a Team Coordinator, I want to be notified when a Team Member marks a task as complete, so that I can review and confirm the task's completion                                      
 - [ ] US32         As a Team Coordinator, I want to mark a completed task as incomplete, so that Team Members know that something needs to be fixed                                                      
 - [ ] US33         As a Team Coordinator, I want to label a task, so that Team Members can filter tasks through those labels                                                                             
-- [ ] US34         As a Team Coordinator, I want to delete a forum thread, so that unnecessary or unimportant topics no longer take up space in the forum                                                
+- [x] US34         As a Team Coordinator, I want to delete a forum thread, so that unnecessary or unimportant topics no longer take up space in the forum                                                
 - [ ] US35         As a Team Coordinator, I want to lock  a forum thread, so Team Members can no longer comment on it but the information is still available.                                            
 - [x] US36         As a Team Coordinator, I want to delete a specific reply from a thread, so that it is no longer seen by other Team Members.                                                           
 - [ ] US37         As Team Coordinator, I want to delete specific comments from a task, so that it may no longer be seen by other Team Members.                                                          

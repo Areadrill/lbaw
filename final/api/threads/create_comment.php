@@ -11,7 +11,7 @@ if(!$_POST['threadid']){
 $comment = strip_tags($_POST['commentArea']);
 
 if(!$comment || ctype_space($comment)) {
-  echo json_encode(getThreadComments($_POST['threadid']));
+  error (json_encode(getThreadComments($_POST['threadid'])));
   exit;
 }
 
