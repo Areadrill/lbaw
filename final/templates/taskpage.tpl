@@ -3,36 +3,39 @@
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/taskpage.css">
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">ProjectHarbor</a>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <form class="navbar-form navbar-right" role="logout">
-          <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
-        </form>
-        <div class="navbar-right">
-          <div id="mid-of-navbar">
-            <a href="userpage.html"> jLopes </a>
-            <img src="https://sigarra.up.pt/feup/pt/FOTOGRAFIAS_SERVICE.foto?pct_cod=230756" alt="user image" width="30px" height="30px" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="homepage.php">ProjectHarbor</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
+					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
+				</form>
+				<div class="navbar-right">
+					<div id="mid-of-navbar">
+						<a class="white-link" href="userpage.php"> {$username} </a>
+						<img src={$img} alt="user image" width="30px" height="30px" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	
+   <div class="container">
     <div class="row">
       <div class ="col-md-12">
         <ol class="breadcrumb">
