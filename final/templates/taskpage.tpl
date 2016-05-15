@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <!-- Latest compiled and minified CSS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/bootstrap.min.css"  crossorigin="anonymous">
-  <!-- Optional theme -->
-  <!--<link rel="stylesheet" href="css/bootstrap-theme.min.css">-->
-  <link rel="stylesheet" href="userpageStyle.css">
-  <link rel="stylesheet" href="taskpageStyle.css">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="js/bootstrap.min.js" ></script>
-  <title> Task Page </title>
+{include file='common/header.tpl'}
+	<link rel="stylesheet" href="{$BASE_URL}css/custom/userpageStyle.css">
+	<link rel="stylesheet" href="{$BASE_URL}css/custom/taskpage.css">
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -51,22 +37,31 @@
       <div class ="col-md-12">
         <ol class="breadcrumb">
           <li><a href="index.html">Home</a></li>
-          <li><a href="userpage.html">jlopes</a></li>
+          <li><a href="{$BASE_URL}pages/userpage.php?userid={$userid}">{$username}</a></li>
           <li><a href="projectpage.html">Project</a></li>
           <li><a href="projectpage.html">Tasks</a></li>
-          <li><a class="active" href="#">Finish documen...</a></li>
+          <li><a class="active" href="#">{$name} </a></li>
         </ol>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <h1 style="display:inline;">Finish documentation <span class="label label-warning">Master</span></h1>
+        <h1 style="display:inline;">{$name}</h1>
+	{foreach from=$labels item=label}	
+		<span class="label label-warning">{$label.name}</span>
+	{/foreach}
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-12 pull-to-bottom">
-        <p > <a class="btn btn-success btn-sm" href="#" role="button">Concluído </a> Task created by <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> AAguiar </strong><span class="drab"> 4 months ago</span></p>
+        <p >
+	{if $complete eq true}
+	<a class="btn btn-success btn-sm" href="#" role="button">Complete </a> 
+	{else}
+	<a class="btn btn-danger btn-sm" href="#" role="button">Not Complete </a> 
+	{/if}
+	Task created by <a href="{$BASE_URL}pages/userpage.php?userid={$creatorid}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>{$creatorname}</a> </p>
       </div>
       <div class="col-md-2 pull-to-bottom">
 
@@ -74,11 +69,12 @@
     </div>
     <div class="row">
       <div class="col-md-10">
+	  {foreach from=$comments item=comment}
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> AAguiar</strong></a>
+                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentor}</strong></a>
                   <span class="drab">commented 3 days ago </span><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
                   <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                 </h5>
@@ -93,18 +89,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h5><a href="#"><strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> jLopes</strong></a> <span class="drab">marked as completed 2 hours ago </span><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></h5>
-              </div>
-              <div class="panel-body">
-                <p>This task is complete.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+	{/foreach}
         <div class="row">
           <div class="col-md-12">
             <div class="widget-area no-padding blank">
@@ -130,7 +115,11 @@
           </div>
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>			<ul class="label-list">
-          <li><a href="#"><span class="label label-warning">Master</span></a></li>
+	{foreach from=$labels item=label}	
+          <li><a href="#"><span class="label label-warning">{$label.name}</span></a></li>
+    	{foreachelse}
+	<p> No Labels</p>
+	{/foreach}
         </ul>
         <hr/>
         <div class="row">
@@ -140,19 +129,23 @@
           </div>
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
+	{if !empty($assignee)}
         <a href="#"><strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> MCruz</strong></a>
-
+	{else}
+	<p> Task not assigned</p>
+	{/if}
         <hr/>
         <div class="row">
           <div class="col-md-10">
             <h4 class="drab">Task list</h4>
-
           </div>
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
-        <a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span> Demitate government</strong></a>
-
+	{if !empty($tasklist)}
+        <a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span> {$tasklistName}</strong></a>
+	{else}
+	<p> No Task List</p>
+	{/if}
       </div>
     </div>
-  </body>
-  </html>
+    {include file='common/footer.tpl'}

@@ -31,5 +31,20 @@ if(!$task){
 	header('Location: '. $_SERVER['HTTP_REFERER']);
 	exit;
 }
-var_dump($task);
+$tasklabels = getTaskLabels($taskID);
+$taskcomments = getTaskComments($taskID);
+
+$smarty->assign('username', getUsername($_SESSION['userid']));
+$smarty->assign('userid', $_SESSION['userid']);
+$smarty->assign('creatorid', $task['creator']);
+$smarty->assign('creatorname', $task['creatorName']);
+$smarty->assign('complete', $task['complete']);
+$smarty->assign('name', $task['name']);
+$smarty->assign('assignee', $task['assignee']);
+$smarty->assign('assigneeName', $task['assigneeName']);
+$smarty->assign('tasklist', $task['taskliid']);
+$smarty->assign('tasklistName', $task['tasklistName']);
+$smarty->assign('labels', $tasklabels);
+$smarty->assign('comments', $taskcomments);
+$smarty->display('taskpage.tpl');
 ?>
