@@ -299,12 +299,10 @@
 			</div>
 		</div>
 	</div>
-	{if !empty($ERROR_MESSAGES)}
 	<script>
 	$(document).ready(function(){
 		$("#bootstrap-alert-box-modal").modal('show');
 	});
 	</script>
 
-	{/if}
 	{include file='../common/footer.tpl'}

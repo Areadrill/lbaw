@@ -3,6 +3,7 @@
   include_once('../database/threads.php');
   include_once('../database/projects.php');
   include_once('../database/members.php');
+  include_once('../database/tasks.php');
 
   if(!isset($_SESSION['userid'])){
     header('Location: '. $BASE_URL);
@@ -24,6 +25,7 @@
   if(!file_exists($imgPath)){
     $imgPath = "../images/default.jpg";
   }
+  
 
   $smarty->assign('projID', $projectID);
   $smarty->assign('members', getProjectMembers($projectID));
@@ -32,6 +34,7 @@
   $smarty->assign('role', checkPrivilege($_SESSION['userid'], $projectID));
   $smarty->assign('info', getProjectInfo($projectID));
   $smarty->assign('threads', getThreads($projectID));
+  $smarty->assign('tasks', getTasks($projectID));
   $smarty->assign('projectThreadLabels', getProjectThreadLabels($projectID));
   $smarty->assign('projectThreadLabelCount', getThreadLabelCountForProject($projectID));
   $smarty->display('project/projectpage.tpl');
