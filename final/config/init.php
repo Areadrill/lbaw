@@ -1,14 +1,13 @@
 <?php
-  session_set_cookie_params(3600, '/~joao');
+  session_set_cookie_params(3600, '/~lbaw1536');
   session_start();
 
   error_reporting(E_ERROR | E_WARNING); // E_NOTICE by default
-  ini_set("display_errors", "1");
 
-  $BASE_DIR = '/home/joao/public_html/lbaw/final/';
-  $BASE_URL = '/~joao/lbaw/final/';
+  $BASE_DIR = '/opt/lbaw/lbaw1536/public_html/final/';
+  $BASE_URL = '/~lbaw1536/final/';
 
-  $conn = new PDO('pgsql:host=localhost;dbname=lbaw', 'lbaw', 'bolachas');
+  $conn = new PDO('pgsql:host=dbm;dbname=lbaw1536', 'lbaw1536', 'LS920UL3');
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

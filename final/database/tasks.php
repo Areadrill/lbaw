@@ -59,4 +59,20 @@ function getTaskComments($taskID){
 	return $results;
 }
 
+function createTask($name,$project, $creator, $text){
+	global $conn;
+	if(checkPrivilege($creator, $project) == "NONE")
+		return 'NO_PRIVILEGE';
+	$stmt = $conn->prepare(' INSERT INTO Task VALUES (default, ?, ?, NULL, ?, false, NULL, clock_timestamp()) RETURNING taskid');
+	$taskIns = $stmt->execute(array($project, $creator, $name));
+	$taskid = $stmt->fetchColumn();
+
+	if (!$taskIns)
+		return 'FAIL_INSERT';
+
+	$stmt = $conn->prepare(' INSERT INTO TaskComment VALUES (default, ?, ?, clock_timestamp(), ?)');
+	$taskcIns = $stmt->execute(array($taskid, $creator, $text));
+	return $taskid;
+}
+
 ?>

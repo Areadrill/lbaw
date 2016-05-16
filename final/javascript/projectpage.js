@@ -92,6 +92,10 @@ $(document).ready(function(){
     $("#createThread").modal('show');
   });
 
+  $("#newTask").click(function(){
+	  $("#createTask").modal('show');
+  });
+
    $("#labelManage").click(function(){
     $("#manageLabels").modal('show');
   });

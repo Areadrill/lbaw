@@ -72,7 +72,7 @@
 							<div class="col-md-8">
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<h2>Recent Tasks</h2>
+										<h2>Recent Tasks<button id="newTask" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Task</button></h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
 									{foreach from=$tasks item=task}
@@ -161,6 +161,38 @@
 							</div>
 						</div>
 					</div>
+					<div id="createTask" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Create a new Task</h4>
+								</div>
+								<form action="{$BASE_URL}actions/tasks/create_task.php" method="post">
+									<br>
+									<div class="row">
+										<div class="form-group">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8">
+												<input name="projectid" type="hidden" value={$projID}>
+												<input name="name" type="text" class="form-control" placeholder="Task name" required>
+												<br>
+												<textarea style="resize: none" class="form-control" name="body" placeholder="Initial comment" rows="4" cols="52"></textarea>
+												<!--eventualmente um dropdown com as tags-->
+											</div>
+											<div class="col-sm-2"></div>
+										</div>
+									</div>
+									<br>
+
+									<div class="modal-footer">
+										<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
 
 
 					<div id="manageLabels" class="modal fade" role="dialog">
