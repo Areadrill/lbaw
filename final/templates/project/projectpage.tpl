@@ -397,4 +397,30 @@
 			</div>
 		</div>
 	</div>
+<div id="bootstrap-alert-box-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="min-height:40px;">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"><strong>ERROR!</strong></h4>
+				</div>
+				<div class="modal-body">
+					{foreach $ERROR_MESSAGES as $error}
+					<div class="error">
+						{$error}
+					</div>
+					{/foreach}
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	{if !empty($ERROR_MESSAGES)}
+	$(document).ready(function(){
+		$("#bootstrap-alert-box-modal").modal('show');
+	});
+	{/if}
+	</script>
+
+
 	{include file='common/footer.tpl'}

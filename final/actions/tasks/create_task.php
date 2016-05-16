@@ -18,8 +18,15 @@ if (!isset($_SESSION['userid'])){
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
-
+try{
 $res = createTask($_POST['name'], $_POST['projectid'], $_SESSION['userid'], $_POST['body']);
+}
+catch(Exception $e){
+	$_SESSION['error_messages'][] = 'Duplicated task name not allowed';
+	$_SESSION['form_values'] = $_POST;
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit;
+}
 if($res === 'NO_PRIVILEGE'){
 	$_SESSION['error_messages'][] = 'You can\'t do that';
 	$_SESSION['form_values'] = $_POST;
@@ -29,8 +36,7 @@ if($res === 'NO_PRIVILEGE'){
 else if ($res === 'FAIL_INSERT'){
 	$_SESSION['error_messages'][] = 'Task creation failed';
 	$_SESSION['form_values'] = $_POST;
-	var_dump("error2");
-	//header('Location: ' . $_SERVER['HTTP_REFERER']);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
 $_SESSION['success_messages'][] = 'Thread created successfuly';

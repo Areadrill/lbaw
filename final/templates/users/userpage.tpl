@@ -300,9 +300,11 @@
 		</div>
 	</div>
 	<script>
+	{if !empty($ERROR_MESSAGES)}
 	$(document).ready(function(){
 		$("#bootstrap-alert-box-modal").modal('show');
 	});
+	{/if}
 	</script>
 
 	{include file='../common/footer.tpl'}
