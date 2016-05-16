@@ -9,7 +9,7 @@
 - [x] US08         As an Authenticated User, I want to change my password, so that I can be more secure and remember it better.                                                                        
 - [x] US09         As an Authenticated User, I want to receive a form to reset my password via e-mail, so that I can regain access to the system when I lose my password.                     
 - [x] US10	       As an Authenticated User, I want to be able to search for specific projects, so that I can more easily reach the project I need to view at the moment.
-- [ ] US11         As a Team Member, I want to see a list of tasks associated with a project, so that I can analyze what needs to be done.                                                               
+- [x] US11         As a Team Member, I want to see a list of tasks associated with a project, so that I can analyze what needs to be done.                                                               
 - [x] US12         As a Team Member, I want to create a thread in the project's forum, so that Team Members can discuss the topics.                                                                      
 - [x] US13         As a Team Member, I want to leave a comment on a thread of the project's forum, so that I can be a part of the discussion.                                                            
 - [x] US14         As a Team Member I want to label a thread I created in the forum, so that people can filter threads by labels.                                                                        
@@ -20,7 +20,7 @@
 - [ ] US19         As Team Member, I want to view the date of creation of the project, so that I can know when the project was started.                                                                  
 - [ ] US20         As Team Member, I want to filter the forum through its threads' labels, so that I can see only the threads that interest me at the time. 						   
 - [ ] US21         As Team Member, I want to filter tasks through their labels, so that I can see only the tasks that pertain to my area of expertise, or otherwise interest me at the time.             |                         
-- [ ] US22         As a Team Coordinator, I want to create a task, so that I can assign it to a Team Member.                                                                                             
+- [x] US22         As a Team Coordinator, I want to create a task, so that I can assign it to a Team Member.                                                                                             
 - [ ] US23         As a Team Coordinator, I want to delete a task, so that useless tasks don't clutter the list.                                                                                         
 - [ ] US24         As a Team Coordinator, I want to delete the project, so that useless or dead projects don't clutter my list of projects.                                                              
 - [ ] US25         As a Team Coordinator, I want to assign a task to a Team Member, so that they know what they need to do.                                                                              
