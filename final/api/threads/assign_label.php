@@ -15,9 +15,15 @@
 	switch($_POST['action']){
 		case "assign":
 			try{
-				if(!assignLabelToThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid'])){
-					error('insufficient permissions');
+				$result = assignLabelToThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid']);
+				if(!$result){
+					error('something went wrong');
+					http_response_code(404);
 					exit;
+				}
+				else if($result === 'denied'){
+					error('insufficient permissions');
+					http_response_code(403);
 				}
 			} catch(PDOException $e){
 				echo $e;
@@ -27,9 +33,16 @@
 			break;
 		case "unassign":
 			try{
-				if(!unassignLabelFromThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid'])){
-					error('insufficient permissions');
+				$result = unassignLabelFromThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid'])
+				$result = assignLabelToThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid']);
+				if(!$result){
+					error('something went wrong');
+					http_response_code(404);
 					exit;
+				}
+				else if($result === 'denied'){
+					error('insufficient permissions');
+					http_response_code(403);
 				}
 			} catch(PDOException $e){
 				error('something went wrong');

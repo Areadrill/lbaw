@@ -20,7 +20,7 @@ function getThreadLabels($threadID) {
 	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE threadLID IN (SELECT threadlid FROM ThreadToLabel WHERE threadID = ?)");
 	$stmt->execute(array($threadID));
 	$res = $stmt->fetchAll();
-	
+
 	return $res;
 }
 
@@ -29,7 +29,7 @@ function getLabelsNotInThread($threadID){
 	$stmt = $conn->prepare("SELECT threadlid, name FROM ThreadLabel WHERE projectid = ? AND threadlid NOT IN (SELECT threadlid FROM ThreadToLabel WHERE threadid = ?)");
 	$stmt->execute(array(getProjIDThreadID($threadID)['projectid'], $threadID));
 	$res = $stmt->fetchAll();
-	
+
 	return $res;
 }
 
@@ -90,7 +90,7 @@ function checkIsInProject($userID, $threadID){
 	$stmt->execute(array($threadID));
 
 	$projID = $stmt->fetch();
-	
+
 	$stmt = $conn->prepare('SELECT roleassigned FROM Roles WHERE userid = ? AND projectid = ?');
 	$stmt->execute(array($userID, $projID['projectid']));
 
@@ -107,7 +107,7 @@ function checkIsInProject($userID, $threadID){
 function comment($userID, $threadID, $text){
 	if(checkIsInProject($userID, $threadID) === false){
 		$_SESSION['error_messages'][] = 'User is not in the project';
-		echo 'crl';
+		return "denied";
 	}
 
 	global $conn;
@@ -120,17 +120,22 @@ function comment($userID, $threadID, $text){
 function createThread($userID, $projectID, $name){
 	global $conn;
 
+	if(checkIsInProject($userID, $threadID) === false){
+		$_SESSION['error_messages'][] = 'User is not in the project';
+		return "denied";
+	}
+
 	$stmt = $conn->prepare("INSERT INTO Thread VALUES(default, ?, ?, ?, clock_timestamp())");
 	$stmt->execute(array($projectID, $userID, $name));
 
-	return $stmt->fetch() !== false;	
+	return $stmt->fetch() !== false;
 }
 
 function deleteComment($userID, $commentID){
 
 	if(checkPrivilege($userID, getProjIDCommentID($commentID)['projectid']) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
+		return 'denied';
 	}
 
 	global $conn;
@@ -138,14 +143,14 @@ function deleteComment($userID, $commentID){
 	$stmt = $conn->prepare("DELETE FROM Comment WHERE commentid = ?");
 	$stmt->execute(array($commentID));
 
-	return $stmt->fetch() !== false;	
+	return $stmt->fetch() !== false;
 
 }
 
 function deleteThread($userID, $threadID){
 	if(checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
+		return 'denied';
 	}
 
 	global $conn;
@@ -160,7 +165,7 @@ function deleteThread($userID, $threadID){
 function createThreadLabel($userID, $projectID, $name){
 	if(checkPrivilege($userID, $projectID) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
+		return 'denied';
 	}
 	global $conn;
 
@@ -173,7 +178,7 @@ function createThreadLabel($userID, $projectID, $name){
 function deleteThreadLabel($userID, $threadLID){
 	if(checkPrivilege($userID, getProjIDThreadLabelID($threadLID)) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
+		return 'denied';
 	}
 
 	global $conn;
@@ -188,7 +193,7 @@ function deleteThreadLabel($userID, $threadLID){
 function assignLabelToThread($userID, $threadID, $threadLID){ //preciso ver se a thread e a label pertencem ao mesmo projeto?
 	if((checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD') && ($_SESSION['userid'] !== getThreadInfo($threadID)['creator'])){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
+		return 'denied';
 	}
 
 	global $conn;
@@ -202,7 +207,7 @@ function assignLabelToThread($userID, $threadID, $threadLID){ //preciso ver se a
 function unassignLabelFromThread($userID, $threadID, $threadLID){
 	if((checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD') && ($_SESSION['userid'] !== getThreadInfo($threadID)['creator'])){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
-		return false;
+		return 'denied';
 	}
 
 	global $conn;
@@ -220,7 +225,7 @@ function getProjIDThreadID($threadID){
 	$stmt = $conn->prepare("SELECT projectid FROM Thread WHERE threadid = ?");
 	$stmt->execute(array($threadID));
 
-	return $stmt->fetch();	
+	return $stmt->fetch();
 
 }
 
@@ -230,7 +235,7 @@ function getProjIDCommentID($commentID){
 	$stmt = $conn->prepare("SELECT projectid FROM Thread WHERE threadid = (SELECT threadid FROM Comment WHERE commentid = ?)");
 	$stmt->execute(array($commentID));
 
-	return $stmt->fetch();	
+	return $stmt->fetch();
 }
 
 function getProjIDThreadLabelID($threadLID){
@@ -239,7 +244,7 @@ function getProjIDThreadLabelID($threadLID){
 	$stmt = $conn->prepare("SELECT projectid FROM ThreadLabel WHERE threadlid = ?");
 	$stmt->execute(array($threadLID));
 
-	return $stmt->fetch()['projectid'];	
+	return $stmt->fetch()['projectid'];
 }
 
 function getThreadIDProjIDName($projectID, $name){
@@ -248,7 +253,7 @@ function getThreadIDProjIDName($projectID, $name){
 	$stmt = $conn->prepare("SELECT threadid FROM Thread WHERE projectid = ? AND name = ?");
 	$stmt->execute(array($projectID, $name));
 
-	return $stmt->fetch();	
+	return $stmt->fetch();
 }
 
 function getThreadIDCommentID($commentID){

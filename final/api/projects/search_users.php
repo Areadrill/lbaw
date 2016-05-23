@@ -14,3 +14,4 @@ if (!isset($_SESSION['userid'])){
 }
 
 echo json_encode(searchUsers($field, $_POST['projectID']));
+http_response_code(200);

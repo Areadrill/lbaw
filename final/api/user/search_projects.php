@@ -14,4 +14,5 @@ if (!isset($_SESSION['userid'])){
 }
 
 echo json_encode(searchProjects($field, $_SESSION['userid']));
+http_response_code(200);
 ?>

@@ -27,7 +27,7 @@ if($taskID == null){
 $task = getTaskInfo($taskID);
 
 if(!$task){
-	$_SESSION['error_messages'] = 'Task doesn\'t exist';
+	$_SESSION['error_messages'] = "Task doesn't exist";
 	header('Location: '. $_SERVER['HTTP_REFERER']);
 	exit;
 }

@@ -32,7 +32,7 @@ function alterMemberRole($userID, $projectID, $newRole){
 	global $conn;
 
 	if(checkPrivilege($userID, $projectID) !== 'COORD')
-		return false;
+		return "denied";
 
 	$stmt = $conn->prepare("UPDATE Roles SET roleassigned = ? WHERE userid = ? AND projectid = ?");
 	$stmt->execute(array($newRole, $userID, $projectID));
@@ -45,7 +45,7 @@ function removeMember($userID, $projectID){
 	global $conn;
 
 	if(checkPrivilege($userID, $projectID) !== 'COORD')
-		return false;
+		return "denied";
 
 	$stmt = $conn->prepare("DELETE FROM Roles WHERE userid = ? AND projectid = ?");
 	$stmt->execute(array($userID, $projectID));
@@ -57,7 +57,7 @@ function addMember($userID, $projectID){
 	global $conn;
 
 	if(checkPrivilege($userID, $projectID) !== 'COORD')
-		return false;
+		return "denied";
 
 	$stmt = $conn->prepare("INSERT INTO Roles VALUES(?, ?, 'MEMBER')");
 	$stmt->execute(array($userID, $projectID));

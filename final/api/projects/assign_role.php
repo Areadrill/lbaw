@@ -14,27 +14,51 @@
 
 	switch($_POST['action']){
 		case "promote":
-			if(!alterMemberRole($_POST['userID'], $_POST['projectID'], 'COORD')){
+			$result = alterMemberRole($_POST['userID'], $_POST['projectID'], 'COORD');
+			if(!$result){
 				error('insufficient permissions');
+				http_response_code(404);
 				exit;
+			}
+			else if($result === "denied"){
+				error('Insufficient permissions');
+				http_response_code(403);
 			}
 			break;
 		case "demote":
-			if(!alterMemberRole($_POST['userID'], $_POST['projectID'], 'MEMBER')){
+			$result = alterMemberRole($_POST['userID'], $_POST['projectID'], 'MEMBER')
+			if(!$result){
 				error('insufficient permissions');
+				http_response_code(404);
 				exit;
+			}
+			else if($result === "denied"){
+				error('Insufficient permissions');
+				http_response_code(403);
 			}
 			break;
 		case "remove":
-			if(!removeMember($_POST['userID'], $_POST['projectID'])){
+			$result = removeMember($_POST['userID'], $_POST['projectID'])
+			if(!$result){
 				error('insufficient permissions');
+				http_response_code(404);
 				exit;
+			}
+			else if($result === "denied"){
+				error('Insufficient permissions');
+				http_response_code(403);
 			}
 			break;
 		case "add":
-			if(!addMember($_POST['userID'], $_POST['projectID'])){
+			$result = addMember($_POST['userID'], $_POST['projectID']);
+			if(!$result){
 				error('insufficient permissions');
+				http_response_code(404);
 				exit;
+			}
+			else if($result === "denied"){
+				error('Insufficient permissions');
+				http_response_code(403);
 			}
 			break;
 	}
@@ -50,6 +74,7 @@
 function error($msg){
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 		error_log($msg);
+		http_response_code();
 	}
 	else{
 		$_SESSION['error_messages'][] = $msg;
