@@ -69,10 +69,14 @@ function getCreatorName($projectID){
 
 function searchProjects($field, $userid){
   global $conn;
-  $stmt = $conn->prepare("SELECT projectid, name FROM Project WHERE to_tsvector(name) @@ to_tsquery('english',?) OR to_tsvector(description) @@ to_tsquery('english',?) AND projectID IN (SELECT projectID FROM Roles WHERE userID = ?);
+  $stmt = $conn->prepare("SELECT projectid, name, creator FROM Project WHERE to_tsvector(name) @@ to_tsquery('english',?) OR to_tsvector(description) @@ to_tsquery('english',?) AND projectID IN (SELECT projectID FROM Roles WHERE userID = ?);
 ");
   $stmt->execute(array($field.':*',$field.':*',$userid));
   $res = $stmt->fetchAll();
+  for($i = 0; $i < count($res); $i++){
+    $res[$i]['userInfo'] = getNewInfo($userid, $res[$i]['projectid']);
+    $res[$i]['creatorName'] = getCreatorName($res[$i]['projectid']);
+  }
   return $res;
 }
 ?>

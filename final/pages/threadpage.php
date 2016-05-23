@@ -28,6 +28,7 @@
   }
 
   $smarty->assign('role', $role);
+  $smarty->assign('imgPath', $imgPath);
   $smarty->assign('labels', getThreadLabels($threadID));
   $smarty->assign('missingLabels', getLabelsNotInThread($threadID));
   $smarty->assign('comments', getThreadComments($threadID));

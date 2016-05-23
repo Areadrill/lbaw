@@ -7,15 +7,19 @@ $(document).ready(function(){
         $('#listofprojs').append("<div class=\"panel-body\">"+
           "<div class=\"panel panel-primary\">"+
             "<div class=\"panel-heading\">"+
-            " <a class=\"white-link\" href=\"projectpage.html\" data-projid="+ json[i].projectid+">"+ json[i].name +"</a>"+
+            " <a class=\"white-link\" href=\"../pages/projectpage.php?id="+ json[i].projectid + "\"" + 
+            " data-projid="+ json[i].projectid+">"+ json[i].name + " by " + json[i].creatorName.username +"</a>"+
             "</div>"+
             "<div class=\"panel-body\">"+
-            "<div class=\"row\">"+
-            "<div class=\"col-md-3\">"+
-            "<span class=\"glyphicon glyphicon-inbox\"></span> 2 new tasks"+
+              "<div class=\"row\">"+
+                "<div class=\"col-md-3\">"+
+                  "<span class=\"glyphicon glyphicon-inbox\"></span> "+ json[i].userInfo.assigned.tasksassignedtouser +" new tasks assigned to you"+
                 "</div>"+
                 "<div class=\"col-md-3\">"+
-                "<span class=\"glyphicon glyphicon-comment\"></span> 1 new thread"+
+                  "<span class=\"glyphicon glyphicon-comment\"></span> "+ json[i].userInfo.tasks.newtaskcount + " new tasks"+
+                "</div>"+
+                "<div class=\"col-md-3\">"+
+                  "<span class=\"glyphicon glyphicon-comment\"></span> "+ json[i].userInfo.threads.newthreadcount + " new threads"+
                 "</div>"+
               "</div>"+
             "</div>"+
