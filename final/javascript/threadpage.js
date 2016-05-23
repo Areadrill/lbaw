@@ -37,16 +37,17 @@ $(document).ready(function (){
 	});
 
 	$(document).on("submit",".labelOp",function(e){
- 		
+
 		e.preventDefault();
 		$.post('../api/threads/assign_label.php', {threadid: $("input[name='threadid']", this).val(), threadlid: $("input[name='threadlid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
 			var json = JSON.parse(data);
+			console.log(data);
 			$("#currThreadLabels").empty();
 			$("#labelsNotInThread").empty();
 			$("#lblList1").empty();
 			$("#lblList2").empty();
 
-			
+
 
 			for(var i = 0; i < json[0].length; i++){
 				$("#currThreadLabels").append("<div class=\"row\">"+

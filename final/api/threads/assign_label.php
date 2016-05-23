@@ -33,8 +33,7 @@
 			break;
 		case "unassign":
 			try{
-				$result = unassignLabelFromThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid'])
-				$result = assignLabelToThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid']);
+				$result = unassignLabelFromThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid']);
 				if(!$result){
 					error('something went wrong');
 					http_response_code(404);

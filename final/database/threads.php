@@ -120,7 +120,7 @@ function comment($userID, $threadID, $text){
 function createThread($userID, $projectID, $name){
 	global $conn;
 
-	if(checkIsInProject($userID, $threadID) === false){
+	if(checkIsInProject($userID, getThreadIDProjIDName($projectID, $name)['threadid']) === false){
 		$_SESSION['error_messages'][] = 'User is not in the project';
 		return "denied";
 	}

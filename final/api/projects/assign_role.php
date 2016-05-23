@@ -26,7 +26,7 @@
 			}
 			break;
 		case "demote":
-			$result = alterMemberRole($_POST['userID'], $_POST['projectID'], 'MEMBER')
+			$result = alterMemberRole($_POST['userID'], $_POST['projectID'], 'MEMBER');
 			if(!$result){
 				error('insufficient permissions');
 				http_response_code(404);
@@ -38,7 +38,7 @@
 			}
 			break;
 		case "remove":
-			$result = removeMember($_POST['userID'], $_POST['projectID'])
+			$result = removeMember($_POST['userID'], $_POST['projectID']);
 			if(!$result){
 				error('insufficient permissions');
 				http_response_code(404);

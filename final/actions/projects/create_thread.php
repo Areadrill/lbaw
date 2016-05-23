@@ -21,7 +21,7 @@ try {
 	createThread($_SESSION['userid'], $_POST['projid'], $title);
 
 	if(!empty($initComment) && !ctype_space($initComment)){
-		comment($_SESSION['userid'], getThreadIDProjIDName($_POST['projid'], $title)['threadid'], $initComment);		
+		comment($_SESSION['userid'], getThreadIDProjIDName($_POST['projid'], $title)['threadid'], $initComment);
 	}
 
 } catch (PDOException $e) {
@@ -30,8 +30,11 @@ try {
 		$_SESSION['error_messages'][] = 'Duplicated thread name';
 		$_SESSION['field_errors']['title'] = 'Thread name already exists';
 	}
-	else
-  $_SESSION['error_messages'][] = 'Error creating Thread';
+	else{
+    $_SESSION['error_messages'][] = 'Error creating Thread';
+    var_dump($e);
+    exit;
+  }
 
 	$_SESSION['form_values'] = $_POST;
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
