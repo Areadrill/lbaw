@@ -19,9 +19,10 @@ if (!isset($_SESSION['userid'])){
 
 try {
 	createThread($_SESSION['userid'], $_POST['projid'], $title);
-
 	if(!empty($initComment) && !ctype_space($initComment)){
 		comment($_SESSION['userid'], getThreadIDProjIDName($_POST['projid'], $title)['threadid'], $initComment);
+
+		//comment($_SESSION['userid'], $_POST['threadid'], $comment);
 	}
 
 } catch (PDOException $e) {

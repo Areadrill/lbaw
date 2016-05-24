@@ -96,11 +96,27 @@ function checkIsInProject($userID, $threadID){
 
 	$res = $stmt->fetch();
 
-	if($res == null){
+	if($res['roleassigned'] == null){
 		return false;
 	}
 	else{
-		return $res;
+		return $res['roleassigned'];
+	}
+}
+
+function checkIsInProjectProjID($userID, $projectID){
+	global $conn;
+
+	$stmt = $conn->prepare('SELECT roleassigned FROM Roles WHERE userid = ? AND projectid = ?');
+	$stmt->execute(array($userID, $projectID));
+
+	$res = $stmt->fetch();
+
+	if($res['roleassigned'] == null){
+		return false;
+	}
+	else{
+		return $res['roleassigned'];
 	}
 }
 
@@ -119,15 +135,15 @@ function comment($userID, $threadID, $text){
 
 function createThread($userID, $projectID, $name){
 	global $conn;
-
-	if(checkIsInProject($userID, getThreadIDProjIDName($projectID, $name)['threadid']) === false){
+	
+	if(checkIsInProjectProjID($userID, $projectID) === false){
 		$_SESSION['error_messages'][] = 'User is not in the project';
 		return "denied";
 	}
-
+	
 	$stmt = $conn->prepare("INSERT INTO Thread VALUES(default, ?, ?, ?, clock_timestamp())");
 	$stmt->execute(array($projectID, $userID, $name));
-
+	
 	return $stmt->fetch() !== false;
 }
 

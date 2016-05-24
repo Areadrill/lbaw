@@ -11,6 +11,7 @@
   }
   $projectID = $_GET['id'];
 
+
   if(checkPrivilege($_SESSION['userid'], $projectID) == null){
     header('Location: '. $BASE_URL . 'pages/userpage.php');
     exit;
@@ -25,7 +26,6 @@
   if(!file_exists($imgPath)){
     $imgPath = "../images/default.jpg";
   }
-  
 
   $smarty->assign('projID', $projectID);
   $smarty->assign('members', getProjectMembers($projectID));
