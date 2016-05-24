@@ -81,6 +81,7 @@ CREATE TABLE Thread(
 	creator INT REFERENCES Users(userID) NOT NULL,
 	name VARCHAR(50) NOT NULL,
 	creationInfo TIMESTAMP NOT NULL,
+	locked BOOLEAN NOT NULL,
 	CONSTRAINT unique_threadNameInProj UNIQUE(projectID, name)
 );
 DROP TABLE IF EXISTS Comment;

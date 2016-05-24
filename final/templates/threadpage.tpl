@@ -46,14 +46,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-9">
         <h1 style="display:inline;">{$threadInfo.name} <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
       </div> 
-      <div class="col-md-2">
+      <div class="col-md-3">
         {if $role === 'COORD'}
           <div class="btn-group">
-            <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-lock"></span> Lock Thread </button>
-            <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-lock"></span> Delete Thread </button>
+            <button style="margin-top: 0.7em" id="threadLock" thrID={$threadID} type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-lock"></span> Lock Thread </button>
+            <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-remove-circle"></span> Delete Thread </button>
           </div>
         {/if}
       </div>

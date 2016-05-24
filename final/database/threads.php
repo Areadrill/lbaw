@@ -141,7 +141,7 @@ function createThread($userID, $projectID, $name){
 		return "denied";
 	}
 	
-	$stmt = $conn->prepare("INSERT INTO Thread VALUES(default, ?, ?, ?, clock_timestamp())");
+	$stmt = $conn->prepare("INSERT INTO Thread VALUES(default, ?, ?, ?, clock_timestamp(), FALSE)");
 	$stmt->execute(array($projectID, $userID, $name));
 	
 	return $stmt->fetch() !== false;
@@ -234,6 +234,42 @@ function unassignLabelFromThread($userID, $threadID, $threadLID){
 	return $stmt->fetch() !== false;
 }
 
+function lockThread($userID, $threadID){
+	global $conn;
+
+	if(checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	$stmt = $conn->prepare('UPDATE Thread SET locked = TRUE WHERE threadid = ?');
+	$stmt->execute(array($threadID));
+
+	return $stmt->fetch() !== false;
+}
+
+function unlockThread($userID, $threadID){
+	global $conn;
+
+	if(checkPrivilege($userID, getProjIDThreadID($threadID)['projectid']) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	$stmt = $conn->prepare('UPDATE Thread SET locked = FALSE WHERE threadid = ?');
+	$stmt->execute(array($threadID));
+
+	return $stmt->fetch() !== false;
+}
+
+function isLocked($threadID){
+	global $conn;
+
+	$stmt = $conn->prepare('SELECT locked FROM Thread WHERE threadid = ?');
+	$stmt->execute(array($threadID));
+
+	return $stmt->fetch()['locked'];
+}
 
 function getProjIDThreadID($threadID){
 	global $conn;

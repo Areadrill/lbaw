@@ -36,6 +36,13 @@ $(document).ready(function (){
 		$("#deleteThreadConfirm").modal('show');
 	});
 
+	$("#threadLock").click(function (){
+		$.post('../api/threads/toggle_lock.php', {threadid: $("#threadLock").attr('thrID')}, function (){
+			console.log('sucedi');
+			//$("#threadLock").text("Unlock Thread");
+		});
+	});
+
 	$(document).on("submit",".labelOp",function(e){
 
 		e.preventDefault();
