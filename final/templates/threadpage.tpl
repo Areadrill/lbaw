@@ -14,7 +14,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">ProjectHarbor</a>
+        <a class="navbar-brand" href={$BASE_URL}>ProjectHarbor</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -22,12 +22,12 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <form class="navbar-form navbar-right" role="logout">
+        <form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
           <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
         </form>
         <div class="navbar-right">
           <div id="mid-of-navbar">
-            <a href="userpage.html"> {$username} </a>
+            <a href="userpage.php"> {$username} </a>
             <img src={$imgPath} alt="user image" width="30px" height="30px" />
           </div>
         </div>
@@ -38,9 +38,9 @@
     <div class="row">
       <div class ="col-md-12">
         <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="userpage.html">{$username}</a></li>
-          <li><a href="projectpage.html">{$projectInfo.name}</a></li>
+          <li><a href={$BASE_URL}>Home</a></li>
+          <li><a href="userpage.php">{$username}</a></li>
+          <li><a href=projectpage.php?id={$projID}>{$projectInfo.name}</a></li>
           <li><a class="active" href="#">{$threadInfo.name}</a></li>
         </ol>
       </div>

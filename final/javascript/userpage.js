@@ -29,11 +29,11 @@ $(document).ready(function(){
     });
   });
 
-  $("#userImage").click(function(){
+  $("#userImage, #imageCover").click(function(){
     $("#imageEdit").modal('show');
   });
 
-  $("#userImage").hover(toggleImageCover);
+  $("#userImage, #imageCover").hover(toggleImageCover);
 
 
 });
