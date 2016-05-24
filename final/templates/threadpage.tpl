@@ -51,7 +51,10 @@
       </div> 
       <div class="col-md-2">
         {if $role === 'COORD'}
-          <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
+          <div class="btn-group">
+            <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-lock"></span> Lock Thread </button>
+            <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-lock"></span> Delete Thread </button>
+          </div>
         {/if}
       </div>
     </div>
