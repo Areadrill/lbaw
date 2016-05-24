@@ -37,9 +37,17 @@ $(document).ready(function (){
 	});
 
 	$("#threadLock").click(function (){
-		$.post('../api/threads/toggle_lock.php', {threadid: $("#threadLock").attr('thrID')}, function (){
-			console.log('sucedi');
-			//$("#threadLock").text("Unlock Thread");
+		$.post('../api/threads/toggle_lock.php', {threadid: $("#threadLock").attr('thrID')}, function (data){
+			
+			if(data == "locked"){
+				$("#threadLock").text("Unlock Thread");
+				$("#commentBox").hide();
+			} 
+			else if(data == "unlocked"){
+				$("#threadLock").text("Lock Thread");
+				$("#commentBox").show();
+			}
+			
 		});
 	});
 

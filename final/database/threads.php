@@ -121,6 +121,11 @@ function checkIsInProjectProjID($userID, $projectID){
 }
 
 function comment($userID, $threadID, $text){
+
+	if(isLocked($threadID)){
+		return "locked";
+	}
+
 	if(checkIsInProject($userID, $threadID) === false){
 		$_SESSION['error_messages'][] = 'User is not in the project';
 		return "denied";

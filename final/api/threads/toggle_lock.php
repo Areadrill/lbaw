@@ -22,6 +22,8 @@
 			error('something went wrong');
 			http_response_code(404);
 		}
+
+		$action = "unlocked";
 	}
 	else{
 		$result = lockThread($_SESSION['userid'], $_POST['threadid']);
@@ -33,9 +35,12 @@
 			error('something went wrong');
 			http_response_code(404);
 		}
+
+		$action = "locked";
 	}
 
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+		echo $action;
 		http_response_code(200);
 	}
 	else{

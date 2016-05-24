@@ -52,8 +52,8 @@
       <div class="col-md-3">
         {if $role === 'COORD'}
           <div class="btn-group">
-            <button style="margin-top: 0.7em" id="threadLock" thrID={$threadID} type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-lock"></span> Lock Thread </button>
-            <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-remove-circle"></span> Delete Thread </button>
+            <button style="margin-top: 0.7em" id="threadLock" thrID={$threadID} type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
+            <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
           </div>
         {/if}
       </div>
@@ -94,7 +94,7 @@
           <div class="col-md-12">
             <div class="widget-area no-padding blank">
               <div class="status-upload">
-                <form action="../api/threads/create_comment.php" method="post">
+                <form id="commentBox" action="../api/threads/create_comment.php" method="post" {if $isLocked} hidden {/if}>
                   <input type="hidden" name="threadid" value={$threadID}>
                   <textarea name="commentArea" placeholder="Comment area" ></textarea>
                   <ul>
