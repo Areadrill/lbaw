@@ -50,7 +50,9 @@
         <h1 style="display:inline;">{$threadInfo.name} <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
       </div> 
       <div class="col-md-2">
-        <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
+        {if $role === 'COORD'}
+          <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
+        {/if}
       </div>
     </div>
     <br>
@@ -119,7 +121,7 @@
           <div class="col-md-10">
             <h4 class="drab">Labels</h4>
           </div>
-          <div id="threadLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
+         {if ($role === 'COORD' || $isCreator)} <div id="threadLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
         </div>
         <ul id="lblList2" class="label-list">
         {foreach from=$labels item=label}<li><span class="label label-info">{$label.name}</span></li> {/foreach}
