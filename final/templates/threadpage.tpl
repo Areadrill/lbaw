@@ -51,10 +51,10 @@
       </div> 
       <div class="col-md-3">
         {if $role === 'COORD'}
-          <div class="btn-group">
-            <button style="margin-top: 0.7em" id="threadLock" thrID={$threadID} type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
-            <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
-          </div>
+        <div class="btn-group">
+          <button style="margin-top: 0.7em" id="threadLock" thrID={$threadID} type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
+          <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
+        </div>
         {/if}
       </div>
     </div>
@@ -69,27 +69,27 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-      <div id="allComments">
-      {foreach from=$comments item=comment}
-         <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorName}</strong></a> <span class="drab">commented 3 days ago </span>
-                  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                  {if $role === 'COORD'}<a href="#" class="pull-right submitRemoveComment"><input type="hidden" name="commentid" value={$comment.commentid}><span class="glyphicon glyphicon-remove"></span></a>{/if}
-                </h5>
-              </div>
-              <div class="panel-body">
-                <p>
-                  {$comment.text}
-                </p>
+        <div id="allComments">
+          {foreach from=$comments item=comment}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorName}</strong></a> <span class="drab">commented 3 days ago </span>
+                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                    {if $role === 'COORD'}<a href="#" class="pull-right submitRemoveComment"><input type="hidden" name="commentid" value={$comment.commentid}><span class="glyphicon glyphicon-remove"></span></a>{/if}
+                  </h5>
+                </div>
+                <div class="panel-body">
+                  <p>
+                    {$comment.text}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+          {/foreach}
         </div>
-      {/foreach}
-      </div>
         <div class="row">
           <div class="col-md-12">
             <div class="widget-area no-padding blank">
@@ -124,10 +124,10 @@
           <div class="col-md-10">
             <h4 class="drab">Labels</h4>
           </div>
-         {if ($role === 'COORD' || $isCreator)} <div id="threadLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
+          {if ($role === 'COORD' || $isCreator)} <div id="threadLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
         </div>
         <ul id="lblList2" class="label-list">
-        {foreach from=$labels item=label}<li><span class="label label-info">{$label.name}</span></li> {/foreach}
+          {foreach from=$labels item=label}<li><span class="label label-info">{$label.name}</span></li> {/foreach}
         </ul>
         <hr/>
       </div>
@@ -138,72 +138,72 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Manage this Thread's Labels</h4>
+            <h4 class="modal-title">Manage this Thread's Labels</h4>
           </div>
           <h4> Current Thread Labels</h4>
-            <ul id="currThreadLabels" class="list-group">
-              {foreach from=$labels item=label}
-                <div class="row">
-                  <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                      <li class="list-group-item clearfix">
-                        <div class="row">
-                          <div class="col-md-3">
-                            <span class="label label-info">{$label.name}</span>
-                          </div>
-                          <div class="col-md-5">
-                            <form class="alignForm labelOp" action="../api/threads/assign_label.php" method="post">
-                              <input type="hidden" name="threadid" value={$threadID}>
-                              <input type="hidden" name="threadlid" value={$label.threadlid}>
-                              <input type="hidden" name="action" value="unassign" >
-                              <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
-                            </form>
-                          </div>
-                        </div>
-                      </li>
+          <ul id="currThreadLabels" class="list-group">
+            {foreach from=$labels item=label}
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <li class="list-group-item clearfix">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <span class="label label-info">{$label.name}</span>
                     </div>
-                    <div class="col-md-6"></div>
-                </div>  
-              {/foreach}
-            </ul>
-            <br>
-            <h4> Project Labels </h4>
-            <ul id="labelsNotInThread" class="list-group">
-              {foreach from=$missingLabels item=mLabel}
-                <div class="row">
-                  <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                      <li class="list-group-item clearfix">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <span class="label label-info">{$mLabel.name}</span>
-                          </div>
-                          <div class="col-md-4">
-                            <form class="alignForm labelOp" action="../api/threads/assign_label.php" method="post">
-                              <input type="hidden" name="threadid" value={$threadID}>
-                              <input type="hidden" name="threadlid" value={$mLabel.threadlid}>
-                              <input type="hidden" name="action" value="assign" >
-                              <button type="submit" class="btn btn-primary pull-right"> Assign </button>
-                            </form>
-                          </div>
-                        </div>
-                      </li>
+                    <div class="col-md-5">
+                      <form class="alignForm labelOp" action="../api/threads/assign_label.php" method="post">
+                        <input type="hidden" name="threadid" value={$threadID}>
+                        <input type="hidden" name="threadlid" value={$label.threadlid}>
+                        <input type="hidden" name="action" value="unassign" >
+                        <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
+                      </form>
                     </div>
-                    <div class="col-md-4"></div>
-                </div>  
-              {/foreach}
-            </ul>
-            <br>
-          </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-md-6"></div>
+            </div>  
+            {/foreach}
+          </ul>
+          <br>
+          <h4> Project Labels </h4>
+          <ul id="labelsNotInThread" class="list-group">
+            {foreach from=$missingLabels item=mLabel}
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <li class="list-group-item clearfix">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span class="label label-info">{$mLabel.name}</span>
+                    </div>
+                    <div class="col-md-4">
+                      <form class="alignForm labelOp" action="../api/threads/assign_label.php" method="post">
+                        <input type="hidden" name="threadid" value={$threadID}>
+                        <input type="hidden" name="threadlid" value={$mLabel.threadlid}>
+                        <input type="hidden" name="action" value="assign" >
+                        <button type="submit" class="btn btn-primary pull-right"> Assign </button>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-md-4"></div>
+            </div>  
+            {/foreach}
+          </ul>
+          <br>
         </div>
       </div>
+    </div>
 
-       <div id="deleteThreadConfirm" class="modal fade" role="dialog">
+    <div id="deleteThreadConfirm" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Delete Thread</h4>
+            <h4 class="modal-title">Delete Thread</h4>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -213,15 +213,19 @@
               </div>
               <div class="col-md-2"></div>
               <div class="row">
-              <div class="col-md-5"></div>
-              <div class="col-md-3">
-                <form class="alignForm" action="../actions/threads/remove_thread.php" method="post">
-                  <input type="hidden" name="threadid" value={$threadID}>
-                  <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
-                </form>
+                <div class="col-md-5"></div>
+                <div class="col-md-3">
+                  <form class="alignForm" action="../actions/threads/remove_thread.php" method="post">
+                    <input type="hidden" name="threadid" value={$threadID}>
+                    <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
+                  </form>
+                </div>
+                <div class="col-md-4"></div>
               </div>
-              <div class="col-md-4"></div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
   </body>
   </html>

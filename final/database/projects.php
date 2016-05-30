@@ -79,4 +79,11 @@ function searchProjects($field, $userid){
   }
   return $res;
 }
+
+function deleteProject($id){
+  global $conn;
+  $stmt = $conn->prepare("DELETE FROM Project WHERE projectid= ?;");
+  $stmt->execute(array($id));
+  return $stmt->fetch();
+}
 ?>

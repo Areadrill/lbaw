@@ -39,6 +39,9 @@ div#projinfo{
 #tasklists{
    padding:20px;
 }
+#settings{
+   padding:20px;
+}
 
 div#recent-tasks a span.label{
     margin-left:5px;
@@ -74,6 +77,12 @@ div#main-content div#description{
 
 }
 div#main-content div#tasklists{
+    border-top:0px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+
+}
+div#main-content div#settings{
     border-top:0px;
     border-top-left-radius:0;
     border-top-right-radius:0;

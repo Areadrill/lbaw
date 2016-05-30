@@ -75,7 +75,6 @@
 								<span class="glyphicon glyphicon-education"></span> {if empty($education)} N/A {else} {$education} {/if}
 								<br>
 								<span class="glyphicon glyphicon-calendar"> </span> Joined on {$joinDate}
-								<p>...</p>
 							</div>
 						</div>
 					</div>

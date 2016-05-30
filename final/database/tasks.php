@@ -59,6 +59,26 @@ function getTaskComments($taskID){
 	return $results;
 }
 
+function getProjectByTask($taskID){
+	global $conn;
+	$stmt = $conn->prepare('SELECT projectid FROM task WHERE taskid = ?');
+	$stmt->execute(array($taskID));
+	return $stmt->fetch()['projectid'];
+}	
+
+function markTaskCompleted($taskID, $complete){
+	global $conn;
+	$stmt = $conn->prepare('UPDATE task SET complete = ? WHERE taskid= ?');
+	return	$stmt->execute(array($complete, $taskID));
+}
+
+function createComment($taskID, $body, $userid){
+	global $conn;
+	$stmt = $conn->prepare("INSERT INTO taskcomment VALUES (default, ?, ?, clock_timestamp(), ?)");
+	$res = $stmt->execute(array($taskID, $userid, $body));
+	return $res;	
+}
+
 function createTask($name,$project, $creator, $text){
 	global $conn;
 	if(checkPrivilege($creator, $project) == "NONE")
