@@ -59,6 +59,18 @@ function getTaskComments($taskID){
 	return $results;
 }
 
+function deleteTask($userID, $taskID){
+	global $conn;
+	if (checkPrivilege($userID, getProjectByTask($taskID)) !== "COORD"){
+		return "NO_PERM";
+	}
+	$stmt = $conn->prepare('DELETE FROM Task WHERE taskid =? RETURNING *');
+	$stmt->execute(array($taskID));	
+	if (count($stmt->fetchAll()) == 0)
+		return "ERROR";
+	return "SUCCESS";	
+}
+
 function getProjectByTask($taskID){
 	global $conn;
 	$stmt = $conn->prepare('SELECT projectid FROM task WHERE taskid = ?');

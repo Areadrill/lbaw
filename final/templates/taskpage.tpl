@@ -1,6 +1,7 @@
 {include file='common/header.tpl'}
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/taskpage.css">
+	<script src="{$BASE_URL}javascript/taskpage.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -48,12 +49,21 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
         <h1 style="display:inline;">{$name}</h1>
 	{foreach from=$labels item=label}	
 		<span class="label label-warning">{$label.name}</span>
 	{/foreach}
       </div>
+      <div class="col-md-4">
+        {if $role === 'COORD'}
+        <div class="btn-group">
+          <button style="margin-top: 0.7em" id="taskLock" taskID={$taskid} type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Task </button>
+          <button style="margin-top: 0.7em" id="taskDelete" type="button" class="btn btn-primary"> Delete Task </button>
+        </div>
+        {/if}
+      </div>
+
     </div>
     <br>
     <div class="row">
@@ -150,4 +160,34 @@
 	{/if}
       </div>
     </div>
+    <div id="deleteTaskConfirm" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Delete Task</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <h4> Are you sure you want to delete this task? </h4>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-3">
+                  <form class="alignForm" action="../../actions/tasks/remove_task.php" method="post">
+                    <input type="hidden" name="taskid" value={$taskid}>
+                    <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
+                  </form>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
     {include file='common/footer.tpl'}

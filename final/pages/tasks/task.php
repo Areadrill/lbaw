@@ -34,6 +34,8 @@ if(!$task){
 $tasklabels = getTaskLabels($taskID);
 $taskcomments = getTaskComments($taskID);
 
+$smarty->assign('taskid', $taskID);
+$smarty->assign('role', $role);
 $smarty->assign('username', getUsername($_SESSION['userid']));
 $smarty->assign('userid', $_SESSION['userid']);
 $smarty->assign('creatorid', $task['creator']);
