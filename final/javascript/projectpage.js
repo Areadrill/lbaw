@@ -3,6 +3,7 @@ $(document).ready(function(){
 	  $("#description").show();
       $("#forum").hide();
       $("#members").hide();
+      $("#settings").hide();
       $("#tasks").hide();
       $("#tasklists").hide();
       $("li.active").removeClass('active');
@@ -10,6 +11,7 @@ $(document).ready(function(){
     });
     $("#tasksTab").click(function(){
       $("#description").hide();
+      $("#settings").hide();
       $("#forum").hide();
       $("#members").hide();
       $("#tasks").show();
@@ -20,6 +22,7 @@ $(document).ready(function(){
     $("#tasklistsTab").click(function(){
 	  $("#description").hide();
       $("#forum").hide();
+      $("#settings").hide();
       $("#members").hide();
       $("#tasks").hide();
       $("#tasklists").show();
@@ -28,6 +31,7 @@ $(document).ready(function(){
     });
     $("#forumTab").click(function(){
       $("#description").hide();
+      $("#settings").hide();
       $("#forum").show();
       $("#members").hide();
       $("#tasks").hide();
@@ -37,12 +41,27 @@ $(document).ready(function(){
     });
     $("#membersTab").click(function(){
       $("#description").hide();
+      $("#settings").hide();
       $("#forum").hide();
       $("#members").show();
       $("#tasks").hide();
       $("#tasklists").hide();
       $("li.active").removeClass('active');
       $(this).addClass('active');
+    });
+    $("#settingsTab").click(function(){
+      $("#description").hide();
+      $("#forum").hide();
+      $("#members").hide();
+      $("#tasks").hide();
+      $("#tasklists").hide();
+      $("#settings").show();
+      $("li.active").removeClass('active');
+      $(this).addClass('active');
+    });
+
+    $("#deleteproj").click(function (){
+      $("#deleteProjConfirm").modal('show');
     });
 
     $('#userSearcher').on('keyup', function(){

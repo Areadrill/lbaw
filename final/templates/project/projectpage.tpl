@@ -61,11 +61,12 @@
 			<div class="col-md-10">
 				<div id="main-content" class="panel panel-default">
 					<ul class="nav nav-tabs">
-						<li id="descriptionTab" role="presentation" class="active"><a href="#">Description</a></li>
-						<li id="tasksTab" role="presentation"><a href="#">Tasks</a></li>
-						<li id="tasklistsTab" role="presentation"><a href="#">Task Lists</a></li>
-						<li id="forumTab" role="presentation" ><a href="#">Forum</a></li>
-						<li id="membersTab" role="presentation"><a href="#">Members</a></li>
+						<li id="descriptionTab" role="presentation" class="active"><a>Description</a></li>
+						<li id="tasksTab" role="presentation"><a>Tasks</a></li>
+						<li id="tasklistsTab" role="presentation"><a>Task Lists</a></li>
+						<li id="forumTab" role="presentation" ><a>Forum</a></li>
+						<li id="membersTab" role="presentation"><a>Members</a></li>
+						<li id="settingsTab" role="presentation"><a>Settings</a></li>
 					</ul>
 					<div id="tasks" class="panel panel-default" hidden>
 						<div class="row">
@@ -316,7 +317,7 @@
 									</div>
 								</li>
 							{/foreach}
-						</ul>
+						</ul>		
 						{if $role == 'COORD'}
 						<div class="input-group">
 							<div class="input-group-btn">
@@ -327,7 +328,29 @@
 						<div id="listofusers">
 						</div>
 						{/if}
-
+					</div>
+					<div id="settings" class="panel panel-default" hidden>
+					{if $role == 'COORD'}
+						<div class="row">
+	   						<div class="col-lg-4 col-lg-offset-4">
+								<div class="input-group">
+									<div class="input-group-btn">
+										<button id="editproj" type="button" class="btn btn-primary"> Edit Project</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+	   						<div class="col-lg-4 col-lg-offset-4">
+								<div class="input-group">
+									<div class="input-group-btn">
+										<button id="deleteproj" type="button" class="btn btn-danger"> Delete Project</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					{/if}
 					</div>
 					<div id="description"  class="panel panel-default">
 						<div class="container-fluid">
@@ -422,5 +445,34 @@
 	{/if}
 	</script>
 
+	<div id="deleteProjConfirm" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Delete Project</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <h4> Are you sure you want to delete this project? </h4>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-3">
+                  <form class="alignForm" action="../actions/projects/delete_project.php" method="post">
+                    <input type="hidden" name="projectID" value={$projID}>
+                    <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
+                  </form>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 	{include file='common/footer.tpl'}
