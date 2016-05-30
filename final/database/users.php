@@ -42,6 +42,30 @@ function logoutUser($userid) {
 	return $stmt->fetch() == true;
 }
 
+function checkUserAvailability($username){
+	global $conn;
+	$stmt = $conn->prepare('SELECT userid FROM users WHERE username = ?');
+	$stmt->execute(array($username));
+
+	var_dump($username);
+
+	if($stmt->fetch() != null){
+		return false;
+	}
+	return true;
+}
+
+function checkEmailAvailability($email){
+	global $conn;
+	$stmt = $conn->prepare('SELECT userid FROM users WHERE email = ?');
+	$stmt->execute(array($email));
+
+	if($stmt->fetch() != null){
+		return false;
+	}
+	return true;
+}
+
 function getUsername($userID){
 	global $conn;
 	$stmt = $conn->prepare("SELECT username FROM Users WHERE userid = ?");

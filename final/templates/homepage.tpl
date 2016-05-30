@@ -1,5 +1,6 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
+<script src="../javascript/homepage.js" ></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -41,24 +42,24 @@
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
 						<div class="panel-body">
-							<form method="post" action="../actions/users/register.php">
+							<form id="regForm" method="post" action="../actions/users/register.php">
 								<div class="input-group">
-									<input name="username" type="text" class="form-control" placeholder="Username">
-									<span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+									<input id="username"cname="username" type="text" class="form-control" placeholder="Username" maxlength="25" required>
+									<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
 								</div>
 								<br>
 								<div class="input-group">
-									<input name="email" type="email" class="form-control" placeholder="E-mail">
-									<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+									<input id="email" name="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
+									<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
 								</div>
 								<br>
 								<div class="input-group">
-									<input name="password" type="password" class="form-control" placeholder="Password">
-									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+									<input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+									<span id="passwordThing" class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 								</div>
 								<br>
 								<div class="input-group">
-									<input name="rpassword" type="password" class="form-control" placeholder="Re-enter password">
+									<input id="rpassword" name="rpassword" type="password" class="form-control" placeholder="Re-enter password" required>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 								</div>
 								<br>
@@ -84,7 +85,7 @@
 								<div class="form-group">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input name="email" type="email" placeholder="Email" class="form-control" required>
+										<input name="email" type="email" placeholder="Email" class="form-control" maxlength="100" required>
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
