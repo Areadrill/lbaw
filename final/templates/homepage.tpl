@@ -1,6 +1,6 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
-<script src="../javascript/homepage.js" ></script>
+<script src="../javascript/validator.min.js" ></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -42,12 +42,17 @@
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
 						<div class="panel-body">
-							<form id="regForm" method="post" action="../actions/users/register.php">
+							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator">
+								<div class="form-group has-feedback">
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 								<div class="input-group">
-									<input id="username"cname="username" type="text" class="form-control" placeholder="Username" maxlength="25" required>
+									<input id="username"cname="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
 									<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
 								</div>
-								<br>
+
+    						<div class="help-block with-errors"></div>
+							</div>
+								
 								<div class="input-group">
 									<input id="email" name="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
 									<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
