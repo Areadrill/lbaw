@@ -176,9 +176,9 @@
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
 												<input name="projectid" type="hidden" value={$projID}>
-												<input name="name" type="text" class="form-control" placeholder="Task name" required>
+												<input name="name" type="text" class="form-control" placeholder="Task name" maxlength="25" required>
 												<br>
-												<textarea style="resize: none" class="form-control" name="body" placeholder="Initial comment" rows="4" cols="52"></textarea>
+												<textarea style="resize: none" class="form-control" name="body" placeholder="Initial comment" maxlength="512" rows="4" cols="52"></textarea>
 												<!--eventualmente um dropdown com as tags-->
 											</div>
 											<div class="col-sm-2"></div>

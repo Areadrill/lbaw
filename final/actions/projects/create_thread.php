@@ -12,6 +12,13 @@ if (!$_POST['title'] || !$_POST['projid']) {
 $title = strip_tags($_POST['title']);
 $initComment = strip_tags($_POST['initialComment']);
 
+if(strlen($title) > 25){
+	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
+	header("Location: ". $BASE_URL . 'pages/projectpage.php?id='.$_POST['projid']);
+	exit;
+}
+
+
 if (!isset($_SESSION['userid'])){
 	error_log('User was not logged in on actions/projects/create_thread.php');
 	exit;

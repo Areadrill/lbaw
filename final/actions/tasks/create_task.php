@@ -12,6 +12,12 @@ if (!$_POST['projectid'] || !$_POST['name'] || !$_POST['body']) {
 $title = strip_tags($_POST['name']);
 $initComment = strip_tags($_POST['body']);
 
+if(strlen($title) > 25){
+	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
+	header("Location: ". $BASE_URL . 'pages/projectpage.php?id='.$_POST['projid']);
+	exit;
+}
+
 if (!isset($_SESSION['userid'])){
 	$_SESSION['error_messages'][] = 'Need logged in';
 	$_SESSION['form_values'] = $_POST;

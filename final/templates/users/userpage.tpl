@@ -1,5 +1,6 @@
 {include file='../common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/userpageStyle.css">
+<script src="../javascript/validator.min.js" ></script>
 <script src="../javascript/userpage.js" ></script>
 </head>
 <body>
@@ -139,7 +140,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="name" type="text" placeholder="Project Name" class="form-control" required>
+							<input name="name" type="text" placeholder="Project Name" class="form-control" maxlength="25" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -173,12 +174,12 @@
 				<h4 class="modal-title">Edit your info</h4>
 			</div>
 			<br>
-			<form action="../actions/users/edit_info.php" method="post" enctype="multipart/form-data">
+			<form action="../actions/users/edit_info.php" method="post" data-toogle="validator" enctype="multipart/form-data">
 				<div class="row">
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="pass" type="password" placeholder="New Password" class="form-control">
+							<input id="lepass" name="pass" type="password" placeholder="New Password" class="form-control">
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -188,14 +189,14 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="repass" type="password" placeholder="Retype New Password" class="form-control">
+							<input name="repass" type="password" data-match="#lepass" data-match-error="Passwords don't match" placeholder="Retype New Password" class="form-control">
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
 				</div>
 				<br>
 				<div class="row">
-					<div class="form-group">
+					<div class="form-group has-feedback">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
 							<input name="email" type="text" value={$email} class="form-control" required>
@@ -208,7 +209,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="location" type="text" {if !empty($location)} value={$location} {else} placeholder="Your Location" {/if} class="form-control" required>
+							<input name="location" type="text" {if !empty($location)} value={$location} {else} placeholder="Your Location" {/if} maxlength="25" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -218,7 +219,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="bday" type="date" {if !empty($birthday)} value={$birthday} {else} placeholder="Your Birthday" {/if} class="form-control" required>
+							<input name="bday" type="date" {if !empty($birthday)} value={$birthday} {else} placeholder="Your Birthday" {/if}  class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -228,7 +229,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="education" type="text" {if !empty($education)} value={$education} {else} placeholder="Your Education" {/if} class="form-control" required>
+							<input name="education" type="text" {if !empty($education)} value={$education} {else} placeholder="Your Education" {/if} maxlength="25" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>

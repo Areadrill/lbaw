@@ -15,6 +15,12 @@ if(!$comment || ctype_space($comment)) {
   exit;
 }
 
+if(strlen($comment) > 512){
+	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
+	header("Location: ". $BASE_URL . 'pages/projectpage.php?id='.$_POST['projid']);
+	exit;
+}
+
 
 if (!isset($_SESSION['userid'])){
 	error_log('user was not logged in on api/projects/search_project.php');

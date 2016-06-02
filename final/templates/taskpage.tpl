@@ -107,7 +107,7 @@
             <div class="widget-area no-padding blank">
               <div class="status-upload">
                 <form>
-                  <textarea placeholder="Comment area" ></textarea>
+                  <textarea placeholder="Comment area" maxlength="512" ></textarea>
                   <ul>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>

@@ -11,6 +11,12 @@ if(!$_POST['taskid'] || !$_POST['completed'] || !$_POST['body']){
 
 $comment = strip_tags($_POST['body']);
 
+if(strlen($title) > 512){
+	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
+	header("Location: ". $BASE_URL . 'pages/projectpage.php?id='.$_POST['projid']);
+	exit;
+}
+
 if(!$comment || ctype_space($comment)) {
   error (json_encode(getThreadComments($_POST['threadid'])));
   exit;

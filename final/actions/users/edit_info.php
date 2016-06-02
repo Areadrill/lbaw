@@ -8,6 +8,14 @@ if (!$_POST['email'] || !$_POST['location'] || !$_POST['bday'] || !$_POST['educa
 	exit;
 }
 
+$location = strip_tags($_POST['location']);
+$education = strip_tags($_POST['education']);
+
+if(strlen($location) > 25 || strlen($education) > 25){
+	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
+	header("Location: ". $BASE_URL . 'pages/userpage.php');
+	exit;
+}
 
 try{
 	if($_POST['pass'] === $_POST['repass'] && $_POST['pass'] != ''){

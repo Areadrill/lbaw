@@ -19,9 +19,10 @@ $email = strip_tags(utf8_encode(strip_tags($_POST['email'])));
 $username = strip_tags(utf8_encode(strip_tags($_POST['username'])));
 $password = utf8_encode($_POST['password']);
 
-if(length($email) > 100 || length($username) > 25){
+if(strlen($email) > 100 || strlen($username) > 25){
 	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
-	return;
+	header("Location: ". $BASE_URL . 'pages/homepage.php');
+	exit;
 }
 
 

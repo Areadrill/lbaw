@@ -9,8 +9,15 @@ if (!$_POST['name'] || !$_POST['description']) {
   exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
+$name = strip_tags($_POST['name']);
+$description = strip_tags($_POST['description']);
+
+if(strlen($name) > 25){
+	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
+	header("Location: ". $BASE_URL . 'pages/userpage.php');
+	exit;
+}
+
 
 if (!isset($_SESSION['userid'])){
 	error_log('User was not logged in on actions/projects/create_project.php');

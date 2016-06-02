@@ -42,32 +42,40 @@
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
 						<div class="panel-body">
-							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator">
+							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator" role="form">
 								<div class="form-group has-feedback">
-								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-								<div class="input-group">
-									<input id="username"cname="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
-									<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+									<div class="input-group">
+										<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+										<input id="username"cname="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
+															
+									</div>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    								<div class="help-block with-errors"></div>
 								</div>
 
-    						<div class="help-block with-errors"></div>
-							</div>
+								<div class="form-group has-feedback">
+									<div class="input-group">
+										<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+										<input id="email" name="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
+									</div>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    								<div class="help-block with-errors"></div>
+								</div>
 								
-								<div class="input-group">
-									<input id="email" name="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
-									<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+								<div class="form-group">
+									<div class="input-group">
+										<span id="passwordThing" class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+										<input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+									</div>
 								</div>
-								<br>
-								<div class="input-group">
-									<input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
-									<span id="passwordThing" class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+										<input id="rpassword" name="rpassword" type="password" class="form-control" placeholder="Re-enter password" data-match="#password" data-match-error="Passwords don't match" required>
+									</div>
 								</div>
-								<br>
-								<div class="input-group">
-									<input id="rpassword" name="rpassword" type="password" class="form-control" placeholder="Re-enter password" required>
-									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-								</div>
-								<br>
+								
 								<button type="submit" val="submit" name="submit" class="btn btn-default">Sign Up</button>
 								<a data-toggle="modal" data-target="#recover" href="#">Lost your password?</a>
 							</form>

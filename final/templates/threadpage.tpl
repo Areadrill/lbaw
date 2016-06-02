@@ -96,7 +96,7 @@
               <div class="status-upload">
                 <form id="commentBox" action="../api/threads/create_comment.php" method="post" {if $isLocked} hidden {/if}>
                   <input type="hidden" name="threadid" value={$threadID}>
-                  <textarea name="commentArea" placeholder="Comment area" ></textarea>
+                  <textarea name="commentArea" placeholder="Comment area" maxlength="512"></textarea>
                   <ul>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
