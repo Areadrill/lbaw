@@ -58,7 +58,7 @@ CREATE TABLE TaskLabel(
 	taskLID SERIAL PRIMARY KEY NOT NULL,
 	projectID INT REFERENCES Project(projectID) ON DELETE CASCADE NOT NULL,
 	name VARCHAR(15),
-	CONSTRAINT unique_labelIsProjScope UNIQUE(taskLID, projectID)
+	CONSTRAINT unique_labelIsProjScope UNIQUE(name, projectID)
 );
 DROP TABLE IF EXISTS TaskToLabel CASCADE;
 CREATE TABLE TaskToLabel(

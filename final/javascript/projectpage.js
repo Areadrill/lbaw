@@ -119,11 +119,27 @@ $(document).ready(function(){
     $("#manageLabels").modal('show');
   });
 
+   $("#taskLabelManage").click(function(){
+    $("#manageTaskLabels").modal('show');
+  });
+
     $("#newTLSubmmit").click(function(){
     $("#newLabel").submit();
   });
 
   
-
+  $("#newTaskLabelSubmit").click(function(){
+       	 $("#newTaskLabelName").get(0).setCustomValidity('');
+	  var request = {"projectid": $("#newTaskLabel input[name=\"projectid\"]").val(),
+		  	 "name": $("#newTaskLabel input[name=\"name\"]").val()};
+	  $.post("../api/tasks/create_label.php", request, taskLabelAdded, "json").fail(function(xhr){
+		  $.notify(xhr.responseJSON['error']);
+	  });
+  });
 
 });
+
+function taskLabelAdded(data){
+	$("div#taskLabelList").append("<a href=\"#\" class=\"list-group-item\"><span class=\"label label-primary\">"+ data["name"] + "</span><span class=\"badge\">0</span></a>");
+	$("#manageTaskLabels").modal('hide');	
+}

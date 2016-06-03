@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+	<script src="../javascript/notify.min.js"></script>
 	<script src="../javascript/projectpage.js"></script>
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
@@ -69,6 +70,7 @@
 						<li id="settingsTab" role="presentation"><a>Settings</a></li>
 					</ul>
 					<div id="tasks" class="panel panel-default" hidden>
+						{if $role == 'COORD'}<button id="taskLabelManage" class="btn btn-link pull-right"><span class="glyphicon glyphicon-cog"></span> Manage labels</button>{/if}
 						<div class="row">
 							<div class="col-md-8">
 								<div class="panel panel-default">
@@ -87,7 +89,7 @@
 								</div>
 							</div>
 							<div class="col-md-4">
-								<div class="list-group">
+								<div id="taskLabelList" class="list-group">
 									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
 									{foreach from=$projectTaskLabels item=taskLabel}
 										<a href="#" class="list-group-item"><span class="label label-primary">{$taskLabel.name}</span><span class="badge">{$taskLabel.count}</span></a>
@@ -115,8 +117,7 @@
 									{foreach from=$threads item=thread}
 										<a href=../pages/threadpage.php?id={$thread.threadid} class="list-group-item">
 											<span class="glyphicon glyphicon-comment"></span> {$thread.name}
-											{foreach from=$thread.threadLabels item=label}
-												<span class="label label-info">{$label.name}</span>
+											{foreach from=$thread.threadLabels item=label} <span class="label label-info">{$label.name}</span>
 											{/foreach}
 										</a>
 									{/foreach}
@@ -197,6 +198,64 @@
 							</div>
 						</div>
 					</div>
+					<div id="manageTaskLabels" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Manage Task Labels</h4>
+								</div>
+								<form id="newTaskLabel" action="../actions/tasks/create_label.php" method="post">
+									<br>
+									<div class="row">
+										<div class="form-group">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8">
+												<input name="projectid" type="hidden" value={$projID}>
+												<div class="input-group">
+													<div class="input-group-btn">
+														<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
+													</div><!-- /btn-group -->
+													<input id="newTaskLabelName" name="name" type="text" class="form-control" placeholder="New Label name" aria-label="...">
+												</div><!-- /input-group -->
+											</div>
+											<div class="col-sm-2"></div>
+										</div>
+									</div>
+									<br>
+								</form>
+								<h4> Current Task Labels</h4>
+								<ul class="list-group">
+									{foreach from=$projectTaskLabels item=taskLabel}
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<li class="list-group-item clearfix">
+												<div class="row">
+													<div class="col-md-3">
+													<span class="label label-primary">{$taskLabel.name}</span>
+													</div>
+													<div class="col-md-4">
+													    <span class="badge">{$taskLabel.count}</span>
+													</div>
+													<div class="col-md-5">
+												<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post">
+													<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
+													<button type="submit" class="btn btn-primary pull-right"> Delete </button>
+												</form>
+												</div>
+												</div>
+											</li>
+										</div>
+										<div class="col-md-1"></div>
+									</div>	
+									{/foreach}
+								</ul>
+								<br>
+							</div>
+						</div>
+					</div>
+
 
 
 
@@ -478,5 +537,8 @@
         </div>
       </div>
     </div>
+    <script type="application/json" id="taskLabels">
+    	{$projectTaskLabels|@json_encode nofilter}
+    </script>
 
 	{include file='common/footer.tpl'}
