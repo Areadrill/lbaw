@@ -37,5 +37,6 @@
   $smarty->assign('tasks', getTasks($projectID));
   $smarty->assign('projectThreadLabels', getProjectThreadLabels($projectID));
   $smarty->assign('projectThreadLabelCount', getThreadLabelCountForProject($projectID));
+  $smarty->assign('projectTaskLabels', getProjectTaskLabels($projectID));
   $smarty->display('project/projectpage.tpl');
 ?>

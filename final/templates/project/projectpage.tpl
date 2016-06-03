@@ -88,11 +88,15 @@
 							</div>
 							<div class="col-md-4">
 								<div class="list-group">
-									<a href="#" class="list-group-item active">All<span class="badge">7</span></a>
-									<a href="#" class="list-group-item"><span class="label label-danger">Bug fixes</span><span class="badge">1</span></a>
-									<a href="#" class="list-group-item"><span class="label label-warning">Master</span><span class="badge">0</span></a>
-									<a href="#" class="list-group-item"><span class="label label-success">Features</span><span class="badge">1</span></a>
+									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
+									{foreach from=$projectTaskLabels item=taskLabel}
+										<a href="#" class="list-group-item"><span class="label label-primary">{$taskLabel.name}</span><span class="badge">{$taskLabel.count}</span></a>
+									{/foreach}
+									
 								</div>
+							</div>
+
+
 							</div>
 
 						</div>

@@ -107,4 +107,18 @@ function createTask($name,$project, $creator, $text){
 	return $taskid;
 }
 
+function createTaskLabel($name, $projectid){
+	global $conn;
+	$stmt = $conn->prepare('INSERT INTO TaskLabel VALUES (default, ?, ?)');
+	$res = $stmt->execute(array($projectid, $name));
+	return $res;
+}
+
+function getProjectTaskLabels($projectid){
+	global $conn;
+	$stmt = $conn->prepare('SELECT name, Count(TaskToLabel.tasklid) as count FROM TaskLabel LEFT JOIN TaskToLabel On TaskLabel.tasklid = TaskToLabel.tasklid WHERE  TaskLabel.projectid = ? GROUP BY TaskLabel.tasklid');
+	$stmt->execute(array($projectid));
+	$res = $stmt->fetchAll();
+	return $res;
+}
 ?>
