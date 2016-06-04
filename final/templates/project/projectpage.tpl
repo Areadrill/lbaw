@@ -1,11 +1,12 @@
 {include file='common/header.tpl'}
 	<script src="../javascript/notify.min.js"></script>
 	<script src="../javascript/projectpage.js"></script>
+	<script src="../javascript/validator.min.js" ></script>
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" >
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -24,13 +25,13 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right">
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
 						<a class="white-link" href="userpage.php"> {$username} </a>
-						<img src={$img} alt="user image" width="30px" height="30px" />
+						<img src={$img} alt="user image" width="30" height="30" />
 					</div>
 				</div>
 			</div>
@@ -113,9 +114,9 @@
 									<div class="panel-heading">
 										<h2>Threads <button id="newThread" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button></h2>
 									</div>
-									<div class="list-group" id="recent-tasks">
+									<div class="list-group" id="recent-threads">
 									{foreach from=$threads item=thread}
-										<a href=../pages/threadpage.php?id={$thread.threadid} class="list-group-item">
+										<a href="../pages/threadpage.php?id={$thread.threadid}" class="list-group-item">
 											<span class="glyphicon glyphicon-comment"></span> {$thread.name}
 											{foreach from=$thread.threadLabels item=label} <span class="label label-info">{$label.name}</span>
 											{/foreach}
@@ -136,23 +137,23 @@
 						</div>
 					</div>
 
-					<div id="createThread" class="modal fade" role="dialog">
+					<div id="createThread" class="modal fade" data-toggle="validator" role="dialog">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Create a new Thread</h4>
 								</div>
-								<form action="../actions/projects/create_thread.php" method="post">
+								<form action="../actions/projects/create_thread.php" data-toggle="validator" method="post" >
 									<br>
 									<div class="row">
 										<div class="form-group">
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
 												<input name="projid" type="hidden" value={$projID}>
-												<input name="title" type="text" class="form-control" placeholder="Thread title" required>
+												<input name="title" type="text" class="form-control" placeholder="Thread title" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
 												<br>
-												<textarea style="resize: none" class="form-control" name="initialComment" placeholder="Initial comment (not necessary)" rows="4" cols="52"></textarea>
+												<textarea style="resize: none" class="form-control" name="initialComment" placeholder="Initial comment (not necessary)" maxlength="512" rows="4" cols="52"></textarea>
 												<!--eventualmente um dropdown com as tags-->
 											</div>
 											<div class="col-sm-2"></div>
@@ -174,14 +175,14 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Create a new Task</h4>
 								</div>
-								<form action="{$BASE_URL}actions/tasks/create_task.php" method="post">
+								<form action="{$BASE_URL}actions/tasks/create_task.php" data-toggle="validator" method="post" >
 									<br>
 									<div class="row">
 										<div class="form-group">
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
 												<input name="projectid" type="hidden" value={$projID}>
-												<input name="name" type="text" class="form-control" placeholder="Task name" maxlength="25" required>
+												<input name="name" type="text" class="form-control" placeholder="Task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
 												<br>
 												<textarea style="resize: none" class="form-control" name="body" placeholder="Initial comment" maxlength="512" rows="4" cols="52"></textarea>
 												<!--eventualmente um dropdown com as tags-->
@@ -205,7 +206,7 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Manage Task Labels</h4>
 								</div>
-								<form id="newTaskLabel" action="../actions/tasks/create_label.php" method="post">
+								<form id="newTaskLabel" action="../actions/tasks/create_label.php" data-toggle="validator" method="post" >
 									<br>
 									<div class="row">
 										<div class="form-group">
@@ -214,9 +215,9 @@
 												<input name="projectid" type="hidden" value={$projID}>
 												<div class="input-group">
 													<div class="input-group-btn">
-														<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
+														<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
 													</div><!-- /btn-group -->
-													<input id="newTaskLabelName" name="name" type="text" class="form-control" placeholder="New Label name" aria-label="...">
+													<input id="newTaskLabelName" name="name" type="text" class="form-control" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} placeholder="New Label name" aria-label="...">
 												</div><!-- /input-group -->
 											</div>
 											<div class="col-sm-2"></div>
@@ -227,28 +228,30 @@
 								<h4> Current Task Labels</h4>
 								<ul class="list-group">
 									{foreach from=$projectTaskLabels item=taskLabel}
-									<div class="row">
-										<div class="col-md-1"></div>
-										<div class="col-md-10">
+									
 											<li class="list-group-item clearfix">
 												<div class="row">
-													<div class="col-md-3">
-													<span class="label label-primary">{$taskLabel.name}</span>
+													<div class="col-md-1"></div>
+													<div class="col-md-10">
+														<div class="row">
+															<div class="col-md-3">
+																<span class="label label-primary">{$taskLabel.name}</span>
+															</div>
+															<div class="col-md-4">
+													 	    	<span class="badge">{$taskLabel.count}</span>
+															</div>
+															<div class="col-md-5">
+																<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post" >
+																	<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
+																	<button type="submit" class="btn btn-primary pull-right"> Delete </button>
+																</form>
+															</div>
+														</div>
 													</div>
-													<div class="col-md-4">
-													    <span class="badge">{$taskLabel.count}</span>
-													</div>
-													<div class="col-md-5">
-												<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post">
-													<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
-													<button type="submit" class="btn btn-primary pull-right"> Delete </button>
-												</form>
-												</div>
-												</div>
+												<div class="col-md-1"></div>
+												</div>	
 											</li>
-										</div>
-										<div class="col-md-1"></div>
-									</div>	
+										
 									{/foreach}
 								</ul>
 								<br>
@@ -266,7 +269,7 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Manage Thread Labels</h4>
 								</div>
-								<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post">
+								<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post" data-toggle="validator">
 									<br>
 									<div class="row">
 										<div class="form-group">
@@ -275,9 +278,9 @@
 												<input name="projid" type="hidden" value={$projID}>
 												<div class="input-group">
 													<div class="input-group-btn">
-														<button id="newTLSubmmit" type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
+														<button id="newTLSubmmit" type="button" class="btn btn-primary"  aria-expanded="false"> Add to Project</button>
 													</div><!-- /btn-group -->
-													<input name="name" type="text" class="form-control" placeholder="New Label name" aria-label="...">
+													<input name="name" type="text" class="form-control" placeholder="New Label name" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} aria-label="...">
 												</div><!-- /input-group -->
 											</div>
 											<div class="col-sm-2"></div>
@@ -288,28 +291,30 @@
 								<h4> Current Thread Labels</h4>
 								<ul class="list-group">
 									{foreach from=$projectThreadLabels item=threadLabel}
-									<div class="row">
-										<div class="col-md-1"></div>
-										<div class="col-md-10">
+									
 											<li class="list-group-item clearfix">
 												<div class="row">
-													<div class="col-md-3">
-													<span class="label label-primary">{$threadLabel.name}</span>
+													<div class="col-md-1"></div>
+													<div class="col-md-10">
+														<div class="row">
+															<div class="col-md-3">
+																<span class="label label-primary">{$threadLabel.name}</span>
+															</div>
+															<div class="col-md-4">
+													    		<span class="badge">{$threadLabel.count}</span>
+															</div>
+															<div class="col-md-5">
+																<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post" >
+																	<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
+																	<button type="submit" class="btn btn-primary pull-right"> Delete </button>
+																</form>
+															</div>
+														</div>
 													</div>
-													<div class="col-md-4">
-													    <span class="badge">{$threadLabel.count}</span>
-													</div>
-													<div class="col-md-5">
-												<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post">
-													<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
-													<button type="submit" class="btn btn-primary pull-right"> Delete </button>
-												</form>
-												</div>
+													<div class="col-md-1"></div>
 												</div>
 											</li>
-										</div>
-										<div class="col-md-1"></div>
-									</div>	
+											
 									{/foreach}
 								</ul>
 								<br>
@@ -327,8 +332,8 @@
 									<div class="row">
 										<div class="col-md-1">
 											<div class="pull-left">
-												<a href="#" style="margin-bottom: 0;"class="thumbnail">
-													<img src={$member.picPath} alt={$member.username} height="25px" width="25px"/>
+												<a href="#" style="margin-bottom: 0;" class="thumbnail">
+													<img src={$member.picPath} alt={$member.username} height="25" width="25"/>
 												</a>
 
 											</div>
@@ -384,7 +389,7 @@
 						{if $role == 'COORD'}
 						<div class="input-group">
 							<div class="input-group-btn">
-								<button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add to Project</button>
+								<button type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
 							</div><!-- /btn-group -->
 							<input id="userSearcher" type="text" class="form-control" placeholder="Search for users to add" aria-label="...">
 						</div><!-- /input-group -->
@@ -477,12 +482,12 @@
 									</div>
 
 							</li>
-
+							</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
 <div id="bootstrap-alert-box-modal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -525,7 +530,7 @@
               <div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-3">
-                  <form class="alignForm" action="../actions/projects/delete_project.php" method="post">
+                  <form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
                     <input type="hidden" name="projectID" value={$projID}>
                     <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
                   </form>

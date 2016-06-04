@@ -1,11 +1,12 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/userpageStyle.css">
 <link rel="stylesheet" href="../css/custom/threadStyle.css">
+<script src="../javascript/validator.min.js" ></script>
 <script src="../javascript/threadpage.js" ></script>
 
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -22,13 +23,13 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
+        <form action="../actions/users/logout.php" class="navbar-form navbar-right" >
           <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
         </form>
         <div class="navbar-right">
           <div id="mid-of-navbar">
             <a href="userpage.php"> {$username} </a>
-            <img src={$imgPath} alt="user image" width="30px" height="30px" />
+            <img src={$imgPath} alt="user image" width="30" height="30" />
           </div>
         </div>
       </div>
@@ -40,19 +41,20 @@
         <ol class="breadcrumb">
           <li><a href={$BASE_URL}>Home</a></li>
           <li><a href="userpage.php">{$username}</a></li>
-          <li><a href=projectpage.php?id={$projID}>{$projectInfo.name}</a></li>
+          <li><a href="projectpage.php?id={$projID}">{$projectInfo.name}</a></li>
           <li><a class="active" href="#">{$threadInfo.name}</a></li>
         </ol>
       </div>
     </div>
     <div class="row">
       <div class="col-md-9">
-        <h1 style="display:inline;">{$threadInfo.name} <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
+        <h1 style="display:inline;">{$threadInfo.name}</h1> <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
       </div> 
       <div class="col-md-3">
         {if $role === 'COORD'}
         <div class="btn-group">
-          <button style="margin-top: 0.7em" id="threadLock" thrID={$threadID} type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
+          <input type="hidden" id="thrID" name="thrID" value={$threadID}>
+          <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
           <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
         </div>
         {/if}
@@ -94,7 +96,7 @@
           <div class="col-md-12">
             <div class="widget-area no-padding blank">
               <div class="status-upload">
-                <form id="commentBox" action="../api/threads/create_comment.php" method="post" {if $isLocked} hidden {/if}>
+                <form id="commentBox" action="../api/threads/create_comment.php" method="post" data-toggle="validator" {if $isLocked} hidden {/if}>
                   <input type="hidden" name="threadid" value={$threadID}>
                   <textarea name="commentArea" placeholder="Comment area" maxlength="512"></textarea>
                   <ul>
@@ -132,6 +134,7 @@
         <hr/>
       </div>
     </div>
+  </div>
 
     <div id="manageThreadLabels" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -143,27 +146,29 @@
           <h4> Current Thread Labels</h4>
           <ul id="currThreadLabels" class="list-group">
             {foreach from=$labels item=label}
-            <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-10">
+           
                 <li class="list-group-item clearfix">
                   <div class="row">
-                    <div class="col-md-3">
-                      <span class="label label-info">{$label.name}</span>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <span class="label label-info">{$label.name}</span>
+                        </div>
+                        <div class="col-md-5">
+                          <form class="alignForm labelOp" action="../api/threads/assign_label.php" method="post" >
+                            <input type="hidden" name="threadid" value={$threadID}>
+                            <input type="hidden" name="threadlid" value={$label.threadlid}>
+                            <input type="hidden" name="action" value="unassign" >
+                            <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
+                          </form>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-md-5">
-                      <form class="alignForm labelOp" action="../api/threads/assign_label.php" method="post">
-                        <input type="hidden" name="threadid" value={$threadID}>
-                        <input type="hidden" name="threadlid" value={$label.threadlid}>
-                        <input type="hidden" name="action" value="unassign" >
-                        <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
-                      </form>
-                    </div>
-                  </div>
+                    <div class="col-md-6"></div>
+                  </div>  
                 </li>
-              </div>
-              <div class="col-md-6"></div>
-            </div>  
+              
             {/foreach}
           </ul>
           <br>
@@ -215,7 +220,7 @@
               <div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-3">
-                  <form class="alignForm" action="../actions/threads/remove_thread.php" method="post">
+                  <form class="alignForm" action="../actions/threads/remove_thread.php" method="post" >
                     <input type="hidden" name="threadid" value={$threadID}>
                     <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
                   </form>

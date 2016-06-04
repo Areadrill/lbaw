@@ -1,6 +1,7 @@
 {include file='common/header.tpl'}
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/taskpage.css">
+  <script src="../javascript/validator.min.js" ></script>
 	<script src="{$BASE_URL}javascript/taskpage.js"></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="form">
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 				</form>
 				<div class="navbar-right">
@@ -177,7 +178,7 @@
               <div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-3">
-                  <form class="alignForm" action="../../actions/tasks/remove_task.php" method="post">
+                  <form class="alignForm" action="../../actions/tasks/remove_task.php" method="post" role="form">
                     <input type="hidden" name="taskid" value={$taskid}>
                     <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
                   </form>

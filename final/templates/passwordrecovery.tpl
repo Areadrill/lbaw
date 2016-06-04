@@ -1,8 +1,9 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
+<script src="../javascript/validator.min.js" ></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -34,7 +35,7 @@
 							<h3 class="panel-title">Recover Password</h3>
 						</div>
 						<div class="panel-body">
-							<form method="post" action="../actions/users/reset_password.php">
+							<form method="post" action="../actions/users/reset_password.php" data-toggle="validator">
 								<div class="input-group" style="display:none">
 									<input name="uid" type="text" class="form-control" value="{$userid}" hidden="hidden">
 									<input name="uuid" type="text" value="{$uuid}">

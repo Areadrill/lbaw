@@ -3,7 +3,7 @@
 <script src="../javascript/validator.min.js" ></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" >
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -21,7 +21,7 @@
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
-				<form method="post" action="../actions/users/login.php" class="navbar-form navbar-right" role="login">
+				<form method="post" action="../actions/users/login.php" class="navbar-form navbar-right" >
 					<div class="form-group">
 						<input name="username" type="text" class="form-control" placeholder="Username">
 						<input name="password" type="password" class="form-control" placeholder="Password">
@@ -42,11 +42,11 @@
 							<h3 class="panel-title">Sign Up</h3>
 						</div>
 						<div class="panel-body">
-							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator" role="form">
+							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator" >
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
-										<input id="username"cname="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
+										<input id="username" name="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
 															
 									</div>
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -76,7 +76,7 @@
 									</div>
 								</div>
 								
-								<button type="submit" val="submit" name="submit" class="btn btn-default">Sign Up</button>
+								<button type="submit" name="submit" class="btn btn-default">Sign Up</button>
 								<a data-toggle="modal" data-target="#recover" href="#">Lost your password?</a>
 							</form>
 						</div>
@@ -93,7 +93,7 @@
 							<h4 class="modal-title">Recover password</h4>
 						</div>
 						<br>
-						<form action="../actions/users/recover.php" method="post">
+						<form action="../actions/users/recover.php" method="post" >
 							<div class="row">
 								<div class="form-group">
 									<div class="col-sm-2"></div>

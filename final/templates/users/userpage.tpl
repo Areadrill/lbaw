@@ -4,7 +4,7 @@
 <script src="../javascript/userpage.js" ></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -23,13 +23,13 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right" >
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 				</form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
 						<a class="white-link" href="userpage.php"> {$username} </a>
-						<img src={$img} alt="user image" width="30px" height="30px" />
+						<img src={$img} alt="user image" width="30" height="30" />
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 					<div id="customTest">
 						<div class="panel panel-default">
 							<div id="image-panel" class="panel-body">
-								<a id="userImage" href="#"> <img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" /> </a>
+								<a id="userImage" href="#"> <img class="img-responsive maxHeight" src={$img} alt="user image" width="200" height="200" /> </a>
 								<p id="imageCover" hidden>Edit pic</p>
 							</div>
 						</div>
@@ -135,12 +135,12 @@
 				<h4 class="modal-title">Add a Project</h4>
 			</div>
 			<br>
-			<form action="../actions/projects/create_project.php" method="post">
+			<form action="../actions/projects/create_project.php" method="post" data-toggle="validator" >
 				<div class="row">
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="name" type="text" placeholder="Project Name" class="form-control" maxlength="25" required>
+							<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -157,7 +157,6 @@
 				</div>
 				<br>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger">Close</button>
 					<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
 				</div>
 			</form>
@@ -174,7 +173,7 @@
 				<h4 class="modal-title">Edit your info</h4>
 			</div>
 			<br>
-			<form action="../actions/users/edit_info.php" method="post" data-toogle="validator" enctype="multipart/form-data">
+			<form action="../actions/users/edit_info.php" method="post" data-toggle="validator" enctype="multipart/form-data" >
 				<div class="row">
 					<div class="form-group">
 						<div class="col-sm-2"></div>
@@ -189,7 +188,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="repass" type="password" data-match="#lepass" data-match-error="Passwords don't match" placeholder="Retype New Password" class="form-control">
+							<input name="repass" type="password" placeholder="Retype New Password" class="form-control" data-match="#lepass" data-match-error="Passwords don't match">
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -209,7 +208,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="location" type="text" {if !empty($location)} value={$location} {else} placeholder="Your Location" {/if} maxlength="25" class="form-control" required>
+							<input name="location" type="text" {if !empty($location)} value={$location} {else} placeholder="Your Location" {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -229,7 +228,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="education" type="text" {if !empty($education)} value={$education} {else} placeholder="Your Education" {/if} maxlength="25" class="form-control" required>
+							<input name="education" type="text" {if !empty($education)} value={$education} {else} placeholder="Your Education" {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -250,14 +249,14 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Change your profile picture</h4>
 			</div>
-			<form action="../actions/users/change_picture.php" method="post" enctype="multipart/form-data">
+			<form action="../actions/users/change_picture.php" method="post" enctype="multipart/form-data" >
 				<br>
 				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<img class="img-responsive maxHeight" src={$img} alt="user image" width="200px" height="200px" />
+								<img class="img-responsive maxHeight" src={$img} alt="user image" width="200" height="200" />
 							</div>
 						</div>
 					</div>

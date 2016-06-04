@@ -37,7 +37,7 @@ $(document).ready(function (){
 	});
 
 	$("#threadLock").click(function (){
-		$.post('../api/threads/toggle_lock.php', {threadid: $("#threadLock").attr('thrID')}, function (data){
+		$.post('../api/threads/toggle_lock.php', {threadid: $("#thrID").val()}, function (data){
 			
 			if(data == "locked"){
 				$("#threadLock").text("Unlock Thread");
