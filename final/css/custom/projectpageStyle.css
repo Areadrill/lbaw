@@ -17,6 +17,11 @@ div#projinfo{
     border-radius: 5px 0 0 5px;
 }
 
+#removeX:hover{
+    color: #cc0000;
+    cursor: pointer;
+
+}
 #projinfo li{
     border-radius:0;
     box-shadow:none;

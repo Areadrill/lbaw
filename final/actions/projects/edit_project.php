@@ -11,8 +11,8 @@ if (!$_POST['projectID'] || !$_POST['name'] || !$_POST['description'] ) {
 }
 
 $id = $_POST['projectID'];
-$name = $_POST['name'];
-$description = $_POST['description'];
+$name = strip_tags($_POST['name']);
+$description = strip_tags($_POST['description']);
 
 if (!isset($_SESSION['userid'])){
 	error_log('User was not logged in on actions/projects/edit_project.php');

@@ -411,161 +411,126 @@
 						<div class="col-md-5"></div>
 						<div class="col-md-2">
 							<button id="deleteproj" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete Project</button></div>
-						<div class="col-md-5"></div>
-					</div>
-					{/if}
-				</div>
-				<div id="description"  class="panel panel-default">
-					<div class="container-fluid">
-						<h1> {$info.name} </h1>
-						<p> {$info.description}</p>
-					</div>
-				</div>
-				<div id="tasklists" class="panel panel-default" hidden>
-					<ul class="list-group">
-						<li class="list-group-item clearfix">
-							<div class="row">
-								<div class="col-md-3">
-									<span class="glyphicon glyphicon-flag"></span> Documentation
-								</div>
-								<div class="col-md-6">
-									<div class="progress" style="margin-bottom: 0">
-										<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-											90%
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									4 tasks associated
-								</div>
-							</div>
-
-						</li>
-						<li class="list-group-item clearfix">
-							<div class="row">
-								<div class="col-md-3">
-									<span class="glyphicon glyphicon-flag"></span> Front-end
-								</div>
-								<div class="col-md-6">
-									<div class="progress" style="margin-bottom: 0">
-										<div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-											30%
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									2 tasks associated
-								</div>
-							</div>
-
-						</li>
-						<li class="list-group-item clearfix">
-							<div class="row">
-								<div class="col-md-3">
-									<span class="glyphicon glyphicon-flag"></span> Back-end
-								</div>
-								<div class="col-md-6">
-									<div class="progress" style="margin-bottom: 0">
-										<div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-											10%
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									0 tasks associated
-								</div>
-							</div>
-
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="bootstrap-alert-box-modal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header" style="min-height:40px;">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title"><strong>ERROR!</strong></h4>
-				</div>
-				<div class="modal-body">
-					{foreach $ERROR_MESSAGES as $error}
-					<div class="error">
-						{$error}
-					</div>
-					{/foreach}
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
-	{if !empty($ERROR_MESSAGES)}
-	$(document).ready(function(){
-		$("#bootstrap-alert-box-modal").modal('show');
-	});
-	{/if}
-	</script>
-
-	<div id="deleteProjConfirm" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Delete Project</h4>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-							<h4> Are you sure you want to delete this project? </h4>
-						</div>
-						<div class="col-md-2"></div>
-						<div class="row">
 							<div class="col-md-5"></div>
-							<div class="col-md-3">
-								<form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
-									<input type="hidden" name="projectID" value={$projID}>
-									<button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
-								</form>
-							</div>
-							<div class="col-md-4"></div>
 						</div>
+						{/if}
+					</div>
+					<div id="description"  class="panel panel-default">
+						<div class="container-fluid">
+							<h1> {$info.name} </h1>
+							<p> {$info.description}</p>
+						</div>
+					</div>
+					<div id="tasklists" class="panel panel-default" hidden>
+						<button id="newTaskList" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List</button>
+						<br>
+						<br>
+						<ul class="list-group">
+							{foreach from=$projectTaskLists item=tasklist}
+							<li class="list-group-item clearfix">
+								<div class="row">
+									<div class="col-md-3">
+										<span class="glyphicon glyphicon-flag"></span> {$tasklist.name}
+									</div>
+									<div class="col-md-6">
+										<div class="progress" style="margin-bottom: 0">
+											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+												0%
+											</div>
+
+
+										</div>
+									</div>
+									<div class="col-md-2">
+										{$tasklist.tasks|@count} tasks associated
+									</div>
+									<div class="col-md-1">
+										<span id="removeX" onclick="deleteTaskList({$tasklist.taskliid},{$projID})" class="glyphicon glyphicon-remove"></span>
+									</div>
+								</div>
+							</li>
+							{/foreach}
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div id="editProjDescription" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Edit Project Info</h4>
-				</div>
-				<div class="modal-body">
-					<form class="alignForm" action="../actions/projects/edit_project.php" method="post" >
-						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-8">
-								<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
-							</div>
-							<div class="col-md-2"></div>
+		<div id="bootstrap-alert-box-modal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" style="min-height:40px;">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title"><strong>ERROR!</strong></h4>
+					</div>
+					<div class="modal-body">
+						{foreach $ERROR_MESSAGES as $error}
+						<div class="error">
+							{$error}
 						</div>
-						<br>
+						{/foreach}
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		{if !empty($ERROR_MESSAGES)}
+		$(document).ready(function(){
+			$("#bootstrap-alert-box-modal").modal('show');
+		});
+		{/if}
+		</script>
+
+		<div id="deleteProjConfirm" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Delete Project</h4>
+					</div>
+					<div class="modal-body">
 						<div class="row">
 							<div class="col-md-2"></div>
 							<div class="col-md-8">
-								<input name="description" type="text" placeholder="Description" class="form-control" required>
+								<h4> Are you sure you want to delete this project? </h4>
 							</div>
 							<div class="col-md-2"></div>
 							<div class="row">
 								<div class="col-md-5"></div>
 								<div class="col-md-3">
+									<form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
+										<input type="hidden" name="projectID" value={$projID}>
+										<button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
+									</form>
+								</div>
+								<div class="col-md-4"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="newTaskListModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title"> New Task List</h4>
+					</div>
+					<div class="modal-body">
+						<form class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<input name="name" type="text" placeholder="Task List Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-5"></div>
+								<div class="col-md-3">
 									<input type="hidden" name="projectID" value={$projID}>
-									<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+									<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
 								</form>
 							</div>
 							<div class="col-md-4"></div>
@@ -574,9 +539,46 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<script type="application/json" id="taskLabels">
-	{$projectTaskLabels|@json_encode nofilter}
-	</script>
 
-	{include file='common/footer.tpl'}
+		<div id="editProjDescription" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Edit Project Info</h4>
+					</div>
+					<div class="modal-body">
+						<form class="alignForm" action="../actions/projects/edit_project.php" method="post" >
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<input name="description" type="text" placeholder="Description" class="form-control" required>
+								</div>
+								<div class="col-md-2"></div>
+								<div class="row">
+									<div class="col-md-5"></div>
+									<div class="col-md-3">
+										<input type="hidden" name="projectID" value={$projID}>
+										<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+									</form>
+								</div>
+								<div class="col-md-4"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="application/json" id="taskLabels">
+		{$projectTaskLabels|@json_encode nofilter}
+		</script>
+
+		{include file='common/footer.tpl'}

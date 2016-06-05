@@ -67,6 +67,10 @@ $(document).ready(function(){
 		$("#editproj").click(function(){
 			$("#editProjDescription").modal('show');
 		});
+		$("#newTaskList").click(function(){
+			$("#newTaskListModal").modal('show');
+		});
+
 
     $('#userSearcher').on('keyup', function(){
     $.post('../api/projects/search_users.php', {field : $(this).val(), projectID: $("#projectID").val()}, function(data){
@@ -146,4 +150,10 @@ $(document).ready(function(){
 function taskLabelAdded(data){
 	$("div#taskLabelList").append("<a href=\"#\" class=\"list-group-item\"><span class=\"label label-primary\">"+ data["name"] + "</span><span class=\"badge\">0</span></a>");
 	$("#manageTaskLabels").modal('hide');
+}
+function deleteTaskList(taskliid, projID){
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/delete_tasklist.php" method="post">'+
+		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="tasklistID" value='+ taskliid +'>' +
+	'</form>').submit();
 }
