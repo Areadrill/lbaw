@@ -17,6 +17,15 @@ div#projinfo{
     border-radius: 5px 0 0 5px;
 }
 
+.removeCross:hover{
+    color: #cc0000;
+    cursor: pointer;
+
+}
+.manageTask:hover{
+  color: #428bca;
+  cursor: pointer;
+}
 #projinfo li{
     border-radius:0;
     box-shadow:none;
@@ -91,4 +100,9 @@ div#main-content div#settings{
 
 .text{
     margin-top: 1em;
+}
+
+.tasklist .belong{
+	display:none;
+	padding: 5px;
 }

@@ -4,7 +4,7 @@ include_once($BASE_DIR .'database/projects.php');
 include_once($BASE_DIR .'database/members.php');
 
 if (!$_POST['projectID']) {
-  $_SESSION['error_messages'][] = 'Invalid creation';
+  $_SESSION['error_messages'][] = 'Invalid delete';
   $_SESSION['form_values'] = $_POST;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   exit;
@@ -13,7 +13,7 @@ if (!$_POST['projectID']) {
 $id = $_POST['projectID'];
 
 if (!isset($_SESSION['userid'])){
-	error_log('User was not logged in on actions/projects/create_project.php');
+	error_log('User was not logged in on actions/projects/delete_project.php');
 	exit;
 }
 

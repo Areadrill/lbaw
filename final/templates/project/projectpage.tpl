@@ -1,10 +1,12 @@
 {include file='common/header.tpl'}
+
 	<title> Page for {$info.name} project</title>
 	<script src="../javascript/notify.min.js"></script>
 	<script src="../javascript/projectpage.js"></script>
 	<script src="../javascript/validator.min.js" ></script>
 	<link rel="stylesheet" href="../css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
+
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" >
@@ -80,13 +82,13 @@
 										<h2>Recent Tasks<button id="newTask" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Task</button></h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
-									{foreach from=$tasks item=task}
+										{foreach from=$tasks item=task}
 										<a href="../pages/tasks/task.php?taskid={$task.taskid}" class="list-group-item">{$task.name}
-										{foreach from=$task.taskLabels item=label}
-										<span class="label label-warning">{$label.name}</span>
+											{foreach from=$task.taskLabels item=label}
+											<span class="label label-warning">{$label.name}</span>
+											{/foreach}
+										</a>
 										{/foreach}
-									</a>
-									{/foreach}
 									</div>
 								</div>
 							</div>
@@ -94,49 +96,50 @@
 								<div id="taskLabelList" class="list-group">
 									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
 									{foreach from=$projectTaskLabels item=taskLabel}
-										<a href="#" class="list-group-item"><span class="label label-primary">{$taskLabel.name}</span><span class="badge">{$taskLabel.count}</span></a>
+									<a href="#" class="list-group-item"><span class="label label-primary">{$taskLabel.name}</span><span class="badge">{$taskLabel.count}</span></a>
 									{/foreach}
-									
+
 								</div>
 							</div>
 
 
-							</div>
-
 						</div>
+
 					</div>
-					<div id="forum" class="panel panel-default" hidden>
-						{if $role == 'COORD'}<button id="labelManage" class="btn btn-link pull-right"><span class="glyphicon glyphicon-cog"></span> Manage labels</button>{/if}
-						<br>
-						<br>
-						<div class="row">
-							<div class="col-md-8">
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h2>Threads <button id="newThread" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button></h2>
-									</div>
-									<div class="list-group" id="recent-threads">
+				</div>
+				<div id="forum" class="panel panel-default" hidden>
+					{if $role == 'COORD'}<button id="labelManage" class="btn btn-link pull-right"><span class="glyphicon glyphicon-cog"></span> Manage labels</button>{/if}
+					<br>
+					<br>
+					<div class="row">
+						<div class="col-md-8">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h2>Threads <button id="newThread" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Thread</button></h2>
+								</div>
+								<div class="list-group" id="recent-threads">
 									{foreach from=$threads item=thread}
-										<a href="../pages/threadpage.php?id={$thread.threadid}" class="list-group-item">
-											<span class="glyphicon glyphicon-comment"></span> {$thread.name}
-											{foreach from=$thread.threadLabels item=label} <span class="label label-info">{$label.name}</span>
-											{/foreach}
-										</a>
-									{/foreach}
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="list-group">
-									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
-									{foreach from=$projectThreadLabels item=threadLabel}
-										<a href="#" class="list-group-item"><span class="label label-primary">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
+									<a href="../pages/threadpage.php?id={$thread.threadid}" class="list-group-item">
+										<span class="glyphicon glyphicon-comment"></span> {$thread.name}
+										{foreach from=$thread.threadLabels item=label} <span class="label label-info">{$label.name}</span>
+										{/foreach}
+									</a>
 									{/foreach}
 								</div>
 							</div>
-
 						</div>
+						<div class="col-md-4">
+							<div class="list-group">
+								<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
+								{foreach from=$projectThreadLabels item=threadLabel}
+								<a href="#" class="list-group-item"><span class="label label-primary">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
+								{/foreach}
+							</div>
+						</div>
+
 					</div>
+				</div>
+
 
 					<div id="createThread" class="modal fade" data-toggle="validator" role="dialog">
 						<div class="modal-dialog">
@@ -158,17 +161,20 @@
 												<!--eventualmente um dropdown com as tags-->
 											</div>
 											<div class="col-sm-2"></div>
-										</div>
-									</div>
-									<br>
 
-									<div class="modal-footer">
-										<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+										</div>
+										<div class="col-sm-2"></div>
 									</div>
-								</form>
-							</div>
+								</div>
+								<br>
+
+								<div class="modal-footer">
+									<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+								</div>
+							</form>
 						</div>
 					</div>
+
 					<div id="createTask" class="modal fade" role="dialog">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -189,27 +195,53 @@
 												<!--eventualmente um dropdown com as tags-->
 											</div>
 											<div class="col-sm-2"></div>
-										</div>
-									</div>
-									<br>
 
-									<div class="modal-footer">
-										<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+										</div>
+										<div class="col-sm-2"></div>
 									</div>
-								</form>
-							</div>
+								</div>
+								<br>
+
+								<div class="modal-footer">
+									<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+								</div>
+							</form>
 						</div>
 					</div>
-					<div id="manageTaskLabels" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Manage Task Labels</h4>
+				</div>
+				<div id="manageTaskLabels" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Manage Task Labels</h4>
+							</div>
+							<form id="newTaskLabel" action="../actions/tasks/create_label.php" data-toggle="validator" method="post" >
+								<br>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-sm-2"></div>
+										<div class="col-sm-8">
+											<input name="projectid" type="hidden" value={$projID}>
+											<div class="input-group">
+												<div class="input-group-btn">
+													<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
+												</div><!-- /btn-group -->
+												<input id="newTaskLabelName" name="name" type="text" class="form-control" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} placeholder="New Label name" aria-label="...">
+											</div><!-- /input-group -->
+										</div>
+										<div class="col-sm-2"></div>
+									</div>
 								</div>
-								<form id="newTaskLabel" action="../actions/tasks/create_label.php" data-toggle="validator" method="post" >
-									<br>
+								<br>
+							</form>
+							<h4> Current Task Labels</h4>
+							<ul class="list-group">
+								{foreach from=$projectTaskLabels item=taskLabel}
+
+								<li class="list-group-item clearfix">
 									<div class="row">
+
 										<div class="form-group">
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
@@ -221,58 +253,54 @@
 													<input id="newTaskLabelName" name="name" type="text" title="new tasklabel's name" class="form-control" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} placeholder="New Label name" aria-label="...">
 												</div><!-- /input-group -->
 											</div>
-											<div class="col-sm-2"></div>
 										</div>
+										<div class="col-md-1"></div>
 									</div>
-									<br>
-								</form>
-								<h4> Current Task Labels</h4>
-								<ul class="list-group">
-									{foreach from=$projectTaskLabels item=taskLabel}
-									
-											<li class="list-group-item clearfix">
-												<div class="row">
-													<div class="col-md-1"></div>
-													<div class="col-md-10">
-														<div class="row">
-															<div class="col-md-3">
-																<span class="label label-primary">{$taskLabel.name}</span>
-															</div>
-															<div class="col-md-4">
-													 	    	<span class="badge">{$taskLabel.count}</span>
-															</div>
-															<div class="col-md-5">
-																<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post" >
-																	<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
-																	<button type="submit" class="btn btn-primary pull-right"> Delete </button>
-																</form>
-															</div>
-														</div>
-													</div>
-												<div class="col-md-1"></div>
-												</div>	
-											</li>
-										
-									{/foreach}
-								</ul>
-								<br>
-							</div>
+								</li>
+
+								{/foreach}
+							</ul>
+							<br>
 						</div>
 					</div>
+				</div>
 
 
 
 
-					<div id="manageLabels" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Manage Thread Labels</h4>
+				<div id="manageLabels" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Manage Thread Labels</h4>
+							</div>
+							<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post" data-toggle="validator">
+								<br>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-sm-2"></div>
+										<div class="col-sm-8">
+											<input name="projid" type="hidden" value={$projID}>
+											<div class="input-group">
+												<div class="input-group-btn">
+													<button id="newTLSubmmit" type="button" class="btn btn-primary"  aria-expanded="false"> Add to Project</button>
+												</div><!-- /btn-group -->
+												<input name="name" type="text" class="form-control" placeholder="New Label name" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} aria-label="...">
+											</div><!-- /input-group -->
+										</div>
+										<div class="col-sm-2"></div>
+									</div>
 								</div>
-								<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post" data-toggle="validator">
-									<br>
+								<br>
+							</form>
+							<h4> Current Thread Labels</h4>
+							<ul class="list-group">
+								{foreach from=$projectThreadLabels item=threadLabel}
+
+								<li class="list-group-item clearfix">
 									<div class="row">
+
 										<div class="form-group">
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
@@ -283,103 +311,78 @@
 													</div><!-- /btn-group -->
 													<input name="name" type="text" title="new label's name" class="form-control" placeholder="New Label name" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} aria-label="...">
 												</div><!-- /input-group -->
+
 											</div>
-											<div class="col-sm-2"></div>
 										</div>
+										<div class="col-md-1"></div>
 									</div>
-									<br>
-								</form>
-								<h4> Current Thread Labels</h4>
-								<ul class="list-group">
-									{foreach from=$projectThreadLabels item=threadLabel}
-									
-											<li class="list-group-item clearfix">
-												<div class="row">
-													<div class="col-md-1"></div>
-													<div class="col-md-10">
-														<div class="row">
-															<div class="col-md-3">
-																<span class="label label-primary">{$threadLabel.name}</span>
-															</div>
-															<div class="col-md-4">
-													    		<span class="badge">{$threadLabel.count}</span>
-															</div>
-															<div class="col-md-5">
-																<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post" >
-																	<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
-																	<button type="submit" class="btn btn-primary pull-right"> Delete </button>
-																</form>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-1"></div>
-												</div>
-											</li>
-											
-									{/foreach}
-								</ul>
-								<br>
-							</div>
+								</li>
+
+								{/foreach}
+							</ul>
+							<br>
 						</div>
 					</div>
+				</div>
 
 
 
-					<div id="members" class="panel panel-default" hidden>
-						<input id="projectID" type="hidden" name="projectID" value={$projID}>
-						<ul class="list-group">
-							{foreach from=$members item=member}
-								<li class="list-group-item clearfix">
-									<div class="row">
-										<div class="col-md-1">
-											<div class="pull-left">
-												<a href="#" style="margin-bottom: 0;" class="thumbnail">
-													<img src={$member.picPath} alt={$member.username} height="25" width="25"/>
-												</a>
+				<div id="members" class="panel panel-default" hidden>
+					<input id="projectID" type="hidden" name="projectID" value={$projID}>
+					<ul class="list-group">
+						{foreach from=$members item=member}
+						<li class="list-group-item clearfix">
+							<div class="row">
+								<div class="col-md-1">
+									<div class="pull-left">
+										<a href="#" style="margin-bottom: 0;" class="thumbnail">
+											<img src={$member.picPath} alt={$member.username} height="25" width="25"/>
+										</a>
 
-											</div>
-										</div>
+									</div>
+								</div>
 
-										<div class="col-md-2 text">
-											{$member.username}
-										</div>
+								<div class="col-md-2 text">
+									{$member.username}
+								</div>
 
-										<div class="col-md-3 text">
-											<span class="glyphicon glyphicon-inbox"></span> {if $member.tasksassigned == 0} no {else} {$member.tasksassigned} {/if} task{if $member.tasksassigned != 1}s{/if} assigned
-										</div>
+								<div class="col-md-3 text">
+									<span class="glyphicon glyphicon-inbox"></span> {if $member.tasksassigned == 0} no {else} {$member.tasksassigned} {/if} task{if $member.tasksassigned != 1}s{/if} assigned
+								</div>
 
-										<div class="col-md-3 text">
-											{if $member.roleassigned == "MEMBER"}
-											<span class="glyphicon glyphicon-pawn"></span> Team Member
-											{else if $member.roleassigned == "COORD"}
-											<span class="glyphicon glyphicon-king"></span> Team Coordinator
-											{/if}
-										</div>
+								<div class="col-md-3 text">
+									{if $member.roleassigned == "MEMBER"}
+									<span class="glyphicon glyphicon-pawn"></span> Team Member
+									{else if $member.roleassigned == "COORD"}
+									<span class="glyphicon glyphicon-king"></span> Team Coordinator
+									{/if}
+								</div>
 
 
-										<div class="pull-right">
-											<div class="btn-group" role="group" aria-label="...">
-												{if $member.roleassigned == "MEMBER"}
-												<form class="alignForm" action="../api/projects/assign_role.php" method="POST" >
-													<input type="hidden" name="projectID" value={$projID}>
-													<input type="hidden" name="userID" value={$member.userid}>
-													<input type="hidden" name="action" value="promote">
-													<button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
-												</form>
-												<form  class="alignForm" action="../api/projects/assign_role.php" method="POST" >
-													<input type="hidden" name="projectID" value={$projID}>
-													<input type="hidden" name="userID" value={$member.userid}>
-													<input type="hidden" name="action" value="remove">
-													<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
-												</form>
-												{else if $member.roleassigned == "COORD"}
-												<form  action="../api/projects/assign_role.php" method="POST" >
-													<input type="hidden" name="projectID" value={$projID}>
-													<input type="hidden" name="userID" value={$member.userid}>
-													<input type="hidden" name="action" value="demote">
-													<button type="submit" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
-												</form>
-												{/if}
+								<div class="pull-right">
+									<div class="btn-group" role="group" aria-label="...">
+										{if $member.roleassigned == "MEMBER"}
+										<form class="alignForm" action="../api/projects/assign_role.php" method="POST" >
+											<input type="hidden" name="projectID" value={$projID}>
+											<input type="hidden" name="userID" value={$member.userid}>
+											<input type="hidden" name="action" value="promote">
+											<button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-upload"></span> Promote</button>
+										</form>
+										<form  class="alignForm" action="../api/projects/assign_role.php" method="POST" >
+											<input type="hidden" name="projectID" value={$projID}>
+											<input type="hidden" name="userID" value={$member.userid}>
+											<input type="hidden" name="action" value="remove">
+											<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+										</form>
+										{else if $member.roleassigned == "COORD"}
+										<form  action="../api/projects/assign_role.php" method="POST" >
+											<input type="hidden" name="projectID" value={$projID}>
+											<input type="hidden" name="userID" value={$member.userid}>
+											<input type="hidden" name="action" value="demote">
+											<button type="submit" class="btn btn-warning"> <span class="glyphicon glyphicon-download"></span> Demote</button>
+										</form>
+										{/if}
+
 
 											</div>
 										</div>
@@ -405,21 +408,41 @@
 								<div class="input-group">
 									<div class="input-group-btn">
 										<button id="editproj" type="button" class="btn btn-primary"> Edit Project</button>
+
 									</div>
 								</div>
 							</div>
-						</div>
-						<br>
-						<div class="row">
-	   						<div class="col-lg-4 col-lg-offset-4">
-								<div class="input-group">
-									<div class="input-group-btn">
-										<button id="deleteproj" type="button" class="btn btn-danger"> Delete Project</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						</li>
+						{/foreach}
+					</ul>
+					{if $role == 'COORD'}
+					<div class="input-group">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
+						</div><!-- /btn-group -->
+						<input id="userSearcher" type="text" class="form-control" placeholder="Search for users to add" aria-label="...">
+					</div><!-- /input-group -->
+					<div id="listofusers">
+					</div>
 					{/if}
+				</div>
+				<div id="settings" class="panel panel-default" hidden>
+					{if $role == 'COORD'}
+					<div class="row">
+						<div class="col-md-5"></div>
+						<div class="col-md-2">
+							<button id="editproj" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit Project</button>
+						</div>
+						<div class="col-md-5"></div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-5"></div>
+						<div class="col-md-2">
+							<button id="deleteproj" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete Project</button></div>
+							<div class="col-md-5"></div>
+						</div>
+						{/if}
 					</div>
 					<div id="description"  class="panel panel-default">
 						<div class="container-fluid">
@@ -428,123 +451,212 @@
 						</div>
 					</div>
 					<div id="tasklists" class="panel panel-default" hidden>
+						<button id="newTaskList" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List</button>
+						<br>
+						<br>
 						<ul class="list-group">
-							<li class="list-group-item clearfix">
+							{foreach from=$projectTaskLists item=tasklist}
+							<li class="tasklist list-group-item clearfix">
 								<div class="row">
 									<div class="col-md-3">
-										<span class="glyphicon glyphicon-flag"></span> Documentation
+										<span class="glyphicon glyphicon-flag"></span> {$tasklist.name}
 									</div>
 									<div class="col-md-6">
 										<div class="progress" style="margin-bottom: 0">
-											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-												90%
+											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {math equation="completed / division * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%;">
+												{math equation="completed / division * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%
+											</div>
+
+
+										</div>
+									</div>
+									<div class="col-md-2">
+										{$tasklist.tasks|@count} tasks associated
+									</div>
+									<div class="col-md-1">
+										{if $role == 'COORD'}
+										<span data-tasklistid="{$tasklist.taskliid}" class="manageTask glyphicon glyphicon-cog"></span>
+										<span id="removeX" onclick="deleteTaskList({$tasklist.taskliid},{$projID})" class="glyphicon glyphicon-remove removeCross"></span>
+											{/if}
+										</div>
+									</div>
+									<div class="row belong">
+										<ul>
+											{foreach from=$tasklist.tasks item=task}
+												<li>{if $task.complete eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a href="{$BASE_URL}pages/tasks/task.php?taskid={$task.taskid}"> {$task.name}</a></li>
+											{/foreach}
+										</ul>
+									</div>
+								</li>
+								<div data-tasklistid="{$tasklist.taskliid}" class="modal fade manageTaskList" role="dialog">
+									<div class="modal-dialog">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Manage Task List</h4>
+											</div>
+											<div class="modal-body">
+												{foreach from=$tasklist.tasks item=task}
+												<div class="row">
+													<div class="col-md-3">
+														<span class="glyphicon glyphicons-notes-2"></span> {$task.name}
+													</div>
+													<div class="col-md-8">
+													</div>
+													<div class="col-md-1">
+														<span onclick="removeFromTaskList({$task.taskid}, {$projID})" class="glyphicon glyphicon-remove removeCross"></span>
+														</div>
+													</div>
+												<br>
+												{/foreach}
+												<div class="dropdown">
+													<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Add to task list
+														<span class="caret"></span></button>
+														<ul class="dropdown-menu">
+															{foreach from=$noTaskList item=task}
+															<li>{if $task.complete eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a data-taskliid="{$tasklist.taskliid}" data-taskid="{$task.taskid}"> {$task.name}</a></li>
+															{/foreach}
+														</ul>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+													<button data-taskliid="{$tasklist.taskliid}" onclick="addToTaskList({$tasklist.taskliid}, {$projID})" type="button" class="addTaskToTL btn btn-primary">Add task</button>
+												</div>
 											</div>
 										</div>
 									</div>
-										<div class="col-md-3">
-											4 tasks associated
-										</div>
-									</div>
-
-							</li>
-							<li class="list-group-item clearfix">
-								<div class="row">
-									<div class="col-md-3">
-										<span class="glyphicon glyphicon-flag"></span> Front-end
-									</div>
-									<div class="col-md-6">
-										<div class="progress" style="margin-bottom: 0">
-											<div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-												30%
-											</div>
-										</div>
-									</div>
-										<div class="col-md-3">
-											2 tasks associated
-										</div>
-									</div>
-
-							</li>
-							<li class="list-group-item clearfix">
-								<div class="row">
-									<div class="col-md-3">
-										<span class="glyphicon glyphicon-flag"></span> Back-end
-									</div>
-									<div class="col-md-6">
-										<div class="progress" style="margin-bottom: 0">
-											<div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-												10%
-											</div>
-										</div>
-									</div>
-										<div class="col-md-3">
-											0 tasks associated
-										</div>
-									</div>
-
-							</li>
+								{/foreach}
 							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-<div id="bootstrap-alert-box-modal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header" style="min-height:40px;">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title"><strong>ERROR!</strong></h4>
-				</div>
-				<div class="modal-body">
-					{foreach $ERROR_MESSAGES as $error}
-					<div class="error">
-						{$error}
+			<div id="bootstrap-alert-box-modal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="min-height:40px;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title"><strong>ERROR!</strong></h4>
+						</div>
+						<div class="modal-body">
+							{foreach $ERROR_MESSAGES as $error}
+							<div class="error">
+								{$error}
+							</div>
+							{/foreach}
+						</div>
 					</div>
-					{/foreach}
 				</div>
 			</div>
-		</div>
-	</div>
-	<script>
-	{if !empty($ERROR_MESSAGES)}
-	$(document).ready(function(){
-		$("#bootstrap-alert-box-modal").modal('show');
-	});
-	{/if}
-	</script>
+			<script>
+			{if !empty($ERROR_MESSAGES)}
+			$(document).ready(function(){
+				$("#bootstrap-alert-box-modal").modal('show');
+			});
+			{/if}
+			</script>
 
-	<div id="deleteProjConfirm" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Delete Project</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
-                <h4> Are you sure you want to delete this project? </h4>
-              </div>
-              <div class="col-md-2"></div>
-              <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-3">
-                  <form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
-                    <input type="hidden" name="projectID" value={$projID}>
-                    <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
-                  </form>
-                </div>
-                <div class="col-md-4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script type="application/json" id="taskLabels">
-    	{$projectTaskLabels|@json_encode nofilter}
-    </script>
+			<div id="deleteProjConfirm" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Delete Project</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<h4> Are you sure you want to delete this project? </h4>
+								</div>
+								<div class="col-md-2"></div>
+								<div class="row">
+									<div class="col-md-5"></div>
+									<div class="col-md-3">
+										<form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
+											<input type="hidden" name="projectID" value={$projID}>
+											<button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
+										</form>
+									</div>
+									<div class="col-md-4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="newTaskListModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"> New Task List</h4>
+						</div>
+						<div class="modal-body">
+							<form class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<input name="name" type="text" placeholder="Task List Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+									</div>
+									<div class="col-md-2"></div>
+								</div>
+								<div class="row">
+									<div class="col-md-5"></div>
+									<div class="col-md-3">
+										<input type="hidden" name="projectID" value={$projID}>
+										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
+									</form>
+								</div>
+								<div class="col-md-4"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	{include file='common/footer.tpl'}
+			<div id="editProjDescription" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Edit Project Info</h4>
+						</div>
+						<div class="modal-body">
+							<form class="alignForm" action="../actions/projects/edit_project.php" method="post" >
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+									</div>
+									<div class="col-md-2"></div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<input name="description" type="text" placeholder="Description" class="form-control" required>
+									</div>
+									<div class="col-md-2"></div>
+									<div class="row">
+										<div class="col-md-5"></div>
+										<div class="col-md-3">
+											<input type="hidden" name="projectID" value={$projID}>
+											<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+										</form>
+									</div>
+									<div class="col-md-4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script type="application/json" id="taskLabels">
+			{$projectTaskLabels|@json_encode nofilter}
+			</script>
+
+			{include file='common/footer.tpl'}

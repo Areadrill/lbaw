@@ -20,13 +20,23 @@ function getTaskLabels($taskID) {
 	$stmt = $conn->prepare("SELECT tasklid, name FROM TaskLabel WHERE TaskLID IN (SELECT tasklid FROM TaskToLabel WHERE taskid = ?)");
 	$stmt->execute(array($taskID));
 	$res = $stmt->fetchAll();
-	
+
 	return $res;
 }
 
+function getLabelsNotInTask($taskID, $projectid) {
+	global $conn;
+	$stmt = $conn->prepare("SELECT tasklid, name FROM TaskLabel WHERE projectid = ? AND tasklid NOT IN (SELECT tasklid FROM TaskToLabel WHERE taskid = ?)");
+	$stmt->execute(array($projectid, $taskid));
+	$res = $stmt->fetchAll();
+
+	return $res;
+}
+
+
 function getTaskInfo($taskID){
 	global $conn;
-	$stmt = $conn->prepare("SELECT name, creator,assignee, complete, creationinfo, taskliid FROM Task WHERE taskid = ?");
+	$stmt = $conn->prepare("SELECT Task.name, creator,assignee, complete, creationinfo, Tasklist.taskliid, Tasklist.name AS tasklistName FROM Task, Tasklist WHERE Task.taskid = ? AND Task.taskliid = Tasklist.taskliid");
 	$stmt->execute(array($taskID));
 	$res = $stmt->fetch();
 	$res['creatorName'] = getUsername($res['creator']);
@@ -55,7 +65,7 @@ function getTaskComments($taskID){
 	for ($i = 0; $i < count($results); $i++){
 		$results[$i]['commentorname'] = getUsername($results[$i]['commentor']);
 	}
-	
+
 	return $results;
 }
 
@@ -65,10 +75,10 @@ function deleteTask($userID, $taskID){
 		return "NO_PERM";
 	}
 	$stmt = $conn->prepare('DELETE FROM Task WHERE taskid =? RETURNING *');
-	$stmt->execute(array($taskID));	
+	$stmt->execute(array($taskID));
 	if (count($stmt->fetchAll()) == 0)
 		return "ERROR";
-	return "SUCCESS";	
+	return "SUCCESS";
 }
 
 function getProjectByTask($taskID){
@@ -76,7 +86,7 @@ function getProjectByTask($taskID){
 	$stmt = $conn->prepare('SELECT projectid FROM task WHERE taskid = ?');
 	$stmt->execute(array($taskID));
 	return $stmt->fetch()['projectid'];
-}	
+}
 
 function markTaskCompleted($taskID, $complete){
 	global $conn;
@@ -88,7 +98,7 @@ function createComment($taskID, $body, $userid){
 	global $conn;
 	$stmt = $conn->prepare("INSERT INTO taskcomment VALUES (default, ?, ?, clock_timestamp(), ?)");
 	$res = $stmt->execute(array($taskID, $userid, $body));
-	return $res;	
+	return $res;
 }
 
 function createTask($name,$project, $creator, $text){
@@ -107,11 +117,46 @@ function createTask($name,$project, $creator, $text){
 	return $taskid;
 }
 
+function assignTask($taskid, $userid){
+	global $conn;
+	$stmt = $conn->prepare('UPDATE Task SET assignee=? WHERE taskid=?');
+	$succ = $stmt->execute(array($userid, $taskid));
+	return $succ;
+}
+
 function createTaskLabel($name, $projectid){
 	global $conn;
 	$stmt = $conn->prepare('INSERT INTO TaskLabel VALUES (default, ?, ?)');
 	$res = $stmt->execute(array($projectid, $name));
 	return $res;
+}
+function unassignLabelFromTask($userID, $taskID, $taskLID){ //preciso ver se a thread e a label pertencem ao mesmo projeto?
+	if((checkPrivilege($userID, getProjectByTask($taskID))) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	global $conn;
+
+	$stmt = $conn->prepare("DELETE FROM TaskToLabel WHERE taskid = ? AND tasklid = ?");
+	$stmt->execute(array($taskID, $taskLID));
+
+	return $stmt->fetch() !== false;
+}
+
+
+function assignLabelToTask($userID, $taskID, $taskLID){ //preciso ver se a thread e a label pertencem ao mesmo projeto?
+	if((checkPrivilege($userID, getProjectByTask($taskID))) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	global $conn;
+
+	$stmt = $conn->prepare("INSERT INTO TaskToLabel VALUES(?, ?)");
+	$stmt->execute(array($taskID, $taskLID));
+
+	return $stmt->fetch() !== false;
 }
 
 function getProjectTaskLabels($projectid){
@@ -121,4 +166,39 @@ function getProjectTaskLabels($projectid){
 	$res = $stmt->fetchAll();
 	return $res;
 }
+
+/*function getTaskIDCommentID($commentID){
+	global $conn;
+
+	$stmt = $conn->prepare("SELECT taskid FROM taskcomment WHERE taskcid = ?");
+	$stmt->execute(array($commentID));
+
+	return $stmt->fetch()['taskid'];
+}
+
+function getProjIDCommentID($commentID){
+	global $conn;
+
+	$stmt = $conn->prepare("SELECT projectid FROM task WHERE taskid = ?");
+	$stmt->execute(array(getTaskIDCommentID($commentID)));
+
+	return $stmt->fetch();
+
+}
+
+function deleteComment($userID, $commentID){
+
+	if(checkPrivilege($userID, getProjIDCommentID($commentID)['projectid']) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	global $conn;
+
+	$stmt = $conn->prepare("DELETE FROM taskcomment WHERE taskcid = ?");
+	$stmt->execute(array($commentID));
+
+	return $stmt->fetch() !== false;
+
+}*/
 ?>

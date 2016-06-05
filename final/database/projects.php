@@ -30,6 +30,13 @@ function getProjectInfo($projectid){
   return $res;
 }
 
+function getMembers($projectid){
+	global $conn;
+	$stmt = $conn->prepare("SELECT Users.userid, username FROM Roles, Users WHERE projectid = ? and Roles.userid = Users.userid");
+	$stmt->execute(array($projectid));
+	return $stmt->fetchAll();
+}
+
 function getMembersNumber($projectid){
   global $conn;
   $stmt = $conn->prepare("SELECT COUNT(*) FROM Roles WHERE projectID = ?");
@@ -84,6 +91,12 @@ function deleteProject($id){
   global $conn;
   $stmt = $conn->prepare("DELETE FROM Project WHERE projectid= ?;");
   $stmt->execute(array($id));
+  return $stmt->fetch();
+}
+function editProject($id, $name, $description){
+  global $conn;
+  $stmt = $conn->prepare("UPDATE Project SET name = ?, description = ? WHERE projectid= ?;");
+  $stmt->execute(array($name, $description, $id));
   return $stmt->fetch();
 }
 ?>

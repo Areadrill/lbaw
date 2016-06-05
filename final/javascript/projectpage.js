@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	$(".dropdown-menu li a").click(function(){
+	  var selText = $(this).text();
+		var taskid = $(this).data("taskid");
+		var taskliid = $(this).data("taskliid");
+		$(".addTaskToTL[data-taskliid="+ taskliid +"]").data("taskid", taskid);
+	  $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+	});
 	$("#descriptionTab").click(function(){
 	  $("#description").show();
       $("#forum").hide();
@@ -64,6 +71,18 @@ $(document).ready(function(){
       $("#deleteProjConfirm").modal('show');
     });
 
+		$("#editproj").click(function(){
+			$("#editProjDescription").modal('show');
+		});
+		$("#newTaskList").click(function(){
+			$("#newTaskListModal").modal('show');
+		});
+
+		$(".manageTask").click(function(){
+			var tasklistid = $(this).data("tasklistid");
+			$(".manageTaskList[data-tasklistid="+tasklistid+"]").modal('show');
+		});
+
     $('#userSearcher').on('keyup', function(){
     $.post('../api/projects/search_users.php', {field : $(this).val(), projectID: $("#projectID").val()}, function(data){
       $('#listofusers').empty();
@@ -127,7 +146,7 @@ $(document).ready(function(){
     $("#newLabel").submit();
   });
 
-  
+
   $("#newTaskLabelSubmit").click(function(){
        	 $("#newTaskLabelName").get(0).setCustomValidity('');
 	  var request = {"projectid": $("#newTaskLabel input[name=\"projectid\"]").val(),
@@ -137,9 +156,38 @@ $(document).ready(function(){
 	  });
   });
 
+  $(".tasklist").click(function(){
+	  tasklist = $(this);
+	  content = tasklist.children(".belong");
+	  content.slideToggle(500);
+  });
+
 });
 
 function taskLabelAdded(data){
 	$("div#taskLabelList").append("<a href=\"#\" class=\"list-group-item\"><span class=\"label label-primary\">"+ data["name"] + "</span><span class=\"badge\">0</span></a>");
-	$("#manageTaskLabels").modal('hide');	
+	$("#manageTaskLabels").modal('hide');
+}
+function deleteTaskList(taskliid, projID){
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/delete_tasklist.php" method="post">'+
+		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="tasklistID" value='+ taskliid +'>' +
+	'</form>').submit();
+}
+
+function addToTaskList(taskliid, projID){
+	var taskid = $(".addTaskToTL[data-taskliid="+ taskliid +"]").data("taskid");
+
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/assign_tasklist.php" method="post">'+
+		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="taskid" value='+ taskid +'>' +
+		'<input type="hidden" name="tasklistID" value='+ taskliid +'>' +
+	'</form>').submit();
+}
+
+function removeFromTaskList(taskid, projID){
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/unassign_tasklist.php" method="post">'+
+		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="taskid" value='+ taskid +'>'+
+	'</form>').submit();
 }

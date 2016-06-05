@@ -4,6 +4,7 @@
   include_once('../database/projects.php');
   include_once('../database/members.php');
   include_once('../database/tasks.php');
+  include_once('../database/tasklists.php');
 
   if(!isset($_SESSION['userid'])){
     header('Location: '. $BASE_URL);
@@ -38,5 +39,7 @@
   $smarty->assign('projectThreadLabels', getProjectThreadLabels($projectID));
   $smarty->assign('projectThreadLabelCount', getThreadLabelCountForProject($projectID));
   $smarty->assign('projectTaskLabels', getProjectTaskLabels($projectID));
+  $smarty->assign('projectTaskLists', getProjectTaskLists($projectID));
+  $smarty->assign('noTaskList', getTasksNoTaskList($projectID));
   $smarty->display('project/projectpage.tpl');
 ?>

@@ -1,13 +1,13 @@
 <?php
 	include_once('../../config/init.php');
-	include_once($BASE_DIR .'database/threads.php');
+	include_once($BASE_DIR.'database/tasks.php');
 
 	if(!isset($_SESSION['userid'])){
 		error('User was not logged in to the system');
 		exit;
 	}
 
-	if(!$_POST['threadid'] || !$_POST['threadlid'] || !$_POST['action']){
+	if(!$_POST['taskid'] || !$_POST['tasklid'] || !$_POST['action']){
 		error('Missing vital information');
 		exit;
 	}
@@ -15,7 +15,7 @@
 	switch($_POST['action']){
 		case "assign":
 			try{
-				$result = assignLabelToThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid']);
+				$result = assignLabelToTask($_SESSION['userid'], $_POST['taskid'], $_POST['tasklid']);
 				if(!$result){
 					error('something went wrong');
 					http_response_code(404);
@@ -33,7 +33,7 @@
 			break;
 		case "unassign":
 			try{
-				$result = unassignLabelFromThread($_SESSION['userid'], $_POST['threadid'], $_POST['threadlid']);
+				$result = unassignLabelFromTask($_SESSION['userid'], $_POST['taskid'], $_POST['tasklid']);
 				if(!$result){
 					error('something went wrong');
 					http_response_code(404);
@@ -51,16 +51,16 @@
 	}
 
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-		echo json_encode(array(getThreadLabels($_POST['threadid']), getLabelsNotInThread($_POST['threadid']), $_POST['threadid']));
+		echo json_encode(array(getTaskLabels($_POST['taskid']), getLabelsNotInTask($_POST['taskid'], getProjectByTask($_POST['taskid'])), $_POST['taskid']));
 	}
 	else{
-		$_SESSION['success_messages'][] = 'thread label operation successful';
+		$_SESSION['success_messages'][] = 'task label operation successful';
 		header('Location: '. $_SERVER['HTTP_REFERER']);
 	}
 
 function error($msg){
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-		error_log($msg);
+		echo $msg;
 	}
 	else{
 		$_SESSION['error_messages'][] = $msg;
