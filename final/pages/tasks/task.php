@@ -33,13 +33,15 @@ if(!$task){
 	exit;
 }
 $tasklabels = getTaskLabels($taskID);
+$notasklabels = getLabelsNotInTask($taskID, $projectID);
 $taskcomments = getTaskComments($taskID);
 $projectmembers = getMembers(getProjectByTask($taskID));
 
 $smarty->assign('taskid', $taskID);
 $smarty->assign('role', $role);
-$smarty->assign('projectid', getProjectByTask($taskid));
+$smarty->assign('projectid', getProjectByTask($taskID));
 $smarty->assign('username', getUsername($_SESSION['userid']));
+$smarty->assign('missinglabels', $notasklabels);
 $smarty->assign('userid', $_SESSION['userid']);
 $smarty->assign('members', $projectmembers);
 $smarty->assign('creatorid', $task['creator']);

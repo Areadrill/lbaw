@@ -1,7 +1,6 @@
 {include file='common/header.tpl'}
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/userpageStyle.css">
 	<link rel="stylesheet" href="{$BASE_URL}css/custom/taskpage.css">
-  <script src="../javascript/validator.min.js" ></script>
 	<script src="{$BASE_URL}javascript/taskpage.js"></script>
 </head>
 <body>
@@ -24,7 +23,7 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="form">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 				</form>
 				<div class="navbar-right">
@@ -180,7 +179,7 @@
               <div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-3">
-                  <form class="alignForm" action="../../actions/tasks/remove_task.php" method="post" role="form">
+                  <form class="alignForm" action="../../actions/tasks/remove_task.php" method="post">
                     <input type="hidden" name="taskid" value={$taskid}>
                     <button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
                   </form>
@@ -212,7 +211,7 @@
                       <span class="label label-info">{$assigneeName}</span>
                     </div>
                     <div class="col-md-5">
-                      <form class="alignForm labelOp" action="../api/tasks/assign_task.php" method="post">
+                      <form class="alignForm labelOp" action="../actions/tasks/assign_task.php" method="post">
                         <input type="hidden" name="taskid" value={$taskid}>
                         <input type="hidden" name="userid" value="-1">
                         <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
@@ -255,6 +254,73 @@
         </div>
       </div>
     </div>
+  <div id="manageTaskLabels" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Manage this Task's Labels</h4>
+          </div>
+          <h4> Current Task Labels</h4>
+          <ul id="currTaskLabels" class="list-group">
+            {foreach from=$labels item=label}
+           
+                <li class="list-group-item clearfix">
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <span class="label label-info">{$label.name}</span>
+                        </div>
+                        <div class="col-md-5">
+                          <form class="alignForm labelOp" action="../api/tasks/assign_label.php" method="post" >
+                            <input type="hidden" name="taskid" value={$taskid}>
+                            <input type="hidden" name="tasklid" value={$label.tasklid}>
+                            <input type="hidden" name="action" value="unassign" >
+                            <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                  </div>  
+                </li>
+              
+            {/foreach}
+          </ul>
+          <br>
+          <h4> Project Labels </h4>
+          <ul id="labelsNotInTask" class="list-group">
+            {foreach from=$missinglabels item=mLabel}
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <li class="list-group-item clearfix">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span class="label label-info">{$mLabel.name}</span>
+                    </div>
+                    <div class="col-md-4">
+                      <form class="alignForm labelOp" action="{$BASE_URL}api/tasks/assign_label.php" method="post">
+                        <input type="hidden" name="taskid" value={$taskid}>
+                        <input type="hidden" name="tasklid" value={$mLabel.tasklid}>
+                        <input type="hidden" name="action" value="assign" >
+                        <button type="submit" class="btn btn-primary pull-right"> Assign </button>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-md-4"></div>
+            </div>  
+            {/foreach}
+          </ul>
+          <br>
+        </div>
+      </div>
+    </div>
+
 
 
     {include file='common/footer.tpl'}

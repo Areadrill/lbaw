@@ -24,6 +24,16 @@ function getTaskLabels($taskID) {
 	return $res;
 }
 
+function getLabelsNotInTask($taskID, $projectid) {
+	global $conn;
+	$stmt = $conn->prepare("SELECT tasklid, name FROM TaskLabel WHERE projectid = ? AND tasklid NOT IN (SELECT tasklid FROM TaskToLabel WHERE taskid = ?)");
+	$stmt->execute(array($projectid, $taskid));
+	$res = $stmt->fetchAll();
+	
+	return $res;
+}
+
+
 function getTaskInfo($taskID){
 	global $conn;
 	$stmt = $conn->prepare("SELECT name, creator,assignee, complete, creationinfo, taskliid FROM Task WHERE taskid = ?");
@@ -119,6 +129,34 @@ function createTaskLabel($name, $projectid){
 	$stmt = $conn->prepare('INSERT INTO TaskLabel VALUES (default, ?, ?)');
 	$res = $stmt->execute(array($projectid, $name));
 	return $res;
+}
+function unassignLabelFromTask($userID, $taskID, $taskLID){ //preciso ver se a thread e a label pertencem ao mesmo projeto?
+	if((checkPrivilege($userID, getProjectByTask($taskID))) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	global $conn;
+
+	$stmt = $conn->prepare("DELETE FROM TaskToLabel WHERE taskid = ? AND tasklid = ?");
+	$stmt->execute(array($taskID, $taskLID));
+
+	return $stmt->fetch() !== false;
+}
+
+
+function assignLabelToTask($userID, $taskID, $taskLID){ //preciso ver se a thread e a label pertencem ao mesmo projeto?
+	if((checkPrivilege($userID, getProjectByTask($taskID))) !== 'COORD'){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+
+	global $conn;
+
+	$stmt = $conn->prepare("INSERT INTO TaskToLabel VALUES(?, ?)");
+	$stmt->execute(array($taskID, $taskLID));
+
+	return $stmt->fetch() !== false;
 }
 
 function getProjectTaskLabels($projectid){
