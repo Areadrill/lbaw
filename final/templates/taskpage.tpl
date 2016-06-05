@@ -24,8 +24,7 @@
 				</ul>
 
 				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
-					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
-				</form>
+					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button> </form>
 				<div class="navbar-right">
 					<div id="mid-of-navbar">
 						<a class="white-link" href="userpage.php"> {$username} </a>
@@ -74,14 +73,14 @@
 	{else}
 	<a class="btn btn-danger btn-sm" href="#" role="button">Not Complete </a> 
 	{/if}
-	Task created by <a href="{$BASE_URL}pages/userpage.php?userid={$creatorid}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>{$creatorname}</a> </p>
+	Task created by <a href="{$BASE_URL}pages/userpage.php?userid={$creatorid}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>{$creatorname}</strong></a> </p>
       </div>
       <div class="col-md-2 pull-to-bottom">
 
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-10" id="commentListArea">
 	  {foreach from=$comments item=comment}
         <div class="row">
           <div class="col-md-12">
@@ -102,17 +101,19 @@
           </div>
         </div>
 	{/foreach}
-        <div class="row">
+        <div class="row" id="formRow">
           <div class="col-md-12">
             <div class="widget-area no-padding blank">
               <div class="status-upload">
-                <form>
+                <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
                   <textarea placeholder="Comment area" maxlength="512" ></textarea>
                   <ul>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><span class="glyphicon glyphicon-picture"></span></a></li>
                   </ul>
+		  <input id="completeForm" type="checkbox" value="Mark compeleted" type="checkbox" name="completed">Mark as complete <br>
+		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
                 </form>
               </div><!-- Status Upload  -->
@@ -156,7 +157,7 @@
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
 	{if !empty($tasklist)}
-        <a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span> {$tasklistName}</strong></a>
+        <a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span>{$tasklistName}</strong></a>
 	{else}
 	<p> No Task List</p>
 	{/if}

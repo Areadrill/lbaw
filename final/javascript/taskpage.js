@@ -8,6 +8,27 @@ $(document).ready(function(){
 	$("#taskLabelManage").click(function(){
 		$("#manageTaskLabels").modal("show");
 	});
+	$("#createCommentForm").submit(function(e){
+		e.preventDefault();
+		$.post("../../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), complete: $("#completeForm").val()}, function(data){
+			reply = JSON.parse(data);
+		 $("#formRow").before($("<div class=\"row\">"+
+          "<div class=\"col-md-12\">"+
+            "<div class=\"panel panel-default\">"+
+              "<div class=\"panel-heading\">"+
+                "<h5><a href=\"#\"><strong><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"+reply["username"] + " </strong></a>"+
+                  "<span class=\"drab\">commented 3 days ago </span>"+
+		  "<span class=\"glyphicon glyphicon-bullhorn\" aria-hidden=\"true\"></span>"+
+                  "<a href=\"#\" class=\"pull-right\"><span class=\"glyphicon glyphicon-remove\"></span></a>"+
+                "</h5>"+
+              "</div>"+
+              "<div class=\"panel-body\">"+reply["body"]+
+	      "</div>"+
+            "</div>"+
+          "</div>"+
+        "</div>"));
+		}).fail(function(xhr){console.log(xhr);});
+	});
 
 	$(document).on("submit",".labelOp",function(e){
 

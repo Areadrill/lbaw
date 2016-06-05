@@ -37,6 +37,7 @@ $notasklabels = getLabelsNotInTask($taskID, $projectID);
 $taskcomments = getTaskComments($taskID);
 $projectmembers = getMembers(getProjectByTask($taskID));
 
+
 $smarty->assign('taskid', $taskID);
 $smarty->assign('role', $role);
 $smarty->assign('projectid', getProjectByTask($taskID));
@@ -51,7 +52,7 @@ $smarty->assign('name', $task['name']);
 $smarty->assign('assignee', $task['assignee']);
 $smarty->assign('assigneeName', $task['assigneeName']);
 $smarty->assign('tasklist', $task['taskliid']);
-$smarty->assign('tasklistName', $task['tasklistName']);
+$smarty->assign('tasklistName', $task['tasklistname']);
 $smarty->assign('labels', $tasklabels);
 $smarty->assign('comments', $taskcomments);
 $smarty->display('taskpage.tpl');
