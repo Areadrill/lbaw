@@ -3,6 +3,7 @@ include_once('../../config/init.php');
 include_once('../../database/tasks.php');
 include_once('../../database/members.php');
 include_once('../../database/projects.php');
+include_once('../../lib/time.php');
 
 if(!isset($_SESSION['userid'])){
 	$_SESSION['error_messages'] = 'You don\'t have permission to view that task';
@@ -37,6 +38,9 @@ $notasklabels = getLabelsNotInTask($taskID, $projectID);
 $taskcomments = getTaskComments($taskID);
 $projectmembers = getMembers(getProjectByTask($taskID));
 
+for($i = 0; $i < count($taskcomments); $i++){
+	$taskcomments[$i]['ago'] = ago(strtotime($taskcomments[$i]['creationinfo']));
+}
 
 $smarty->assign('taskid', $taskID);
 $smarty->assign('role', $role);

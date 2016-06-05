@@ -87,7 +87,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorname}</strong></a>
-                  <span class="drab">commented 3 days ago </span>
+                  <span class="drab">commented {$comment.ago}</span>
 		  {if $creatorid eq $commentor}
 		  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
 		  {/if}
