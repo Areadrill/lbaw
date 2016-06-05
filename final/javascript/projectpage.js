@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	$(".dropdown-menu li a").click(function(){
+	  var selText = $(this).text();
+		var taskid = $(this).data("taskid");
+		var taskliid = $(this).data("taskliid");
+		$(".addTaskToTL[data-taskliid="+ taskliid +"]").data("taskid", taskid);
+	  $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+	});
 	$("#descriptionTab").click(function(){
 	  $("#description").show();
       $("#forum").hide();
@@ -71,6 +78,10 @@ $(document).ready(function(){
 			$("#newTaskListModal").modal('show');
 		});
 
+		$(".manageTask").click(function(){
+			var tasklistid = $(this).data("tasklistid");
+			$(".manageTaskList[data-tasklistid="+tasklistid+"]").modal('show');
+		});
 
     $('#userSearcher').on('keyup', function(){
     $.post('../api/projects/search_users.php', {field : $(this).val(), projectID: $("#projectID").val()}, function(data){
@@ -160,6 +171,16 @@ function taskLabelAdded(data){
 function deleteTaskList(taskliid, projID){
 	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/delete_tasklist.php" method="post">'+
 		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="tasklistID" value='+ taskliid +'>' +
+	'</form>').submit();
+}
+
+function addToTaskList(taskliid, projID){
+	var taskid = $(".addTaskToTL[data-taskliid="+ taskliid +"]").data("taskid");
+
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/add_task_tasklist.php" method="post">'+
+		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="taskid" value='+ taskid +'>' +
 		'<input type="hidden" name="tasklistID" value='+ taskliid +'>' +
 	'</form>').submit();
 }

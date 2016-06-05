@@ -433,8 +433,8 @@
 									</div>
 									<div class="col-md-6">
 										<div class="progress" style="margin-bottom: 0">
-											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-												0%
+											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {math equation="completed / division * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%;">
+												{math equation="completed / division * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%
 											</div>
 
 
@@ -444,136 +444,141 @@
 										{$tasklist.tasks|@count} tasks associated
 									</div>
 									<div class="col-md-1">
-										<span id="removeX" onclick="deleteTaskList({$tasklist.taskliid},{$projID})" class="glyphicon glyphicon-remove"></span>
+										{if $role == 'COORD'}
+										<span data-tasklistid="{$tasklist.taskliid}" class="manageTask glyphicon glyphicon-cog"></span>
+										<span id="removeX" onclick="deleteTaskList({$tasklist.taskliid},{$projID})" class="glyphicon glyphicon-remove removeCross"></span>
+											{/if}
+										</div>
 									</div>
-								</div>
-								<div class="row belong">
-									<ul>
-									{foreach from=$tasklist.tasks item=task}
-										<li>{if $task.completed eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a href="{$BASE_URL}pages/tasks/task{$task.taskid}">{$task.name}</a></li>
-									{/foreach}
-									</ul>
-								</div>
-							</li>
+									<div class="row belong">
+										<ul>
+											{foreach from=$tasklist.tasks item=task}
+												<li>{if $task.complete eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a href="{$BASE_URL}pages/tasks/task.php?taskid={$task.taskid}"> {$task.name}</a></li>
+											{/foreach}
+										</ul>
+									</div>
+								</li>
+								<div data-tasklistid="{$tasklist.taskliid}" class="modal fade manageTaskList" role="dialog">
+									<div class="modal-dialog">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Manage Task List</h4>
+											</div>
+											<div class="modal-body">
+												{foreach from=$tasklist.tasks item=task}
+												<div class="row">
+													<div class="col-md-3">
+														<span class="glyphicon glyphicons-notes-2"></span> {$task.name}
+													</div>
+													<div class="col-md-8">
+													</div>
+													<div class="col-md-1">
+														<span class="glyphicon glyphicon-remove removeCross"></span>
+														</div>
+													</div>
+												<br>
+												{/foreach}
+												<div class="dropdown">
+													<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Add to task list
+														<span class="caret"></span></button>
+														<ul class="dropdown-menu">
+															{foreach from=$noTaskList item=task}
+															<li>{if $task.complete eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a data-taskliid="{$tasklist.taskliid}" data-taskid="{$task.taskid}"> {$task.name}</a></li>
+															{/foreach}
+														</ul>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+													<button data-taskliid="{$tasklist.taskliid}" onclick="addToTaskList({$tasklist.taskliid}, {$projID})" type="button" class="addTaskToTL btn btn-primary">Add task</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								{/foreach}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="bootstrap-alert-box-modal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="min-height:40px;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title"><strong>ERROR!</strong></h4>
+						</div>
+						<div class="modal-body">
+							{foreach $ERROR_MESSAGES as $error}
+							<div class="error">
+								{$error}
+							</div>
 							{/foreach}
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="bootstrap-alert-box-modal" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header" style="min-height:40px;">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title"><strong>ERROR!</strong></h4>
-					</div>
-					<div class="modal-body">
-						{foreach $ERROR_MESSAGES as $error}
-						<div class="error">
-							{$error}
-						</div>
-						{/foreach}
-					</div>
-				</div>
-			</div>
-		</div>
-		<script>
-		{if !empty($ERROR_MESSAGES)}
-		$(document).ready(function(){
-			$("#bootstrap-alert-box-modal").modal('show');
-		});
-		{/if}
-		</script>
-
-		<div id="deleteProjConfirm" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Delete Project</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-8">
-								<h4> Are you sure you want to delete this project? </h4>
-							</div>
-							<div class="col-md-2"></div>
-							<div class="row">
-								<div class="col-md-5"></div>
-								<div class="col-md-3">
-									<form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
-										<input type="hidden" name="projectID" value={$projID}>
-										<button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
-									</form>
-								</div>
-								<div class="col-md-4"></div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="newTaskListModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"> New Task List</h4>
-					</div>
-					<div class="modal-body">
-						<form class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
-							<div class="row">
-								<div class="col-md-2"></div>
-								<div class="col-md-8">
-									<input name="name" type="text" placeholder="Task List Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
-								</div>
-								<div class="col-md-2"></div>
-							</div>
-							<div class="row">
-								<div class="col-md-5"></div>
-								<div class="col-md-3">
-									<input type="hidden" name="projectID" value={$projID}>
-									<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
-								</form>
-							</div>
-							<div class="col-md-4"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+			<script>
+			{if !empty($ERROR_MESSAGES)}
+			$(document).ready(function(){
+				$("#bootstrap-alert-box-modal").modal('show');
+			});
+			{/if}
+			</script>
 
-		<div id="editProjDescription" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Edit Project Info</h4>
-					</div>
-					<div class="modal-body">
-						<form class="alignForm" action="../actions/projects/edit_project.php" method="post" >
+			<div id="deleteProjConfirm" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Delete Project</h4>
+						</div>
+						<div class="modal-body">
 							<div class="row">
 								<div class="col-md-2"></div>
 								<div class="col-md-8">
-									<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
-								</div>
-								<div class="col-md-2"></div>
-							</div>
-							<br>
-							<div class="row">
-								<div class="col-md-2"></div>
-								<div class="col-md-8">
-									<input name="description" type="text" placeholder="Description" class="form-control" required>
+									<h4> Are you sure you want to delete this project? </h4>
 								</div>
 								<div class="col-md-2"></div>
 								<div class="row">
 									<div class="col-md-5"></div>
 									<div class="col-md-3">
+										<form class="alignForm" action="../actions/projects/delete_project.php" method="post" >
+											<input type="hidden" name="projectID" value={$projID}>
+											<button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
+										</form>
+									</div>
+									<div class="col-md-4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="newTaskListModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"> New Task List</h4>
+						</div>
+						<div class="modal-body">
+							<form class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<input name="name" type="text" placeholder="Task List Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+									</div>
+									<div class="col-md-2"></div>
+								</div>
+								<div class="row">
+									<div class="col-md-5"></div>
+									<div class="col-md-3">
 										<input type="hidden" name="projectID" value={$projID}>
-										<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
 									</form>
 								</div>
 								<div class="col-md-4"></div>
@@ -582,9 +587,46 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<script type="application/json" id="taskLabels">
-		{$projectTaskLabels|@json_encode nofilter}
-		</script>
 
-		{include file='common/footer.tpl'}
+			<div id="editProjDescription" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Edit Project Info</h4>
+						</div>
+						<div class="modal-body">
+							<form class="alignForm" action="../actions/projects/edit_project.php" method="post" >
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+									</div>
+									<div class="col-md-2"></div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<input name="description" type="text" placeholder="Description" class="form-control" required>
+									</div>
+									<div class="col-md-2"></div>
+									<div class="row">
+										<div class="col-md-5"></div>
+										<div class="col-md-3">
+											<input type="hidden" name="projectID" value={$projID}>
+											<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+										</form>
+									</div>
+									<div class="col-md-4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script type="application/json" id="taskLabels">
+			{$projectTaskLabels|@json_encode nofilter}
+			</script>
+
+			{include file='common/footer.tpl'}

@@ -17,10 +17,14 @@ div#projinfo{
     border-radius: 5px 0 0 5px;
 }
 
-#removeX:hover{
+.removeCross:hover{
     color: #cc0000;
     cursor: pointer;
 
+}
+.manageTask:hover{
+  color: #428bca;
+  cursor: pointer;
 }
 #projinfo li{
     border-radius:0;
