@@ -2,6 +2,7 @@
   include_once('../config/init.php');
   include_once('../database/threads.php');
   include_once('../database/projects.php');
+  include_once('../lib/time.php');
 
   if(!isset($_SESSION['userid'])){
     header('Location: '. $BASE_URL);
@@ -27,13 +28,17 @@
     $imgPath = "../images/default.jpg";
   }
 
+  $threadcomments = getThreadComments($threadID);
+  for($i = 0; $i < count($threadcomments); $i++){
+	  $threadcomments[$i]['ago'] = ago(strtotime($threadcomments[$i]['creationinfo']));
+  }
   $smarty->assign('role', $role);
   $smarty->assign('isLocked', isLocked($threadID));
   $smarty->assign('isCreator', $_SESSION['userid'] == getThreadInfo($threadID)['creator']);
   $smarty->assign('imgPath', $imgPath);
   $smarty->assign('labels', getThreadLabels($threadID));
   $smarty->assign('missingLabels', getLabelsNotInThread($threadID));
-  $smarty->assign('comments', getThreadComments($threadID));
+  $smarty->assign('comments', $threadcomments);
   $smarty->assign('threadInfo', getThreadInfo($threadID));
   $smarty->assign('projectInfo', getProjectInfo($projectID));
   $smarty->assign('projID', $projectID);
