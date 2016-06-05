@@ -20,7 +20,7 @@ function getProjectTaskLists($projID){
 
 function getTasksForList($taskListID){
   global $conn;
-  $stmt = $conn->prepare("SELECT name, taskid FROM task WHERE taskliid = ?");
+  $stmt = $conn->prepare("SELECT name, taskid, completed FROM task WHERE taskliid = ?");
   $stmt->execute(array($taskListID));
   $res = $stmt->fetchAll();
   return $res;

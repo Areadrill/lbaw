@@ -27,7 +27,10 @@
   if(!file_exists($imgPath)){
     $imgPath = "../images/default.jpg";
   }
-
+  $tasklists = getProjectTaskLists($projectID);
+  for($i = 0; i < count($tasklists); i++){
+	  $tasklists[i]['tasks'] = getTasksForList($tasklists[i]['taskliid']);
+  }
   $smarty->assign('projID', $projectID);
   $smarty->assign('members', getProjectMembers($projectID));
   $smarty->assign('username',$_SESSION['username']);
@@ -39,6 +42,6 @@
   $smarty->assign('projectThreadLabels', getProjectThreadLabels($projectID));
   $smarty->assign('projectThreadLabelCount', getThreadLabelCountForProject($projectID));
   $smarty->assign('projectTaskLabels', getProjectTaskLabels($projectID));
-  $smarty->assign('projectTaskLists', getProjectTaskLists($projectID));
+  $smarty->assign('projectTaskLists', ));
   $smarty->display('project/projectpage.tpl');
 ?>

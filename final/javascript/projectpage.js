@@ -145,6 +145,12 @@ $(document).ready(function(){
 	  });
   });
 
+  $(".tasklist").click(function(){
+	  tasklist = $(this);
+	  content = tasklist.children(".belong");
+	  content.slideToggle(500);
+  });
+
 });
 
 function taskLabelAdded(data){

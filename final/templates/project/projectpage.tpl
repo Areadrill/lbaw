@@ -2,8 +2,7 @@
 <script src="../javascript/notify.min.js"></script>
 <script src="../javascript/projectpage.js"></script>
 <script src="../javascript/validator.min.js" ></script>
-<link rel="stylesheet" href="../css/custom/userpageStyle.css">
-<link rel="stylesheet" href="../css/custom/projectpageStyle.css">
+<link rel="stylesheet" href="../css/custom/userpageStyle.css"> <link rel="stylesheet" href="../css/custom/projectpageStyle.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" >
@@ -427,7 +426,7 @@
 						<br>
 						<ul class="list-group">
 							{foreach from=$projectTaskLists item=tasklist}
-							<li class="list-group-item clearfix">
+							<li class="tasklist list-group-item clearfix">
 								<div class="row">
 									<div class="col-md-3">
 										<span class="glyphicon glyphicon-flag"></span> {$tasklist.name}
@@ -447,6 +446,13 @@
 									<div class="col-md-1">
 										<span id="removeX" onclick="deleteTaskList({$tasklist.taskliid},{$projID})" class="glyphicon glyphicon-remove"></span>
 									</div>
+								</div>
+								<div class="row belong">
+									<ul>
+									{foreach from=$tasklist.tasks item=task}
+										<li>{if $task.completed eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a href="{$BASE_URL}pages/tasks/task{$task.taskid}">{$task.name}</a></li>
+									{/foreach}
+									</ul>
 								</div>
 							</li>
 							{/foreach}
