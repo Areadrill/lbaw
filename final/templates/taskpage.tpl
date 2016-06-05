@@ -75,6 +75,69 @@
 						Task created by <a href="{$BASE_URL}pages/userpage.php?userid={$creatorid}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>{$creatorname}</strong></a> </p>
 					</div>
 					<div class="col-md-2 pull-to-bottom">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10" id="commentListArea">
+	  {foreach from=$comments item=comment}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorname}</strong></a>
+                  <span class="drab">commented {$comment.ago}</span>
+		  {if $creatorid eq $commentor}
+		  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+		  {/if}
+                  <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                </h5>
+              </div>
+              <div class="panel-body">
+             {$comment.text}
+	      </div>
+            </div>
+          </div>
+        </div>
+	{/foreach}
+        <div class="row" id="formRow">
+          <div class="col-md-12">
+            <div class="widget-area no-padding blank">
+              <div class="status-upload">
+                <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
+                  <textarea placeholder="Comment area" maxlength="512" ></textarea>
+                  <ul>
+                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
+                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
+                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><span class="glyphicon glyphicon-picture"></span></a></li>
+                  </ul>
+		  <input id="completeForm" type="checkbox" value="Mark compeleted" type="checkbox" name="completed">Mark as complete <br>
+		  <input type="hidden" id="taskidForm" value="{$taskid}">
+                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
+                </form>
+              </div><!-- Status Upload  -->
+            </div><!-- Widget Area -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 sidebar">
+        <div class="row">
+          <div class="col-md-10">
+            <h4 class="drab">Labels</h4>
+          {if ($role === 'COORD' || $isCreator)} <div id="taskLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
+          </div>
+          <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
+        </div>			<ul class="label-list">
+	{foreach from=$labels item=label}
+          <li><a href="#"><span class="label label-warning">{$label.name}</span></a></li>
+    	{foreachelse}
+	<p> No Labels</p>
+	{/foreach}
+        </ul>
+        <hr/>
+        <div class="row">
+          <div class="col-md-10">
+            <h4 class="drab">Assignee</h4>
+          {if ($role === 'COORD' || $isCreator)} <div id="assigneeManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
 
 					</div>
 				</div>
