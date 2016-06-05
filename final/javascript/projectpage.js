@@ -64,6 +64,10 @@ $(document).ready(function(){
       $("#deleteProjConfirm").modal('show');
     });
 
+		$("#editproj").click(function(){
+			$("#editProjDescription").modal('show');
+		});
+
     $('#userSearcher').on('keyup', function(){
     $.post('../api/projects/search_users.php', {field : $(this).val(), projectID: $("#projectID").val()}, function(data){
       $('#listofusers').empty();
@@ -127,7 +131,7 @@ $(document).ready(function(){
     $("#newLabel").submit();
   });
 
-  
+
   $("#newTaskLabelSubmit").click(function(){
        	 $("#newTaskLabelName").get(0).setCustomValidity('');
 	  var request = {"projectid": $("#newTaskLabel input[name=\"projectid\"]").val(),
@@ -141,5 +145,5 @@ $(document).ready(function(){
 
 function taskLabelAdded(data){
 	$("div#taskLabelList").append("<a href=\"#\" class=\"list-group-item\"><span class=\"label label-primary\">"+ data["name"] + "</span><span class=\"badge\">0</span></a>");
-	$("#manageTaskLabels").modal('hide');	
+	$("#manageTaskLabels").modal('hide');
 }

@@ -86,4 +86,10 @@ function deleteProject($id){
   $stmt->execute(array($id));
   return $stmt->fetch();
 }
+function editProject($id, $name, $description){
+  global $conn;
+  $stmt = $conn->prepare("UPDATE Project SET name = ?, description = ? WHERE projectid= ?;");
+  $stmt->execute(array($name, $description, $id));
+  return $stmt->fetch();
+}
 ?>
