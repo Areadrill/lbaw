@@ -107,6 +107,13 @@ function createTask($name,$project, $creator, $text){
 	return $taskid;
 }
 
+function assignTask($taskid, $userid){
+	global $conn;
+	$stmt = $conn->prepare('UPDATE Task SET assignee=? WHERE taskid=?');
+	$succ = $stmt->execute(array($userid, $taskid));
+	return $succ;
+}
+
 function createTaskLabel($name, $projectid){
 	global $conn;
 	$stmt = $conn->prepare('INSERT INTO TaskLabel VALUES (default, ?, ?)');

@@ -2,6 +2,7 @@
 include_once('../../config/init.php');
 include_once('../../database/tasks.php');
 include_once('../../database/members.php');
+include_once('../../database/projects.php');
 
 if(!isset($_SESSION['userid'])){
 	$_SESSION['error_messages'] = 'You don\'t have permission to view that task';
@@ -33,11 +34,14 @@ if(!$task){
 }
 $tasklabels = getTaskLabels($taskID);
 $taskcomments = getTaskComments($taskID);
+$projectmembers = getMembers(getProjectByTask($taskID));
 
 $smarty->assign('taskid', $taskID);
 $smarty->assign('role', $role);
+$smarty->assign('projectid', getProjectByTask($taskid));
 $smarty->assign('username', getUsername($_SESSION['userid']));
 $smarty->assign('userid', $_SESSION['userid']);
+$smarty->assign('members', $projectmembers);
 $smarty->assign('creatorid', $task['creator']);
 $smarty->assign('creatorname', $task['creatorName']);
 $smarty->assign('complete', $task['complete']);
