@@ -37,6 +37,10 @@ $notasklabels = getLabelsNotInTask($taskID, $projectID);
 $taskcomments = getTaskComments($taskID);
 $projectmembers = getMembers(getProjectByTask($taskID));
 
+$imgPath = glob("../../images/".$_SESSION['userid'].".*")[0];
+ if(!file_exists($imgPath)){
+	 $imgPath = $BASE_URL . "images/default.jpg";
+ }
 
 $smarty->assign('taskid', $taskID);
 $smarty->assign('role', $role);
@@ -55,5 +59,6 @@ $smarty->assign('tasklist', $task['taskliid']);
 $smarty->assign('tasklistName', $task['tasklistname']);
 $smarty->assign('labels', $tasklabels);
 $smarty->assign('comments', $taskcomments);
+$smarty->assign('img', $imgPath);
 $smarty->display('taskpage.tpl');
 ?>
