@@ -13,7 +13,7 @@ $(document).ready(function(){
 										"<div class=\"panel-heading\">"+
 											"<h5><a href=\"#\"><strong><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> "+ json[i].commentorName +"</strong></a> <span class=\"drab\">commented 3 days ago </span>"+
 												"<span class=\"glyphicon glyphicon-bullhorn\" aria-hidden=\"true\"></span>"+
-												"<a href=\"#\" class=\"pull-right submitRemoveComment\"><input type=\"hidden\" name=\"commentid\" value="+ json[i].commentid +"><span class=\"glyphicon glyphicon-remove\"></span></a>"+
+												"<a href=\"#\" class=\"pull-right submitRemoveComment\"><input type=\"hidden\" name=\"commentid\" value="+ json[i].taskcid +"><span class=\"glyphicon glyphicon-remove\"></span></a>"+
 											"</h5>"+
 										"</div>"+
 									 " <div class=\"panel-body\">"+
