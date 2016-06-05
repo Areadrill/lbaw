@@ -1,5 +1,6 @@
 <?php
 include_once('members.php');
+
 include_once('users.php');
 
 function getTasks($projID){
@@ -167,7 +168,7 @@ function getProjectTaskLabels($projectid){
 	return $res;
 }
 
-/*function getTaskIDCommentID($commentID){
+function getTaskIDCommentID($commentID){
 	global $conn;
 
 	$stmt = $conn->prepare("SELECT taskid FROM taskcomment WHERE taskcid = ?");
@@ -176,7 +177,7 @@ function getProjectTaskLabels($projectid){
 	return $stmt->fetch()['taskid'];
 }
 
-function getProjIDCommentID($commentID){
+function getProjIDCommentIDTask($commentID){
 	global $conn;
 
 	$stmt = $conn->prepare("SELECT projectid FROM task WHERE taskid = ?");
@@ -185,10 +186,9 @@ function getProjIDCommentID($commentID){
 	return $stmt->fetch();
 
 }
+function deleteTaskComment($userID, $commentID){
 
-function deleteComment($userID, $commentID){
-
-	if(checkPrivilege($userID, getProjIDCommentID($commentID)['projectid']) !== 'COORD'){
+	if(checkPrivilege($userID, getProjIDCommentIDTask($commentID)['projectid']) !== 'COORD'){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return 'denied';
 	}
@@ -200,5 +200,5 @@ function deleteComment($userID, $commentID){
 
 	return $stmt->fetch() !== false;
 
-}*/
+}
 ?>

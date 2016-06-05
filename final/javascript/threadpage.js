@@ -1,5 +1,6 @@
 $(document).ready(function (){
 
+	//$(document).on("click",".submitRemoveComment",function(){
 	$(".submitRemoveComment").click(function (){
 		$.post('../api/threads/remove_comment.php', {commentid: $("input", this).val()}, function(data){
 			var json = JSON.parse(data);

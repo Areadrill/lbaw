@@ -78,7 +78,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10" id="commentListArea">
+      <div class="col-md-10" >
+      	<div id="commentListArea">
 	  {foreach from=$comments item=comment}
         <div class="row">
           <div class="col-md-12">
@@ -89,7 +90,7 @@
 		  {if $creatorid eq $commentor}
 		  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
 		  {/if}
-                  <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                  <a href="#" class="pull-right submitRemoveComment" role="button"><input type="hidden" name="commentid" value={$comment.taskcid}><span class="glyphicon glyphicon-remove"></span></a>
                 </h5>
               </div>
               <div class="panel-body">
@@ -99,6 +100,7 @@
           </div>
         </div>
 	{/foreach}
+		</div>
         <div class="row" id="formRow">
           <div class="col-md-12">
             <div class="widget-area no-padding blank">

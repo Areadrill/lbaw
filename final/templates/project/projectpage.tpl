@@ -383,24 +383,23 @@
 										</form>
 										{/if}
 
-
-											</div>
-										</div>
 									</div>
-								</li>
-							{/foreach}
-						</ul>		
-						{if $role == 'COORD'}
-						<div class="input-group">
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
-							</div><!-- /btn-group -->
-							<input id="userSearcher" type="text" title="search for users" class="form-control" placeholder="Search for users to add" aria-label="...">
-						</div><!-- /input-group -->
-						<div id="listofusers">
-						</div>
-						{/if}
+								</div>
+							</div>
+						</li>
+						{/foreach}
+					</ul>
+					{if $role == 'COORD'}
+					<div class="input-group">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
+						</div><!-- /btn-group -->
+						<input id="userSearcher" type="text" class="form-control" placeholder="Search for users to add" aria-label="...">
+					</div><!-- /input-group -->
+					<div id="listofusers">
 					</div>
+					{/if}
+				</div>
 					<div id="settings" class="panel panel-default" hidden>
 					{if $role == 'COORD'}
 						<div class="row">
@@ -408,12 +407,11 @@
 								<div class="input-group">
 									<div class="input-group-btn">
 										<button id="editproj" type="button" class="btn btn-primary"> Edit Project</button>
-
 									</div>
 								</div>
 							</div>
 						</li>
-						{/foreach}
+					{/if}
 					</ul>
 					{if $role == 'COORD'}
 					<div class="input-group">

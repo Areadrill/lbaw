@@ -80,7 +80,7 @@
                 <div class="panel-heading">
                   <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorName}</strong></a> <span class="drab">commented {$comment.ago}</span>
                     <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                    {if $role === 'COORD'}<a href="#" class="pull-right submitRemoveComment"><input type="hidden" name="commentid" value={$comment.commentid}><span class="glyphicon glyphicon-remove"></span></a>{/if}
+                    {if $role === 'COORD'}<a href="#" class="pull-right submitRemoveComment" role="button" ><input type="hidden" name="commentid" value={$comment.commentid}><span class="glyphicon glyphicon-remove"></span></a>{/if}
                   </h5>
                 </div>
                 <div class="panel-body">

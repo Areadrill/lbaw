@@ -2,6 +2,7 @@
   include_once('../config/init.php');
   include_once('../database/threads.php');
   include_once('../database/projects.php');
+  include_once('../database/members.php');
   include_once('../lib/time.php');
 
   if(!isset($_SESSION['userid'])){
@@ -32,6 +33,9 @@
   for($i = 0; $i < count($threadcomments); $i++){
 	  $threadcomments[$i]['ago'] = ago(strtotime($threadcomments[$i]['creationinfo']));
   }
+
+  var_dump(checkPrivilege($_SESSION['username'], $projectID));
+
   $smarty->assign('role', $role);
   $smarty->assign('isLocked', isLocked($threadID));
   $smarty->assign('isCreator', $_SESSION['userid'] == getThreadInfo($threadID)['creator']);

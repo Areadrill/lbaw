@@ -17,7 +17,7 @@ if (!isset($_SESSION['userid'])){
 $threadID = getThreadIDCommentID($_POST['commentid']);
 
 $result = deleteComment($_SESSION['userid'], $_POST['commentid']);
-if($result = "denied"){
+if($result === "denied"){
 	error("insufficient permissions");
 	http_response_code(403);
 }

@@ -4,20 +4,20 @@ include_once($BASE_DIR .'database/tasks.php');
 
 
 if(!$_POST['commentid']){
-	error('Something went wrong.');
+	echo 'Something went wrong.';
 	exit;
 }
 
 
 if (!isset($_SESSION['userid'])){
-	error('User was not logged in');
+	echo 'User was not logged in';
 	exit;
 }
 
 $taskID = getTaskIDCommentID($_POST['commentid']);
 
-$result = deleteComment($_SESSION['userid'], $_POST['commentid']);
-if($result = "denied"){
+$result = deleteTaskComment($_SESSION['userid'], $_POST['commentid']);
+if($result === "denied"){
 	error("insufficient permissions");
 	http_response_code(403);
 }
