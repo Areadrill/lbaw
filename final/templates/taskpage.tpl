@@ -125,6 +125,7 @@
         <div class="row">
           <div class="col-md-10">
             <h4 class="drab">Labels</h4>
+          {if ($role === 'COORD' || $isCreator)} <div id="taskLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
           </div>
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>			<ul class="label-list">
@@ -138,12 +139,12 @@
         <div class="row">
           <div class="col-md-10">
             <h4 class="drab">Assignee</h4>
+          {if ($role === 'COORD' || $isCreator)} <div id="assigneeManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
 
           </div>
-          <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
 	{if !empty($assignee)}
-        <a href="#"><strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> {$assigneeName}</strong></a>
+        <strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> {$assigneeName}</strong>
 	{else}
 	<p> Task not assigned</p>
 	{/if}
@@ -151,6 +152,7 @@
         <div class="row">
           <div class="col-md-10">
             <h4 class="drab">Task list</h4>
+          {if ($role === 'COORD' || $isCreator)} <div id="tasklistManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
           </div>
           <div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
         </div>
@@ -190,5 +192,69 @@
         </div>
       </div>
     </div>
- 
+
+   <div id="manageAssignee" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Manage this Task's Assignee</h4>
+          </div>
+	  {if !empty($assignee)}
+          <h4> Current Assignee</h4>
+          <ul id="currTaskLabels" class="list-group">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <li class="list-group-item clearfix">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <span class="label label-info">{$assigneeName}</span>
+                    </div>
+                    <div class="col-md-5">
+                      <form class="alignForm labelOp" action="../api/tasks/assign_task.php" method="post">
+                        <input type="hidden" name="taskid" value={$taskid}>
+                        <input type="hidden" name="userid" value="-1">
+                        <button type="submit" class="btn btn-primary pull-right"> Unassign </button>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-md-6"></div>
+            </div>  
+          </ul>
+	  {/if}
+          <br>
+          <h4> New Assignee</h4>
+          <ul id="labelsNotInThread" class="list-group">
+            {foreach from=$members item=member}
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <li class="list-group-item clearfix">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span >{$member.username}</span>
+                    </div>
+                    <div class="col-md-4">
+                      <form class="alignForm labelOp" action="../../actions/tasks/assign_task.php" method="post">
+                        <input type="hidden" name="taskid" value={$taskid}>
+                        <input type="hidden" name="userid" value={$member.userid}>
+                        <button type="submit" class="btn btn-primary pull-right"> Assign </button>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-md-4"></div>
+            </div>  
+            {/foreach}
+          </ul>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
     {include file='common/footer.tpl'}
