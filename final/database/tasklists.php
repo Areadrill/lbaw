@@ -50,4 +50,11 @@ function addTaskToTaskList($tasklistID, $taskid){
   $stmt->execute(array($tasklistID, $taskid));
   return $stmt->fetch();
 }
+
+function removeTaskFromTaskList($taskid){
+  global $conn;
+  $stmt = $conn->prepare("UPDATE task SET taskliid = NULL WHERE taskid = ?;");
+  $stmt->execute(array($taskid));
+  return $stmt->fetch();
+}
 ?>

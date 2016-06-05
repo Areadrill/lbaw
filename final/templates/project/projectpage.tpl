@@ -475,7 +475,7 @@
 													<div class="col-md-8">
 													</div>
 													<div class="col-md-1">
-														<span class="glyphicon glyphicon-remove removeCross"></span>
+														<span onclick="removeFromTaskList({$task.taskid}, {$projID})" class="glyphicon glyphicon-remove removeCross"></span>
 														</div>
 													</div>
 												<br>

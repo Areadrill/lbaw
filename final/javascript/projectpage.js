@@ -178,9 +178,16 @@ function deleteTaskList(taskliid, projID){
 function addToTaskList(taskliid, projID){
 	var taskid = $(".addTaskToTL[data-taskliid="+ taskliid +"]").data("taskid");
 
-	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/add_task_tasklist.php" method="post">'+
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/assign_tasklist.php" method="post">'+
 		'<input type="hidden" name="projectID" value='+ projID +'>' +
 		'<input type="hidden" name="taskid" value='+ taskid +'>' +
 		'<input type="hidden" name="tasklistID" value='+ taskliid +'>' +
+	'</form>').submit();
+}
+
+function removeFromTaskList(taskid, projID){
+	$('<form id="removeTaskList" class="alignForm" action="../actions/tasklist/unassign_tasklist.php" method="post">'+
+		'<input type="hidden" name="projectID" value='+ projID +'>' +
+		'<input type="hidden" name="taskid" value='+ taskid +'>'+
 	'</form>').submit();
 }
