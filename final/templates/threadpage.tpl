@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+<title> {$threadInfo.name} on {$projectInfo.name}</title>
 <link rel="stylesheet" href="../css/custom/userpageStyle.css">
 <link rel="stylesheet" href="../css/custom/threadStyle.css">
 <script src="../javascript/validator.min.js" ></script>

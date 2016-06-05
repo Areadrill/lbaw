@@ -1,6 +1,8 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
 <script src="../javascript/validator.min.js" ></script>
+{include file='common/header.tpl'}
+<title>ProjectHarbor - Password Recovery </title>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -37,17 +39,17 @@
 						<div class="panel-body">
 							<form method="post" action="../actions/users/reset_password.php" data-toggle="validator">
 								<div class="input-group" style="display:none">
-									<input name="uid" type="text" class="form-control" value="{$userid}" hidden="hidden">
-									<input name="uuid" type="text" value="{$uuid}">
+									<input name="uid" type="text" title="username" class="form-control" value="{$userid}" hidden="hidden">
+									<input name="uuid" type="text" title="userID" value="{$uuid}">
 								</div>
 								<br>
 								<div class="input-group">
-									<input name="password" type="password" class="form-control" placeholder="New Password">
+									<input name="password" type="password" title="password" class="form-control" placeholder="New Password">
 									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 								</div>
 								<br>
 								<div class="input-group">
-									<input name="rpassword" type="password" class="form-control" placeholder="Re-enter new password">
+									<input name="rpassword" type="password" title="retype password" class="form-control" placeholder="Re-enter new password">
 									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 								</div>
 								<br>

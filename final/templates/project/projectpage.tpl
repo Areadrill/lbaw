@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+	<title> Page for {$info.name} project</title>
 	<script src="../javascript/notify.min.js"></script>
 	<script src="../javascript/projectpage.js"></script>
 	<script src="../javascript/validator.min.js" ></script>
@@ -151,7 +152,7 @@
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
 												<input name="projid" type="hidden" value={$projID}>
-												<input name="title" type="text" class="form-control" placeholder="Thread title" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
+												<input name="title" type="text" title="new thread's name" class="form-control" placeholder="Thread title" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
 												<br>
 												<textarea style="resize: none" class="form-control" name="initialComment" placeholder="Initial comment (not necessary)" maxlength="512" rows="4" cols="52"></textarea>
 												<!--eventualmente um dropdown com as tags-->
@@ -182,7 +183,7 @@
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
 												<input name="projectid" type="hidden" value={$projID}>
-												<input name="name" type="text" class="form-control" placeholder="Task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
+												<input name="name" type="text" title="new task's name" class="form-control" placeholder="Task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
 												<br>
 												<textarea style="resize: none" class="form-control" name="body" placeholder="Initial comment" maxlength="512" rows="4" cols="52"></textarea>
 												<!--eventualmente um dropdown com as tags-->
@@ -217,7 +218,7 @@
 													<div class="input-group-btn">
 														<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
 													</div><!-- /btn-group -->
-													<input id="newTaskLabelName" name="name" type="text" class="form-control" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} placeholder="New Label name" aria-label="...">
+													<input id="newTaskLabelName" name="name" type="text" title="new tasklabel's name" class="form-control" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} placeholder="New Label name" aria-label="...">
 												</div><!-- /input-group -->
 											</div>
 											<div class="col-sm-2"></div>
@@ -280,7 +281,7 @@
 													<div class="input-group-btn">
 														<button id="newTLSubmmit" type="button" class="btn btn-primary"  aria-expanded="false"> Add to Project</button>
 													</div><!-- /btn-group -->
-													<input name="name" type="text" class="form-control" placeholder="New Label name" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} aria-label="...">
+													<input name="name" type="text" title="new label's name" class="form-control" placeholder="New Label name" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} aria-label="...">
 												</div><!-- /input-group -->
 											</div>
 											<div class="col-sm-2"></div>
@@ -391,7 +392,7 @@
 							<div class="input-group-btn">
 								<button type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
 							</div><!-- /btn-group -->
-							<input id="userSearcher" type="text" class="form-control" placeholder="Search for users to add" aria-label="...">
+							<input id="userSearcher" type="text" title="search for users" class="form-control" placeholder="Search for users to add" aria-label="...">
 						</div><!-- /input-group -->
 						<div id="listofusers">
 						</div>

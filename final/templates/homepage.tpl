@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+<title>ProjectHarbor</title>
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
 <script src="../javascript/validator.min.js" ></script>
 </head>
@@ -23,8 +24,8 @@
 				</ul>
 				<form method="post" action="../actions/users/login.php" class="navbar-form navbar-right" >
 					<div class="form-group">
-						<input name="username" type="text" class="form-control" placeholder="Username">
-						<input name="password" type="password" class="form-control" placeholder="Password">
+						<input name="username" title="username" type="text" class="form-control" placeholder="Username">
+						<input name="password" title="password" type="password" class="form-control" placeholder="Password">
 					</div>
 					<button type="submit" class="btn btn-default">Sign In</button>
 				</form>
@@ -46,7 +47,7 @@
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
-										<input id="username" name="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
+										<input id="username" name="username" title="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
 															
 									</div>
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -56,7 +57,7 @@
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-										<input id="email" name="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
+										<input id="email" name="email" title="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
 									</div>
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     								<div class="help-block with-errors"></div>
@@ -65,19 +66,19 @@
 								<div class="form-group">
 									<div class="input-group">
 										<span id="passwordThing" class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-										<input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+										<input id="password" name="password" title="password" type="password" class="form-control" placeholder="Password" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-										<input id="rpassword" name="rpassword" type="password" class="form-control" placeholder="Re-enter password" data-match="#password" data-match-error="Passwords don't match" required>
+										<input id="rpassword" name="rpassword" title="retype password" type="password" class="form-control" placeholder="Re-enter password" data-match="#password" data-match-error="Passwords don't match" required>
 									</div>
 								</div>
 								
 								<button type="submit" name="submit" class="btn btn-default">Sign Up</button>
-								<a data-toggle="modal" data-target="#recover" href="#">Lost your password?</a>
+								<a data-toggle="modal" data-target="#recover" role="button">Lost your password?</a>
 							</form>
 						</div>
 					</div>
@@ -98,7 +99,7 @@
 								<div class="form-group">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input name="email" type="email" placeholder="Email" class="form-control" maxlength="100" required>
+										<input name="email" type="email" title="email" placeholder="Email" class="form-control" maxlength="100" required>
 									</div>
 									<div class="col-sm-2"></div>
 								</div>

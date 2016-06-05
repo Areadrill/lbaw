@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,4 +17,3 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="{$BASE_URL}javascript/bootstrap.min.js" ></script>
 
-		<title>ProjectHarbor</title>
