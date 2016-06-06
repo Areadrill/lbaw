@@ -4,34 +4,7 @@
 <script src="../javascript/validator.min.js" ></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" >
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">ProjectHarbor</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-				<form method="post" action="../actions/users/login.php" class="navbar-form navbar-right" >
-					<div class="form-group">
-						<input name="username" title="username" type="text" class="form-control" placeholder="Username">
-						<input name="password" title="password" type="password" class="form-control" placeholder="Password">
-					</div>
-					<button type="submit" class="btn btn-default">Sign In</button>
-				</form>
-			</div>
-		</div>
-	</nav>
+	{include file='common/navbar.tpl'}
 
 	<div class="container-fluid">
 		<div class="row">

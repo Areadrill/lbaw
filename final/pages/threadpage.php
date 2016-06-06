@@ -38,7 +38,7 @@
   $smarty->assign('role', $role);
   $smarty->assign('isLocked', isLocked($threadID));
   $smarty->assign('isCreator', $_SESSION['userid'] == getThreadInfo($threadID)['creator']);
-  $smarty->assign('imgPath', $imgPath);
+  $smarty->assign('img', $imgPath);
   $smarty->assign('labels', getThreadLabels($threadID));
   $smarty->assign('missingLabels', getLabelsNotInThread($threadID));
   $smarty->assign('comments', $threadcomments);
