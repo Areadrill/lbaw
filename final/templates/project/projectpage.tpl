@@ -123,7 +123,7 @@
 											<input name="projid" type="hidden" value={$projID}>
 											<input name="title" type="text" class="form-control" title="new thread name" placeholder="Thread title" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
 											<br>
-											<textarea style="resize: none" class="form-control" name="initialComment" placeholder="Initial comment (not necessary)" maxlength="512" rows="4" cols="52"></textarea>
+											<textarea style="resize: none" class="form-control" title="first comment for the thread" name="initialComment" placeholder="Initial comment (not necessary)" maxlength="512" rows="4" cols="52"></textarea>
 											<!--eventualmente um dropdown com as tags-->
 										</div>
 										<div class="col-sm-2"></div>
@@ -154,7 +154,7 @@
 											<input name="projectid" type="hidden" value={$projID}>
 											<input name="name" type="text" class="form-control" title="new task name" placeholder="Task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
 											<br>
-											<textarea style="resize: none" class="form-control" name="body" placeholder="Initial comment" maxlength="512" rows="4" cols="52"></textarea>
+											<textarea style="resize: none" class="form-control" name="body" title="first comment for the task" placeholder="Initial comment" maxlength="512" rows="4" cols="52"></textarea>
 											<!--eventualmente um dropdown com as tags-->
 										</div>
 										<div class="col-sm-2"></div>
@@ -575,7 +575,7 @@
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
-										<input name="name" type="text" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+										<input name="name" type="text" title="new project name" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
 									</div>
 									<div class="col-md-2"></div>
 								</div>
@@ -583,7 +583,7 @@
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
-										<input name="description" type="text" placeholder="Description" class="form-control" required>
+										<input name="description" type="text" title="new project description" placeholder="Description" class="form-control" required>
 									</div>
 									<div class="col-md-2"></div>
 									<div class="row">
