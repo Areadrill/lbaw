@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+<title>{$info.name}</title>
 <script src="../javascript/notify.min.js"></script>
 <script src="../javascript/projectpage.js"></script>
 <script src="../javascript/validator.min.js" ></script>
@@ -580,14 +581,14 @@
 									<div class="col-md-3">
 										<input type="hidden" name="projectID" value={$projID}>
 										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
-									</form>
+									</div>
 								</div>
-								<div class="col-md-4"></div>
-							</div>
+							</form>
+						</div>
+						<div class="col-md-4"></div>
+					</div>
 						</div>
 					</div>
-				</div>
-			</div>
 
 			<div id="editProjDescription" class="modal fade" role="dialog">
 				<div class="modal-dialog">
@@ -617,15 +618,16 @@
 										<div class="col-md-3">
 											<input type="hidden" name="projectID" value={$projID}>
 											<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+										</div>
+										</div>
+										</div>
 										</form>
-									</div>
+									
 									<div class="col-md-4"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
 			<script type="application/json" id="taskLabels">
 			{$projectTaskLabels|@json_encode nofilter}
 			</script>

@@ -49,7 +49,7 @@
     </div>
     <div class="row">
       <div class="col-md-7">
-        <h1 style="display:inline;">{$threadInfo.name}</h1> <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
+        <h1 style="display:inline;">{$threadInfo.name}</h1> <h1 style="display:inline" id="lblList1"> {foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
       </div>
       <div class="col-md-4">
         {if $role === 'COORD'}

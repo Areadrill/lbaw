@@ -1,10 +1,11 @@
 {include file='common/header.tpl'}
+<title>{$name} on {$info.name}</title>
 <link rel="stylesheet" href="{$BASE_URL}css/custom/userpageStyle.css">
 <link rel="stylesheet" href="{$BASE_URL}css/custom/taskpage.css">
 <script src="{$BASE_URL}javascript/taskpage.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -23,12 +24,12 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form action="../actions/users/logout.php" class="navbar-form navbar-right" role="logout">
+				<form action="../actions/users/logout.php" class="navbar-form navbar-right">
 					<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button> </form>
 					<div class="navbar-right">
 						<div id="mid-of-navbar">
 							<a class="white-link" href="userpage.php"> {$username} </a>
-							<img src={$img} alt="user image" width="30px" height="30px" />
+							<img src={$img} alt="user image" width="30" height="30" />
 						</div>
 					</div>
 				</div>
@@ -109,7 +110,7 @@
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
                   <textarea placeholder="Comment area" maxlength="512" ></textarea>
                   <ul>
-                    <li><input id="completeForm" type="checkbox" value="Mark compeleted" type="checkbox" name="completed">Mark as complete </li>
+                    <li><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed">Mark as complete </li>
                   </ul>
 		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
@@ -130,7 +131,7 @@
 							{foreach from=$labels item=label}
 							<li><a href="#"><span class="label label-warning">{$label.name}</span></a></li>
 							{foreachelse}
-							<p> No Labels</p>
+							<li><p> No Labels</p></li>
 							{/foreach}
 						</ul>
 						<hr/>
@@ -160,6 +161,7 @@
 						{/if}
 					</div>
 				</div>
+			</div>
 				<div id="deleteTaskConfirm" class="modal fade" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -226,10 +228,11 @@
 							<h4> New Assignee</h4>
 							<ul id="labelsNotInThread" class="list-group">
 								{foreach from=$members item=member}
-								<div class="row">
+								
+										<li class="list-group-item clearfix">
+										<div class="row">
 									<div class="col-md-1"></div>
 									<div class="col-md-10">
-										<li class="list-group-item clearfix">
 											<div class="row">
 												<div class="col-md-4">
 													<span >{$member.username}</span>
@@ -242,10 +245,11 @@
 													</form>
 												</div>
 											</div>
-										</li>
-									</div>
+											</div>
 									<div class="col-md-4"></div>
 								</div>
+										</li>
+									
 								{/foreach}
 							</ul>
 							<br>
