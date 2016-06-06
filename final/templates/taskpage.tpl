@@ -87,10 +87,11 @@
               <div class="panel-heading">
                 <h5><a href="#"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$comment.commentorname}</strong></a>
                   <span class="drab">commented {$comment.ago}</span>
-		  {if $creatorid eq $commentor}
+		  {if $creatorid eq $commentor or $role == 'COORD'}
 		  <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+			<a href="#" class="pull-right submitRemoveComment" role="button"><input type="hidden" name="commentid" value={$comment.taskcid}><span class="glyphicon glyphicon-remove"></span></a>
 		  {/if}
-                  <a href="#" class="pull-right submitRemoveComment" role="button"><input type="hidden" name="commentid" value={$comment.taskcid}><span class="glyphicon glyphicon-remove"></span></a>
+
                 </h5>
               </div>
               <div class="panel-body">

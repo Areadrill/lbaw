@@ -102,7 +102,7 @@
 						</div>
 
 					</div>
-				</div>
+
 				<div id="forum" class="panel panel-default" hidden>
 					{if $role == 'COORD'}<button id="labelManage" class="btn btn-link pull-right"><span class="glyphicon glyphicon-cog"></span> Manage labels</button>{/if}
 					<br>
@@ -503,6 +503,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 			<div id="bootstrap-alert-box-modal" class="modal fade">
 				<div class="modal-dialog">
