@@ -195,7 +195,10 @@
 								</div>
 								<br>
 							</form>
-							<h4> Current Task Labels</h4>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-4"><h4>Current Task Labels</h4></div>
+							</div>
 							<ul class="list-group">
 								{foreach from=$projectTaskLabels item=taskLabel}
 
@@ -387,7 +390,7 @@
 					</div>
 					<div id="description"  class="panel panel-default">
 						<div class="container-fluid">
-							<h1> {$info.name} </h1>
+							<h1>{$info.name}</h1>
 							<p> {$info.description}</p>
 						</div>
 					</div>

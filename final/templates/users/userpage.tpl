@@ -106,29 +106,31 @@
 				<h4 class="modal-title">Add a Project</h4>
 			</div>
 			<br>
-			<form action="../actions/projects/create_project.php" method="post" data-toggle="validator" >
+			<form data-toggle="validator" action="../actions/projects/create_project.php" method="post">
 				<div class="row">
-					<div class="form-group">
-						<div class="col-sm-2"></div>
-						<div class="col-sm-8">
-							<input name="name" type="text" title="project name" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8">
+						<div class="form-group">
+								<label>Project Name</label>
+								<input name="name" type="text" title="project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required/>
 						</div>
-						<div class="col-sm-2"></div>
 					</div>
+					<div class="col-sm-2"></div>
 				</div>
 				<br>
 				<div class="row">
-					<div class="form-group">
-						<div class="col-sm-2"></div>
-						<div class="col-sm-8">
-							<input name="description" type="text" title="project description" placeholder="Description" class="form-control" required>
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8">
+						<div class="form-group">
+								<label>Description</label>
+								<input name="description" type="text" title="project description"  class="form-control" required/>
 						</div>
-						<div class="col-sm-2"></div>
 					</div>
+					<div class="col-sm-2"></div>
 				</div>
 				<br>
 				<div class="modal-footer">
-					<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+					<button name="submit" type="submit" class="btn btn-primary">Create </button>
 				</div>
 			</form>
 		</div>
@@ -149,7 +151,8 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input id="lepass" name="pass" type="password" title="new password" placeholder="New Password" class="form-control">
+							<label>New Password</label>
+							<input id="lepass" name="pass" type="password" title="new password" class="form-control">
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -159,7 +162,8 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="repass" type="password" title="retype new password" placeholder="Retype New Password" class="form-control" data-match="#lepass" data-match-error="Passwords don't match">
+							<label>Retype New Password</label>
+							<input name="repass" type="password" title="retype new password" class="form-control" data-match="#lepass" data-match-error="Passwords don't match">
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -169,6 +173,7 @@
 					<div class="form-group has-feedback">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
+							<label>E-mail</label>
 							<input name="email" type="text" title="email" value={$email} class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
@@ -179,7 +184,8 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="location" type="text" title="your location" {if !empty($location)} value={$location} {else} placeholder="Your Location" {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
+							<label>Your Location</label>
+							<input name="location" type="text" title="your location" {if !empty($location)} value={$location} {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -189,7 +195,8 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="bday" type="date" title="the day you were born" {if !empty($birthday)} value={$birthday} {else} placeholder="Your Birthday" {/if}  class="form-control" required>
+							<label>Your Birthday</label>
+							<input name="bday" type="date" title="the day you were born" {if !empty($birthday)} value={$birthday} {/if}  class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
@@ -199,7 +206,8 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="education" type="text" title="where you studied" {if !empty($education)} value={$education} {else} placeholder="Your Education" {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
+							<label>Your Education</label>
+							<input name="education" type="text" title="where you studied" {if !empty($education)} value={$education} {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
