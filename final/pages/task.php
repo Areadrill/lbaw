@@ -1,9 +1,9 @@
 <?php
-include_once('../../config/init.php');
-include_once('../../database/tasks.php');
-include_once('../../database/members.php');
-include_once('../../database/projects.php');
-include_once('../../lib/time.php');
+include_once('../config/init.php');
+include_once('../database/tasks.php');
+include_once('../database/members.php');
+include_once('../database/projects.php');
+include_once('../lib/time.php');
 
 if(!isset($_SESSION['userid'])){
 	$_SESSION['error_messages'] = 'You don\'t have permission to view that task';
@@ -38,7 +38,7 @@ $notasklabels = getLabelsNotInTask($taskID, $projectID);
 $taskcomments = getTaskComments($taskID);
 $projectmembers = getMembers(getProjectByTask($taskID));
 
-$imgPath = glob("../../images/".$_SESSION['userid'].".*")[0];
+$imgPath = glob("../images/".$_SESSION['userid'].".*")[0];
  if(!file_exists($imgPath)){
 	 $imgPath = $BASE_URL . "images/default.jpg";
  }

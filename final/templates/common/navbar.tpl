@@ -13,12 +13,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="#about">About</a></li>
-			<li><a href="#contact">Contact</a></li>
+			<li><a href="{$BASE_URL}help/index.html">Help</a></li>
 		</ul>
 {if isset($username)}
 		<form action="../actions/users/logout.php" class="navbar-form navbar-right">
-			<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button> 
+			<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Sign Out</button>
 		</form>
 			<div class="navbar-right">
 				<div id="mid-of-navbar">

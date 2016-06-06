@@ -46,7 +46,7 @@
 							<div class="col-md-8">
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<h2>Recent Tasks<button id="newTask" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Task</button></h2>
+										<h2>Tasks<button id="newTask" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Task</button></h2>
 									</div>
 									<div class="list-group" id="recent-tasks">
 										{foreach from=$tasks item=task}
@@ -592,7 +592,7 @@
 										</div>
 										</div>
 										</form>
-									
+
 									<div class="col-md-4"></div>
 								</div>
 							</div>
