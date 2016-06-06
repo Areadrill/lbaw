@@ -17,39 +17,40 @@
 						</div>
 						<div class="panel-body">
 							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator" >
+								<label> Username </label>
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
-										<input id="username" name="username" title="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" placeholder="Username" maxlength="25" required>
-															
+										<input id="username" name="username" title="username" type="text" {literal}	pattern="^[_A-z0-9]{1,}$" {/literal} class="form-control" maxlength="25" required>
+
 									</div>
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     								<div class="help-block with-errors"></div>
 								</div>
-
+								<label> E-mail </label>
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-										<input id="email" name="email" title="email" type="email" class="form-control" placeholder="E-mail" maxlength="100" required>
+										<input id="email" name="email" title="email" type="email" class="form-control" maxlength="100" required>
 									</div>
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     								<div class="help-block with-errors"></div>
 								</div>
-								
+								<label> Password </label>
 								<div class="form-group">
 									<div class="input-group">
 										<span id="passwordThing" class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-										<input id="password" name="password" title="password" type="password" class="form-control" placeholder="Password" required>
+										<input id="password" name="password" title="password" type="password" class="form-control" required>
 									</div>
 								</div>
-
+								<label> Re-enter password </label>
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-										<input id="rpassword" name="rpassword" title="retype password" type="password" class="form-control" placeholder="Re-enter password" data-match="#password" data-match-error="Passwords don't match" required>
+										<input id="rpassword" name="rpassword" title="retype password" type="password" class="form-control" data-match="#password" data-match-error="Passwords don't match" required>
 									</div>
 								</div>
-								
+
 								<button type="submit" name="submit" class="btn btn-default">Sign Up</button>
 								<a data-toggle="modal" data-target="#recover" role="button">Lost your password?</a>
 							</form>
