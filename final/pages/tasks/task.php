@@ -46,11 +46,12 @@ $imgPath = glob("../../images/".$_SESSION['userid'].".*")[0];
 for($i = 0; $i < count($taskcomments); $i++){
 	$taskcomments[$i]['ago'] = ago(strtotime($taskcomments[$i]['creationinfo']));
 }
-
+$projectid = getProjectByTask($taskID);
 $smarty->assign('taskid', $taskID);
 $smarty->assign('role', $role);
-$smarty->assign('projectid', getProjectByTask($taskID));
+$smarty->assign('projectid', $projectid);
 $smarty->assign('username', getUsername($_SESSION['userid']));
+$smarty->assign('info', getProjectInfo($projectid));
 $smarty->assign('missinglabels', $notasklabels);
 $smarty->assign('userid', $_SESSION['userid']);
 $smarty->assign('members', $projectmembers);

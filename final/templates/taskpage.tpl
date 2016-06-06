@@ -13,7 +13,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="homepage.php">ProjectHarbor</a>
+				<a class="navbar-brand" href="{$BASE_URL}pages/userpage.php?userid={$userid}">ProjectHarbor</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,8 +41,8 @@
 					<ol class="breadcrumb">
 						<li><a href="index.html">Home</a></li>
 						<li><a href="{$BASE_URL}pages/userpage.php?userid={$userid}">{$username}</a></li>
-						<li><a href="projectpage.html">Project</a></li>
-						<li><a href="projectpage.html">Tasks</a></li>
+						<li><a href="{$BASE_URL}pages/projectpage.php?id={$projectid}">{$info.name}</a></li>
+						<li><a href="{$BASE_URL}pages/projectpage.php?id={$projectid}">Tasks</a></li>
 						<li><a class="active" href="#">{$name} </a></li>
 					</ol>
 				</div>
@@ -108,11 +108,8 @@
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
                   <textarea placeholder="Comment area" maxlength="512" ></textarea>
                   <ul>
-                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
-                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
-                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><span class="glyphicon glyphicon-picture"></span></a></li>
+                    <li><input id="completeForm" type="checkbox" value="Mark compeleted" type="checkbox" name="completed">Mark as complete </li>
                   </ul>
-		  <input id="completeForm" type="checkbox" value="Mark compeleted" type="checkbox" name="completed">Mark as complete <br>
 		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
                 </form>
