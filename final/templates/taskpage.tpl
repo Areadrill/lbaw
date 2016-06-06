@@ -150,7 +150,7 @@
 									<div class="row">
 										<div class="col-md-5"></div>
 										<div class="col-md-3">
-											<form class="alignForm" action="../../actions/tasks/remove_task.php" method="post">
+											<form class="alignForm" action="{$BASE_URL}actions/tasks/remove_task.php" method="post">
 												<input type="hidden" name="taskid" value={$taskid}>
 												<button id="deleteConfirm" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete </button>
 											</form>
@@ -182,7 +182,7 @@
 													<span class="label label-info">{$assigneeName}</span>
 												</div>
 												<div class="col-md-5">
-													<form class="alignForm labelOp" action="../actions/tasks/assign_task.php" method="post">
+													<form class="alignForm labelOp" action="{$BASE_URL}actions/tasks/assign_task.php" method="post">
 														<input type="hidden" name="taskid" value={$taskid}>
 														<input type="hidden" name="userid" value="-1">
 														<button type="submit" class="btn btn-primary pull-right"> Unassign </button>
@@ -199,7 +199,7 @@
 							<h4> New Assignee</h4>
 							<ul id="labelsNotInThread" class="list-group">
 								{foreach from=$members item=member}
-								
+
 										<li class="list-group-item clearfix">
 										<div class="row">
 									<div class="col-md-1"></div>
@@ -209,7 +209,7 @@
 													<span >{$member.username}</span>
 												</div>
 												<div class="col-md-4">
-													<form class="alignForm labelOp" action="../../actions/tasks/assign_task.php" method="post">
+													<form class="alignForm labelOp" action="{$BASE_URL}actions/tasks/assign_task.php" method="post">
 														<input type="hidden" name="taskid" value={$taskid}>
 														<input type="hidden" name="userid" value={$member.userid}>
 														<button type="submit" class="btn btn-primary pull-right"> Assign </button>
@@ -220,7 +220,7 @@
 									<div class="col-md-4"></div>
 								</div>
 										</li>
-									
+
 								{/foreach}
 							</ul>
 							<br>
@@ -247,7 +247,7 @@
 													<span class="label label-info">{$label.name}</span>
 												</div>
 												<div class="col-md-5">
-													<form class="alignForm labelOp" action="../api/tasks/assign_label.php" method="post" >
+													<form class="alignForm labelOp" action="{$BASE_URL}api/tasks/assign_label.php" method="post" >
 														<input type="hidden" name="taskid" value={$taskid}>
 														<input type="hidden" name="tasklid" value={$label.tasklid}>
 														<input type="hidden" name="action" value="unassign" >
