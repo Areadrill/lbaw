@@ -34,7 +34,6 @@
 	  $threadcomments[$i]['ago'] = ago(strtotime($threadcomments[$i]['creationinfo']));
   }
 
-  var_dump(checkPrivilege($_SESSION['username'], $projectID));
 
   $smarty->assign('role', $role);
   $smarty->assign('isLocked', isLocked($threadID));

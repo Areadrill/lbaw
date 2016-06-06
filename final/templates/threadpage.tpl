@@ -48,10 +48,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-7">
         <h1 style="display:inline;">{$threadInfo.name}</h1> <h1 style="display:inline" id="lblList1">{foreach from=$labels item=label}<span class="label label-info">{$label.name}</span> {/foreach}</h1>
-      </div> 
-      <div class="col-md-3">
+      </div>
+      <div class="col-md-4">
         {if $role === 'COORD'}
         <div class="btn-group">
           <input type="hidden" id="thrID" name="thrID" value={$threadID}>
@@ -147,7 +147,7 @@
           <h4> Current Thread Labels</h4>
           <ul id="currThreadLabels" class="list-group">
             {foreach from=$labels item=label}
-           
+
                 <li class="list-group-item clearfix">
                   <div class="row">
                     <div class="col-md-1"></div>
@@ -167,9 +167,9 @@
                       </div>
                     </div>
                     <div class="col-md-6"></div>
-                  </div>  
+                  </div>
                 </li>
-              
+
             {/foreach}
           </ul>
           <br>
@@ -196,7 +196,7 @@
                 </li>
               </div>
               <div class="col-md-4"></div>
-            </div>  
+            </div>
             {/foreach}
           </ul>
           <br>
