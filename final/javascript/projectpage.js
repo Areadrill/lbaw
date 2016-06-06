@@ -159,6 +159,7 @@ $(document).ready(function(){
   $(".tasklist").click(function(){
 	  tasklist = $(this);
 	  content = tasklist.children(".belong");
+		tasklist.find(".glyphicon").first().toggleClass('glyphicon-triangle-right').toggleClass('glyphicon-triangle-bottom');
 	  content.slideToggle(500);
   });
 

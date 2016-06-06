@@ -121,9 +121,16 @@
 										<div class="col-sm-2"></div>
 										<div class="col-sm-8">
 											<input name="projid" type="hidden" value={$projID}>
-											<input name="title" type="text" class="form-control" title="new thread name" placeholder="Thread title" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
+											<div class="form-group has-feedback">
+												<label>Thread title</label>
+												<input name="title" type="text" class="form-control" title="new thread name" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+											</div>
 											<br>
-											<textarea style="resize: none" class="form-control" title="first comment for the thread" name="initialComment" placeholder="Initial comment (not necessary)" maxlength="512" rows="4" cols="52"></textarea>
+											<div class="form-group">
+												<label>Initial comment</label>
+												<textarea style="resize: none" class="form-control" title="first comment for the thread" name="initialComment" placeholder="Not necessary" maxlength="512" rows="4" cols="52"></textarea>
+											</div>
 											<!--eventualmente um dropdown com as tags-->
 										</div>
 										<div class="col-sm-2"></div>
@@ -145,20 +152,24 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Create a new Task</h4>
 							</div>
-							<form action="{$BASE_URL}actions/tasks/create_task.php" data-toggle="validator" method="post" >
+							<form role="form" action="{$BASE_URL}actions/tasks/create_task.php" data-toggle="validator" method="post" >
 								<br>
 								<div class="row">
-									<div class="form-group">
 										<div class="col-sm-2"></div>
 										<div class="col-sm-8">
 											<input name="projectid" type="hidden" value={$projID}>
-											<input name="name" type="text" class="form-control" title="new task name" placeholder="Task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
+											<div class="form-group has-feedback">
+												<label>Task name</label>
+												<input name="name" type="text" class="form-control" title="new task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+											</div>
 											<br>
-											<textarea style="resize: none" class="form-control" name="body" title="first comment for the task" placeholder="Initial comment" maxlength="512" rows="4" cols="52"></textarea>
-											<!--eventualmente um dropdown com as tags-->
+											<div class="form-group">
+												<label>Initial comment</label>
+												<textarea style="resize: none" class="form-control" name="body" title="first comment for the task" maxlength="512" rows="4" cols="52"></textarea>
+											</div><!--eventualmente um dropdown com as tags-->
 										</div>
 										<div class="col-sm-2"></div>
-									</div>
 								</div>
 								<br>
 
@@ -176,6 +187,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Manage Task Labels</h4>
 							</div>
+							<div class="modal-body">
 							<form id="newTaskLabel" action="../actions/tasks/create_label.php" data-toggle="validator" method="post" >
 								<br>
 								<div class="row">
@@ -195,10 +207,7 @@
 								</div>
 								<br>
 							</form>
-							<div class="row">
-								<div class="col-md-1"></div>
-								<div class="col-md-4"><h4>Current Task Labels</h4></div>
-							</div>
+							<h4>Current Task Labels</h4>
 							<ul class="list-group">
 								{foreach from=$projectTaskLabels item=taskLabel}
 
@@ -216,7 +225,7 @@
 												<div class="col-md-5">
 													<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post" >
 														<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
-														<button type="submit" class="btn btn-primary pull-right"> Delete </button>
+														<button type="submit" class="btn btn-danger pull-right"> Delete </button>
 													</form>
 												</div>
 											</div>
@@ -228,6 +237,7 @@
 								{/foreach}
 							</ul>
 							<br>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -242,6 +252,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Manage Thread Labels</h4>
 							</div>
+							<div class="modal-body">
 							<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post" data-toggle="validator">
 								<br>
 								<div class="row">
@@ -279,7 +290,7 @@
 												<div class="col-md-5">
 													<form class="alignForm" action="../actions/projects/remove_threadlabel.php" method="post" >
 														<input type="hidden" name="threadlid" value={$threadLabel.threadlid}>
-														<button type="submit" class="btn btn-primary pull-right"> Delete </button>
+														<button type="submit" class="btn btn-danger pull-right"> Delete </button>
 													</form>
 												</div>
 											</div>
@@ -291,6 +302,7 @@
 								{/foreach}
 							</ul>
 							<br>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -372,19 +384,12 @@
 				</div>
 				<div id="settings" class="panel panel-default" hidden>
 					{if $role == 'COORD'}
-					<div class="row">
-						<div class="col-md-5"></div>
-						<div class="col-md-2">
+						<div class="text-center">
 							<button id="editproj" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit Project</button>
 						</div>
-						<div class="col-md-5"></div>
-					</div>
 					<br>
-					<div class="row">
-						<div class="col-md-5"></div>
-						<div class="col-md-2">
-							<button id="deleteproj" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete Project</button></div>
-							<div class="col-md-5"></div>
+						<div class="text-center">
+							<button id="deleteproj" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete Project</button>
 						</div>
 						{/if}
 					</div>
@@ -403,7 +408,7 @@
 							<li class="tasklist list-group-item clearfix">
 								<div class="row">
 									<div class="col-md-3">
-										<span class="glyphicon glyphicon-flag"></span> {$tasklist.name}
+										<span class="glyphicon glyphicon-triangle-right"></span> {$tasklist.name}
 									</div>
 									<div class="col-md-6">
 										<div class="progress" style="margin-bottom: 0">
@@ -541,27 +546,28 @@
 							<h4 class="modal-title"> New Task List</h4>
 						</div>
 						<div class="modal-body">
-							<form class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
+							<form data-toggle="validator" class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
-										<input name="name" type="text" title="new tasklist name" placeholder="Task List Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+										<div class="form-group has-feedback">
+											<label>Task List Name</label>
+											<input name="name" type="text" title="new tasklist name"  class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										</div>
 									</div>
 									<div class="col-md-2"></div>
 								</div>
-								<div class="row">
-									<div class="col-md-5"></div>
-									<div class="col-md-3">
+								<br>
+								<div class="modal-footer">
 										<input type="hidden" name="projectID" value={$projID}>
 										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
-									</div>
 								</div>
 							</form>
 						</div>
-						<div class="col-md-4"></div>
 					</div>
-						</div>
 					</div>
+				</div>
 
 			<div id="editProjDescription" class="modal fade" role="dialog">
 				<div class="modal-dialog">
@@ -575,7 +581,8 @@
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
-										<input name="name" type="text" title="new project name" placeholder="Project Name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+										<label>Project Name</label>
+										<input name="name" type="text" title="new project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
 									</div>
 									<div class="col-md-2"></div>
 								</div>
@@ -583,21 +590,17 @@
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
-										<input name="description" type="text" title="new project description" placeholder="Description" class="form-control" required>
+										<label>Description</label>
+										<input name="description" type="text" title="new project description" class="form-control" required>
 									</div>
-									<div class="col-md-2"></div>
-									<div class="row">
-										<div class="col-md-5"></div>
-										<div class="col-md-3">
-											<input type="hidden" name="projectID" value={$projID}>
-											<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
-										</div>
-										</div>
-										</div>
-										</form>
-
-									<div class="col-md-4"></div>
+									</div>
+									<br>
 								</div>
+								<div class="modal-footer">
+										<input type="hidden" name="projectID" value={$projID}>
+										<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
