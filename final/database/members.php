@@ -59,9 +59,14 @@ function addMember($userID, $projectID){
 	if(checkPrivilege($userID, $projectID) !== 'COORD')
 		return "denied";
 
+	try{
 	$stmt = $conn->prepare("INSERT INTO Roles VALUES(?, ?, 'MEMBER')");
 	$stmt->execute(array($userID, $projectID));
 
+	}
+	catch(PDOException $e){
+		return "duplicated";
+	}
 	return $stmt->fetch() !== false;
 }
 
