@@ -16,7 +16,7 @@
 		case "promote":
 			$result = alterMemberRole($_POST['userID'], $_POST['projectID'], 'COORD');
 			if(!$result){
-				error('insufficient permissions');
+				error('Something went wrong');
 				http_response_code(404);
 				exit;
 			}

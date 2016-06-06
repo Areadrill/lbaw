@@ -38,7 +38,7 @@ function alterMemberRole($userID, $projectID, $newRole){
 	$stmt->execute(array($newRole, $userID, $projectID));
 
 
-	return $stmt->fetch() == true;
+	return $stmt->fetch() !== false;
 }
 
 function removeMember($userID, $projectID){
