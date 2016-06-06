@@ -237,7 +237,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<input name="picture" type="file" class="form-control" required>
+							<input name="picture" type="file" title="new profile picture" class="form-control" required>
 						</div>
 						<div class="col-sm-2"></div>
 					</div>

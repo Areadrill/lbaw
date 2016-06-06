@@ -79,9 +79,9 @@
             <div class="widget-area no-padding blank">
               <div class="status-upload">
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
-                  <textarea placeholder="Comment area" maxlength="512" ></textarea>
+                  <textarea placeholder="Comment area" title="comment" placeholder="Write your comment here" maxlength="512" ></textarea>
                   <ul>
-                    <li><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed">Mark as complete </li>
+                    <li><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"><label for="completeForm">Mark as complete</label> </li>
                   </ul>
 		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
