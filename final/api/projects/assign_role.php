@@ -60,6 +60,10 @@
 				error('Insufficient permissions');
 				http_response_code(403);
 			}
+			else if ($result === "duplicated"){
+				error('User already in project');
+				http_response_code(409);
+			}
 			break;
 	}
 
