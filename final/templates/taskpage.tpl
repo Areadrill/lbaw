@@ -123,10 +123,10 @@
 						<div class="row">
 							<div class="col-md-10">
 								<h4 class="drab">Labels</h4>
-								{if ($role === 'COORD' || $isCreator)} <div id="taskLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
 							</div>
-							<div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
-						</div>			<ul class="label-list">
+							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="taskLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}</div>
+						</div>
+						<ul class="label-list">
 							{foreach from=$labels item=label}
 							<li><a href="#"><span class="label label-warning">{$label.name}</span></a></li>
 							{foreachelse}
@@ -137,9 +137,9 @@
 						<div class="row">
 							<div class="col-md-10">
 								<h4 class="drab">Assignee</h4>
-								{if ($role === 'COORD' || $isCreator)} <div id="assigneeManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
 
 							</div>
+							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="assigneeManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}</div>
 						</div>
 						{if !empty($assignee)}
 						<strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> {$assigneeName}</strong>
@@ -150,9 +150,8 @@
 						<div class="row">
 							<div class="col-md-10">
 								<h4 class="drab">Task list</h4>
-								{if ($role === 'COORD' || $isCreator)} <div id="tasklistManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
 							</div>
-							<div class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div>
+							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="tasklistManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}</div>
 						</div>
 						{if !empty($tasklist)}
 						<a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span>{$tasklistName}</strong></a>

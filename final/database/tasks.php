@@ -37,7 +37,7 @@ function getLabelsNotInTask($taskID, $projectid) {
 
 function getTaskInfo($taskID){
 	global $conn;
-	$stmt = $conn->prepare("SELECT Task.name, creator,assignee, complete, creationinfo, Tasklist.taskliid, Tasklist.name AS tasklistName FROM Task, Tasklist WHERE Task.taskid = ? AND Task.taskliid = Tasklist.taskliid");
+	$stmt = $conn->prepare("SELECT Task.name AS name, creator, assignee, complete, creationinfo, Tasklist.taskliid, Tasklist.name AS tasklistName FROM Task, Tasklist WHERE Task.taskid = ? AND (Task.taskliid = Tasklist.taskliid OR Task.taskliid IS NULL)");
 	$stmt->execute(array($taskID));
 	$res = $stmt->fetch();
 	$res['creatorName'] = getUsername($res['creator']);
