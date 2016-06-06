@@ -97,9 +97,12 @@ function markTaskCompleted($taskID, $complete){
 
 function createComment($taskID, $body, $userid){
 	global $conn;
-	$stmt = $conn->prepare("INSERT INTO taskcomment VALUES (default, ?, ?, clock_timestamp(), ?)");
+	$stmt = $conn->prepare("INSERT INTO taskcomment VALUES (default, ?, ?, clock_timestamp(), ?) RETURNING taskcid");
 	$res = $stmt->execute(array($taskID, $userid, $body));
+	if (!$res)
 	return $res;
+	else
+		return $stmt->fetch()['taskcid'];
 }
 
 function createTask($name,$project, $creator, $text){

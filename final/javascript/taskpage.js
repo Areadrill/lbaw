@@ -47,8 +47,7 @@ $(document).ready(function(){
               "<div class=\"panel-heading\">"+
                 "<h5><a href=\"#\"><strong><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"+reply["username"] + " </strong></a>"+
                   "<span class=\"drab\">commented 3 days ago </span>"+
-		  "<span class=\"glyphicon glyphicon-bullhorn\" aria-hidden=\"true\"></span>"+
-                  "<a href=\"#\" class=\"pull-right submitRemoveComment\"><span class=\"glyphicon glyphicon-remove\"></span></a>"+
+		"<a href=\"#\" class=\"pull-right submitRemoveComment\" role=\"button\"><input type=\"hidden\" name=\"commentid\" value="+reply['taskcid']+"><span class=\"glyphicon glyphicon-remove\"></span></a>"+
                 "</h5>"+
               "</div>"+
               "<div class=\"panel-body\">"+reply["body"]+
