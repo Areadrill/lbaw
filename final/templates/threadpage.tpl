@@ -72,11 +72,6 @@
                 <form id="commentBox" action="../api/threads/create_comment.php" method="post" data-toggle="validator" {if $isLocked} hidden {/if}>
                   <input type="hidden" name="threadid" value={$threadID}>
                   <textarea name="commentArea" title="Comment area" placeholder="Comment area" maxlength="512"></textarea>
-                  <ul>
-                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="glyphicon glyphicon-music"></span></a></li>
-                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
-                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><span class="glyphicon glyphicon-picture"></span></a></li>
-                  </ul>
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
                 </form>
               </div><!-- Status Upload  -->
