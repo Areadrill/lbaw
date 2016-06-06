@@ -1,7 +1,6 @@
 {include file='common/header.tpl'}
 <link rel="stylesheet" href="../css/custom/homepageStyle.css">
 <script src="../javascript/validator.min.js" ></script>
-{include file='common/header.tpl'}
 <title>ProjectHarbor - Password Recovery </title>
 </head>
 <body>
