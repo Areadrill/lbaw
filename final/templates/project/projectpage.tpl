@@ -61,7 +61,7 @@
 							</div>
 							<div class="col-md-4">
 								<div id="taskLabelList" class="list-group">
-									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
+									<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectTaskLabels|@count}</span></a>
 									{foreach from=$projectTaskLabels item=taskLabel}
 									<a href="#" class="list-group-item"><span class="label label-primary">{$taskLabel.name}</span><span class="badge">{$taskLabel.count}</span></a>
 									{/foreach}

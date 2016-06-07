@@ -39,5 +39,6 @@
   $smarty->assign('projectTaskLabels', getProjectTaskLabels($projectID));
   $smarty->assign('projectTaskLists', getProjectTaskLists($projectID));
   $smarty->assign('noTaskList', getTasksNoTaskList($projectID));
+
   $smarty->display('project/projectpage.tpl');
 ?>
