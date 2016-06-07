@@ -25,6 +25,7 @@ if ($privilege !== "COORD"){
 }
 
 http_response_code(200);
-markTaskCompleted($_POST['taskid'], false);
+var_dump($_POST);
+markTaskCompleted($_POST['taskid'], "false");
 
 ?>
