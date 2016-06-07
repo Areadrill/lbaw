@@ -6,6 +6,11 @@
     display: inline;
 }
 
+.manageThreadLabels:hover{
+  color: #428bca;
+  cursor: pointer;
+}
+
 ul.label-list{
 	list-style-type:none;
 	padding-left:0;

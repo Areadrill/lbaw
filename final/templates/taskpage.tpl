@@ -81,7 +81,7 @@
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
                   <textarea placeholder="Comment area" title="comment" placeholder="Write your comment here" maxlength="512" ></textarea>
                   <ul>
-                    <li><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"><label for="completeForm">Mark as complete</label> </li>
+                    <li style="margin-top:0.7em"><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"><label for="completeForm">Mark as complete</label> </li>
                   </ul>
 		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
@@ -96,7 +96,7 @@
 							<div class="col-md-10">
 								<h4 class="drab">Labels</h4>
 							</div>
-							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="taskLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}</div>
+							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="taskLabelManage" class="col-md-2"><span class="optionDialog glyphicon glyphicon-cog"></span></div> {/if}</div>
 						</div>
 						<ul class="label-list">
 							{foreach from=$labels item=label}
@@ -111,7 +111,7 @@
 								<h4 class="drab">Assignee</h4>
 
 							</div>
-							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="assigneeManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}</div>
+							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="assigneeManage" class="col-md-2"><span class="optionDialog glyphicon glyphicon-cog"></span></div> {/if}</div>
 						</div>
 						{if !empty($assignee)}
 						<strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> {$assigneeName}</strong>
@@ -123,7 +123,7 @@
 							<div class="col-md-10">
 								<h4 class="drab">Task list</h4>
 							</div>
-							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="tasklistManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}</div>
+							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="tasklistManage" class="col-md-2"><span class="optionDialog glyphicon glyphicon-cog"></span></div> {/if}</div>
 						</div>
 						{if !empty($tasklist)}
 						<a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span>{$tasklistName}</strong></a>
