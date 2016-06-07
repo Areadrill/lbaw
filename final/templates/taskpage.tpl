@@ -182,7 +182,7 @@
 													<span class="label label-info">{$assigneeName}</span>
 												</div>
 												<div class="col-md-5">
-													<form class="alignForm " action="../actions/tasks/assign_task.php" method="post">
+													<form class="alignForm" action="../../actions/tasks/assign_task.php" method="post">
 														<input type="hidden" name="taskid" value={$taskid}>
 														<input type="hidden" name="userid" value="-1">
 														<button type="submit" class="btn btn-primary pull-right"> Unassign </button>
