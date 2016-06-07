@@ -175,8 +175,8 @@
 								</div>
 								<br>
 
-								<div id="newThreadSubWrapper" class="modal-footer">
-									<input id="newThreadSub" name="submit" type="submit" class="btn btn-primary" value="Create"/>
+								<div id="newTaskSubWrapper" class="modal-footer">
+									<input id="newTaskSub" name="submit" type="submit" class="btn btn-primary" value="Create"/>
 								</div>
 							</form>
 						</div>
@@ -552,7 +552,7 @@
 							<h4 class="modal-title"> New Task List</h4>
 						</div>
 						<div class="modal-body">
-							<form id="newTaskListform" data-toggle="validator" class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
+							<form id="newTaskListForm" data-toggle="validator" class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
