@@ -106,7 +106,7 @@
 				<h4 class="modal-title">Add a Project</h4>
 			</div>
 			<br>
-			<form data-toggle="validator" action="../actions/projects/create_project.php" method="post">
+			<form id="newProjForm" data-toggle="validator" action="../actions/projects/create_project.php" method="post">
 				<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8">
@@ -133,8 +133,8 @@
 					<div class="col-sm-2"></div>
 				</div>
 				<br>
-				<div class="modal-footer">
-					<button name="submit" type="submit" class="btn btn-primary">Create </button>
+				<div id="newProjSubWrapper" class="modal-footer">
+					<button id="newProjSub" name="submit" type="submit" class="btn btn-primary">Create </button>
 				</div>
 			</form>
 		</div>

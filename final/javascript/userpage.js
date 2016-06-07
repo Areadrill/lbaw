@@ -36,7 +36,6 @@ $(document).ready(function(){
   $("#userImage, #imageCover").hover(toggleImageCover);
 
   $("#infoEditSubWrapper").hover(function (){
-    console.log("ola");
     if($("div", "#infoEditForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#infoEditSub").prop('disabled', true);
     }
@@ -46,6 +45,15 @@ $(document).ready(function(){
  
   });
 
+  $("#newProjSubWrapper").hover(function (){
+    if($("div", "#newProjForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newProjSub").prop('disabled', true);
+    }
+    else{
+      $("#newProjSub").prop('disabled', false);
+    }
+ 
+  });
 
 });
 
