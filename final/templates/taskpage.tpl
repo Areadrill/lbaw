@@ -82,7 +82,7 @@
             <div class="widget-area no-padding blank">
               <div class="status-upload">
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
-                  <textarea placeholder="Comment area" title="comment" placeholder="Write your comment here" maxlength="512" ></textarea>
+                  <textarea placeholder="Comment area" title="comment" maxlength="512" ></textarea>
                   <ul>
                     <li style="margin-top:0.7em"><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"> <label for="completeForm"> Mark as complete</label></li>
                   </ul>
@@ -165,10 +165,11 @@
 							{if !empty($assignee)}
 							<h4> Current Assignee</h4>
 							<ul id="assignee" class="list-group">
-								<div class="row">
+								
+										<li class="list-group-item clearfix">
+										<div class="row">
 									<div class="col-md-1"></div>
 									<div class="col-md-10">
-										<li class="list-group-item clearfix">
 											<div class="row">
 												<div class="col-md-3">
 													<span class="label label-info">{$assigneeName}</span>
@@ -181,10 +182,11 @@
 													</form>
 												</div>
 											</div>
-										</li>
-									</div>
+											</div>
 									<div class="col-md-6"></div>
 								</div>
+										</li>
+									
 							</ul>
 							{/if}
 							<br>
@@ -260,10 +262,11 @@
 							<h4> Project Labels </h4>
 							<ul id="labelsNotInTask" class="list-group">
 								{foreach from=$missinglabels item=mLabel}
-								<div class="row">
+								
+										<li class="list-group-item clearfix">
+										<div class="row">
 									<div class="col-md-1"></div>
 									<div class="col-md-10">
-										<li class="list-group-item clearfix">
 											<div class="row">
 												<div class="col-md-3">
 													<span class="label label-info">{$mLabel.name}</span>
@@ -277,10 +280,11 @@
 													</form>
 												</div>
 											</div>
-										</li>
-									</div>
+											</div>
 									<div class="col-md-6"></div>
 								</div>
+										</li>
+									
 								{/foreach}
 							</ul>
 							<br>
