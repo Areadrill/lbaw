@@ -39,16 +39,15 @@ $(document).ready(function (){
 
 	$("#threadLock").click(function (){
 		$.post('../api/threads/toggle_lock.php', {threadid: $("#thrID").val()}, function (data){
-			
 			if(data == "locked"){
 				$("#threadLock").text("Unlock Thread");
 				$("#commentBox").hide();
-			} 
+			}
 			else if(data == "unlocked"){
 				$("#threadLock").text("Lock Thread");
 				$("#commentBox").show();
 			}
-			
+
 		});
 	});
 
