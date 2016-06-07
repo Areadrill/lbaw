@@ -28,7 +28,7 @@ function getTaskLabels($taskID) {
 function getLabelsNotInTask($taskID, $projectid) {
 	global $conn;
 	$stmt = $conn->prepare("SELECT tasklid, name FROM TaskLabel WHERE projectid = ? AND tasklid NOT IN (SELECT tasklid FROM TaskToLabel WHERE taskid = ?)");
-	$stmt->execute(array($projectid, $taskid));
+	$stmt->execute(array($projectid, $taskID));
 	$res = $stmt->fetchAll();
 
 	return $res;
