@@ -27,7 +27,8 @@ $(document).ready(function(){ $(document).on("click",".submitRemoveComment",func
 	});
 
 	$("#taskUncomplete").click(function(){
-		$.post("../api/tasks/uncomplete_task.php", {taskid: $("#taskidForm").val()}, function(){
+		$.post("../api/tasks/uncomplete_task.php", {taskid: $("#taskidForm").val()}, function(data){
+			console.log(data);
 			$("#completionstatus").addClass("btn-danger");
 			$("#completionstatus").removeClass("btn-success");
 			$("#completionstatus").text("Not Complete");
@@ -48,7 +49,7 @@ $(document).ready(function(){ $(document).on("click",".submitRemoveComment",func
 
 	$(document).on("submit","#createCommentForm",function(e){
 		e.preventDefault();
-		$.post("../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), completed: $("#completeForm").prop("checked")}, function(data){
+		$.post("../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), completed: $("#completeForm").is(":checked")}, function(data){
 			reply = JSON.parse(data);
 			if(reply['complete'] && $("#completionstatus").hasClass("btn-danger")){
 				$("#completionstatus").removeClass("btn-danger");

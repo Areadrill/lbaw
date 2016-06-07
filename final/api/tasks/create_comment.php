@@ -29,7 +29,7 @@ if (!isset($_SESSION['userid'])){
 $privilege = checkPrivilege($_POST['userid'], getProjectByTask($_POST['taskid'])); 
 $response = ["body" => $comment, "username" => getUsername($_SESSION['userid'])];
 
-if (!($_POST['completed'] == false && ($privilege === "MEMB" || $privilege === "COORD")) && !($_POST['completed'] && ($privilege === "COORD" || isAssigned($_POST['userid']))))
+if (!($_POST['completed'] == false && ($privilege === "MEMBER" || $privilege === "COORD")) && !($_POST['completed'] && ($privilege === "COORD" || isAssigned($_POST['userid']))))
 {
 	http_response_code(403);
 	exit;
@@ -38,10 +38,9 @@ if (!($_POST['completed'] == false && ($privilege === "MEMB" || $privilege === "
 if(createComment($_POST['taskid'], $comment, $_SESSION['userid'])){
 	http_response_code(200);
 }
-
-if ($_POST['completed'] == true){
-markTaskCompleted($_POST['taskid'], true);
-$response['complete'] = true;
+if ($_POST['completed'] === "true"){
+	markTaskCompleted($_POST['taskid'], true);
+	$response['complete'] = true;
 }
 
 echo json_encode($response);
