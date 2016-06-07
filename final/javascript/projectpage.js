@@ -1,15 +1,15 @@
 $(document).ready(function(){
 	$(".filterTask").click(function(){
-		$.post('../api/tasks/filter_tasks.php', {tasklid: $(this).data('tasklid'), projid: $(this).data('projid')}, function(data){
+		$.post('../api/tasks/filter_tasks.php', {tasklabelid: $(this).data('tasklid'), projid: $(this).data('projid')}, function(data){
 			$("#recent-tasks").empty();
 			var json = JSON.parse(data);
 			for(var i = 0; i < json.length; i++){
-				var htmlCode = "<a href=\"../pages/task.php?id="+ json[i].tasksid +"\" class=\"list-group-item\">"+"\n"+
-				"<span class=\"glyphicon glyphicon-comment\"></span> " + json[i].name+"\n";
-				for(var j = 0; j < json[i].tasksLabels.length; j++){
-					htmlCode += "<span class=\"label label-info\">" + json[i].tasksLabels[j].name+ "</span>" +"\n";
+				var htmlCode = "<a href=\"../pages/task.php?id="+ json[i].tasksid + "\" class=\"list-group-item\">" + "\n" +
+				"<span class=\"glyphicon glyphicon-comment\"></span> " + json[i].name + "\n";
+				for(var j = 0; j < json[i].taskLabels.length; j++){
+					htmlCode += "<span class=\"label label-warning\">" + json[i].taskLabels[j].name+ "</span>" +"\n";
 				}
-				htmlCode += "</a>"
+				htmlCode += "</a>";
 				$("#recent-tasks").append(htmlCode);
 			}
 		});

@@ -11,7 +11,7 @@
 			<div class="row">
 				<div class ="col-md-12">
 					<ol class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
+						<li><a href="{$BASE_URL}">Home</a></li>
 						<li><a href="{$BASE_URL}pages/userpage.php?userid={$userid}">{$username}</a></li>
 						<li><a href="{$BASE_URL}pages/projectpage.php?id={$projectid}">{$info.name}</a></li>
 						<li><a href="{$BASE_URL}pages/projectpage.php?id={$projectid}">Tasks</a></li>

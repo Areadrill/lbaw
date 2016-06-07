@@ -41,7 +41,7 @@ function filterTask($tasklabelid,$projid,$userid){
 	}
 	global $conn;
 
-	$stmt = $conn->prepare("SELECT Task.taskid, Task.name FROM Task, TaskLabel, TaskToLabel WHERE TaskLabel.tasklid	 = ? AND TaskToLabel.tasklid = TaskLabel.tasklid AND TaskToLabel.taskid = Task.taskid");
+	$stmt = $conn->prepare("SELECT Task.taskid, Task.name FROM Task, TaskLabel, TaskToLabel WHERE TaskLabel.tasklid = ? AND TaskToLabel.tasklid = TaskLabel.tasklid AND TaskToLabel.taskid = Task.taskid");
 	$stmt->execute(array($tasklabelid));
 
 	$res = $stmt->fetchAll();
