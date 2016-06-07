@@ -177,6 +177,68 @@ $(document).ready(function(){
 	  content.slideToggle(500);
   });
 
+
+  $("#newThreadSubWrapper").hover(function (){
+    console.log("ola");
+    if($("div", "#newThreadForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newThreadSub").prop('disabled', true);
+    }
+    else{
+      $("#newThreadSub").prop('disabled', false);
+    }
+  });
+
+    $("#newTaskSubWrapper").hover(function (){
+    console.log("ola");
+    if($("div", "#newTaskForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newTaskSub").prop('disabled', true);
+    }
+    else{
+      $("#newTaskSub").prop('disabled', false);
+    }
+  });
+      $("#newTaskLabelWrapper").hover(function (){
+    console.log("ola");
+    if($("div", "#newTaskLabel").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newTaskLabelSubmit").prop('disabled', true);
+    }
+    else{
+      $("#newTaskLabelSubmit").prop('disabled', false);
+    }
+  });
+
+   $("#newTLSubmmitWrapper").hover(function (){
+    console.log("ola");
+    if($("div", "#newLabel").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newTLSubmmit").prop('disabled', true);
+    }
+    else{
+      $("#newTLSubmmit").prop('disabled', false);
+    }
+  });   
+
+  $("#newTaskListSubWrapper").hover(function (){
+    console.log("ola");
+    if($("div", "#newTaskListForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newTaskListSub").prop('disabled', true);
+    }
+    else{
+      $("#newTaskListSub").prop('disabled', false);
+    }
+  });
+
+$("#editConfirmWrapper").hover(function (){
+    console.log("ola");
+    if($("div", "#editProjForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#editConfirm").prop('disabled', true);
+    }
+    else{
+      $("#editConfirm").prop('disabled', false);
+    }
+  });
+
+
+
 });
 
 function taskLabelAdded(data){
