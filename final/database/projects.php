@@ -48,15 +48,15 @@ function getNewInfo($userid, $projid){
   global $conn;
 
   $stmt = $conn->prepare("SELECT COUNT(taskID) AS NewTaskCount FROM Task WHERE projectID = ? AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = ?)");
-  $stmt->execute(array($userid, $projid));
+  $stmt->execute(array($projid, $userid));
   $res['tasks'] = $stmt->fetch();
 
   $stmt = $conn->prepare("SELECT COUNT(threadID) AS NewThreadCount FROM Thread WHERE projectID = ? AND creationInfo > (SELECT lastLogout FROM Users WHERE userID = ?)");
-  $stmt->execute(array($userid, $projid));
+  $stmt->execute(array($projid, $userid));
   $res['threads'] = $stmt->fetch();
-
+ 
   $stmt = $conn->prepare("SELECT COUNT(taskID) AS TasksAssignedToUser FROM Task WHERE projectID = ? AND assignee = ?");
-  $stmt->execute(array($userid, $projid));
+  $stmt->execute(array($projid, $userid));
   $res['assigned'] = $stmt->fetch();
 
   return $res;
