@@ -20,10 +20,6 @@ if($result == "denied"){
 	error("insufficient permissions");
 	http_response_code(403);
 }
-else if(!$result){
-	error("something went wrong");
-	http_response_code(404);
-}
 
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 		echo json_encode($result);

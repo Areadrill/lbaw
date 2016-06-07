@@ -7,7 +7,7 @@ $(document).ready(function(){
 				var htmlCode = "<a href=\"../pages/task.php?id="+ json[i].tasksid + "\" class=\"list-group-item\">" + "\n" +
 				"<span class=\"glyphicon glyphicon-comment\"></span> " + json[i].name + "\n";
 				for(var j = 0; j < json[i].taskLabels.length; j++){
-					htmlCode += "<span class=\"label label-info\">" + json[i].taskLabels[j].name+ "</span>" +"\n";
+					htmlCode += "<span class=\"label label-warning\">" + json[i].taskLabels[j].name+ "</span>" +"\n";
 				}
 				htmlCode += "</a>";
 				$("#recent-tasks").append(htmlCode);
