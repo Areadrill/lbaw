@@ -230,7 +230,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="modal-footer">
+				<div id="infoEditSubWrapper" class="modal-footer">
 					<!--<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>-->
 					<button id="infoEditSub" type="submit" name="submit" class="btn btn-primary">Edit</button>
 				</div>

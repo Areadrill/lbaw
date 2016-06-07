@@ -35,7 +35,7 @@ $(document).ready(function(){
 
   $("#userImage, #imageCover").hover(toggleImageCover);
 
-  $("#infoEditSub").hover(function (){
+  $("#infoEditSubWrapper").hover(function (){
     console.log("ola");
     if($("div", "#infoEditForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#infoEditSub").prop('disabled', true);
@@ -43,7 +43,7 @@ $(document).ready(function(){
     else{
       $("#infoEditSub").prop('disabled', false);
     }
-
+ 
   });
 
 
