@@ -1,16 +1,18 @@
 $(document).ready(function(){
 	$(".filterLabel").click(function(){
 		$.post('../api/threads/filter_threads.php', {threadlabelid: $(this).data('threadlid'), projid: $(this).data('projid')}, function(data){
-			$("#recent-tasks").empty();
+			$("#recent-threads").empty();
 			var json = JSON.parse(data);
 			for(var i = 0; i < json.length; i++){
 				var htmlCode = "<a href=\"../pages/threadpage.php?id={$thread.threadid}\" class=\"list-group-item\">"+
 				"<span class=\"glyphicon glyphicon-comment\"></span>" + json[i].name;
 				for(var j = 0; j < json[i].threadLabels.length; j++){
-					htmlCode += "<span class=\"label label-info\">" + json[i].threadLabels[j]+ "</span>"+
+					htmlCode += "<span class=\"label label-info\">" + json[i].threadLabels[j].name+ "</span>"+
 					"</a>"
-				$("#recent-tasks").append(htmlCode);
+					console.log(json[i]);
 				}
+				console.log(htmlCode);
+				$("#recent-threads").append(htmlCode);
 			}
 		});
 	});
