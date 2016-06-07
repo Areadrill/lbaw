@@ -40,7 +40,7 @@ function getProjectThreadLabels($projID) {
 	$res = $stmt->fetchAll();
 
 	for($i = 0; $i < count($res); $i++){
-	    $res[$i]['count'] = getThreadLabelsCount($res[$i]['threadLID']);
+	    $res[$i]['count'] = getThreadLabelsCount($res[$i]['threadlid']);
 	}
 	return $res;
 }
