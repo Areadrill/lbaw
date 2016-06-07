@@ -34,19 +34,17 @@ if (!($_POST['completed'] == false && ($privilege === "MEMB" || $privilege === "
 	http_response_code(403);
 	exit;
 }
-$taskcid = createComment($_POST['taskid'], $comment, $_SESSION['userid']);
-if($taskcid !== false){
+
+if(createComment($_POST['taskid'], $comment, $_SESSION['userid'])){
 	http_response_code(200);
-	$response['taskcid'] = $taskcid;
 }
 
-if ($_POST['completed']){
-	if(markTaskCompleted($_POST['taskid'])){
-		http_response_code(200);
-	}
+if ($_POST['completed'] == true){
+markTaskCompleted($_POST['taskid'], true);
+$response['complete'] = true;
 }
 
-http_response_code(200);
 echo json_encode($response);
+http_response_code(200);
 
 ?>

@@ -7,7 +7,7 @@
 <body>
 	{include file='common/navbar.tpl'}
 
-		<div class="container">
+		<div class="container" data-coord="{$role}">
 			<div class="row">
 				<div class ="col-md-12">
 					<ol class="breadcrumb">
@@ -30,6 +30,9 @@
 					{if $role === 'COORD'}
 					<div class="btn-group">
 						<button style="margin-top: 0.7em" id="taskDelete" type="button" class="btn btn-primary"> Delete Task </button>
+						{if $complete}
+						<button  style="margin-top: 0.7em" id="taskUncomplete" type="button" class="btn btn-primary">Reopen Task</button>
+						{/if}
 					</div>
 					{/if}
 				</div>
@@ -40,9 +43,9 @@
 				<div class="col-md-12 pull-to-bottom">
 					<p >
 						{if $complete eq true}
-						<a class="btn btn-success btn-sm" href="#" role="button">Complete </a>
+						<a class="btn btn-success btn-sm" id="completionstatus"  href="#" role="button">Complete </a>
 						{else}
-						<a class="btn btn-danger btn-sm" href="#" role="button">Not Complete </a>
+						<a class="btn btn-danger btn-sm" id="completionstatus" href="#" role="button">Not Complete </a>
 						{/if}
 						Task created by <a href="{$BASE_URL}pages/userpage.php?userid={$creatorid}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>{$creatorname}</strong></a> </p>
 					</div>
