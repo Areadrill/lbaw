@@ -81,7 +81,7 @@
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
                   <textarea placeholder="Comment area" title="comment" placeholder="Write your comment here" maxlength="512" ></textarea>
                   <ul>
-                    <li style="margin-top:0.7em"><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"><label for="completeForm">Mark as complete</label> </li>
+                    <li style="margin-top:0.7em"><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"><label for="completeForm"> Mark as complete</label> </li>
                   </ul>
 		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
@@ -170,6 +170,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Manage this Task's Assignee</h4>
 							</div>
+							<div class="modal-body">
 							{if !empty($assignee)}
 							<h4> Current Assignee</h4>
 							<ul id="assignee" class="list-group">
@@ -224,6 +225,7 @@
 								{/foreach}
 							</ul>
 							<br>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -234,6 +236,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Manage this Task's Labels</h4>
 							</div>
+							<div class="modal-body">
 							<h4> Current Task Labels</h4>
 							<ul id="currTaskLabels" class="list-group">
 								{foreach from=$labels item=label}
@@ -290,6 +293,7 @@
 								{/foreach}
 							</ul>
 							<br>
+							</div>
 						</div>
 					</div>
 				</div>
