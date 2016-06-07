@@ -16,7 +16,7 @@ if (!isset($_SESSION['userid'])){
 
 
 $result = filterThread($_POST['threadlabelid'],$_POST['projid'],$_SESSION['userid']);
-if($result = "denied"){
+if($result == "denied"){
 	error("insufficient permissions");
 	http_response_code(403);
 }

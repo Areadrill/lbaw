@@ -225,7 +225,7 @@ function assignLabelToThread($userID, $threadID, $threadLID){ //preciso ver se a
 	return $stmt->fetch() !== false;
 }
 function filterThread($threadlabelid,$projid,$userid){
-	if(checkPrivilege($userid, getProjIDThreadLabelID($threadlabelid))){
+	if(checkPrivilege($userid, getProjIDThreadLabelID($threadlabelid)) != "COORD"){
 		$_SESSION['error_messages'][] = 'Insufficient permissions';
 		return 'denied';
 	}

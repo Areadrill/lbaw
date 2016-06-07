@@ -29,7 +29,7 @@ if (!isset($_SESSION['userid'])){
 
 
 $result = comment($_SESSION['userid'], $_POST['threadid'], $comment);
-if($result = "denied"){
+if($result == "denied"){
 	error("insufficient permissions");
 	http_response_code(403);
 }
