@@ -40,11 +40,11 @@ $(document).ready(function (){
 	$("#threadLock").click(function (){
 		$.post('../api/threads/toggle_lock.php', {threadid: $("#thrID").val()}, function (data){
 			if(data == "locked"){
-				$("#threadLock").text("<span class="glyphicon glyphicon-lock"></span> Unlock Thread");
+				$("#threadLock").text("<span class=\"glyphicon glyphicon-lock\"></span> Unlock Thread");
 				$("#commentBox").hide();
 			}
 			else if(data == "unlocked"){
-				$("#threadLock").text("<span class="glyphicon glyphicon-lock"></span> Lock Thread");
+				$("#threadLock").text("<span class=\"glyphicon glyphicon-lock\"></span> Lock Thread");
 				$("#commentBox").show();
 			}
 
@@ -56,7 +56,6 @@ $(document).ready(function (){
 		e.preventDefault();
 		$.post('../api/threads/assign_label.php', {threadid: $("input[name='threadid']", this).val(), threadlid: $("input[name='threadlid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
 			var json = JSON.parse(data);
-			console.log(data);
 			$("#currThreadLabels").empty();
 			$("#labelsNotInThread").empty();
 			$("#lblList1").empty();

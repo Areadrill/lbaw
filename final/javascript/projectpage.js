@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	$(".filterLabel").click(function(){
+		$.post('../api/threads/filter_threads.php', {threadlabelid: $(this).data('threadlid'), projid: $(this).data('projid')}, function(data){
+			$("#recent-tasks").empty();
+			var json = JSON.parse(data);
+			console.log(json);
+			//$("#recent-tasks").append();
+		});
+	});
 	$(".dropdown-menu li a").click(function(){
 	  var selText = $(this).text();
 		var taskid = $(this).data("taskid");
@@ -87,7 +95,6 @@ $(document).ready(function(){
     $.post('../api/projects/search_users.php', {field : $(this).val(), projectID: $("#projectID").val()}, function(data){
       $('#listofusers').empty();
       var json = JSON.parse(data);
-      //console.log(data);
       for(var i = 0; i < json.length; i++){
         $('#listofusers').append(
           "<div class=\"row\">"+

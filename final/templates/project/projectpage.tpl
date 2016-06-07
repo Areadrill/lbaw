@@ -99,7 +99,7 @@
 							<div class="list-group">
 								<a href="#" class="list-group-item disabled">Tags<span class="badge">{$projectThreadLabelCount}</span></a>
 								{foreach from=$projectThreadLabels item=threadLabel}
-								<a href="#" class="list-group-item"><span class="label label-primary">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
+								<a data-projid="{$projID}" data-threadlid="{$threadLabel.threadLID}" class="list-group-item filterLabel"><span class="label label-primary">{$threadLabel.name}</span><span class="badge">{$threadLabel.count}</span></a>
 								{/foreach}
 							</div>
 						</div>
