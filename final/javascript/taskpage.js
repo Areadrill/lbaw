@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$(document).on("click",".submitRemoveComment",function(){
-		$.post('../../api/tasks/remove_comment.php', {commentid: $("input", this).val()}, function(data){
+		$.post('../api/tasks/remove_comment.php', {commentid: $("input", this).val()}, function(data){
 			var json = JSON.parse(data);
 			$("#commentListArea").empty();
 			for(var i = 0; i < json.length; i++){
@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 	$(document).on("submit","#createCommentForm",function(e){
 		e.preventDefault();
-		$.post("../../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), complete: $("#completeForm").val()}, function(data){
+		$.post("../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), complete: $("#completeForm").val()}, function(data){
 			reply = JSON.parse(data);
 		 $("#commentListArea").append($("<div class=\"row\">"+
           "<div class=\"col-md-12\">"+
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	$(document).on("submit",".labelOp",function(e){
 
 		e.preventDefault();
-		$.post('../../api/tasks/assign_label.php', {taskid: $("input[name='taskid']", this).val(), tasklid: $("input[name='tasklid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
+		$.post('../api/tasks/assign_label.php', {taskid: $("input[name='taskid']", this).val(), tasklid: $("input[name='tasklid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
 			var json = JSON.parse(data);
 			console.log(data);
 			$("#currThreadLabels").empty();

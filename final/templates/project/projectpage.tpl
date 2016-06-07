@@ -50,7 +50,7 @@
 									</div>
 									<div class="list-group" id="recent-tasks">
 										{foreach from=$tasks item=task}
-										<a href="../pages/tasks/task.php?taskid={$task.taskid}" class="list-group-item">{$task.name}
+										<a href="../pages/task.php?taskid={$task.taskid}" class="list-group-item">{$task.name}
 											{foreach from=$task.taskLabels item=label}
 											<span class="label label-warning">{$label.name}</span>
 											{/foreach}
@@ -438,7 +438,7 @@
 									<div class="row belong">
 										<ul>
 											{foreach from=$tasklist.tasks item=task}
-												<li>{if $task.complete eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a href="{$BASE_URL}pages/tasks/task.php?taskid={$task.taskid}"> {$task.name}</a></li>
+												<li>{if $task.complete eq true} <span class="glyphicon glyphicon-ok"></span>{/if}<a href="{$BASE_URL}pages/task.php?taskid={$task.taskid}"> {$task.name}</a></li>
 											{/foreach}
 										</ul>
 									</div>
