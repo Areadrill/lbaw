@@ -35,6 +35,17 @@ $(document).ready(function(){
 
   $("#userImage, #imageCover").hover(toggleImageCover);
 
+  $("#infoEditSub").hover(function (){
+    console.log("ola");
+    if($("div", "#infoEditForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#infoEditSub").prop('disabled', true);
+    }
+    else{
+      $("#infoEditSub").prop('disabled', false);
+    }
+
+  });
+
 
 });
 
