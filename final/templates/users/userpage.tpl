@@ -150,7 +150,7 @@
 				<h4 class="modal-title">Edit your info</h4>
 			</div>
 			<br>
-			<form action="../actions/users/edit_info.php" method="post" data-toggle="validator" enctype="multipart/form-data" >
+			<form id="infoEditForm" action="../actions/users/edit_info.php" method="post" data-toggle="validator" enctype="multipart/form-data" >
 				<div class="row">
 					<div class="form-group">
 						<div class="col-sm-2"></div>
@@ -232,7 +232,7 @@
 				<br>
 				<div class="modal-footer">
 					<!--<input name="submit" type="submit" class="btn btn-primary" value="Edit"/>-->
-					<button type="submit" name="submit" class="btn btn-primary">Edit</button>
+					<button id="infoEditSub" type="submit" name="submit" class="btn btn-primary">Edit</button>
 				</div>
 			</form>
 		</div>
