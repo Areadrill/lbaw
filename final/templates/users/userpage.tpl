@@ -111,8 +111,8 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8">
 						<div class="form-group has-feedback">
-							<label>Project Name</label>
-							<input name="name" type="text" title="project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required/>
+							<label for="newProjName">Project Name</label>
+							<input id="newProjName" name="name" type="text" title="project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required/>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     						<div class="help-block with-errors"></div>
 						</div>
@@ -124,8 +124,8 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8">
 						<div class="form-group has-feedback">
-							<label>Description</label>
-							<input name="description" type="text" title="project description"  class="form-control" required/>
+							<label for="newProjDesc">Description</label>
+							<input id="newProjDesc" name="description" type="text" title="project description"  class="form-control" required/>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     						<div class="help-block with-errors"></div>
 						</div>
@@ -155,7 +155,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<label>New Password</label>
+							<label for="lepass">New Password</label>
 							<input id="lepass" name="pass" type="password" title="new password" class="form-control">
 						</div>
 						<div class="col-sm-2"></div>
@@ -166,7 +166,7 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<label>Retype New Password</label>
+							<label for="repass">Retype New Password</label>
 							<input name="repass" type="password" title="retype new password" class="form-control" data-match="#lepass" data-match-error="Passwords don't match">
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     						<div class="help-block with-errors"></div>
@@ -179,8 +179,8 @@
 					<div class="form-group has-feedback">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<label>E-mail</label>
-							<input name="email" type="text" title="email" value={$email} class="form-control" required>
+							<label for="email">E-mail</label>
+							<input id="email" name="email" type="text" title="email" value={$email} class="form-control" required>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     						<div class="help-block with-errors"></div>
 						</div>
@@ -192,8 +192,8 @@
 					<div class="form-group has-feedback">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<label>Your Location</label>
-							<input name="location" type="text" title="your location" {if !empty($location)} value={$location} {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
+							<label for="urLoc">Your Location</label>
+							<input id="urLoc" name="location" type="text" title="your location" {if !empty($location)} value={$location} {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     						<div class="help-block with-errors"></div>
 						</div>
@@ -206,8 +206,8 @@
 					<div class="form-group has-feedback">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<label>Your Birthday</label>
-							<input name="bday" type="date" title="the day you were born" {if !empty($birthday)} value={$birthday} {/if}  class="form-control" required>
+							<label for="birthd">Your Birthday</label>
+							<input id="birthd" name="bday" type="date" title="the day you were born" {if !empty($birthday)} value={$birthday} {/if}  class="form-control" required>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     						<div class="help-block with-errors"></div>
 						</div>
@@ -220,8 +220,8 @@
 					<div class="form-group has-feedback">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-8">
-							<label>Your Education</label>
-							<input name="education" type="text" title="where you studied" {if !empty($education)} value={$education} {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
+							<label for="edu">Your Education</label>
+							<input id="edu" name="education" type="text" title="where you studied" {if !empty($education)} value={$education} {/if} {literal}	pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" class="form-control" required>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     					<div class="help-block with-errors"></div>
 						</div>

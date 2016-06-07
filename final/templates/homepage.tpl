@@ -17,7 +17,7 @@
 						</div>
 						<div class="panel-body">
 							<form id="regForm" method="post" action="../actions/users/register.php" data-toggle="validator" >
-								<label> Username </label>
+								<label for="username"> Username </label>
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="userThing" class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
@@ -27,7 +27,7 @@
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     								<div class="help-block with-errors"></div>
 								</div>
-								<label> E-mail </label>
+								<label for="email"> E-mail </label>
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span id="emailThing" class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -36,14 +36,14 @@
 									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     								<div class="help-block with-errors"></div>
 								</div>
-								<label> Password </label>
+								<label for="password"> Password </label>
 								<div class="form-group">
 									<div class="input-group">
 										<span id="passwordThing" class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 										<input id="password" name="password" title="password" type="password" class="form-control" required>
 									</div>
 								</div>
-								<label> Re-enter password </label>
+								<label for="rpassword"> Re-enter password </label>
 								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>

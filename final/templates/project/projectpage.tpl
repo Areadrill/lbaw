@@ -122,15 +122,15 @@
 										<div class="col-sm-8">
 											<input name="projid" type="hidden" value={$projID}>
 											<div class="form-group has-feedback">
-												<label>Thread title</label>
-												<input name="title" type="text" class="form-control" title="new thread name" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
+												<label for="ntn">Thread title</label>
+												<input id="ntn" name="title" type="text" class="form-control" title="new thread name" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
 												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     											<div class="help-block with-errors"></div>
 											</div>
 											<br>
 											<div class="form-group">
-												<label>Initial comment</label>
-												<textarea style="resize: none" class="form-control" title="first comment for the thread" name="initialComment" placeholder="Not necessary" maxlength="512" rows="4" cols="52"></textarea>
+												<label for="fthrcomm">Initial comment</label>
+												<textarea id="fthrcomm" style="resize: none" class="form-control" title="first comment for the thread" name="initialComment" placeholder="Not necessary" maxlength="512" rows="4" cols="52"></textarea>
 											</div>
 											<!--eventualmente um dropdown com as tags-->
 										</div>
@@ -160,15 +160,15 @@
 										<div class="col-sm-8">
 											<input name="projectid" type="hidden" value={$projID}>
 											<div class="form-group has-feedback">
-												<label>Task name</label>
-												<input name="name" type="text" class="form-control" title="new task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
+												<label for="ntan">Task name</label>
+												<input id="ntan" name="name" type="text" class="form-control" title="new task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
 												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     											<div class="help-block with-errors"></div>
 											</div>
 											<br>
 											<div class="form-group">
-												<label>Initial comment</label>
-												<textarea style="resize: none" class="form-control" name="body" title="first comment for the task" maxlength="512" rows="4" cols="52"></textarea>
+												<label for="ftacomm">Initial comment</label>
+												<textarea id="ftacomm" style="resize: none" class="form-control" name="body" title="first comment for the task" maxlength="512" rows="4" cols="52"></textarea>
 											</div><!--eventualmente um dropdown com as tags-->
 										</div>
 										<div class="col-sm-2"></div>
@@ -557,8 +557,8 @@
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
 										<div class="form-group has-feedback">
-											<label>Task List Name</label>
-											<input name="name" type="text" title="new tasklist name"  class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+											<label for="ntl">Task List Name</label>
+											<input id="ntl" name="name" type="text" title="new tasklist name"  class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     										<div class="help-block with-errors"></div>
 										</div>
@@ -589,8 +589,8 @@
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
 										<div class="form-group has-feedback">
-										<label>Project Name</label>
-										<input name="name" type="text" title="new project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+										<label for="chProjName">Project Name</label>
+										<input id="chProjName" name="name" type="text" title="new project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     									<div class="help-block with-errors"></div>
 										</div>
@@ -602,8 +602,8 @@
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
 										<div class="form-group has-feedback">
-											<label>Description</label>
-											<input name="description" type="text" title="new project description" class="form-control" required>
+											<label for="chProjDesc">Description</label>
+											<input id="chProjDesc" name="description" type="text" title="new project description" class="form-control" required>
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 	    									<div class="help-block with-errors"></div>
 										</div>
