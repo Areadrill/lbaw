@@ -34,6 +34,8 @@
 	  $threadcomments[$i]['ago'] = ago(strtotime($threadcomments[$i]['creationinfo']));
   }
 
+  $threadInfo = getThreadInfo($threadID);
+  $threadInfo['creationinfo'] = ago(strtotime($threadInfo['creationinfo']));
 
   $smarty->assign('role', $role);
   $smarty->assign('isLocked', isLocked($threadID));
@@ -42,7 +44,7 @@
   $smarty->assign('labels', getThreadLabels($threadID));
   $smarty->assign('missingLabels', getLabelsNotInThread($threadID));
   $smarty->assign('comments', $threadcomments);
-  $smarty->assign('threadInfo', getThreadInfo($threadID));
+  $smarty->assign('threadInfo', $threadInfo);
   $smarty->assign('projectInfo', getProjectInfo($projectID));
   $smarty->assign('projID', $projectID);
   $smarty->assign('threadID', $threadID);

@@ -26,8 +26,8 @@
       <div class="col-md-4">
         {if $role === 'COORD'}
         <div class="btn-group">
-          <input type="hidden" id="thrID" name="thrID" value={$threadID}>
-          <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-primary"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
+          <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-warning"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
+          <input type="hidden" id="thrID" name="thrID" value={$threadID}/>
           <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
         </div>
         {/if}
@@ -36,7 +36,7 @@
     <br>
     <div class="row">
       <div class="col-md-12 pull-to-bottom">
-        <p> Thread created by <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> {$threadInfo.creatorName} </strong><span class="drab"> 4 months ago</span></p>
+        <p> Thread created by <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> {$threadInfo.creatorName} </strong><span class="drab"> {$threadInfo.creationinfo}</span></p>
       </div>
       <div class="col-md-2 pull-to-bottom">
 
@@ -77,16 +77,6 @@
               </div><!-- Status Upload  -->
             </div><!-- Widget Area -->
           </div>
-        </div>
-        <div id="pageNumbers">
-          <ul class="pagination">
-            <li class="disabled"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
         </div>
       </div>
       <div class="col-md-2 sidebar">
