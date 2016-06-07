@@ -45,6 +45,15 @@ $(document).ready(function(){
  
   });
 
+  $("#newProjSubWrapper").hover(function (){
+    if($("div", "#newProjForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
+      $("#newProjSub").prop('disabled', true);
+    }
+    else{
+      $("#newProjSub").prop('disabled', false);
+    }
+ 
+  });
 
 });
 
