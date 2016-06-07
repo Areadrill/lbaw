@@ -140,15 +140,15 @@ function comment($userID, $threadID, $text){
 
 function createThread($userID, $projectID, $name){
 	global $conn;
-	
+
 	if(checkIsInProjectProjID($userID, $projectID) === false){
 		$_SESSION['error_messages'][] = 'User is not in the project';
 		return "denied";
 	}
-	
+
 	$stmt = $conn->prepare("INSERT INTO Thread VALUES(default, ?, ?, ?, clock_timestamp(), FALSE)");
 	$stmt->execute(array($projectID, $userID, $name));
-	
+
 	return $stmt->fetch() !== false;
 }
 
@@ -223,6 +223,23 @@ function assignLabelToThread($userID, $threadID, $threadLID){ //preciso ver se a
 	$stmt->execute(array($threadID, $threadLID));
 
 	return $stmt->fetch() !== false;
+}
+function filterThread($threadlabelid,$projid,$userid){
+	if(checkPrivilege($userid, getProjIDThreadLabelID($threadlabelid))){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+	global $conn;
+
+	$stmt = $conn->prepare("SELECT Thread.threadid, Thread.name FROM Thread, ThreadLabel, ThreadToLabel WHERE ThreadLabel.threadlid	 = ? AND ThreadToLabel.threadlid = ThreadLabel.threadlid AND ThreadToLabel.threadid = Thread.threadid");
+	$stmt->execute(array($threadlabelid));
+
+	$res = $stmt->fetchAll();
+	for($i = 0; $i < count($res); $i++){
+			$res[$i]['threadLabels'] = getThreadLabels($res[$i]['threadid']);
+	}
+
+	return $res;
 }
 
 function unassignLabelFromThread($userID, $threadID, $threadLID){
