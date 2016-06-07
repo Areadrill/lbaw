@@ -7,7 +7,7 @@
 <body>
 	{include file='common/navbar.tpl'}
 
-		<div class="container">
+		<div class="container" data-coord="{$role}">
 			<div class="row">
 				<div class ="col-md-12">
 					<ol class="breadcrumb">
@@ -30,6 +30,9 @@
 					{if $role === 'COORD'}
 					<div class="btn-group">
 						<button style="margin-top: 0.7em" id="taskDelete" type="button" class="btn btn-primary"> Delete Task </button>
+						{if $complete}
+						<button  style="margin-top: 0.7em" id="taskUncomplete" type="button" class="btn btn-primary">Reopen Task</button>
+						{/if}
 					</div>
 					{/if}
 				</div>
@@ -40,9 +43,9 @@
 				<div class="col-md-12 pull-to-bottom">
 					<p >
 						{if $complete eq true}
-						<a class="btn btn-success btn-sm" href="#" role="button">Complete </a>
+						<a class="btn btn-success btn-sm" id="completionstatus"  href="#" role="button">Complete </a>
 						{else}
-						<a class="btn btn-danger btn-sm" href="#" role="button">Not Complete </a>
+						<a class="btn btn-danger btn-sm" id="completionstatus" href="#" role="button">Not Complete </a>
 						{/if}
 						Task created by <a href="{$BASE_URL}pages/userpage.php?userid={$creatorid}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>{$creatorname}</strong></a> </p>
 					</div>
@@ -81,7 +84,7 @@
                 <form id="createCommentForm" action="{$BASE_URL}actions/tasks/create_comment.php" method="post">
                   <textarea placeholder="Comment area" title="comment" placeholder="Write your comment here" maxlength="512" ></textarea>
                   <ul>
-                    <li style="margin-top:0.7em"><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"><label for="completeForm"> Mark as complete</label> </li>
+                    <li style="margin-top:0.7em"><input id="completeForm" value="Mark compeleted" type="checkbox" name="completed"> <label for="completeForm"> Mark as complete</label></li>
                   </ul>
 		  <input type="hidden" id="taskidForm" value="{$taskid}">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Comment</button>
@@ -117,18 +120,6 @@
 						<strong><span class="glyphicon glyphicon-user"  aria-hidden="true"></span> {$assigneeName}</strong>
 						{else}
 						<p> Task not assigned</p>
-						{/if}
-						<hr/>
-						<div class="row">
-							<div class="col-md-10">
-								<h4 class="drab">Task list</h4>
-							</div>
-							<div class="col-md-2">{if ($role === 'COORD' || $isCreator)} <div id="tasklistManage" class="col-md-2"><span class="optionDialog glyphicon glyphicon-cog"></span></div> {/if}</div>
-						</div>
-						{if !empty($tasklist)}
-						<a href="#"><strong><span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span>{$tasklistName}</strong></a>
-						{else}
-						<p> No Task List</p>
 						{/if}
 					</div>
 				</div>
@@ -206,7 +197,7 @@
 									<div class="col-md-1"></div>
 									<div class="col-md-10">
 											<div class="row">
-												<div class="col-md-4">
+												<div class="col-md-3">
 													<span >{$member.username}</span>
 												</div>
 												<div class="col-md-4">
@@ -218,7 +209,7 @@
 												</div>
 											</div>
 											</div>
-									<div class="col-md-4"></div>
+									<div class="col-md-6"></div>
 								</div>
 										</li>
 
@@ -274,10 +265,10 @@
 									<div class="col-md-10">
 										<li class="list-group-item clearfix">
 											<div class="row">
-												<div class="col-md-4">
+												<div class="col-md-3">
 													<span class="label label-info">{$mLabel.name}</span>
 												</div>
-												<div class="col-md-4">
+												<div class="col-md-5">
 													<form class="alignForm labelOp" action="{$BASE_URL}api/tasks/assign_label.php" method="post">
 														<input type="hidden" name="taskid" value={$taskid}>
 														<input type="hidden" name="tasklid" value={$mLabel.tasklid}>
@@ -288,7 +279,7 @@
 											</div>
 										</li>
 									</div>
-									<div class="col-md-4"></div>
+									<div class="col-md-6"></div>
 								</div>
 								{/foreach}
 							</ul>

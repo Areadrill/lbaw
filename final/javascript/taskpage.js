@@ -1,5 +1,4 @@
-$(document).ready(function(){
-	$(document).on("click",".submitRemoveComment",function(){
+$(document).ready(function(){ $(document).on("click",".submitRemoveComment",function(){
 		$.post('../api/tasks/remove_comment.php', {commentid: $("input", this).val()}, function(data){
 			var json = JSON.parse(data);
 			$("#commentListArea").empty();
@@ -27,6 +26,16 @@ $(document).ready(function(){
 		});
 	});
 
+	$("#taskUncomplete").click(function(){
+		$.post("../api/tasks/uncomplete_task.php", {taskid: $("#taskidForm").val()}, function(){
+			$("#completionstatus").addClass("btn-danger");
+			$("#completionstatus").removeClass("btn-success");
+			$("#completionstatus").text("Not Complete");
+			$("#taskUncomplete").remove();
+
+		});
+	});
+
 	$("#taskDelete").click(function(){
 		$("#deleteTaskConfirm").modal("show");
 	});
@@ -39,14 +48,31 @@ $(document).ready(function(){
 
 	$(document).on("submit","#createCommentForm",function(e){
 		e.preventDefault();
-		$.post("../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), complete: $("#completeForm").val()}, function(data){
+		$.post("../api/tasks/create_comment.php", {body: $("#createCommentForm textarea").val(), taskid: $("#taskidForm").val(), completed: $("#completeForm").prop("checked")}, function(data){
 			reply = JSON.parse(data);
+			if(reply['complete'] && $("#completionstatus").hasClass("btn-danger")){
+				$("#completionstatus").removeClass("btn-danger");
+				$("#completionstatus").addClass("btn-success");
+				$("#completionstatus").text("Complete");
+				if ($(".container").data("coord") == "COORD"){
+					$("#taskDelete").after($("<button  style=\"margin-top: 0.7em\" id=\"taskUncomplete\" type=\"button\" class=\"btn btn-primary\">Reopen Task</button>"));
+					$("#taskUncomplete").click(function(){
+						$.post("../api/tasks/uncomplete_task.php", {taskid: $("#taskidForm").val()}, function(){
+							$("#completionstatus").addClass("btn-danger");
+							$("#completionstatus").removeClass("btn-success");
+							$("#completionstatus").text("Not Complete");
+							$("#taskUncomplete").remove();
+
+						});
+					});
+				}
+			}
 			$("#commentListArea").append($("<div class=\"row\">"+
 						"<div class=\"col-md-12\">"+
 						"<div class=\"panel panel-default\">"+
 						"<div class=\"panel-heading\">"+
 						"<h5><a href=\"#\"><strong><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"+reply["username"] + " </strong></a>"+
-						"<span class=\"drab\">commented 3 days ago </span>"+
+						"<span class=\"drab\">commented just now</span>"+
 						"<a href=\"#\" class=\"pull-right submitRemoveComment\" role=\"button\"><input type=\"hidden\" name=\"commentid\" value="+reply['taskcid']+"><span class=\"glyphicon glyphicon-remove\"></span></a>"+
 						"</h5>"+
 						"</div>"+
@@ -72,6 +98,7 @@ $(document).ready(function(){
 			var j = $("#currTaskLabels li");
 			$("#currTaskLabels").empty();
 			$("#labelsNotInTask").empty();
+			$(".label-list").empty();
 
 
 
@@ -98,8 +125,8 @@ $(document).ready(function(){
 						"<div class=\"col-md-6\"></div>"+
 						"</div>  ");
 
-				$("#lblList1").append("<span class=\"label label-info\">"+ json[0][i].name +"</span> ");
-				$("#lblList2").append("<li><span class=\"label label-info\">"+ json[0][i].name +"</span></li> ");
+				//$("#lblList1").append("<span class=\"label label-info\">"+ json[0][i].name +"</span> ");
+				$(".label-list").append("<li><span class=\"label label-warning\">"+ json[0][i].name +"</span></li> ");
 			}
 
 			for(var i = 0; i < json[1].length; i++){

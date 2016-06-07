@@ -46,6 +46,6 @@ else if ($res === 'FAIL_INSERT'){
 	exit;
 }
 $_SESSION['success_messages'][] = 'Thread created successfuly';
-header('Location: ' . $BASE_URL.'pages/tasks/task.php?taskid='.$res); 
+header('Location: ' . $BASE_URL.'pages/task.php?taskid='.$res); 
 
 ?>
