@@ -114,7 +114,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Create a new Thread</h4>
 							</div>
-							<form action="../actions/projects/create_thread.php" data-toggle="validator" method="post" >
+							<form id="newThreadForm" action="../actions/projects/create_thread.php" data-toggle="validator" method="post" >
 								<br>
 								<div class="row">
 									<div class="form-group">
@@ -139,8 +139,8 @@
 								</div>
 								<br>
 
-								<div class="modal-footer">
-									<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+								<div id="newThreadSubWrapper" class="modal-footer">
+									<input id="newThreadSub" name="submit" type="submit" class="btn btn-primary" value="Create"/>
 								</div>
 							</form>
 						</div>
@@ -153,7 +153,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Create a new Task</h4>
 							</div>
-							<form role="form" action="{$BASE_URL}actions/tasks/create_task.php" data-toggle="validator" method="post" >
+							<form id="newTaskForm" role="form" action="{$BASE_URL}actions/tasks/create_task.php" data-toggle="validator" method="post" >
 								<br>
 								<div class="row">
 										<div class="col-sm-2"></div>
@@ -175,8 +175,8 @@
 								</div>
 								<br>
 
-								<div class="modal-footer">
-									<input name="submit" type="submit" class="btn btn-primary" value="Create"/>
+								<div id="newThreadSubWrapper" class="modal-footer">
+									<input id="newThreadSub" name="submit" type="submit" class="btn btn-primary" value="Create"/>
 								</div>
 							</form>
 						</div>
@@ -197,7 +197,7 @@
 										<div class="col-sm-2"></div>
 										<div class="col-sm-8">
 											<input name="projectid" type="hidden" value={$projID}>
-											<div class="input-group">
+											<div id="newTaskLabelWrapper" class="input-group">
 												<div class="input-group-btn">
 													<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
 												</div><!-- /btn-group -->
@@ -264,7 +264,7 @@
 										<div class="col-sm-2"></div>
 										<div class="col-sm-8">
 											<input name="projid" type="hidden" value={$projID}>
-											<div class="input-group">
+											<div id="newTLSubmmitWrapper" class="input-group">
 												<div class="input-group-btn">
 													<button id="newTLSubmmit" type="button" class="btn btn-primary"  aria-expanded="false"> Add to Project</button>
 												</div><!-- /btn-group -->
@@ -552,7 +552,7 @@
 							<h4 class="modal-title"> New Task List</h4>
 						</div>
 						<div class="modal-body">
-							<form data-toggle="validator" class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
+							<form id="newTaskListform" data-toggle="validator" class="alignForm" action="../actions/tasklist/create_tasklist.php" method="post" >
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
@@ -566,9 +566,9 @@
 									<div class="col-md-2"></div>
 								</div>
 								<br>
-								<div class="modal-footer">
+								<div id="newTaskListSubWrapper" class="modal-footer">
 										<input type="hidden" name="projectID" value={$projID}>
-										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
+										<button id="newTaskListSub" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Task List </button>
 								</div>
 							</form>
 						</div>
@@ -584,7 +584,7 @@
 							<h4 class="modal-title">Edit Project Info</h4>
 						</div>
 						<div class="modal-body">
-							<form class="alignForm" action="../actions/projects/edit_project.php" method="post" >
+							<form id="editProjForm" class="alignForm" data-toggle="validator" action="../actions/projects/edit_project.php" method="post" >
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
@@ -611,7 +611,7 @@
 									</div>
 									<br>
 								</div>
-								<div class="modal-footer">
+								<div id="editConfirmWrapper" class="modal-footer">
 										<input type="hidden" name="projectID" value={$projID}>
 										<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
 									</div>
