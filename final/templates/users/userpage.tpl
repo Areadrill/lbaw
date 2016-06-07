@@ -167,7 +167,7 @@
 						<div class="col-sm-8">
 							<div class="form-group has-feedback">
 								<label for="repass">Retype New Password</label>
-								<input name="repass" type="password" title="retype new password" class="form-control" data-match="#lepass" data-match-error="Passwords don't match">
+								<input id="repass" name="repass" type="password" title="retype new password" class="form-control" data-match="#lepass" data-match-error="Passwords don't match">
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 							</div>
     					<div class="help-block with-errors"></div>

@@ -134,10 +134,11 @@
           <h4> Project Labels </h4>
           <ul id="labelsNotInThread" class="list-group">
             {foreach from=$missingLabels item=mLabel}
-            <div class="row">
+            
+                <li class="list-group-item clearfix">
+                <div class="row">
               <div class="col-md-1"></div>
               <div class="col-md-10">
-                <li class="list-group-item clearfix">
                   <div class="row">
                     <div class="col-md-4">
                       <span class="label label-info">{$mLabel.name}</span>
@@ -151,10 +152,11 @@
                       </form>
                     </div>
                   </div>
-                </li>
-              </div>
+                  </div>
               <div class="col-md-4"></div>
             </div>
+                </li>
+              
             {/foreach}
           </ul>
           <br>

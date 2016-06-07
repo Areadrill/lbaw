@@ -442,7 +442,7 @@
 											{/foreach}
 										</ul>
 									</div>
-								</li>
+								
 								<div data-tasklistid="{$tasklist.taskliid}" class="modal fade manageTaskList" role="dialog">
 									<div class="modal-dialog">
 										<!-- Modal content-->
@@ -482,6 +482,7 @@
 											</div>
 										</div>
 									</div>
+									</li>
 								{/foreach}
 							</ul>
 						</div>
@@ -610,12 +611,12 @@
 									</div>
 									</div>
 									<br>
-								</div>
+								
 								<div id="editConfirmWrapper" class="modal-footer">
 										<input type="hidden" name="projectID" value={$projID}>
 										<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
 									</div>
-								</form>
+							</form>
 							</div>
 						</div>
 					</div>
