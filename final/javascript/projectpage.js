@@ -4,8 +4,8 @@ $(document).ready(function(){
 			$("#recent-threads").empty();
 			var json = JSON.parse(data);
 			for(var i = 0; i < json.length; i++){
-				var htmlCode = "<a href=\"../pages/threadpage.php?id={$thread.threadid}\" class=\"list-group-item\">"+
-				"<span class=\"glyphicon glyphicon-comment\"></span>" + json[i].name;
+				var htmlCode = "<a href=\"../pages/threadpage.php?id="+ json[i].threadid +"\" class=\"list-group-item\">"+
+				"<span class=\"glyphicon glyphicon-comment\"></span> " + json[i].name;
 				for(var j = 0; j < json[i].threadLabels.length; j++){
 					htmlCode += "<span class=\"label label-info\">" + json[i].threadLabels[j].name+ "</span>"+
 					"</a>"
