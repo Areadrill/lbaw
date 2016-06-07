@@ -44,16 +44,20 @@
 									</div>
 								</div>
 								<label> Re-enter password </label>
-								<div class="form-group">
+								<div class="form-group has-feedback">
 									<div class="input-group">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 										<input id="rpassword" name="rpassword" title="retype password" type="password" class="form-control" data-match="#password" data-match-error="Passwords don't match" required>
 									</div>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    								<div class="help-block with-errors"></div>
 								</div>
 
 								<button type="submit" name="submit" class="btn btn-default">Sign Up</button>
 								<a data-toggle="modal" data-target="#recover" role="button">Lost your password?</a>
 							</form>
+
+
 						</div>
 					</div>
 				</div>

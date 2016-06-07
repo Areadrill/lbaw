@@ -125,6 +125,7 @@
 												<label>Thread title</label>
 												<input name="title" type="text" class="form-control" title="new thread name" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="50" required>
 												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    											<div class="help-block with-errors"></div>
 											</div>
 											<br>
 											<div class="form-group">
@@ -162,6 +163,7 @@
 												<label>Task name</label>
 												<input name="name" type="text" class="form-control" title="new task name" maxlength="50" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} required>
 												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    											<div class="help-block with-errors"></div>
 											</div>
 											<br>
 											<div class="form-group">
@@ -191,7 +193,7 @@
 							<form id="newTaskLabel" action="../actions/tasks/create_label.php" data-toggle="validator" method="post" >
 								<br>
 								<div class="row">
-									<div class="form-group">
+									<div class="form-group has-feedback">
 										<div class="col-sm-2"></div>
 										<div class="col-sm-8">
 											<input name="projectid" type="hidden" value={$projID}>
@@ -200,6 +202,8 @@
 													<button id="newTaskLabelSubmit" type="button" class="btn btn-primary" aria-expanded="false"> Add to Project</button>
 												</div><!-- /btn-group -->
 												<input id="newTaskLabelName" name="name" type="text" title="new task label name" class="form-control" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} placeholder="New Label name" aria-label="...">
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    											<div class="help-block with-errors"></div>
 											</div><!-- /input-group -->
 										</div>
 										<div class="col-sm-2"></div>
@@ -256,7 +260,7 @@
 							<form id="newLabel" action="../actions/projects/create_threadLabel.php" method="post" data-toggle="validator">
 								<br>
 								<div class="row">
-									<div class="form-group">
+									<div class="form-group has-feedback">
 										<div class="col-sm-2"></div>
 										<div class="col-sm-8">
 											<input name="projid" type="hidden" value={$projID}>
@@ -265,6 +269,8 @@
 													<button id="newTLSubmmit" type="button" class="btn btn-primary"  aria-expanded="false"> Add to Project</button>
 												</div><!-- /btn-group -->
 												<input name="name" type="text" class="form-control" title="new thread label name" placeholder="New Label name" maxlength="15" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} aria-label="...">
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    											<div class="help-block with-errors"></div>
 											</div><!-- /input-group -->
 										</div>
 										<div class="col-sm-2"></div>
@@ -554,6 +560,7 @@
 											<label>Task List Name</label>
 											<input name="name" type="text" title="new tasklist name"  class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
 											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    										<div class="help-block with-errors"></div>
 										</div>
 									</div>
 									<div class="col-md-2"></div>
@@ -581,8 +588,12 @@
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
+										<div class="form-group has-feedback">
 										<label>Project Name</label>
 										<input name="name" type="text" title="new project name" class="form-control" {literal} pattern="^([_A-z0-9,\.:]+\s?)+$" {/literal} maxlength="25" required>
+										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    									<div class="help-block with-errors"></div>
+										</div>
 									</div>
 									<div class="col-md-2"></div>
 								</div>
@@ -590,8 +601,12 @@
 								<div class="row">
 									<div class="col-md-2"></div>
 									<div class="col-md-8">
-										<label>Description</label>
-										<input name="description" type="text" title="new project description" class="form-control" required>
+										<div class="form-group has-feedback">
+											<label>Description</label>
+											<input name="description" type="text" title="new project description" class="form-control" required>
+											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+	    									<div class="help-block with-errors"></div>
+										</div>
 									</div>
 									</div>
 									<br>
