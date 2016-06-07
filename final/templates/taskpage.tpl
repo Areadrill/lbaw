@@ -172,7 +172,7 @@
 							</div>
 							{if !empty($assignee)}
 							<h4> Current Assignee</h4>
-							<ul id="currTaskLabels" class="list-group">
+							<ul id="assignee" class="list-group">
 								<div class="row">
 									<div class="col-md-1"></div>
 									<div class="col-md-10">

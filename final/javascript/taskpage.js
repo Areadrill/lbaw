@@ -64,16 +64,19 @@ $(document).ready(function(){
 		$.post('../api/tasks/assign_label.php', {taskid: $("input[name='taskid']", this).val(), tasklid: $("input[name='tasklid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
 			var json = JSON.parse(data);
 			console.log(data);
-			$("#nameandlabels h1").nextAll("span").remove();
+			var s = $("#nameandlabels h1").siblings("span");
+			s.remove();
 			for(var k in json[0]){
-				$("#nameandlabels h1").append($("<span class=\"label label-warning\">"+json[0][k]['name']+"</span>"));
+				$("#nameandlabels h1").after($("<span class=\"label label-warning\">"+json[0][k]['name']+"</span>"));
 			}
-
+			var j = $("#currTaskLabels li");
+			$("#currTaskLabels").empty();
+			$("#labelsNotInTask").empty();
 
 
 
 			for(var i = 0; i < json[0].length; i++){
-				$("#currThreadLabels").append("<div class=\"row\">"+
+				$("#currTaskLabels").append("<div class=\"row\">"+
 						"<div class=\"col-md-1\"></div>"+
 						"<div class=\"col-md-10\">"+
 						"<li class=\"list-group-item clearfix\">"+
@@ -100,7 +103,7 @@ $(document).ready(function(){
 			}
 
 			for(var i = 0; i < json[1].length; i++){
-				$("#labelsNotInThread").append("<div class=\"row\">"+
+				$("#labelsNotInTask").append("<div class=\"row\">"+
 						"<div class=\"col-md-1\"></div>"+
 						"<div class=\"col-md-10\">"+
 						"<li class=\"list-group-item clearfix\">"+
