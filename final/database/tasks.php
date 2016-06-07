@@ -182,7 +182,7 @@ function assignLabelToTask($userID, $taskID, $taskLID){ //preciso ver se a threa
 
 function getProjectTaskLabels($projectid){
 	global $conn;
-	$stmt = $conn->prepare('SELECT name, Count(TaskToLabel.tasklid) as count FROM TaskLabel LEFT JOIN TaskToLabel On TaskLabel.tasklid = TaskToLabel.tasklid WHERE  TaskLabel.projectid = ? GROUP BY TaskLabel.tasklid');
+	$stmt = $conn->prepare('SELECT TaskLabel.tasklid, name, Count(TaskToLabel.tasklid) as count FROM TaskLabel LEFT JOIN TaskToLabel On TaskLabel.tasklid = TaskToLabel.tasklid WHERE  TaskLabel.projectid = ? GROUP BY TaskLabel.tasklid');
 	$stmt->execute(array($projectid));
 	$res = $stmt->fetchAll();
 	return $res;
