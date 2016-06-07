@@ -33,7 +33,24 @@ function getLabelsNotInTask($taskID, $projectid) {
 
 	return $res;
 }
+function filterTask($tasklabelid,$projid,$userid){
 
+	if(checkPrivilege($userid, $projid) != "COORD"){
+		$_SESSION['error_messages'][] = 'Insufficient permissions';
+		return 'denied';
+	}
+	global $conn;
+
+	$stmt = $conn->prepare("SELECT Task.taskid, Task.name FROM Task, TaskLabel, TaskToLabel WHERE TaskLabel.tasklid	 = ? AND TaskToLabel.tasklid = TaskLabel.tasklid AND TaskToLabel.taskid = Task.taskid");
+	$stmt->execute(array($tasklabelid));
+
+	$res = $stmt->fetchAll();
+	for($i = 0; $i < count($res); $i++){
+			$res[$i]['taskLabels'] = getTaskLabels($res[$i]['taskid']);
+	}
+
+	return $res;
+}
 
 function getTaskInfo($taskID){
 	global $conn;
