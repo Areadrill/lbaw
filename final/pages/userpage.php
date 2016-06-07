@@ -18,8 +18,6 @@
     $imgPath = "../images/default.jpg";
   }
 
-  var_dump(getNewInfo($_SESSION['userid'], 8));
-
   $smarty->assign('img',$imgPath);
   $smarty->assign('projects', getProjects($_SESSION['userid']));
   $smarty->assign('email', getUserEmail($_SESSION['userid']));

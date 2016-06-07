@@ -194,7 +194,7 @@ $(document).ready(function(){
 
 
   $("#newThreadSubWrapper").hover(function (){
-    console.log("ola");
+    
     if($("div", "#newThreadForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#newThreadSub").prop('disabled', true);
     }
@@ -204,7 +204,7 @@ $(document).ready(function(){
   });
 
     $("#newTaskSubWrapper").hover(function (){
-    console.log("ola");
+   
     if($("div", "#newTaskForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#newTaskSub").prop('disabled', true);
     }
@@ -213,7 +213,7 @@ $(document).ready(function(){
     }
   });
       $("#newTaskLabelWrapper").hover(function (){
-    console.log("ola");
+   
     if($("div", "#newTaskLabel").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#newTaskLabelSubmit").prop('disabled', true);
     }
@@ -223,7 +223,7 @@ $(document).ready(function(){
   });
 
    $("#newTLSubmmitWrapper").hover(function (){
-    console.log("ola");
+    
     if($("div", "#newLabel").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#newTLSubmmit").prop('disabled', true);
     }
@@ -233,7 +233,7 @@ $(document).ready(function(){
   });
 
   $("#newTaskListSubWrapper").hover(function (){
-    console.log("ola");
+   
     if($("div", "#newTaskListForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#newTaskListSub").prop('disabled', true);
     }
@@ -243,7 +243,7 @@ $(document).ready(function(){
   });
 
 $("#editConfirmWrapper").hover(function (){
-    console.log("ola");
+    
     if($("div", "#editProjForm").hasClass("has-error") || $("input", this).hasClass("has-danger")){
       $("#editConfirm").prop('disabled', true);
     }
