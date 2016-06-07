@@ -26,7 +26,7 @@ else if(!$result){
 }
 
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-		echo json_encode(getThreadComments($_POST['threadid']));
+		echo json_encode($result);
 }
 else{
 	$_SESSION['success_messages'][] = 'Threads filtered successfully';
