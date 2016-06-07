@@ -84,7 +84,7 @@
           <div class="col-md-10">
             <h4 class="drab">Labels</h4>
           </div>
-          {if ($role === 'COORD' || $isCreator)} <div id="threadLabelManage" class="col-md-2"><span class="glyphicon glyphicon-cog"></span></div> {/if}
+          {if ($role === 'COORD' || $isCreator)} <div id="threadLabelManage" class="col-md-2"><span class="manageThreadLabels glyphicon glyphicon-cog"></span></div> {/if}
         </div>
         <ul id="lblList2" class="label-list">
           {foreach from=$labels item=label}<li><span class="label label-info">{$label.name}</span></li> {/foreach}
