@@ -12,7 +12,7 @@ if (!$_POST['name'] || !$_POST['description']) {
 $name = strip_tags($_POST['name']);
 $description = strip_tags($_POST['description']);
 
-if(strlen($name) > 25){
+if(strlen($name) > 50){
 	$_SESSION['error_messages'][] = "Too many characters in one of the form's fields";
 	header("Location: ". $BASE_URL . 'pages/userpage.php');
 	exit;
