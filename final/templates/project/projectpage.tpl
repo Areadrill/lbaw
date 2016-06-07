@@ -418,8 +418,8 @@
 									</div>
 									<div class="col-md-6">
 										<div class="progress" style="margin-bottom: 0">
-											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {math equation="completed / division * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%;">
-												{math equation="completed / division * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%
+											<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {math equation="completed / total * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%;">
+												{math equation="completed / total * 100" completed=$tasklist.completed total=$tasklist.tasks|@count}%
 											</div>
 
 
@@ -442,7 +442,7 @@
 											{/foreach}
 										</ul>
 									</div>
-								
+
 								<div data-tasklistid="{$tasklist.taskliid}" class="modal fade manageTaskList" role="dialog">
 									<div class="modal-dialog">
 										<!-- Modal content-->
@@ -611,7 +611,7 @@
 									</div>
 									</div>
 									<br>
-								
+
 								<div id="editConfirmWrapper" class="modal-footer">
 										<input type="hidden" name="projectID" value={$projID}>
 										<button id="editConfirm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit </button>
