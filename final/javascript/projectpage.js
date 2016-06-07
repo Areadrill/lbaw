@@ -9,9 +9,7 @@ $(document).ready(function(){
 				for(var j = 0; j < json[i].threadLabels.length; j++){
 					htmlCode += "<span class=\"label label-info\">" + json[i].threadLabels[j].name+ "</span>"+
 					"</a>"
-					console.log(json[i]);
 				}
-				console.log(htmlCode);
 				$("#recent-threads").append(htmlCode);
 			}
 		});
