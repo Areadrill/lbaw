@@ -24,10 +24,10 @@ if (!isset($_SESSION['userid'])){
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 }
-var_dump("ok");
+
 try{
 $res = createTask($_POST['name'], $_POST['projectid'], $_SESSION['userid'], $_POST['body']);
-var_dump($res);
+
 exit;
 }
 catch(Exception $e){

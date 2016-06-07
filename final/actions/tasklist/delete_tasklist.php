@@ -2,7 +2,7 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/tasklists.php');
 include_once($BASE_DIR .'database/members.php');
-var_dump($_POST);
+
 if (!$_POST['tasklistID'] || !$_POST['projectID']) {
   $_SESSION['error_messages'][] = 'Invalid delete';
   $_SESSION['form_values'] = $_POST;

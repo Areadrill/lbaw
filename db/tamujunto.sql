@@ -435,7 +435,7 @@ INSERT INTO thread VALUES (default,7,17,'Im new, need some directions','26-Apr-1
 INSERT INTO thread VALUES (default,1,56,'This project is dead :(','26-Apr-16 20:05:39', TRUE);
 INSERT INTO thread VALUES (default,2,25,'Does anyone REALLY know js','26-Apr-16 20:05:39', TRUE);
 INSERT INTO thread VALUES (default,5,25,'Rust vs java for the engine','26-Apr-16 20:05:39',FALSE);
-INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','26FALSE-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','26-Apr-16 20:05:39', FALSE);
 INSERT INTO thread VALUES (default,4,50,'Go vs java for the engine','26-Apr-16 20:05:39', FALSE);
 INSERT INTO thread VALUES (default,9,19,'This project is dead :(','26-Apr-16 20:05:39', TRUE);
 INSERT INTO thread VALUES (default,2,31,'Need a C++ guru in my office ASAP','26-Apr-16 20:05:39', FALSE);

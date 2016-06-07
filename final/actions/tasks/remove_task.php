@@ -5,14 +5,14 @@ include_once($BASE_DIR .'database/tasks.php');
 if (!isset($_POST['taskid'])) {
 	$_SESSION['error_messages'][] = 'Invalid deletion';
 	$_SESSION['form_values'] = $_POST;
-	var_dump($_POST);
+	
 	header('Location: ' . $BASE_URL .'pages/projectpage.php?id='. $projectID); 
 	exit;
 }
 
 $taskid = $_POST['taskid'];
 
-var_dump($taskid);
+
 $projectID = getProjectByTask($taskid);
 
 if (!isset($_SESSION['userid'])){

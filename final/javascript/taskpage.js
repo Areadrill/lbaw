@@ -28,7 +28,7 @@ $(document).ready(function(){ $(document).on("click",".submitRemoveComment",func
 
 	$("#taskUncomplete").click(function(){
 		$.post("../api/tasks/uncomplete_task.php", {taskid: $("#taskidForm").val()}, function(data){
-			console.log(data);
+			
 			$("#completionstatus").addClass("btn-danger");
 			$("#completionstatus").removeClass("btn-success");
 			$("#completionstatus").text("Not Complete");
@@ -90,7 +90,7 @@ $(document).ready(function(){ $(document).on("click",".submitRemoveComment",func
 		e.preventDefault();
 		$.post('../api/tasks/assign_label.php', {taskid: $("input[name='taskid']", this).val(), tasklid: $("input[name='tasklid']", this).val(), action: $("input[name='action']", this).val()}, function (data){
 			var json = JSON.parse(data);
-			console.log(data);
+			
 			var s = $("#nameandlabels h1").siblings("span");
 			s.remove();
 			for(var k in json[0]){

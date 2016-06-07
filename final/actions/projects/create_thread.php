@@ -40,7 +40,7 @@ try {
 	}
 	else{
     $_SESSION['error_messages'][] = 'Error creating Thread';
-    var_dump($e);
+   	header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
   }
 

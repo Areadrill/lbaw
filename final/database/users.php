@@ -47,7 +47,7 @@ function checkUserAvailability($username){
 	$stmt = $conn->prepare('SELECT userid FROM users WHERE username = ?');
 	$stmt->execute(array($username));
 
-	var_dump($username);
+	
 
 	if($stmt->fetch() != null){
 		return false;
@@ -154,7 +154,7 @@ function resetPassword($pass, $userid){
 
 	$stmt = $conn->prepare("UPDATE Users SET password = ? WHERE userid = ?");
 	$stmt->execute(array(hash('sha256', $pass.$salt['salt']), $userid));
-	var_dump($stmt->rowCount());
+	
 	return $stmt->rowCount() == 1;
 
 }

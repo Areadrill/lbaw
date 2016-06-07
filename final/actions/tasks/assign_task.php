@@ -5,7 +5,7 @@ include_once($BASE_DIR.'database/members.php');
 
 if(!isset($_SESSION['userid']) || !isset($_POST['taskid']) || !isset($_POST['userid'])){
 	http_response_code(400);
-	var_dump('falheu0');
+	
 	$_SESSION['error_messages'] = 'Bad request';
 	header('Location: '. $_SERVER['HTTP_REFERER']);
 	exit;
