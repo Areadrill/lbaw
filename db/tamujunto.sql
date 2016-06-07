@@ -413,41 +413,41 @@ INSERT INTO taskcomment VALUES (default,10,18,'29-Apr-16 15:05:37','I dont think
 
 
 
-INSERT INTO thread VALUES (default,1,98,'Im quitting this, goodbye','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,26,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,95,'C++ vs java for the engine','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,50,'Does anyone REALLy know js?','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,17,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,65,'Im quitting this, goodbye','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,4,89,'C++ vs java for the engine','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,99,'Julies surprise party','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,72,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,56,'Anyone working late today?','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,09,'Does anyone REALLY know js?','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,6,95,'C++ vs java for the engine','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,54,'Im new, need some directions','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,41,'The code is spaghettifying at an alarming rate','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,6,44,'Anyone working late today?','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,10,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,03,'The code needs serious refactoring','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,25,'Office party','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,17,'Im new, need some directions','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,56,'This project is dead :(','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,25,'Does anyone REALLY know js','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,25,'Rust vs java for the engine','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,4,50,'Go vs java for the engine','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,19,'This project is dead :(','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,31,'Need a C++ guru in my office ASAP','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,5,93,'Im new, need some directions','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,2,72,'We are moving too slow','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,28,'Julies surprise party','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,3,78,'Need a C guru in my office ASAP','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,96,'C++ vs java for the engine','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,7,03,'This project is dead :(','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,1,28,'Anyone working late today?','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,9,34,'Office surprise party','26-Apr-16 20:05:39');
-INSERT INTO thread VALUES (default,10,82,'We are moving too slow','26-Apr-16 20:05:39');
+INSERT INTO thread VALUES (default,1,98,'Im quitting this, goodbye','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,7,26,'Need a C guru in my office ASAP','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,5,95,'C++ vs java for the engine','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,10,50,'Does anyone REALLy know js?','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,10,17,'Need a C guru in my office ASAP','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,10,65,'Im quitting this, goodbye','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,4,89,'C++ vs java for the engine','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,9,99,'Julies surprise party','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,5,72,'Need a C guru in my office ASAP','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,9,56,'Anyone working late today?','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,9,09,'Does anyone REALLY know js?','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,6,95,'C++ vs java for the engine','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,1,54,'Im new, need some directions','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,7,41,'The code is spaghettifying at an alarming rate','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,6,44,'Anyone working late today?','26-Apr-16 20:05:39',FALSE);
+INSERT INTO thread VALUES (default,2,10,'Need a C guru in my office ASAP','26-Apr-16 20:05:39',FALSE);
+INSERT INTO thread VALUES (default,7,03,'The code needs serious refactoring','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,2,25,'Office party','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,7,17,'Im new, need some directions','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,1,56,'This project is dead :(','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,2,25,'Does anyone REALLY know js','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,5,25,'Rust vs java for the engine','26-Apr-16 20:05:39',FALSE);
+INSERT INTO thread VALUES (default,3,57,'The code is spaghettifying at an alarming rate','26FALSE-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,4,50,'Go vs java for the engine','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,9,19,'This project is dead :(','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,2,31,'Need a C++ guru in my office ASAP','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,5,93,'Im new, need some directions','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,2,72,'We are moving too slow','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,7,28,'Julies surprise party','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,3,78,'Need a C guru in my office ASAP','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,1,96,'C++ vs java for the engine','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,7,03,'This project is dead :(','26-Apr-16 20:05:39', TRUE);
+INSERT INTO thread VALUES (default,1,28,'Anyone working late today?','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,9,34,'Office surprise party','26-Apr-16 20:05:39', FALSE);
+INSERT INTO thread VALUES (default,10,82,'We are moving too slow','26-Apr-16 20:05:39', FALSE);
 
 
 
