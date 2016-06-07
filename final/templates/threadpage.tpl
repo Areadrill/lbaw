@@ -27,7 +27,7 @@
         {if $role === 'COORD'}
         <div class="btn-group">
           <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> {if $isLocked}Unl{else}L{/if}ock Thread </button>
-          <input type="hidden" id="thrID" name="thrID" value={$threadID} />
+          <input type="hidden" id="thrID" name="thrID" value="{$threadID}" >
           <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span> Delete Thread </button>
         </div>
         {/if}
