@@ -620,6 +620,7 @@
 							</div>
 						</div>
 					</div>
+					</div>
 			<script type="application/json" id="taskLabels">
 			{$projectTaskLabels|@json_encode nofilter}
 			</script>
