@@ -60,7 +60,7 @@ function getProjIDTaskID($taskID){
 }
 function getTaskComments($taskID){
 	global $conn;
-	$stmt = $conn->prepare('SELECT taskcid, commentor, creationinfo, text FROM TaskComment WHERE taskid = ?');
+	$stmt = $conn->prepare('SELECT taskcid, commentor, creationinfo, text FROM TaskComment WHERE taskid = ? ORDER BY creationinfo ASCENDING');
 	$stmt->execute(array($taskID));
 	$results = $stmt->fetchAll();
 	for ($i = 0; $i < count($results); $i++){
