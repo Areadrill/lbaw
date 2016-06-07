@@ -26,9 +26,9 @@
       <div class="col-md-4">
         {if $role === 'COORD'}
         <div class="btn-group">
-          <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-warning"> {if $isLocked}Unl{else}L{/if}ock Thread </button>
+          <button style="margin-top: 0.7em" id="threadLock" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> {if $isLocked}Unl{else}L{/if}ock Thread </button>
           <input type="hidden" id="thrID" name="thrID" value={$threadID}/>
-          <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"> Delete Thread </button>
+          <button style="margin-top: 0.7em" id="threadDelete" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span> Delete Thread </button>
         </div>
         {/if}
       </div>
@@ -101,6 +101,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Manage this Thread's Labels</h4>
           </div>
+          <div class="modal-body">
           <h4> Current Thread Labels</h4>
           <ul id="currThreadLabels" class="list-group">
             {foreach from=$labels item=label}
@@ -157,6 +158,7 @@
             {/foreach}
           </ul>
           <br>
+        </div>
         </div>
       </div>
     </div>
