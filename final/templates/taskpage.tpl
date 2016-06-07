@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-8" id="nameandlabels">
 					<h1 style="display:inline;">{$name}</h1>
 					{foreach from=$labels item=label}
 					<span class="label label-warning">{$label.name}</span>
